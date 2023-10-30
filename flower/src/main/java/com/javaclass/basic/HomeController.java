@@ -34,12 +34,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-	}
+	} // home
 	
-	//adfsdasasdsa
-	//sdfsdf
-	//asdasd
-	// 최진화
-	// 김영우
-	// choijinhwa
-}
+
+} // class HomeController
