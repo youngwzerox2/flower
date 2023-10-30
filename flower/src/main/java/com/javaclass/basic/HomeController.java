@@ -36,15 +36,5 @@ public class HomeController {
 		return "home";
 	}
 	
-	//adfsdasasdsa
-	//sdfsdf
-	//asdasd
-<<<<<<< HEAD
-	//하이요
-=======
-	// 최진화
-	//박민진
-	//qkralswlsalswls
-	//asdasd
->>>>>>> branch 'main' of https://github.com/youngwzerox2/flower
+	// 김영우 버전 push
 }
