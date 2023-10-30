@@ -39,6 +39,5 @@ public class HomeController {
 	//adfsdasasdsa
 	//sdfsdf
 	//asdasd
-	// ìµœì§„í™”
-	// ê¹€ì˜ìš°
+	//ÇÏÀÌ¿ä
 }
