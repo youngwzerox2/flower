@@ -38,5 +38,5 @@ public class HomeController {
 	
 	// 김영우 버전 push
 	// 패키지 완성
-	// resource 삭제
+	// resource 삭제ㅇㅇㅇㅇ
 }
