@@ -34,9 +34,9 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-	}
-	
-	// 김영우 버전 push
-	// 패키지 완성
-	// resource 삭제ㅇㅇㅇㅇ
+
+		//엑박 삭제 완료
 }
+
+} 
+
