@@ -73,7 +73,7 @@
 											<!-- 계정버튼 드롭다운: 마이페이지, 로그인 -->
                                             <ul class="dropdown-menu" aria-labelledby="settingButton">
 												<!-- 마이페이지 -->
-                                                <li><a class="dropdown-item" href="my-account.html">My account</a></li>
+                                                <li><a class="dropdown-item" href="mypage/mypage1">My account</a></li>
 												<!-- 로그인 -->
                                                 <li><a class="dropdown-item" href="login-register.html">Login | Register</a>
                                                 </li>

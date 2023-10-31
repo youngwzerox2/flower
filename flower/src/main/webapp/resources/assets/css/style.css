@@ -5284,6 +5284,22 @@ blockquote p {
   font-weight: 600;
   padding: 10px 20px;
 }
+
+.myaccount-tab-trigger .sub-nav-item a{
+  border: 1px solid white;
+  display: block;
+  background: white;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 20px;
+}	// 종건 탭 배경지정
+
+.nav myaccount-tab-trigger .collapse{
+  color: white !important;
+  }
+
+
 .myaccount-tab-trigger li a.active {
   background: #abd373;
   border-color: #abd373;
