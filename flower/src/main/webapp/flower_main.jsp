@@ -197,7 +197,7 @@
                             <div class="col-lg-3 col-6">
 
                                 <a href="index.html" class="header-logo">
-                                    <img src="assets/images/logo/dark.png" alt="Header Logo">
+                                    <img src="./resources/assets/images/logo/dark.png" alt="Header Logo">
                                 </a>
 
                             </div>
