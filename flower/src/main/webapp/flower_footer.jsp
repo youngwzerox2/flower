@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
+
         <!-- Begin Footer Area -->
-        <div class="footer-area" data-bg-image="./resources/assets/images/footer/bg/1-1920x465.jpg">
+        <div class="footer-area" data-bg-image="<%=pjName %>/resources/assets/images/footer/bg/1-1920x465.jpg">
             <div class="footer-top section-space-top-100 pb-60">
                 <div class="container">
                     <div class="row">
@@ -12,11 +13,11 @@
                             <div class="footer-widget-item">
                                 <div class="footer-widget-logo">
                                     <a href="index.html">
-                                        <img src="./resources/assets/images/logo/dark.png" alt="Logo">
+                                        <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Logo">
                                     </a>
 									<!-- flower: 관리자 로그인버튼(추후 위치 이동 요망. h3 옆으로?) -->
 									<a href="">
-										<img src="./resources/assets/images/logo/tulips.png" alt="admin">
+										<img src="<%=pjName %>/resources/assets/images/logo/tulips.png" alt="admin">
 									</a>
                                 </div>
                                 <p class="footer-widget-desc">통신판매업자 필수정보 표기
@@ -81,23 +82,23 @@
     <!-- JS Files
     ============================================ -->
 
-    <script src="./resources/assets/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="./resources/assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="./resources/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-    <script src="./resources/assets/js/vendor/jquery.waypoints.js"></script>
-    <script src="./resources/assets/js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="./resources/assets/js/plugins/wow.min.js"></script>
-    <script src="./resources/assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="./resources/assets/js/plugins/jquery.nice-select.js"></script>
-    <script src="./resources/assets/js/plugins/parallax.min.js"></script>
-    <script src="./resources/assets/js/plugins/jquery.magnific-popup.min.js"></script>
-    <script src="./resources/assets/js/plugins/tippy.min.js"></script>
-    <script src="./resources/assets/js/plugins/ion.rangeSlider.min.js"></script>
-    <script src="./resources/assets/js/plugins/mailchimp-ajax.js"></script>
-    <script src="./resources/assets/js/plugins/jquery.counterup.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/vendor/jquery.waypoints.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/wow.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/jquery.nice-select.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/parallax.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/tippy.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/ion.rangeSlider.min.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/mailchimp-ajax.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/plugins/jquery.counterup.js"></script>
 
     <!--Main JS (Common Activation Codes)-->
-    <script src="./resources/assets/js/main.js"></script>
+    <script src="<%=pjName %>/resources/assets/js/main.js"></script>
 
 </body>
 

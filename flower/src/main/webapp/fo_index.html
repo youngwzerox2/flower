@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pronia - Home Two</title>
+    <title>FlowerOwner(Home Two)</title>
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +43,8 @@
 
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
+			<!-- header: 화폐단위, 언어 선택 → 숨긴다 -->
+			<!--
             <div class="header-top bg-pronia-primary d-none d-lg-block">
                 <div class="container">
                     <div class="row align-items-center">
@@ -79,42 +81,54 @@
                     </div>
                 </div>
             </div>
+			-->
             <div class="header-middle py-30">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-12">
                             <div class="header-middle-wrap position-relative">
+								<!-- header: 전화번호 → 숨긴다 -->
+								<!--
                                 <div class="header-contact d-none d-lg-flex">
                                     <i class="pe-7s-call"></i>
                                     <a href="tel://+00-123-456-789">+00 123 456 789</a>
                                 </div>
-
+								-->
+								
+								<!-- header: 로고 → 이미지 변경요망 -->
                                 <a href="index.html" class="header-logo">
                                     <img src="assets/images/logo/dark.png" alt="Header Logo">
                                 </a>
 
                                 <div class="header-right">
                                     <ul>
+										<!-- header: 검색버튼 -->
                                         <li>
                                             <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
+										<!-- header: 계정 버튼 - 마이페이지, 로그인 드롭다운 -->
                                         <li class="dropdown d-none d-lg-block">
                                             <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="false">
                                                 <i class="pe-7s-users"></i>
                                             </button>
+											<!-- 계정버튼 드롭다운: 마이페이지, 로그인 -->
                                             <ul class="dropdown-menu" aria-labelledby="settingButton">
+												<!-- 마이페이지 -->
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
+												<!-- 로그인 -->
                                                 <li><a class="dropdown-item" href="login-register.html">Login | Register</a>
                                                 </li>
                                             </ul>
                                         </li>
+										<!-- header: 좋아요(찜) 버튼 → 숨길까? -->
                                         <li class="d-none d-lg-block">
                                             <a href="wishlist.html">
                                                 <i class="pe-7s-like"></i>
                                             </a>
                                         </li>
+										<!-- header: 장바구니 -->
                                         <li class="minicart-wrap me-3 me-lg-0">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <i class="pe-7s-shopbag"></i>
@@ -132,16 +146,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- flower header end -->
+			
+			<!-- flower nav begin -->
             <div class="header-bottom d-none d-lg-block">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="main-menu position-relative">
+							<!-- 메뉴-->
                                 <nav class="main-nav">
                                     <ul>
                                         <li class="drop-holder">
                                             <a href="index.html">Home</a>
+											<!-- nav: home - dropdown → 숨긴다 -->
+											<!--
                                             <ul class="drop-menu">
                                                 <li>
                                                     <a href="index.html">Home One</a>
@@ -149,10 +168,13 @@
                                                 <li>
                                                     <a href="index-2.html">Home Two</a>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                         <li class="megamenu-holder">
-                                            <a href="shop.html">Shop</a>
+											
+                                            <a href="shop.html">All</a>
+											<!-- flower nav: all의 드롭다운 → 숨긴다 -->
+											<!--
                                             <ul class="drop-menu megamenu">
                                                 <li>
                                                     <span class="title">Shop Layout</span>
@@ -223,7 +245,8 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
+
                                         </li>
                                         <li class="drop-holder">
                                             <a href="blog.html">Blog</a>
@@ -2404,12 +2427,19 @@
                                     <a href="index.html">
                                         <img src="assets/images/logo/dark.png" alt="Logo">
                                     </a>
+									<!-- flower: 관리자 로그인버튼 -->
+									<a href="">
+										<img src="assets/images/logo/tulips.png" alt="admin">
+									</a>
                                 </div>
-                                <p class="footer-widget-desc">Lorem ipsum dolor sit amet, consec adipisl elit, sed do eiusmod
+                                <p class="footer-widget-desc">통신판매업자 필수정보 표기
+								<br />Lorem ipsum dolor sit amet, consec adipisl elit, sed do eiusmod
                                     tempor
                                     <br>
                             incidio ut labore et dolore magna.
                                 </p>
+								<!--footer: sns 연동 버튼 → 숨긴다 -->
+								<!--
                                 <div class="social-link with-border">
                                     <ul>
                                         <li>
@@ -2434,12 +2464,15 @@
                                         </li>
                                     </ul>
                                 </div>
+								-->
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 pt-40">
                             <div class="footer-widget-item">
-                                <h3 class="footer-widget-title">Useful Links</h3>
-                                <ul class="footer-widget-list-item">
+                                <h3 class="footer-widget-title">개인정보처리방침</h3>
+                                <!-- footer: sub menu → 숨긴다 -->
+								<!--
+								<ul class="footer-widget-list-item">
                                     <li>
                                         <a href="#">About Pronia</a>
                                     </li>
@@ -2456,11 +2489,14 @@
                                         <a href="#">Log in</a>
                                     </li>
                                 </ul>
+								-->
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 pt-40">
                             <div class="footer-widget-item">
-                                <h3 class="footer-widget-title">My Account</h3>
+                                <h3 class="footer-widget-title">서비스이용약관</h3>
+								<!-- footer: sub menu → 숨긴다 -->
+								<!--
                                 <ul class="footer-widget-list-item">
                                     <li>
                                         <a href="#">Sign In</a>
@@ -2478,8 +2514,11 @@
                                         <a href="#">Help</a>
                                     </li>
                                 </ul>
+								-->
                             </div>
                         </div>
+						<!-- footer: 메뉴 3 → 숨긴다-->
+						<!--
                         <div class="col-lg-2 col-md-4 pt-40">
                             <div class="footer-widget-item">
                                 <h3 class="footer-widget-title">Our Service</h3>
@@ -2502,7 +2541,10 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 pt-40">
+						-->
+						<!-- footer: 고객센터 → 숨긴다-->
+                        <!--
+						<div class="col-lg-3 pt-40">
                             <div class="footer-contact-info">
                                 <h3 class="footer-widget-title">Got Question? Call Us</h3>
                                 <a class="number" href="tel://123-456-789">123 456 789</a>
@@ -2520,6 +2562,7 @@
                                 </a>
                             </div>
                         </div>
+						-->
                     </div>
                 </div>
             </div>
