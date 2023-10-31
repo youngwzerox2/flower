@@ -661,7 +661,7 @@
                                 data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50"
                                 data-tippy-arrow="true" data-tippy-theme="sharpborder"></i></a>
                                 <a href="single-product-variable.html" class="product-item_img">
-                                    <img class="img-full" src="assets/images/product/small-size/2-1-70x78.png" alt="Product Image">
+                                    <img class="img-full" src="./resources/assets/images/product/small-size/2-1-70x78.png" alt="Product Image">
                                 </a>
                                 <div class="product-item_content">
                                     <a class="product-item_title" href="single-product-variable.html">American Marigold</a>
@@ -673,7 +673,7 @@
                                 data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50"
                                 data-tippy-arrow="true" data-tippy-theme="sharpborder"></i></a>
                                 <a href="single-product-variable.html" class="product-item_img">
-                                    <img class="img-full" src="assets/images/product/small-size/2-2-70x78.png" alt="Product Image">
+                                    <img class="img-full" src="./resources/assets/images/product/small-size/2-2-70x78.png" alt="Product Image">
                                 </a>
                                 <div class="product-item_content">
                                     <a class="product-item_title" href="single-product-variable.html">Black Eyed Susan</a>
@@ -687,7 +687,7 @@
                                 data-tippy-theme="sharpborder"></i>
                                 </a>
                                 <a href="single-product-variable.html" class="product-item_img">
-                                    <img class="img-full" src="assets/images/product/small-size/2-3-70x78.png" alt="Product Image">
+                                    <img class="img-full" src="./resources/assets/images/product/small-size/2-3-70x78.png" alt="Product Image">
                                 </a>
                                 <div class="product-item_content">
                                     <a class="product-item_title" href="single-product-variable.html">Bleeding Heart</a>
