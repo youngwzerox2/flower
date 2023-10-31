@@ -9,8 +9,9 @@ public class MemberController {
 
 	@RequestMapping("login")
 	public void viewPage() {
-		System.out.println("viewPage ÁøÀÔ ¿Ï·á");
+		System.out.println("viewPage ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
 		// return "/member/login";
+		// a
 	}
 	
 }
