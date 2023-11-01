@@ -11,12 +11,12 @@ import lombok.Data;
 
 @Data
 public class ProductVO {
-	private String 	product_id;
-	private String 	cate_id;
-	private String 	product_name;
+	private String 		product_id;
+	private String 		cate_id;
+	private String 		product_name;
 	
 	// 상품 설명(text가 아닌 이미지파일명/경로)
-	private String 	product_content;
+	private String 		product_content;
 	
 	
 	// 상품 검색 필터 대상
@@ -30,17 +30,17 @@ public class ProductVO {
 	 * product_light: 	일조량-직광(DL)/간접광(IDL)/그늘(SH)/일조량영향적음(NM)
 	 *  
 	 * ******************************/
-	private String 	product_keyword;
-	private String 	blooming_season;
-	private String 	blooming_time;
-	private boolean pet_friendly;
-	private boolean easy_care;
-	private String 	product_light;
+	private String 		product_keyword;
+	private String 		blooming_season;
+	private String 		blooming_time;
+	private boolean 	pet_friendly;
+	private boolean 	easy_care;
+	private String[] 	product_light;
 	
 	
-	private Integer inventory_quantity;
-	private Integer product_price;
-	private Date 	product_register_date;
+	private Integer 	inventory_quantity;
+	private Integer 	product_price;
+	private Date 		product_register_date;
 	
 	
 	// 상품 이미지 (PRODUCT_IMAGE TABLE)
