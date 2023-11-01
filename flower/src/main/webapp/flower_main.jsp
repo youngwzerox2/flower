@@ -38,7 +38,6 @@
 <body>
     <div class="main-wrapper">
     <%@ include file="flower_header.jsp" %>
-<<<<<<< HEAD
     <!-- flower nav begin -->
             <div class="header-bottom d-none d-lg-block">
                 <div class="container">
@@ -712,11 +711,6 @@
         </header>
         <!-- Main Header Area End Here -->
 	<!-- flower:nav end -->
-=======
-    		
-	
->>>>>>> refs/remotes/origin/1031JinhwaMain
-    
         <!-- Begin Slider Area -->
         <div class="slider-area">
 
