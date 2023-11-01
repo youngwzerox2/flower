@@ -9,8 +9,13 @@ public class MemberController {
 
 	@RequestMapping("login")
 	public void viewPage() {
+<<<<<<< HEAD
 		System.out.println("viewPage login success");
+=======
+		System.out.println("viewPage ���� �Ϸ�");
+>>>>>>> refs/remotes/origin/doosan
 		// return "/member/login";
+		// a
 	}
 	
 }

@@ -1,5 +1,8 @@
 package com.flower.vo;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
 
 	private Integer member_id;
