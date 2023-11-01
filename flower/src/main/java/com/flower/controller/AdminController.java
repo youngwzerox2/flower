@@ -42,9 +42,7 @@ public class AdminController {
 	 * */
 	@GetMapping("admin/selectAllMembers")
 	public List<MemberVO> selectAllMembers() {
-		System.out.println("selectAllMembers 진입");
 		List<MemberVO> result = memberService.selectAllMembers();
-		System.out.println(result.toString());
 		return result;
 	}
 	

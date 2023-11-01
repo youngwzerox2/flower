@@ -103,9 +103,25 @@
                                 <div class="tab-pane fade" id="account-member" aria-labelledby="account-member-tab">
 								    <div class="myaccount-orders">
 								        <h4 class="small-title">회원 관리</h4><br/>
-								
-								        <!--select 추가  -->
-								
+										<div class="widgets-searchbox">
+												<ul>								        
+													<li class="short">
+				                                        <select class="nice-select">
+				                                            <option value="">전체</option>
+				                                            <option value="member_email">ID</option>
+				                                            <option value="member_name">고객명</option>
+				                                        </select>
+			                                    	</li>
+			                                    	<li>
+		                                        	<input class="input-field" type="text" placeholder="검색어를 입력해주세요." style="width: 70%">
+			                                    	</li>
+			                                    	<li>
+			                                        <button class="widgets-searchbox-btn" >
+			                                            <i class="fa fa-search"></i>
+			                                        </button>
+			                                    	</li>
+										        </ul>
+		                                </div>
 								        <div class="table-responsive">
 								            <table class="table table-bordered table-hover">
 								                <tbody id="memberList"></tbody>
