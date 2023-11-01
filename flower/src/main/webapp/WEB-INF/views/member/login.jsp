@@ -132,7 +132,6 @@
 											</c:choose>
 												<li><a class="dropdown-item" href="register">회원가입</a></li>
 											</ul>
-											
 										</li>
 										<li class="d-none d-lg-block"><a href="wishlist.html">
 												<i class="pe-7s-like"></i>

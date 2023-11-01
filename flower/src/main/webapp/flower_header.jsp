@@ -83,13 +83,12 @@
 												<!-- 마이페이지 -->
 												<li><a class="dropdown-item" href="my-account.html">My
 														account</a></li>
-
 												<c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="login">로그인</a></li>
+														<li><a class="dropdown-item" href="member/login">로그인</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+														<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
 

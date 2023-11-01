@@ -267,10 +267,10 @@
 											
 											<c:choose>
 												<c:when test="${empty sessionScope.member}">
-													<li><a class="dropdown-item" href="login">로그인</a></li>
+													<li><a class="dropdown-item" href="member/login">로그인</a></li>
 												</c:when>
 												<c:otherwise>
-													<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+													<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
 												</c:otherwise>
 											</c:choose>
 											
@@ -334,6 +334,7 @@
 								</button>
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="settingButtonTwo">
+									 <!-- 모바일 -->
 									<li><a class="dropdown-item" href="my-account.html">My
 											account</a></li>
 									<li><a class="dropdown-item" href="member/login">로그인</a></li>

@@ -68,7 +68,7 @@ public class MemberController {
 		MemberVO login = memberService.login(vo);
 		
 		if(login == null ) {
-			//session.setAttribute("member", null);
+			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 		}else {
 			session.setAttribute("member", login);
