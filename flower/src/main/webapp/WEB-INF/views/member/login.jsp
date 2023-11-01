@@ -122,9 +122,17 @@
 											<ul class="dropdown-menu" aria-labelledby="settingButton">
 												<li><a class="dropdown-item" href="my-account.html">My
 														account</a></li>
-												<li><a class="dropdown-item" href="login">로그인</a>
+												<c:choose>
+												<c:when test="${empty sessionScope.member}">
+													<li><a class="dropdown-item" href="login">로그인</a></li>
+												</c:when>
+												<c:otherwise>
+													<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+												</c:otherwise>
+											</c:choose>
 												<li><a class="dropdown-item" href="register">회원가입</a></li>
 											</ul>
+											
 										</li>
 										<li class="d-none d-lg-block"><a href="wishlist.html">
 												<i class="pe-7s-like"></i>

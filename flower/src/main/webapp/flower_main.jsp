@@ -264,14 +264,16 @@
 										<ul class="dropdown-menu"
 											aria-labelledby="stickysettingButton">
 											<li><a class="dropdown-item" href="my-account.html">My account</a></li>
+											
 											<c:choose>
-												<c:when test="${empty sessionScope.member }">
+												<c:when test="${empty sessionScope.member}">
 													<li><a class="dropdown-item" href="login">로그인</a></li>
 												</c:when>
 												<c:otherwise>
-													<li><a class="dropdown-item" href="login">로그아웃</a></li>
+													<li><a class="dropdown-item" href="logout">로그아웃</a></li>
 												</c:otherwise>
 											</c:choose>
+											
 											<li><a class="dropdown-item" href="register">회원가입</a></li>
 										</ul>
 									</li>
