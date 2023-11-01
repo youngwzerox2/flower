@@ -27,7 +27,7 @@ public class ProductController {
 	@RequestMapping("{cate}")
 	public String getCateProdList(@PathVariable String cate) {
 		System.out.println("from main!");
-		
+		System.out.println("cate");
 		return "category/"+cate;
 	}
 	
