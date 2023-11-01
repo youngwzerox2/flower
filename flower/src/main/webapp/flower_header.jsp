@@ -30,12 +30,21 @@
 											<!-- 계정버튼 드롭다운: 마이페이지, 로그인 -->
                                             <ul class="dropdown-menu" aria-labelledby="settingButton">
 												<!-- 마이페이지 -->
-                                                <li><a class="dropdown-item" href="mypage/mypage1">My account</a></li>
-												<!-- 로그인 -->
-                                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                              <li><a class="dropdown-item" href="mypage/mypage1">My
+														account</a></li>
+												<c:choose>
+													<c:when test="${empty sessionScope.member}">
+														<li><a class="dropdown-item" href="member/login">로그인</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
+													</c:otherwise>
+												</c:choose>
+
+												<!-- 회원가입 -->
+												<li><a class="dropdown-item" href="member/register">회원가입</a></li>
+											</ul>
+										</li>
 										<!-- header: 좋아요(찜) 버튼 → 숨길까? -->
                                         <li class="d-none d-lg-block">
                                             <a href="wishlist.html">

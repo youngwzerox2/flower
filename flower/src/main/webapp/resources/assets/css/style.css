@@ -74,6 +74,11 @@ input {
   transition: all 0.3s ease 0s;
 }
 
+/* 두 버튼 사이에 간격을 설정합니다. */
+button + button {
+    margin-left: 100px;
+}
+
 a:focus,
 button:focus,
 .btn:focus,
@@ -5575,20 +5580,24 @@ textarea {
 /*----------------------------------------*/
 /*  23. Login Register
 /*----------------------------------------*/
-.login-form {
+ .idChk {
+    margin-bottom: 20px; /* 원하는 크기의 마진을 지정하세요. */
+ }
+
+.login-form, .customerservice-form {
   -webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   padding: 30px;
 }
-.login-form label {
+.login-form label, .customerserivice-form label {
   display: block;
   font-size: 14px;
   margin-bottom: 12px;
   font-weight: 500;
   text-transform: capitalize;
 }
-.login-form input {
+.login-form input, .customerserivice-form input {
   width: 100%;
   background-color: transparent;
   border: 1px solid #dee2e6;
@@ -5601,7 +5610,7 @@ textarea {
 .login-form input[type=checkbox] {
   width: auto;
 }
-.login-title {
+.login-title, .customerserivice-title {
   font-size: 20px;
   line-height: 23px;
   text-transform: capitalize;
@@ -5609,6 +5618,21 @@ textarea {
   margin-bottom: 0;
   padding-bottom: 20px;
 }
+
+.login-form .forgotton-login_info {
+	
+}
+
+.forgotton-login_info a{
+    margin-right: 20px; /* 간격을 조절하려면 마진을 조정하세요. */
+    text-decoration: underline; 
+    color: blue; /* 텍스트 색상을 설정합니다. */
+}
+
+.forgotton-login_info:last-child {
+    margin-right: 0; /* 마지막 항목의 마진을 제거하여 추가 공백을 방지합니다. */
+}
+
 .login-form .check-box {
   float: left;
   margin-right: 70px;
