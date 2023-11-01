@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.flower.dao.InquiriesDAO;
 import com.flower.vo.InquiriesVO;
 import com.flower.vo.MemberVO;
-import com.flower.vo.ReviewsVO;
 
 @Controller
 @RequestMapping("/board/")
