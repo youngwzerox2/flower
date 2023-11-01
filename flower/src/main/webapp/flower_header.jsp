@@ -75,8 +75,9 @@
 												<!-- 마이페이지 -->
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
 												<!-- 로그인 -->
-                                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                                </li>
+                                                <li><a class="dropdown-item" href="member/login">로그인</a></li>
+                                                <!-- 회원가입 -->
+                                                <li><a class="dropdown-item" href="member/register">회원가입</a></li>
                                             </ul>
                                         </li>
 										<!-- header: 좋아요(찜) 버튼 → 숨길까? -->

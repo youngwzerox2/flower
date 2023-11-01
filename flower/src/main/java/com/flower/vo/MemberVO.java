@@ -1,5 +1,12 @@
 package com.flower.vo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberVO {
 
 	private Integer member_id;
