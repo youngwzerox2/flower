@@ -2,5 +2,5 @@
     pageEncoding="utf-8"%>
 
 <%
-	response.sendRedirect("login");
+	response.sendRedirect("board/product");
 %>
