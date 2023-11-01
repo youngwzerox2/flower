@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="member">
+<mapper namespace="memberDAO">
 	 
-	<insert id="insertMember" parameterType="com.flower.vo.MemberVO">	
-	INSERT INTO member
+	<select id="selectAllMembers" resultType="com.flower.vo.MemberVO">
+		SELECT *
+		  FROM MEMBER
+		 WHERE ADMIN_STATUS != 1
+	  ORDER BY MEMBER_REGISTER_DATE DESC
+	</select>
+	
+	 <!-- 회원가입 -->
+	<insert id="register" parameterType="com.flower.vo.MemberVO">	
+	INSERT INTO MEMBER
 	(
-		  MEMBER_ID
-		, ADMIN_STATUS
-		, MEMBER_EMAIL
+		 MEMBER_EMAIL
 		, MEMBER_PASSWORD
 		, MEMBER_NAME
 		, MEMBER_REGISTER_DATE
 	) 
 	VALUES
 	(
-		  #{MEMBER_ID}
-		, #{ADMIN_STATUS}
-		, #{MEMBER_EMAIL}
-		, #{MEMBER_PASSWORD}
-		, #{MEMBER_NAME}
-		, #{MEMBER_REGISTER_DATE}
+		 #{member_email}
+		, #{member_password}
+		, #{member_name}
+		, NOW()
 	)
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="com.flower.vo.MemberVO">
+		select member_email
+		, member_password
+		from member
+		where member_email = #{member_email}
+		and member_password = #{member_password}
+	</select>
+	
+	<!-- 이메일 중복 체크 -->
+	<select id="idChk" resultType="int">
+		select count(*) from member
+		where member_email = #{member_email}
+	</select>
+	
+	
+	
+	
 	
 </mapper>
