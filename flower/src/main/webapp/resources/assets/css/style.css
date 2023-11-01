@@ -5293,7 +5293,37 @@ blockquote p {
   text-transform: uppercase;
   font-weight: 600;
   padding: 10px 20px;
-}	// 종건 탭 배경지정
+}
+
+.orders_product_info{
+    float: left;
+    width: 100%;
+}
+
+.orders_product_info li{
+	display : inline-block;
+	vertical-align : middle;
+}
+
+.orders_product_info_img {
+    margin-right: 10px;
+}
+
+.orders_product_info_num{
+	text-align : left;
+}
+.orders_product_info_num div{
+	padding-top: 2px;
+    padding-bottom: 4px;
+}
+
+
+.wrphover{
+	position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
 
 .nav myaccount-tab-trigger .collapse{
   color: white !important;
@@ -5441,6 +5471,106 @@ blockquote p {
 .myaccount-form-boxed .myaccount-form-inner a:hover {
   color: #abd373;
 }
+
+#infobox{
+	padding: 28px 40px !important;
+    line-height: 18px;
+    font-size: 13px;
+    color: #808080;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+}
+
+#account-withdrwal dt{
+	padding-bottom: 15px;
+    line-height: 28px;
+    font-size: 18px;
+        font-weight: 700;
+    color: #222624;
+    word-break: keep-all;
+}
+
+textarea.frmbox {
+    padding: 13px 19px;
+    line-height: 20px;
+}
+
+.frmbox.h100{
+	 height : 100px;
+}
+
+textarea {
+    overflow-y: auto;
+    resize: none;
+}
+
+.frm label{
+	width :100%
+}
+
+.wfull{
+	width :100% ;
+}
+
+.frmbox{
+	font-size: 15px !important;
+    color: #808080 !important;
+    border: 1px solid #d9d9d9 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box;
+}
+
+.tc{
+	text-align: center;
+	margin-top: 40px !important;
+}
+
+.tc a{
+	display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #fff !important;
+    background-color: #009a3e;
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    width: 135px !important;
+}
+
+.tc button{
+	color: #fff;
+    background-color: #4d4d4d;
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 135px !important;
+    border: 0;
+    
+}
+
+.mypage-list tr,.mypage-list td{
+	border : none !important
+}
+
+.mypage-list div{
+	font-size: 13px;
+	color: #808080 !important;
+	 font-weight: 700;
+	 padding-bottom: 5px;
+}
+
+.mypage-list img{
+	padding-bottom: 5px;
+}
+
 
 /*----------------------------------------*/
 /*  23. Login Register

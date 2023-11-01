@@ -835,26 +835,43 @@
                                     <a id="account-orders2-tab" data-bs-toggle="collapse" href="#account-orders_info" role="tab">개인정보관리</a>
                                 </li>
                                  <li class = 'sub-nav-item  collapse'  id = "account-orders_info">
-                                	<a class="nav-link" id = account-address-tab data-bs-toggle="tab" role="tab" aria-controls="account-orders" >배송지 관리</a>
+                                	<a class="nav-link" id = account-address-tab data-bs-toggle="tab" role="tab" aria-controls="account-address" href="#account-address" aria-expanded="false">배송지 관리</a>
                                 	<a class="nav-link" id = account-password-tab data-bs-toggle="tab"  role="tab" aria-controls="account-password" href="#account-password" aria-expanded="false">비밀번호 관리</a>
-                                	<a class="nav-link" id = account-password-tab data-bs-toggle="tab">회원 탈퇴</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="account-address-tab" data-bs-toggle="tab" href="#account-address" role="tab" aria-controls="account-address" aria-selected="false">Addresses</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">Account Details</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="account-logout-tab" href="login-register.html" role="tab" aria-selected="false">Logout</a>
+                                	<a class="nav-link" id = account-withdrwal-tab data-bs-toggle="tab" role="tab" aria-controls="account-withdrwal" href="#account-withdrwal" aria-expanded="false">회원 탈퇴</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-lg-9">
                             <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
                                 <div class="tab-pane fade show active" id="account-like" role="tabpanel" aria-labelledby="account-like-tab">
-                                    <div class="myaccount-dashboard">
-                                        
+                                    <div class="myaccount-like">
+                                    <h4 class="small-title">나의 좋아요</h4>
+                                    <table class="table table-bordered mypage-list">
+                                    	<tr>
+                                    		<td>
+                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
+                                    			<div>꽃 설명 블라블라블라블라</div>
+                                    			<div>가격 블라블라</div>
+                                    		</td>
+                                    		<td>
+                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
+                                    		</td>
+                                    		<td>
+                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
+                                    		</td>
+                                    	</tr>
+                                    	<tr>
+                                    		<td>
+                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
+                                    		</td>
+                                    		<td>
+                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
+                                    		</td>
+                                    		<td>
+                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
+                                    		</td>
+                                    	</tr>
+                                    </table>                                        
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
@@ -874,15 +891,20 @@
                                                         <td>2023.10.31</td>
                                                         <td><a class="account-order-id" href="#">2021025416232</a></td>
                                                         <td>
-                                                        	<ul>
-                                                        		<li>
-                                                        			<div>
-                                                        				<img src = ''>
+                                                        	<ul class = "orders_product_info">
+                                                        		<li class = 'orders_product_info_img'>
+                                                        			<div class = 'wrphover'>
+                                                        				<img src = '/flower/resources/assets/images/product/small-size/1-1-112x124.png'>
                                                         			</div>
                                                         		</li>
-                                                        		<li>
-                                                        		
-                                                        		</li>
+                                                        		<li class = "orders_product_info_num">
+                                                        			<div>꽃 이름 블라 블라 블라 블라</div>
+                                                        			<div>
+                                                        				<span>수량: </span>
+                                                        				<strong>1</strong>
+                                                        				개
+                                                        			</div>
+                                                        		</li>	
                                                        		</ul>
                                                         </td>
                                                         <td>8,900원</td>
@@ -919,6 +941,33 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
+                                    <div class="myaccount-orders (address)">
+                                    	<h4 class="small-title">나의 배송지</h4>
+                                    	<div class="table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>구분</th>
+                                                        <th>받는분</th>
+                                                        <th>주소</th>
+                                                        <th>연락처</th>
+                                                        <th>관리</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>집</td>
+                                                        <td>박종건</td>
+                                                        <td>경기도 고양시 의정부 얄리얄리 얄랴성 얄라리얄라라루</td>
+                                                        <td>010-5555-6666</td>
+                                                        <td><a href="#" class="btn btn-dark"><span>수정</span></a>
+                                                        	<a href="#" class="btn"><span>삭제</span></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="account-password" role="tabpanel" aria-labelledby="account-password-tab">
                                     <div class="myaccount-details">
                                         <form action="#" class="myaccount-form">
@@ -942,6 +991,29 @@
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="account-withdrwal" role="tabpanel" aria-labelledby="account-withdrwal-tab">
+                                    <h3>회원탈퇴</h3>
+                                    <p>꽃물주 서비스를 이용 해주셔서 감사합니다</p>
+                                    <dl id = 'infobox'>
+                                    	<dt>탈퇴를 하시면</dt>
+                                    	<dd>" 꽃물주에서 이용하신 모든 회원정보가 삭제되며, 더 이상 서비스를 이용할 수 없게 됩니다."<br>
+                                    		" 또한 삭제된 정보는 복구할 수 없으며, 탈퇴에 대한 다른 궁금한 사항이 있으시면 1:1문의를 통해 안내 받으실 수 있습니다."<br>
+                                    		" * 회원 탈퇴 시 동일 이메일로 재가입이 불가합니다."
+                                    	</dd>
+                                    </dl>
+                                    <dl class="frm">
+                                    	<dt>탈퇴 하시려는 사유를 작성해주세요. 꽃물주 서비스 운영에 많은 도움이 됩니다.</dt>
+                                    	<dd>
+                                    		<label>
+                                    			<textarea class = 'frmbox wfull h100' placeholder = '탈퇴 사유를 작성해주세요.'></textarea>
+                                    		</label>
+                                    	</dd>
+                                    </dl>
+                                    <div class = 'tc'>
+                                    	<a href="#">서비스 계속 이용하기</a>
+                                    	<button type = "submit">탈퇴하기</button>
                                     </div>
                                 </div>
                             </div>
