@@ -3,14 +3,13 @@ $(function() {
     $("#cancel").click(function() {
         var confirmed = confirm("취소하시겠습니까?");
         if (confirmed) {
-            location.href = "member/login"; // 로그인 페이지로 이동
-        } else {
-            location.reload(); // 현재 페이지를 리로드
-        }
+            location.href = "login"; // 로그인 페이지로 이동
+        } 
+
     });
 
     // 회원가입하기
-    $("#join").click(function() {
+    $("#join").click(function() { 
         if ($("#member_name").val() === "") {
             alert("회원명을 입력해주세요.");
             $("#member_name").focus();
