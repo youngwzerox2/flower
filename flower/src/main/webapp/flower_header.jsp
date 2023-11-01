@@ -167,7 +167,7 @@
                                             <a><span id="nav_cursor">seasons</span></a>
                                             <ul class="drop-menu">
                                                 <li>
-                                                    <a href="category/spring">Spring</a>
+                                                    <a href="spring">Spring</a>
                                                 </li>
                                                 <li>
                                                     <a href="">Summer</a>
@@ -202,7 +202,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="about.html">For Beginners</a>
+                                            <a href="">For Beginners</a>
                                         </li>
                                         <li>
                                             <a href="">Pet-Friendly</a>

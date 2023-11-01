@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	 
+	<select id="getCateProdList" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		SELECT p.PRODUCT_NAME, p.PRODUCT_PRICE, img.PRODUCT_IMAGE_FILE_NAME
+		FROM product p INNER JOIN product_image img
+		WHERE p.product_id = img.product_id
+		AND img.PRODUCT_IMAGE_TYPE = 'list'
+		AND p.BLOOMING_SEASON = #{blooming_season}
+	</select>
+	
+</mapper>

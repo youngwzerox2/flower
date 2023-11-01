@@ -5,7 +5,8 @@
 <% String pjName = "/flower"; %>
 <% String header = "/flower/flower_header.jsp"; %>
 <% String footer = "/flower/flower_footer.jsp"; %>
-
+<% String resource = "/flower/resources/product/imgs/list"; %>
+<% String test = "assets/images/breadcrumb/bg/1-1-1919x388.jpg"; %>
 <%-- <c:set var="pjName" value="<%=pjName%>" /> --%>
 
 <!DOCTYPE html>
@@ -67,7 +68,7 @@
                                     <li>
                                         <a href="index.html">Home</a>
                                     </li>
-                                    <li>Shop Default</li>
+                                    <li>Shop Def</li>
                                 </ul>
                             </div>
                         </div>
@@ -80,6 +81,7 @@
             <div class="shop-area section-space-y-axis-100">
                 <div class="container">
                     <div class="row">
+                    <!-- flower: side bar(필터, 카테고리) -->
                         <div class="col-xl-3 col-lg-4 order-2 order-lg-1 pt-5 pt-lg-0">
                             <div class="sidebar-area">
                                 <div class="widgets-searchbox">
@@ -92,7 +94,7 @@
                                 </div>
                                 <div class="widgets-area">
                                     <div class="widgets-item pt-0">
-                                        <h2 class="widgets-title mb-4">Categories</h2>
+                                        <h2 class="widgets-title mb-4">Check1</h2>
                                         <ul class="widgets-category">
                                             <li>
                                                 <a href="#">
@@ -219,7 +221,10 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- flower: 상품 목록 -->
                         <div class="col-xl-9 col-lg-8 order-1 order-lg-2">
+                        	<!-- 목록 정렬 방식 변경 버튼 -->
                             <div class="product-topbar">
                                 <ul>
                                     <li class="page-count">
@@ -251,18 +256,21 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- flower: product list -->
+                            
+                            <!-- flower: product list 상품 사진 목록 (사진만 나열, 한 행에 사진 3개씩, 한 페이지당 총 4행)-->
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
                                     <div class="product-grid-view row g-y-20">
+                                    <!-- flower: 개별 상품 사진, 정보(반복문 요망!) -->
                                         <div class="col-md-4 col-sm-6">
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product-variable.html">
                                                     <!-- <%=pjName %>/resources/assets/css/bootstrap.min.css -->
-                                                        <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/anthurium_coral_w270_h349.jpg" alt="Product Images(1)">
-                                                        <img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/anthurium_pink_w270_h349.jpg" alt="Product Images(2)">
+                                                        <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/34_list_1.jpg" alt="Product Images(1)">
+                                                        <img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/35_list_1.jpg" alt="Product Images(2)">
                                                     </a>
+                                                    <!-- flower: 이미지 위에 좋아요, 카트버튼 -->
                                                     <div class="product-add-action">
                                                         <ul>
                                                             <li>
@@ -270,11 +278,14 @@
                                                                     <i class="pe-7s-like"></i>
                                                                 </a>
                                                             </li>
+                                                            <!-- flower: 퀵뷰 → 숨긴다 -->
+                                                            <!-- 
                                                             <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                                 <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                     <i class="pe-7s-look"></i>
                                                                 </a>
                                                             </li>
+                                                             -->
                                                             <li>
                                                                 <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                     <i class="pe-7s-cart"></i>
@@ -283,6 +294,8 @@
                                                         </ul>
                                                     </div>
                                                 </div>
+                                                
+                                                <!-- flower: 상품 정보(상품명, 가격) -->
                                                 <div class="product-content">
                                                     <a class="product-name" href="single-product-variable.html">American
                                                         Marigold</a>
@@ -301,6 +314,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <!-- flower: 개별 상품 사진, 정보(반복문으로 넣을 것이기 때문에) → 숨긴다 -->
+                                        
                                         <div class="col-md-4 col-sm-6">
                                             <div class="product-item">
                                                 <div class="product-img">
@@ -793,8 +809,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    	
+                                    </div> <!-- <div class="product-grid-view row g-y-20"> end -->
                                 </div>
+                                
+                                <!-- flower: product list 상품 사진 목록(한 줄에 하나씩) -->
                                 <div class="tab-pane fade" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
                                     <div class="product-list-view row g-y-30">
                                         <div class="col-12">
@@ -1397,6 +1416,8 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- flower: 게시판 페이지 넘기기 버튼 -->
                             <div class="pagination-area">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
@@ -1409,10 +1430,10 @@
                                     </ul>
                                 </nav>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </div> <!-- flower: 상품목록 <div class="col-xl-9 col-lg-8 order-1 order-lg-2"> end -->
+                    </div> <!-- flower: 상품목록 + 좌측 바 + 상단필터 <div class="row"> end -->
+                </div> <!-- flower: 현 페이지 container <div class="container"> end -->
+            </div> <!-- flower: 현 페이지 중앙 사진 바로 아래 전체 <div class="shop-area section-space-y-axis-100"> end -->
         </main>
         <!-- Main Content Area End Here -->
 
