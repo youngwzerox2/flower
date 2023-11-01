@@ -156,10 +156,10 @@
                         padding-right: 25px;
                     }
                 }
-                a {
+                a{
                     color: #4c4c4c;
                 }
-                > a {
+                > a{
                     line-height: 50px;
                     display: flex;
                     align-items: center;
@@ -178,7 +178,7 @@
                     }
                 }
                 &:hover {
-                    > a {
+                    > a{
                         color: $pronia-primary;
                         &:before {
                             width: 100%;

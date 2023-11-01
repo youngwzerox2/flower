@@ -9,7 +9,7 @@ public class MemberController {
 
 	@RequestMapping("login")
 	public void viewPage() {
-		System.out.println("viewPage 진입 완료");
+		System.out.println("viewPage login success");
 		// return "/member/login";
 	}
 	
