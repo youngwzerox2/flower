@@ -263,8 +263,9 @@
 										</button>
 										<ul class="dropdown-menu"
 											aria-labelledby="stickysettingButton">
-											<li><a class="dropdown-item" href="my-account.html">My account</a></li>
-											
+											<li><a class="dropdown-item" href="my-account.html">My
+													account</a></li>
+
 											<c:choose>
 												<c:when test="${empty sessionScope.member}">
 													<li><a class="dropdown-item" href="member/login">로그인</a></li>
@@ -273,7 +274,7 @@
 													<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
 												</c:otherwise>
 											</c:choose>
-											
+
 											<li><a class="dropdown-item" href="register">회원가입</a></li>
 										</ul>
 									</li>
@@ -334,10 +335,17 @@
 								</button>
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="settingButtonTwo">
-									 <!-- 모바일 -->
+									<!-- 모바일 -->
 									<li><a class="dropdown-item" href="my-account.html">My
 											account</a></li>
-									<li><a class="dropdown-item" href="member/login">로그인</a></li>
+									<c:choose>
+										<c:when test="${empty sessionScope.member}">
+											<li><a class="dropdown-item" href="member/login">로그인</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
+										</c:otherwise>
+									</c:choose>
 									<li><a class="dropdown-item" href="member/register">회원가입</a></li>
 								</ul>
 							</li>
