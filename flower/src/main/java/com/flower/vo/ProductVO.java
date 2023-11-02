@@ -35,12 +35,12 @@ public class ProductVO {
 	private String 		blooming_time;
 	private boolean 	pet_friendly;
 	private boolean 	easy_care;
-	private String[] 	product_light;
+	private String	 	product_light;
 	
 	
 	private Integer 	inventory_quantity;
 	private Integer 	product_price;
-	private Date 		product_register_date;
+	private String 		product_register_date;
 	
 	
 	// 상품 이미지 (PRODUCT_IMAGE TABLE)
@@ -51,8 +51,30 @@ public class ProductVO {
 	 * 						② main: 상품상세-메인(w570 h633)
 	 * 						③ sub: 상품상세-서브(w570 h633) 
 	 */
-	private String  product_image_file_name;
-	private String 	product_image_type;
+	private String  	product_image_file_name;
+	private String		product_image_type;
+	
+	
+	// test - 한 상품의 여러 이미지를 담아올 때: 배열 or 각 변수
+	// result: 배열형에는 SQL 결과가 null값으로 담긴다. 
+	// ☞ 원시자료형이어야 담기는 듯!(내 경우에는 String!)
+	
+	private String		prod_imgs_lists;
+	private String[] 	prod_imgs_list_arr;
+	private String 		prod_imgs_list1;
+	private String 		prod_imgs_list2;
+	
+	public void setProd_imgs_lists(String prod_imgs_lists) {
+		this.prod_imgs_lists = prod_imgs_lists;
+		this.prod_imgs_list_arr = this.prod_imgs_lists.split(",");
+		this.prod_imgs_list1 = this.prod_imgs_list_arr[0];
+		if(prod_imgs_list_arr.length > 1) {
+			this.prod_imgs_list2 = this.prod_imgs_list_arr[1];
+			System.out.println("이곳은 VO: " + this.prod_imgs_list2);
+		}
+		
+		
+	} // setProd_imgs_list_arr
 	
 	
 	/*********

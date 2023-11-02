@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="product">
+<mapper namespace="productDAO">
+	 
 	 
 	<select id="getCateProdList" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
-		SELECT p.PRODUCT_NAME, p.PRODUCT_PRICE, img.PRODUCT_IMAGE_FILE_NAME
+		SELECT p.PRODUCT_ID, p.PRODUCT_NAME, p.PRODUCT_PRICE, group_concat(img.PRODUCT_IMAGE_FILE_NAME ORDER BY img.PRODUCT_IMAGE_FILE_NAME) prod_imgs_lists
 		FROM product p INNER JOIN product_image img
-		WHERE p.product_id = img.product_id
-		AND img.PRODUCT_IMAGE_TYPE = 'list'
-		AND p.BLOOMING_SEASON = #{blooming_season}
+		ON p.product_id = img.product_id
+		WHERE img.PRODUCT_IMAGE_TYPE = 'list'
+		<if test="blooming_season != null">
+			AND p.BLOOMING_SEASON = #{blooming_season}
+		</if>
+		<if test="pet_friendly == true">
+			AND p.PET_FRIENDLY = #{pet_friendly}
+		</if>
+		<if test="easy_care == true">
+			AND p.EASY_CARE = #{easy_care}
+		</if>
+		<if test="blooming_time != null">
+			AND p.BLOOMING_TIME = #{blooming_time}
+		</if>
+		GROUP BY p.PRODUCT_ID;
+	</select>
+	
+	<select id="test" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		select img.PRODUCT_ID,  img.product_image_file_name
+		from flower.product p inner join flower.product_image img
+		on p.product_id = img.product_id
+		where p.blooming_season = #{blooming_season}
+		and img.product_image_type = 'list'
+		ORDER BY PRODUCT_ID;
 	</select>
 	
 </mapper>

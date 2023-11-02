@@ -12,12 +12,12 @@ import com.flower.vo.ProductVO;
 @Service("productService")
 public class ProductServiceImpl implements ProductService{
 
-	private ProductDAOImpl productDao;
+	private ProductDAO productDao;
 	
 	public ProductServiceImpl() {} // constructor
 	
 	@Autowired
-	public ProductServiceImpl(ProductDAOImpl productDao) {
+	public ProductServiceImpl(ProductDAO productDao) {
 		this.productDao = productDao;
 	} // constructor
 	
@@ -30,8 +30,8 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<ProductVO> getCateProdList(ProductVO vo) {
-		productDao.getCateProdList(vo);
-		return null;
+//		System.out.println("service called!: " + vo);
+		return productDao.getCateProdList(vo);
 	}
 
 

@@ -9,14 +9,13 @@ import org.springframework.stereotype.Repository;
 import com.flower.vo.ProductVO;
 
 @Repository("productDAO")
-public class ProductDAOImpl {
+public class ProductDAOImpl implements ProductDAO{
 	
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<ProductDAO> getCateProdList(ProductVO vo){
-		mybatis.selectList("getCateProdList", vo);
-		return null;
+	public List<ProductVO> getCateProdList(ProductVO vo){		
+		return mybatis.selectList("productDAO.getCateProdList", vo);
 	}
 	
 } //class ProductDAOImpl
