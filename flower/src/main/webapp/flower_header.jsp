@@ -10,9 +10,9 @@
                             <div class="header-middle-wrap position-relative">
 								
 								<!-- header: 로고 → 이미지 변경요망 -->
-                                <a href="index.html" class="header-logo">
+                                <a href="index.html" class="header-logo"> 
                                     <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
-                                </a> 
+                                </a>
 
                                 <div class="header-right">
                                     <ul>
@@ -30,8 +30,8 @@
 											<!-- 계정버튼 드롭다운: 마이페이지, 로그인 -->
                                             <ul class="dropdown-menu" aria-labelledby="settingButton">
 												<!-- 마이페이지 -->
-                                              <li><a class="dropdown-item" href="mypage/mypage1">My
-														account</a></li>
+                                              <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">My
+														page</a></li>
 												<c:choose>
 													<c:when test="${empty sessionScope.member}">
 														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
@@ -298,7 +298,7 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="stickysettingButton">
                                             	<!-- flower: header(sticky) 나의 계정 연결요망! -->
-                                                <li><a class="dropdown-item" href="my-account.html">My account</a></li>
+                                                <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">Mypage</a></li>
                                                 <!-- flower: header(sticky) 로그인, 회원가입 연결요망! -->
                                            <c:choose>
 													<c:when test="${empty sessionScope.member}">
@@ -350,7 +350,7 @@
                                         <i class="pe-7s-users"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
-                                        <li><a class="dropdown-item" href="my-account.html">My account</a></li>
+                                        <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">Mypage</a></li>
                                        <c:choose>
 													<c:when test="${empty sessionScope.member}">
 														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
@@ -485,8 +485,8 @@
                                                 </a>
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="my-account.html">
-                                                            <span class="mm-text">My Account</span>
+                                                        <a href="<%=pjName %>/mypage/mypage1">
+                                                            <span class="mm-text">Mypage</span>
                                                         </a>
                                                     </li>
                                                     <li>

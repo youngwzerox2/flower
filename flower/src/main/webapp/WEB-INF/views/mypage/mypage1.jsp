@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% String pjName = "/flower"; %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -92,32 +93,28 @@
                                 <div class="tab-pane fade show active" id="account-like" role="tabpanel" aria-labelledby="account-like-tab">
                                     <div class="myaccount-like">
                                     <h4 class="small-title">나의 좋아요</h4>
-                                    <table class="table table-bordered mypage-list">
-                                    	<tr>
-                                    		<td>
-                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
-                                    			<div>꽃 설명 블라블라블라블라</div>
-                                    			<div>가격 블라블라</div>
-                                    		</td>
-                                    		<td>
-                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
-                                    		</td>
-                                    		<td>
-                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
-                                    		</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>
-                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
-                                    		</td>
-                                    		<td>
-                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
-                                    		</td>
-                                    		<td>
-                                    			<a href ="#"><img src ="/flower/resources/assets/images/product/medium-size/1-10-270x300.jpg"></a>
-                                    		</td>
-                                    	</tr>
-                                    </table>                                        
+                                    <c:choose>
+                                    	<c:when test="${product == null}">
+                                    		나의 좋아요가 없습니다.
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<table class="table table-bordered mypage-list">
+                                    	<c:forEach items = "${product}" var = "img"  varStatus="st">
+                                    		 <c:if test = "${st.index % 3 == 0 }">
+												<tr>
+											</c:if>
+												<td>
+													<a href ="#"><img src ="/flower/resources/product/imgs/list/${img.product_image_file_name}.jpg"></a>
+                                    				<div>${img.product_name} </div>
+                                    				<div>${img.product_price}원 </div>
+												</td>
+                                    			<c:if test = "${st.count % 3 == 0 || st.last}">
+                                    		<tr>
+                                    		</c:if>
+										</c:forEach>
+                                    		</table>
+                                    	</c:otherwise>
+                                    </c:choose>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
@@ -133,8 +130,10 @@
                                                         <th>주문금액</th>
                                                         <th>상태</th>
                                                     </tr>
+                                                    
+                                                    <c:forEach items = "${order}" var = "order"  varStatus="st">
                                                     <tr>
-                                                        <td>2023.10.31</td>
+                                                        <td>${order.order_date}</td>
                                                         <td><a class="account-order-id" href="#">2021025416232</a></td>
                                                         <td>
                                                         	<ul class = "orders_product_info">
@@ -150,12 +149,16 @@
                                                         				<strong>1</strong>
                                                         				개
                                                         			</div>
+                                                        			<div>
+                                                        			</div>
                                                         		</li>	
                                                        		</ul>
                                                         </td>
                                                         <td>8,900원</td>
                                                         <td>결제 확인중</td>
                                                     </tr>
+                                                    </c:forEach>
+                                                   
                                                 </tbody>
                                             </table>
                                         </div>

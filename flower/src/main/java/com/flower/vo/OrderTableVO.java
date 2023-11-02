@@ -21,4 +21,12 @@ public class OrderTableVO {
 	private String recipient_tel;
 	private Integer order_product_quantity;
 	private String order_state;
+	
+	// 상품 이미지 (PRODUCT_IMAGE TABLE)
+	private String product_image_file_name;
+	
+	// 상품 이름	(PRODUCT TABLE)
+	private String product_name;
+	
+	
 }

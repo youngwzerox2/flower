@@ -77,7 +77,6 @@ public class MemberController {
 			return 0;
 		}
 		
-		
 	}
 	
 	// 로그아웃 get
