@@ -895,7 +895,7 @@
                                         </div>
                                         <div class="col-12">
                                            <button id="join" class="btn btn-custom-size lg-size btn-pronia-primary" type="submit">회원가입하기</button>                                          	
-                                            <button id="cancel" class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
+                                            <button type="button" id="cancel" class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
                                         </div>
                                     </div>
                                 </div>

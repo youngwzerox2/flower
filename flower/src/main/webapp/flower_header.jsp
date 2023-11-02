@@ -172,7 +172,7 @@
                                             </ul> -->
 
                                         </li>
-                                        <li class="drop-holder">
+                                        <li class="drop-holder"> 
                                             <!-- seasons에서 a태그 빼고, css/js로 cursor만 주도록 한다. -->
                                             <a><span id="nav_cursor">seasons</span></a>
                                             <ul class="drop-menu">
@@ -300,17 +300,16 @@
                                             	<!-- flower: header(sticky) 나의 계정 연결요망! -->
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
                                                 <!-- flower: header(sticky) 로그인, 회원가입 연결요망! -->
-                                                <c:choose>
+                                           <c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="member/login">로그인</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
+														<!-- 회원가입 -->
+												<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
-
-												<!-- 회원가입 -->
-												<li><a class="dropdown-item" href="member/register">회원가입</a></li>
                                             </ul>
                                         </li>
                                         <!-- flower: header(sticky) 좋아요 논의요망 -->
@@ -352,12 +351,14 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
                                         <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                        <c:choose>
+                                       <c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="login">로그인</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
+														<!-- 회원가입 -->
+												<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
                                     </ul>
@@ -489,12 +490,17 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="login">
+                                                        <a href="<%=pjName %>/member/login">
                                                             <span class="mm-text">로그인</span>
                                                         </a>
                                                     </li>
+                                                      <li>
+                                                        <a href="<%=pjName %>/member/logout">
+                                                            <span class="mm-text">로그아웃</span>
+                                                        </a>
+                                                    </li>
                                                     <li>
-                                                        <a href="register">
+                                                        <a href="<%=pjName %>/member/register">
                                                             <span class="mm-text">회원가입</span>
                                                         </a>
                                                     </li>

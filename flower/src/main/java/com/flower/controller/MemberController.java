@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,20 +62,22 @@ public class MemberController {
 	
 	// 로그인 post
 	@PostMapping("login")
-	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	@ResponseBody
+	public Integer login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
-		HttpSession session = req.getSession();
 		MemberVO login = memberService.login(vo);
 		
 		if(login == null ) {
 			//session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
+			return 1;
 		}else {
 			session.setAttribute("member", login);
+			return 0;
 		}
 		
-		return "redirect:/flower_main.jsp";
+		
 	}
 	
 	// 로그아웃 get
@@ -92,6 +95,12 @@ public class MemberController {
 	public int idChk(MemberVO vo) throws Exception {
 		int result = memberService.idChk(vo);
 		return result;
+	}
+	
+	// 이메일 찾기
+	@RequestMapping("findemail")
+	public String findEmail() throws Exception {
+		return "member/findemail";
 	}
 	
 }

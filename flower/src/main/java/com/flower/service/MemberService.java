@@ -2,6 +2,8 @@ package com.flower.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.flower.vo.MemberVO;
 
 public interface MemberService {
@@ -17,4 +19,8 @@ public interface MemberService {
 		
 	// 이메일 중복체크
 	public int idChk(MemberVO vo) throws Exception;
+	
+	// 이메일 찾기
+	public String findEmail(String member_email) throws Exception;
+		
 }

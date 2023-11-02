@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.flower.dao.MemberDAO;
 import com.flower.vo.MemberVO;
@@ -36,5 +37,12 @@ public class MemberServiceImpl implements MemberService{
 		int result = memberDAO.idChk(vo);
 		return result;
 	}
+
+	@Override
+	public String findEmail(String member_email) throws Exception {
+		String result = memberDAO.findEmail(member_email);
+		return result;
+	}
+
 
 }

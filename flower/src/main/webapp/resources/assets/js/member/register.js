@@ -1,54 +1,41 @@
-$(function() {
-    // 취소
-    $("#cancel").click(function() {
-        var confirmed = confirm("취소하시겠습니까?");
-        if (confirmed) {
-            location.href = "login"; // 로그인 페이지로 이동
-        } 
+// 회원가입하기
+$("#join").click(function(e) { 
+    e.preventDefault(); // 기본 폼 제출 방지
 
-    });
-
-    // 회원가입하기
-    $("#join").click(function() { 
-        if ($("#member_name").val() === "") {
-            alert("회원명을 입력해주세요.");
-            $("#member_name").focus();
-            return false;
-        }
+    if ($("#member_name").val() === "") {
+        alert("회원명을 입력해주세요.");
+        $("#member_name").focus();
+    } else {
         var email = $("#member_email").val();
         if (email === "") {
             alert("이메일을 입력해주세요.");
             $("#member_email").focus();
-            return false;
-        }
-        if (!validateEmail(email)) {
+        } else if (!validateEmail(email)) {
             alert("유효한 이메일 주소를 입력해주세요.");
             $("#member_email").focus();
-            return false;
+        } else {
+            var password = $("#member_password").val();
+            if (password === "") {
+                alert("비밀번호를 입력해주세요.");
+                $("#member_password").focus();
+            } else if (password.length < 8) {
+                alert("비밀번호는 최소 8자 이상이어야 합니다.");
+                $("#member_password").focus();
+            } else {
+                // 모든 조건이 충족되면 폼을 제출
+                //$("form").submit();
+            }
         }
-        if ($("#member_password").val() === "") {
-            alert("비밀번호를 입력해주세요.");
-            $("#member_password").focus();
-            return false;
-        }
+    }
+});
 
-        var idChkVal = $("#idChk").val();
-        if (idChkVal === "N") {
-            alert("중복확인 버튼을 눌러주세요.");
-            return false; // 폼 제출을 막음
-        }
+// 중복 확인을 통과한 경우 회원가입 폼을 제출
+$("#idChk").click(function() {
+    var email = $("#member_email").val();
 
-        // 중복 확인을 통과한 경우 회원가입 폼을 제출
-    });
-
-    $("#idChk").click(function() {
-    	var email = $("#member_email").val();
-    
-	    if (email === "") {
-	        alert("이메일을 입력해주세요.");
-	        return;
-	    }
-    
+    if (email === "") {
+        alert("이메일을 입력해주세요.");
+    } else {
         $.ajax({
             url: "idChk",
             type: "post",
@@ -62,12 +49,14 @@ $(function() {
                     $("#emailCheckResult").text("사용가능한 이메일입니다.");
                 }
             }
-            
-        }); 
-    }); // function 끝
-    
-    
-    
-    
-    
+        });
+    }
+});
+
+// 취소
+$("#cancel").click(function() {
+    var confirmed = confirm("취소하시겠습니까?");
+    if (confirmed) {
+        location.href = "/flower/member/login"; // 로그인 페이지로 이동
+    }
 });
