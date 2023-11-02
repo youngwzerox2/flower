@@ -5576,6 +5576,9 @@ textarea {
 	padding-bottom: 5px;
 }
 
+.wrphover img {
+	    max-width: 110px;
+}
 
 /*----------------------------------------*/
 /*  23. Login Register
