@@ -34,8 +34,8 @@
     <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/style.css">
     
     <!-- board -->
-    <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/board.css">
-
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/inquiries.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/reviews.css">
 </head>
 <body>
 
@@ -50,6 +50,7 @@
     </div>
     <div class="main-wrapper">
 
+ 
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
             <div class="header-top bg-pronia-primary d-none d-lg-block">
@@ -806,7 +807,10 @@
             <div class="global-overlay"></div>
         </header>
         <!-- Main Header Area End Here -->
-
+		
+		 
+		
+		 
         <!-- Begin Main Content Area  -->
         <main class="main-content">
             <div class="breadcrumb-area breadcrumb-height" data-bg-image="${ pageContext.request.contextPath }/resources/assets/images/breadcrumb/bg/1-1-1919x388.jpg">
@@ -1111,6 +1115,17 @@
                                     </div>
                                 </div>
                                 
+                                 <!-- 리뷰게시판 -->
+                                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                    <div class="product-review-body">
+
+                                    	dd
+                           
+                                    </div>
+                                </div>
+                                
+                                
+                                
                             
                                 
                                 <div class="tab-pane fade" id="inquiries" role="tabpanel" aria-labelledby="reviews-tab">
@@ -1120,7 +1135,7 @@
                                     <div id="inquiries_content">                                
                                     	
                                     	<div id="i_dox">
-                                    		<h2 id="inquiries">게시판</h2>
+                                    		<h2 id="inquiries">문의게시판</h2>
                                     		
                                     		<!-- 문의하기 -->
                                     		<div class="inquiries_writing">
@@ -1138,7 +1153,7 @@
                                     					<option class="regdate">작성일자</option>
                                     				</select>
                                     					<input id="search_text" value="" placeholder="검색어를 입력하세요">
-                                    					<input class="btn btn-primary btn-sm" type="button" value="검색">
+                                    					<input class="btn btn-primary btn-sm" type="button" value="검색" onclick="find();">
                                     			</div>
                                     		</div>
                                     		
@@ -1173,6 +1188,8 @@
                                     		</div>
                                     	</div>
                                     </div>
+
+                                    
                                         <%-- 
                                         <div class="blog-comment mt-0">
                                             <h4 class="heading">Comments (01111)</h4>
@@ -1783,6 +1800,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	
+  	
+  	<!-- sweetalert2 -->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style_main.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style_menu.css">
+  	
+  	
 
 </body>
 </html>

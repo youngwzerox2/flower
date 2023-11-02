@@ -24,7 +24,7 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	@Override
 	public List<InquiriesVO> selectList(Map map) {
 		// TODO Auto-generated method stub
-		return null;
+		return null; //sqlSession.selectList("inquiries.inquiriesListCondition", map);
 	}
 
 	@Override
@@ -50,6 +50,18 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	public int delete(int Inquiries_id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int selectRowTotal() {
+		// TODO Auto-generated method stub
+		return 0; //sqlSession.selectOne("inquiries.inquiriesRowTotal");
+	}
+
+	@Override
+	public int selectRowTotal(Map map) {
+		// TODO Auto-generated method stub
+		return 0; //sqlSession.selectOne("inquiries.inquiriesConditionRowTotal", map);
 	}
 
 	

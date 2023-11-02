@@ -3,7 +3,7 @@
  */
 function insert_form(){
 	
-	location.href = 'insert_form';
+		location.href = 'insert_form';
 
 }
 
@@ -35,6 +35,45 @@ $(document).ready(function(){
 		$('#send_form').submit();
 
 	});
-
+	
 });
+
+	function add_comment(){
+	
+		alert('okokok');
+		
+		
+	
+	}
+	
+	
+	function find(){
+		alert('find');
+		var search      = $("#search").val();
+		var search_text = $("#search_text").val().trim();
+		
+		//전체검색이면 검색창 내용 지워라
+		if(search=='all'){
+			$("#search_text").val("");
+		}
+		
+		if(search!='all'&& search_text==''){
+			
+			alert('검색어를 입력하세요');
+			$("#search_text").val(""); //값지우기
+			$("#search_text").focus();
+			return;
+		}
+		
+	}
+
+
+
+
+
+
+
+
+
+
 
