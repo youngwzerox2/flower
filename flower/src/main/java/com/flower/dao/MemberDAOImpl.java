@@ -1,6 +1,7 @@
 package com.flower.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,14 @@ public class MemberDAOImpl implements MemberDAO{
 		return result;
 	}
 
+	@Override
+	public List<MemberVO> searchMembers(Map<String, String> map) {
+		return mybatis.selectList("memberDAO.searchMembers", map);
+	}
+
+	@Override
+	public MemberVO searchMemberDetail(String email) {
+		return mybatis.selectOne("memberDAO.searchMemberDetail", email);
+	}
 
 }

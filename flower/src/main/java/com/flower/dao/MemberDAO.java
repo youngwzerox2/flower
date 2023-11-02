@@ -1,8 +1,7 @@
 package com.flower.dao;
 
 import java.util.List;
-
-import org.springframework.ui.Model;
+import java.util.Map;
 
 import com.flower.vo.MemberVO;
 
@@ -22,5 +21,9 @@ public interface MemberDAO {
 	// 이메일 찾기
 	public String findEmail(String member_email) throws Exception;
 		
+	// 검색 조건별 회원 조회
+	public List<MemberVO> searchMembers(Map<String, String> map);
 
+	// 특정 회원 상세 조회
+	public MemberVO searchMemberDetail(String email);
 }

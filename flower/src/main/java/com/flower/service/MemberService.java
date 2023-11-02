@@ -1,6 +1,7 @@
 package com.flower.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.ui.Model;
 
@@ -23,4 +24,9 @@ public interface MemberService {
 	// 이메일 찾기
 	public String findEmail(String member_email) throws Exception;
 		
+	// 검색 조건별 회원 조회
+	List<MemberVO> searchMembers(Map<String, String> map);
+
+	// 특정 회원 상세 조회
+	MemberVO searchMemberDetail(String email);
 }
