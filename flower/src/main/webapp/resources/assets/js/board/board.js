@@ -40,33 +40,48 @@ $(document).ready(function(){
 
 	function add_comment(){
 	
-		alert('okokok');
+		//입력값 읽어오기
+		var c_content = $(".c_content").val().trim();
 		
-		
-	
-	}
-	
-	
-	function find(){
-		alert('find');
-		var search      = $("#search").val();
-		var search_text = $("#search_text").val().trim();
-		
-		//전체검색이면 검색창 내용 지워라
-		if(search=='all'){
-			$("#search_text").val("");
-		}
-		
-		if(search!='all'&& search_text==''){
-			
-			alert('검색어를 입력하세요');
-			$("#search_text").val(""); //값지우기
-			$("#search_text").focus();
+		if(c_content==''){
+			alert('내용을 입력하세요');
+			$(".c_content").val();
+			$(".c_content").focus();
 			return;
 		}
 		
+		//Ajax전송
+		$.ajax({
+			url			: '/board/insert',
+			data		: {'c_content': c_content, 
+				   		   'inquiries_id' : '${ vo.inquiries_id }'
+				           },
+			dateType	: 'json',
+			success		: function(result_data){
+				
+				result_data = {"result":"success"}
+				result_data = {"result":"fail"}
+				
+				if(result_data.result=="success"){
+					
+					//리뷰목록 읽어오기
+					comment_list(1);
+					
+				}else{
+					alert("댓글쓰기 실패");
+				}
+				
+			},
+			error		: function(err){
+				alert('ddss');
+				alert(err.responseText);
+			}
+			
+		});//end_ajax
+		
+	
 	}
-
+	
 
 
 
