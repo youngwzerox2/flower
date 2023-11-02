@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/magnific-popup.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/ion.rangeSlider.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/product/css/_offcanvas_edit.css" />
-
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
 
@@ -85,8 +85,9 @@
                         <div class="col-xl-3 col-lg-4 order-2 order-lg-1 pt-5 pt-lg-0">
                             <div class="sidebar-area">
                                 <div class="widgets-searchbox">
+                                	<!-- flower: 꽃말키워드 검색? -->
                                     <form id="widgets-searchbox">
-                                        <input class="input-field" type="text" placeholder="Search">
+                                        <input class="input-field" type="text" placeholder="꽃말 키워드 검색">
                                         <button class="widgets-searchbox-btn" type="submit">
                                             <i class="fa fa-search"></i>
                                         </button>
@@ -94,137 +95,81 @@
                                 </div>
                                 <div class="widgets-area">
                                     <div class="widgets-item pt-0">
-                                        <h2 class="widgets-title mb-4">Check1</h2>
+                                        <h2 class="widgets-title mb-4">Category</h2>
                                         <ul class="widgets-category">
+                                            <li><a href="#">All <span>(fnc)</span></a></li>
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-chevron-right"></i>
-                                                    All <span>(65)</span>
+                                                    Seasons<span>(fnc)</span>
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Bansai <span>(12)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    House Plants <span>(22)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Indoor Living <span>(19)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Perennnials <span>(17)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Plant For Gift <span>(01)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Garden Tools <span>(12)</span>
-                                                </a>
-                                            </li>
+                                            <li><a href="#">For Beginners <span>(fnc)</span></a></li>
+                                            <li><a href="#">Pet-Friendly <span>(fnc)</span></a></li>
+                                            <li><a href="#">After Sunset <span>(fnc)</span></a></li>
+                                            <li><a href="#">Faux <span>(fnc)</span></a></li>
                                         </ul>
-                                    </div>
-                                    <div class="widgets-item">
-                                        <h2 class="widgets-title mb-4">Color</h2>
-                                        <ul class="widgets-category widgets-color">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    All <span>(65)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Gold <span>(12)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-
-                                                    Green <span>(22)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    white <span>(13)</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                    Black <span>(10)</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    </div> <!-- flower: 좌측 카테고리 메뉴end <div class="widgets-item pt-0"> end -->
+                                    
                                     <div class="widgets-item widgets-filter">
                                         <h2 class="widgets-title mb-4">Price Filter</h2>
                                         <div class="price-filter">
                                             <input type="text" class="pronia-range-slider" name="pronia-range-slider" value="" data-type="double" data-min="16" data-from="16" data-to="300" data-max="350" data-grid="false" />
                                         </div>
+                                        
                                     </div>
+                                    <!-- flower: filter 추가 - checkbox(pet, easy) -->
+                                    <div class="widgets-item widgets-filter">
+                                        <h2 class="widgets-title mb-4">Detail Filter</h2>
+                                        <div class="detail-filter">
+                                            <label for="pet_friendly"><input type="checkbox" class="detail-filter" name="pet_friendly" value="pet_friendly" id="pet_friendly"/>Pet Friendly</label><br/>
+                                            <label for="easy_care"><input type="checkbox" class="detail-filter" name="easy_care" value="easy_care" id="easy_care" />Easy Care</label><br/>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- flower: filter - radio(light) -->
+                                    <div class="widgets-item widgets-filter">
+                                    	<h2 class="widgets-title mb-4">Light</h2>
+                                    	<div class="detail-filter light">
+                                            <label for="dl"><input type="radio" id="dl" name="light"  class="detail-filter" value="dl">Direct light</lable><br/>
+                                            <label for="idl"><input type="radio" id="idl" name="light" class="detail-filter" value="idl">Indirect Light</lable><br/>
+                                            <label for="sh"><input type="radio" id="sh" name="light"  class="detail-filter" value="sh">Shade</lable><br/>
+                                            <label for="nm"><input type="radio" id="nm" name="light"  class="detail-filter" value="nm">No matter</lable><br/>
+                                    	</div>
+                                    </div>
+                                    
+                                    <!-- flower: filter - 꽃말키워드 -->
                                     <div class="widgets-item">
-                                        <h2 class="widgets-title mb-4">Populer Tags</h2>
+                                        <h2 class="widgets-title mb-4">꽃말키워드</h2>
                                         <ul class="widgets-tag">
                                             <li>
-                                                <a href="#">Fashion</a>
+                                                <a href="#">사랑</a>
                                             </li>
                                             <li>
-                                                <a href="#">Organic</a>
+                                                <a href="#">존경</a>
                                             </li>
                                             <li>
-                                                <a href="#">Old Fashion</a>
+                                                <a href="#">도전</a>
                                             </li>
                                             <li>
-                                                <a href="#">Men</a>
+                                                <a href="#">용기</a>
                                             </li>
                                             <li>
-                                                <a href="#">Fashion</a>
+                                                <a href="#">우정</a>
                                             </li>
                                             <li>
-                                                <a href="#">Dress</a>
+                                                <a href="#">감사</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="banner-item widgets-banner img-hover-effect">
-                                    <div class="banner-img">
-                                        <img src="assets/images/sidebar/banner/1-270x300.jpg" alt="Banner Image">
-                                    </div>
-                                    <div class="banner-content text-position-center">
-                                        <span class="collection">New Collection</span>
-                                        <h3 class="title">Plant Port</h3>
-                                        <div class="button-wrap">
-                                            <a class="btn btn-custom-size sm-size btn-pronia-primary" href="#">Shop
-                                                Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                
+                            </div><!-- <div class="sidebar-area"> end -->
+                        </div><!-- flower: side-bar <div class="col-xl-3 col-lg-4 order-2 order-lg-1 pt-5 pt-lg-0"> end -->
                         
                         <!-- flower: 상품 목록 -->
                         <div class="col-xl-9 col-lg-8 order-1 order-lg-2">
-                        	<!-- 목록 정렬 방식 변경 버튼 -->
+                        	<!-- flowre: 상품 정렬 control(총 상품 수, display방식(그리드/리스트), 정렬종류(판매량순, 별점순, 가격높은/낮은순) -->
                             <div class="product-topbar">
                                 <ul>
                                     <li class="page-count">
@@ -249,7 +194,6 @@
                                             <option value="1">Sort by Default</option>
                                             <option value="2">Sort by Popularity</option>
                                             <option value="3">Sort by Rated</option>
-                                            <option value="4">Sort by Latest</option>
                                             <option value="5">Sort by High Price</option>
                                             <option value="6">Sort by Low Price</option>
                                         </select>
@@ -261,18 +205,22 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
                                     <div class="product-grid-view row g-y-20">
-                                    <!-- flower: 개별 상품 사진, 정보(반복문 요망!) -->
+                                    <!-- flower: 개별 상품 사진, 정보(리턴값 이름 ${productList}) -->
                                      <table>
-                                    	<c:forEach items="${productList}" var="prod" varStatus="st">
-                                    	<c:if test="${st.index % 3 == 0}">
+                                      <c:forEach items="${productList}" var="prod" varStatus="st">
+                                       <c:if test="${st.index % 3 == 0}">
                                     	<tr>
-                                    	</c:if>
+                                       </c:if>
+                                    	<td>
                                         <div class="col-md-4 col-sm-6">
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="single-product-variable.html">
-                                                    	<img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.product_image_file_name}" alt="${prod.product_name}1">
-                                                        <img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/35_list_1.jpg" alt="${prod.product_name}2">
+                                                    	<input type="hidden" name="${prod.product_id}"/>
+                                                    	<img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_list1}.jpg" alt="${prod.product_name}1">
+                                                    	<c:if test="${not empty prod.prod_imgs_list2}">
+                                                        	<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_list2}.jpg" alt="${prod.product_name}2">
+                                                        </c:if>
                                                     </a>
                                                     <!-- flower: 이미지 위에 좋아요, 카트버튼 -->
                                                     <div class="product-add-action">
@@ -301,10 +249,9 @@
                                                 
                                                 <!-- flower: 상품 정보(상품명, 가격) -->
                                                 <div class="product-content">
-                                                    <a class="product-name" href="single-product-variable.html">American
-                                                        Marigold</a>
+                                                    <a class="product-name" href="single-product-variable.html">${prod.product_name}</a>
                                                     <div class="price-box pb-1">
-                                                        <span class="new-price">$23.45</span>
+                                                        <span class="new-price">${prod.product_price}</span>
                                                     </div>
                                                     <div class="rating-box">
                                                         <ul>
@@ -318,7 +265,8 @@
                                                 </div> <!-- <div class="product-content"> end -->
                                             </div> <!-- <div class="product-item"> end -->
                                         </div> <!-- <div class="col-md-4 col-sm-6"> end -->
-                                        </c:forEach>
+                                       </td>
+                                      </c:forEach>
                                         
                                         <c:if test="${st.count % 3 == 0 || st.last}">
                                         	</tr>
@@ -1095,7 +1043,5 @@
         <!-- Scroll To Top End Here -->
 
     </div>
-    
+<script src="<%=pjName %>/resources/assets/js/product/product.js"></script>
 <%@ include file="/flower_footer.jsp" %>
-<%-- <c:import url="flower_footer.jsp"/> --%>
-<%-- <jsp:include page="<%=footer%>" /> --%>
