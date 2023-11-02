@@ -299,8 +299,17 @@
                                             	<!-- flower: header(sticky) 나의 계정 연결요망! -->
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
                                                 <!-- flower: header(sticky) 로그인, 회원가입 연결요망! -->
-                                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                                </li>
+                                                <c:choose>
+													<c:when test="${empty sessionScope.member}">
+														<li><a class="dropdown-item" href="member/login">로그인</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a class="dropdown-item" href="member/logout">로그아웃</a></li>
+													</c:otherwise>
+												</c:choose>
+
+												<!-- 회원가입 -->
+												<li><a class="dropdown-item" href="member/register">회원가입</a></li>
                                             </ul>
                                         </li>
                                         <!-- flower: header(sticky) 좋아요 논의요망 -->
@@ -342,7 +351,14 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
                                         <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                        <li><a class="dropdown-item" href="login-register.html">Login | Register</a></li>
+                                        <c:choose>
+													<c:when test="${empty sessionScope.member}">
+														<li><a class="dropdown-item" href="login">로그인</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+													</c:otherwise>
+												</c:choose>
                                     </ul>
                                 </li>
                                 <li>
@@ -472,8 +488,13 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="login-register.html">
-                                                            <span class="mm-text">Login | Register</span>
+                                                        <a href="login">
+                                                            <span class="mm-text">로그인</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="register">
+                                                            <span class="mm-text">회원가입</span>
                                                         </a>
                                                     </li>
                                                     <li>

@@ -332,7 +332,14 @@
 												aria-labelledby="stickysettingButton">
 												<li><a class="dropdown-item" href="my-account.html">My
 														account</a></li>
-												<li><a class="dropdown-item" href="login">로그인</a>
+												<c:choose>
+													<c:when test="${empty sessionScope.member}">
+														<li><a class="dropdown-item" href="login">로그인</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+													</c:otherwise>
+												</c:choose>
 												<li><a class="dropdown-item" href="register">회원가입</a></li>
 											</ul>
 										</li>
@@ -396,7 +403,14 @@
 										aria-labelledby="settingButtonTwo">
 										<li><a class="dropdown-item" href="my-account.html">My
 												account</a></li>
-										<li><a class="dropdown-item" href="login">로그인</a></li>
+										<c:choose>
+													<c:when test="${empty sessionScope.member}">
+														<li><a class="dropdown-item" href="login">로그인</a></li>
+													</c:when>
+													<c:otherwise>
+														<li><a class="dropdown-item" href="logout">로그아웃</a></li>
+													</c:otherwise>
+												</c:choose>
 										<li><a class="dropdown-item" href="register">회원가입</a></li>
 									</ul>
 								</li>
@@ -676,7 +690,7 @@
 											</div>
 											<!-- <div class="col-md-4 pt-1 mt-md-0"> -->
 											<div class="forgotton-login_info">
-												<a href="#">회원가입</a><a href="#">비밀번호 찾기</a><a href="#">가입한
+												<a href="register">회원가입</a><a href="#">비밀번호 찾기</a><a href="#">가입한
 													이메일이 생각나지 않을 땐?</a>
 											</div>
 											<div class="col-lg-12 pt-5">
