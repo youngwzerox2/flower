@@ -1118,10 +1118,22 @@
                                  <!-- 리뷰게시판 -->
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                     <div class="product-review-body">
-
-                                    	dd
-                           
-                                    </div>
+									
+									<form class="mb-3" name="myform" id="myform" method="post">
+									    <fieldset>
+											<span class="text-bold">별점을 선택해주세요</span>
+											<input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+											<input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+											<input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+											<input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
+											<input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+										</fieldset>
+										<div>
+											<textarea class="c_content" type="text" id="reviewContents" placeholder="별점을 주세요"></textarea>
+											<input id="comment_btn" class="btn btn-primary btn-sm" type="button" value="리뷰" onclick="add_comment();">
+									    </div>
+                           			</form>
+                                	</div>
                                 </div>
                                 
                                 
