@@ -39,12 +39,12 @@
     </div>
     <div class="main-wrapper">
         <main class="main-content">
-            <div class="widgets-searchbox">
+            <div class="widgets-searchbox" style="padding-top: 0px; padding-bottom: 0px;">
 	            <form id="widgets-searchbox">
 	            	 <div style="color: red;">
 	            	 	<img src="../resources/assets/images/logo/dark.png" alt="Header Logo"></img>Admin Page
 	            	 </div>
-	            	 <div class="product-topbar" style="position:absoluted; top:50px; left: 50%;">
+	            	 <div class="product-topbar" style="position:absoluted;padding-top : 50px;padding-left: 50%; padding-bottom: 10px;">
 	                     <ul>
 	                         <li class="page-count">
 	                             <span>CEO</span> 관리자님, 환영합니다 !
@@ -71,6 +71,7 @@
 								</li>
 								<li class='sub-nav-item collapse' id="account-member-info">
 								    <a class="nav-link" id="account-member-info-tab" data-bs-toggle="tab" role="tab" aria-controls="account-member" href="#account-member" aria-expanded="false" style="text-align: right;">회원 관리</a>
+								    <a class="nav-link" id="account-member-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-member-detail" href="#account-member-detail" aria-expanded="false" style="text-align: right; display: none;" >회원 관리 상세</a>
 								</li>
                                 <li class="nav-item">
                                     <a id="account-products-tab" data-bs-toggle="collapse" href="#account-products_info" role="tab" aria-hidden="true">상품</a>
@@ -101,7 +102,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-member" aria-labelledby="account-member-tab">
-								    <div class="myaccount-orders">
+								    <div class="myaccount-members">
 								        <h4 class="small-title">회원 관리</h4><br/>
 										<div class="widgets-searchbox">
 												<ul>								        
@@ -113,10 +114,10 @@
 				                                        </select>
 			                                    	</li>
 			                                    	<li>
-		                                        	<input class="input-field" type="text" placeholder="검색어를 입력해주세요." style="width: 70%">
+		                                        	<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 70%">
 			                                    	</li>
 			                                    	<li>
-			                                        <button class="widgets-searchbox-btn" >
+			                                        <button id="memberSearchBtn" class="widgets-searchbox-btn" >
 			                                            <i class="fa fa-search"></i>
 			                                        </button>
 			                                    	</li>
@@ -127,6 +128,30 @@
 								                <tbody id="memberList"></tbody>
 								            </table>
 								        </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-member-detail" aria-labelledby="account-member-tab">
+								    <div class="myaccount-members">
+								        <h4 class="small-title">회원 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+											
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="memberDetail"></tbody>
+							                        </table>
+							                        
+							                        <div class="member-topbar" style="position:absoluted; padding-top: 20px; padding-left: 80%;">
+									                    <ul>
+									                    <li id="goMemberList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goLimitation" class="mb-xs mt-xs mr-xs btn btn-danger"> 제한 </li>
+									                    </ul>
+							                     	</div>
+							                        
+						                    	</div>
+									            
+									        </div>
+		                                </div>
 								    </div>
 								</div>
                                 <div class="tab-pane fade" id="account-products" role="tabpanel" aria-labelledby="account-products-tab">
@@ -202,6 +227,23 @@
 
     </div>
 
+	<div id="popupModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">팝업 제목</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- 팝업 내용을 이 부분에 추가 -->
+                    <p id="emailContent"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="closePopup" type="button" class="btn btn-danger" data-dismiss="modal">제한</button>
+                    <button id="limitApproval" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Global Vendor, plugins JS -->
 
     <!-- JS Files
