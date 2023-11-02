@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderTableVO">
+
+<!-- LoveMapper.xml -->
+<select id ="selectOrder" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.OrderTableVO">
+	select ot.*, p.PRODUCT_NAME PRODUCT_NAME
+	from order_table ot join product p
+	on ot.PRODUCT_ID = p.PRODUCT_ID 
+	where MEMBER_ID = #{member_id}
+</select>
+
+
+
+</mapper>

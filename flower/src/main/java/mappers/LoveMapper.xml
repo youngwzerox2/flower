@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LoveDAO">
+
+<!-- Mypage love_porduct_list -->
+<select id ="selectLove" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.ProductVO">
+
+	select l.PRODUCT_ID PRODUCT_ID, pi2.PRODUCT_IMAGE_FILE_NAME PRODUCT_IMAGE_FILE_NAME, p.PRODUCT_NAME PRODUCT_NAME, p.PRODUCT_PRICE PRODUCT_PRICE
+	from love l join member m join product p join product_image pi2 
+	on l.PRODUCT_ID = p.PRODUCT_ID and l.MEMBER_ID = m.MEMBER_ID and p.PRODUCT_ID = pi2.PRODUCT_IMAGE_FILE_NAME 
+	where m.MEMBER_ID = #{member_id}
+	group by PRODUCT_ID
+
+</select>
+
+
+
+
+</mapper>

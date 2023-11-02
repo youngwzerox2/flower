@@ -61,17 +61,16 @@ public class MemberController {
 	
 	// 로그인 post
 	@PostMapping("login")
-	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
-		HttpSession session = req.getSession();
 		MemberVO login = memberService.login(vo);
 		
 		if(login == null ) {
 			//session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 		}else {
-			session.setAttribute("member", login);
+			session.setAttribute("member", login);	
 		}
 		
 		return "redirect:/flower_main.jsp";
