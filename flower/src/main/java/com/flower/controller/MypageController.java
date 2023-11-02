@@ -10,6 +10,7 @@ public class MypageController {
 	
 	@RequestMapping("mypage1")
 	public void myPage() {
+		
 	}
 	
 	@RequestMapping("inquiryList")
