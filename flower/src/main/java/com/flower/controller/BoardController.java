@@ -2,29 +2,30 @@ package com.flower.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.flower.dao.InquiriesDAO;
+import com.flower.service.InquiriesService;
 import com.flower.vo.InquiriesVO;
-import com.flower.vo.MemberVO;
 
 @Controller
 @RequestMapping("/board/")
 public class BoardController {
 	
 	@Autowired
-	InquiriesDAO inquiries_dao;
+	InquiriesService inquiriesService;
 	
 	//목록출력
 	@RequestMapping("product")
 	public String product(InquiriesVO vo, Model model) {
 		
-		List<InquiriesVO> list = inquiries_dao.selectList();
-		
-		
+		List<InquiriesVO> list = inquiriesService.selectList();
+		System.out.println(list.size());
+
 		model.addAttribute("list", list);
 		
 		return "board/single-product";
@@ -42,11 +43,9 @@ public class BoardController {
 	public String insert(InquiriesVO vo) {
 		
 		System.out.println(vo.getInquiries_title());
-		inquiries_dao.insert(vo);
+		inquiriesService.insert(vo);
 		
 		return "redirect:product";
 	}
-	
-	
 	
 }

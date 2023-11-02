@@ -11,6 +11,13 @@ public interface InquiriesDAO {
 	List<InquiriesVO> selectList(Map map);
 	InquiriesVO selectOne(int inquiries_id);
 	
+	
+	//전체 게시물 갯수
+	int selectRowTotal();
+	
+	//검색 조건별 게시물 수
+	int selectRowTotal(Map map);
+	
 	//추가
 	int insert(InquiriesVO vo);
 	
