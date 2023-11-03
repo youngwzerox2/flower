@@ -15,5 +15,10 @@ public interface MemberService {
 	
 	// 이메일 찾기
 	public String findEmailChk(String member_email) throws Exception;
-		
+
+	// 마이페이지 비밀번호 업데이트
+	public void updatePassword(MemberVO vo);
+	
+	// 마이페이지 회원 탈퇴
+	public void memberWithdrawal(MemberVO vo);
 }

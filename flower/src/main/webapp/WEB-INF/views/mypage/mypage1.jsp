@@ -94,7 +94,7 @@
                                     <div class="myaccount-like">
                                     <h4 class="small-title">나의 좋아요</h4>
                                     <c:choose>
-                                    	<c:when test="${product == null}">
+                                    	<c:when test="${empty product}">
                                     		나의 좋아요가 없습니다.
                                     	</c:when>
                                     	<c:otherwise>
@@ -136,7 +136,7 @@
                                                     </tr>
                                                     <c:forEach items = "${order}" var = "order"  varStatus="st">
                                                     <c:choose>
-                                                    	<c:when test="${ORDER_DETAIL_NUMBER == 1}">
+                                                    	<c:when test="${order.order_detail_number_count == '1'}">
                                                     	 <tr>
                                                         <td>${order.order_date}</td>
                                                         <td><a class="account-order-id" href="#">${order.order_detail_number}</a></td>
@@ -159,8 +159,8 @@
                                                         		</li>	
                                                        		</ul>
                                                         </td>
-                                                        <td>${order.ORDER_PRODUCT_PRICE}</td>
-                                                        <td>${order.ORDER_STATE}</td>
+                                                        <td>${order.order_product_price * order.order_product_quantity}원</td>
+                                                        <td>${order.order_state}</td>
                                                     </tr>
                                                     	</c:when>
                                                     	<c:otherwise>
@@ -182,12 +182,12 @@
                                                         				개
                                                         			</div>
                                                         			<div>
-                                                        				외 ${order.order_detail_number_count}개
+                                                        				외 ${order.order_detail_number_count-1}개
                                                         			</div>
                                                         		</li>	
                                                        		</ul>
                                                         </td>
-                                                        <td>${order.order_product_price}원</td>
+                                                        <td>${order.order_product_price * order.order_product_quantity}원</td>
                                                         <td>${order.order_state}</td>
                                                     </tr>
                                                     	</c:otherwise>
@@ -203,6 +203,10 @@
                                 <div class="tab-pane fade" id="account-inquiry" role="tabpanel" aria-labelledby="account-inquiry-tab">
                                     <div class="myaccount-orders (inquiry)">
                                     	<h4 class="small-title">나의 문의내역</h4>
+                                    	<c:if test="${empty inquiries}">
+                                        	문의 내역이 없습니다.
+                                        </c:if>
+                                        <c:if test="${not empty inquiries}">
                                     	<div class="table-responsive">
                                             <table class="table table-bordered table-hover">
                                                 <tbody>
@@ -211,24 +215,74 @@
                                                         <th>제목</th>
                                                         <th>답변 여부</th>
                                                         <th>등록일</th>
-                                                        <th></th>
+                                                        <th>답변 보기</th>
                                                     </tr>
+                                                    <c:forEach items = '${inquiries}' var = 'inquiry' varStatus="ist">
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>회원가입이 안돼요</td>
-                                                        <td>Y</td>
-                                                        <td>2023-10-31</td>
-                                                        <td><a href="#" class="btn btn-dark" hidden><span>View</span></a> <!-- 답변여부가 y면 히든 풀기 -->
+                                                        <td>${ist.count}</td>
+                                                        <td>${inquiry.inquiries_title}</td>
+                                                        <td><c:if test = "${inquiry.inquiries_answer_yn eq '1'}">Y</c:if>
+                                                        	<c:if test = "${inquiry.inquiries_answer_yn eq '0'}">N</c:if>
+                                                        </td>
+                                                        <td>${inquiry.inquiries_register_date}</td>
+                                                        <td><c:if test = "${inquiry.inquiries_answer_yn eq '1'}"><a href="#" class="btn btn-dark"><span>View</span></a></c:if>	<!-- 답변여부가 y면 히든 풀기 -->
                                                         </td>
                                                     </tr>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
                                     <div class="myaccount-orders (address)">
                                     	<h4 class="small-title">나의 배송지</h4>
+                                    		<button class = 'btn rightbtn btn-primary' id = 'add-address' data-bs-toggle = 'modal' data-bs-target="#addAddressForm" ><span>배송지 추가</span></button>
+                                    		<div class="modal fade" id="addAddressForm" tabindex="-1" aria-labelledby="addAddressFormlabel" aria-hidden="true">
+  	<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addAddressFormlabel">배송지 추가/수정</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form id = 'in_Address' method='post'>
+      	<div>
+      		<h5>자주쓰는 배송지는 최대 10개까지 등록할 수 있습니다.</h5>
+      	<div>
+      		<ul>
+      			<li>그룹</li>
+      			<li>
+      				<div>
+      					<select>
+      						<option>집</option>
+      						<option>회사</option>
+      						<option>기타</option>
+      					</select>
+      				</div>
+      			<input type = 'text' name = 'address_group' class = 'mb5' size = '20' maxlength='20'>
+      			</li>
+      		</ul>
+      	</div>	
+      		
+      		
+      	</div>
+      
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">수정하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+                                    	<c:if test="${empty memberaddress}">
+                                    	<div>
+                                        	나의 배송지가 없습니다.
+                                        </div>
+                                        </c:if>
+                                        <c:if test="${not empty memberaddress}">
                                     	<div class="table-responsive">
                                             <table class="table table-bordered table-hover">
                                                 <tbody>
@@ -239,38 +293,42 @@
                                                         <th>연락처</th>
                                                         <th>관리</th>
                                                     </tr>
+                                                    <c:forEach items = '${memberaddress}' var = 'address'>
                                                     <tr>
-                                                        <td>집</td>
-                                                        <td>박종건</td>
-                                                        <td>경기도 고양시 의정부 얄리얄리 얄랴성 얄라리얄라라루</td>
-                                                        <td>010-5555-6666</td>
+                                                        <td>${address.type}</td>
+                                                        <td>${address.recipient_name}</td>
+                                                        <td>[${address.postal_code}] ${address.recipient_address}</td>
+                                                        <td>${address.recipient_tel}</td>
                                                         <td><a href="#" class="btn btn-dark"><span>수정</span></a>
                                                         	<a href="#" class="btn"><span>삭제</span></a>
                                                         </td>
                                                     </tr>
+                                                   </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
+                                         </c:if>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-password" role="tabpanel" aria-labelledby="account-password-tab">
                                     <div class="myaccount-details">
-                                        <form action="#" class="myaccount-form">
+                                        <form action="/flower/mypage/pwUdate" id = "pwUpdate" class="myaccount-form">
                                             <div class="myaccount-form-inner">
                                                 <div class="single-input">
                                                     <label>현재 비밀번호</label>
-                                                    <input type="password">
+                                                    <input type="password" name = 'curpassword' id = 'curpassword'>
+                                                    <input type='hidden' value = '${member.member_password}' id = 'memberpass'>
                                                 </div>
                                                 <div class="single-input">
                                                     <label>변경할 비밀번호</label>
-                                                    <input type="password">
+                                                    <input type="password" name = 'newpassword' id = 'newpassword'>
                                                 </div>
                                                 <div class="single-input">
                                                     <label>변경할 비밀번호 확인</label>
-                                                    <input type="password">
+                                                    <input type="password" name = 'newpasswordconfirm' id = 'newpasswordconfirm'>
                                                 </div>
-                                                <div class="single-input">
-                                                    <button class="btn btn-custom-size lg-size btn-pronia-primary" type="submit">
+                                                <div class="single-input passwordsubmit">
+                                                    <button class="btn btn-custom-size lg-size btn-pronia-primary" type="button" id = "pwUpdateBt">
                                                         <span>변경하기</span>
                                                     </button>
                                                 </div>
@@ -297,8 +355,8 @@
                                     	</dd>
                                     </dl>
                                     <div class = 'tc'>
-                                    	<a href="#">서비스 계속 이용하기</a>
-                                    	<button type = "submit">탈퇴하기</button>
+                                    	<a href="/flower/flower_main.jsp">서비스 계속 이용하기</a>
+                                    	<button type = "button" id = "withdrawal">탈퇴하기</button>
                                     </div>
                                 </div>
                             </div>
@@ -307,6 +365,7 @@
                 </div>
             </div>
         </main>
+        
         <!-- Main Content Area End Here -->
 
         <!-- Begin Footer Area -->
@@ -484,6 +543,9 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="/flower/resources/assets/js/main.js"></script>
+    <script src="/flower/resources/assets/js/mypage/mypage.js"></script>
+    
+
 
 </body>
 

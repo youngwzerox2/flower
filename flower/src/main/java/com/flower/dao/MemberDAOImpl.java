@@ -43,4 +43,16 @@ public class MemberDAOImpl implements MemberDAO{
 		return mybatis.selectOne("memberDAO.findEmailChk", member_email);
 	}
 
+	@Override
+	// 마이페이지 비밀번호 업데이트
+	public void updatePassword(MemberVO vo) {
+		mybatis.update("memberDAO.updatePassword",vo);
+	}
+
+	@Override
+	// 마이페이지 회원 탈퇴
+	public void memberWithdrawal(MemberVO vo) {
+		mybatis.update("memberDAO.memberWithdrawal",vo);
+	}
+
 }

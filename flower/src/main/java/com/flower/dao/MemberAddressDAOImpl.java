@@ -6,20 +6,19 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.flower.vo.MemberAddressVO;
 import com.flower.vo.MemberVO;
-import com.flower.vo.OrderTableVO;
 
 @Repository
-public class OrderTableDAOImpl implements OrderTableDAO{
+public class MemberAddressDAOImpl implements MemberAddressDAO {
 
 	@Autowired
 	SqlSessionTemplate mybatis;
 	
 	@Override
-	//Mypage select orderlist
-	public List<OrderTableVO> selectOrderList(MemberVO vo) {
-		return mybatis.selectList("OrderTableDAO.selectOrder",vo);
+	//Mypage select MemberAddress
+	public List<MemberAddressVO> selectMemberAddress(MemberVO vo) {
+		return mybatis.selectList("memberaddressDAO.MemberAddressList", vo);
 	}
 
-	
 }
