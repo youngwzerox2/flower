@@ -1174,7 +1174,7 @@
                                     				<tr class="inquiries_table">
                                     					<th class="i_list">번호</th>
                                     					<th class="i_title">제목</th>
-                                    					<th class="i_list">상태</th>
+                                    					<th class="i_list">답변여부</th>
                                     					<th class="i_list">작성일자</th>
                                     				</tr>
                                     				
@@ -1195,9 +1195,19 @@
                                     						<td class="i_list_on">${ vo.inquiries_answer_yn }</td>
                                     						<td class="i_list_on">${ fn:substring(vo.inquiries_register_date,0,16) }</td>
                                     					</tr>
+                                    					
+                                    					
+                                    					
                                     				</c:forEach>
                                     			</table>
+                                    			
+                             					
+                                    			
                                     		</div>
+                                    		
+                                    			<div class="b_page_menu">
+													${ pageMenu }
+												</div>
                                     	</div>
                                     </div>
 

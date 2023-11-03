@@ -20,64 +20,9 @@
 			   )	
 	 </insert>
 	 
-	<!--  
-	 조건별 조회
-	<select id="inquiriesListCondition" parameterType="Map" resultType="com.flower.vo.InquiriesVO">
-		select * from
-		(
-			select
-				rank() over(order by inquiries_id desc) as no,
-				b.*
-			from 
-			(
-				select * from inquiries
-				<trim prefix="where" prefixOverrides="or">
-					<if test="id!=null">
-						member_id like '%' || #{ member_id } || '%'
-					</if>
-					<if test="title!=null">
-						inquiries_title like '%' || #{ inquiries_title } || '%'
-					</if>
-					<if test="content!=null">
-						or inquiries_cotent like '%' || #{ inquiries_cotent } || '%'
-					</if>
-					<if test="regdate!=null">
-						to_char(inquiries_register_date, 'YYYY-MM-DD') = #{ inquiries_register_date }
-					</if>
-				</trim>
-			) b
-		)
-		where no between #{ start } and #{ end }
-		
-	</select>
-	  
-	검색 조건별 게시물수 구하기
-	<select id="inquiriesConditionRowTotal" parameterType="Map" resultType="int">
-		
-		select nvl(count(*),0) from inquiries
-		
-		<trim prefix="where" prefixOverrides="or">
-			<if test="id!=null">
-				member_id like '%' || #{ member_id } || '%'
-			</if>
-			<if test="title!=null">
-				inquiries_title like '%' || #{ inquiries_title } || '%'
-			</if>
-			<if test="content!=null">
-				or inquiries_cotent like '%' || #{ inquiries_cotent } || '%'
-			</if>
-			<if test="regdate!=null">
-				to_char(inquiries_register_date, 'YYYY-MM-DD') = #{ inquiries_register_date }
-			</if>
-		</trim>
-		
-		
-	</select>
+	 <select id="inquiriesListCondition" parameterType="Map" resultType="com.flower.vo.InquiriesVO">
+	 	SELECT * FROM inquiries order BY inquiries_id LIMIT ${ start }, ${ end }
+	 </select>
+	 
 	
-	전체 게시물수 구하기
-	<select id="inquiriesRowTotal" resultType="int">
-		select nvl(count(*),0) from inquiries
-		
-	</select>
-	 -->
 </mapper>
