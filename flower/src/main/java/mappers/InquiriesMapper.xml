@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="inquiries">
+
 	 <select id="inquiriesSelect" resultType="com.flower.vo.InquiriesVO">
 	 
 	 	select * from inquiries order by inquiries_id desc
@@ -24,17 +25,11 @@
 	 	SELECT * FROM inquiries order BY inquiries_id LIMIT ${ start }, ${ end }
 	 </select>
 	 
-
-	전체 게시물수 구하기
-	<select id="inquiriesRowTotal" resultType="int">
-		select nvl(count(*),0) from inquiries
-		
-	</select>
-	 
 	 <!-- Mypage select inquiries -->
 	 <select id="MypageSelectInquiry" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.InquiriesVO">
 	 select INQUIRIES_TITLE, INQUIRIES_REGISTER_DATE , INQUIRIES_COTENT, INQUIRIES_ANSWER_CONTENT , INQUIRIES_ANSWER_YN 
 	 from inquiries i join member m on i.MEMBER_ID = m.MEMBER_ID
 	 where m.MEMBER_ID = #{member_id}
 	 </select>
+	 
 </mapper>
