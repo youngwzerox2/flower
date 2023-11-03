@@ -674,7 +674,7 @@
 			<div class="login-area section-space-y-axis-100">
 
 				<div class="col-lg-6">
-					<form action="findLoginEmail" method="post">
+					<form action="findemail" method="post">
 						<div class="customerservice-form">
 							<h4 class="customerservice-title">이메일 찾기</h4>
 							<div class="row">
@@ -685,17 +685,26 @@
 									<br/>
 									<br/>
 									<input id="member_email" type="email" name="member_email" placeholder="중복 검사할 이메일 입력" required>
-									<button id="findEmail" type="button" name="findEmail" >검사시작</button>
+									<button id="findEmailChk" class="findEmailChk" type="button" name="findEmailChk" value="N">검사시작</button>
 									<br/>
 									<br/>
-								</div>
-								<br/>
-								<br/>
-								<div class="col-lg-12" id="resultMessage">
+									<div id="resultMessage" name="resultMessage"></div>
 									<!-- <label >이미 가입된 이메일입니다.</label><a href="login" style="margin-left: 10px; color: blue; text-decoration: underline;">로그인 페이지로 이동</a>
 								<br/>
 									<label>등록되지 않은 이메일입니다.</label><a href="register" style="margin-left: 10px; color: blue; text-decoration: underline;">회원가입 페이지로 이동</a> -->
 								</div>
+								<%-- <div class="result-box">
+									<c:choose>
+										<c:when test="${empty findEmail}">
+										<p class="inquiry">조회결과가 없습니다.</p>
+										</c:when>
+								        <c:otherwise>
+								            <p>${findEmail.member_email}</p>
+								        </c:otherwise>
+									</c:choose>
+								</div> --%>
+								<br/>
+								<br/>
 							</div>
 						</div>
 					</form>

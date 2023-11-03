@@ -661,7 +661,7 @@
 					<div class="row h-100">
 						<div class="col-lg-12">
 							<div class="breadcrumb-item">
-								<h2 class="breadcrumb-heading">로그인 페이지</h2>
+								<h2 class="breadcrumb-heading">비밀번호 찾기 페이지</h2>
 								<ul>
 									<li><a href="index.html">홈</a></li>
 									<li>로그인</li>
@@ -672,100 +672,31 @@
 				</div>
 			</div>
 			<div class="login-area section-space-y-axis-100">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<form id="loginForm" name="loginForm" method="post" action="login">
-								<c:if test="${member == null }">
-									<div class="login-form">
-										<h4 class="login-title">로그인</h4>
-										<div class="row">
-											<div class="col-lg-12">
-												<label>이메일 주소</label> <input id="member_email" type="email"
-													name="member_email" placeholder="이메일을 입력하세요!">
-											</div>
-											<div class="col-lg-12">
-												<label>비밀번호</label> <input id="member_password" type="password"
-													name="member_password" placeholder="********">
-											</div>
-											<!-- <div class="col-md-4 pt-1 mt-md-0"> -->
-											<div class="forgotton-login_info">
-												<a href="register">회원가입</a><a href="findpassword">비밀번호 찾기</a><a href="findemail">가입한
-													이메일이 생각나지 않을 땐?</a>
-											</div>
-											<div class="col-lg-12 pt-5">
-												<button id="login" type="submit"
-													class="btn btn-custom-size lg-size btn-pronia-primary">로그인</button>
-												<button type = 'button' id="cancel"
-													class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
-											</div>
-								</c:if>
-								<%-- <c:if test="${member != null }">
-									<div>
-										<p>${member.member_email}님 환영합니다.</p>
-									</div>
-								</c:if>
-								<c:if test="${msg == false }">
-									<p style="color: red;">로그인 실패! 이메일과 비밀번호를 확인해주세요.</p>
-								</c:if> --%>
-							</form>
-						</div>
-					</div>
-
-					<%-- <c:if test="${member != null }">
-						<a href="logout">
-							<button id="logout" type="button">로그아웃</button>
-						</a>
-					</c:if> --%>
-				</div>
-
 				<div class="col-lg-6">
-					<form action="#">
+					<form action="findpassword" method="post">
 						<div class="customerservice-form">
-							<h4 class="customerservice-title">고객센터</h4>
+							<h4 class="customerservice-title">비밀번호 찾기</h4>
 							<div class="row">
 								<div class="col-lg-12">
-									<label>070-1234-5678</label>
+									<label>기존에 가입하셨던 이메일을 입력해 주세요!</label>
+									<br/>
+									<br/>
+									<input id="member_email" type="email" name="member_email" placeholder="이메일 입력" required>
+									<br/>
+									<br/>
+									<button id="findPassword" type="button" name="findPassword" value="N">비밀번호 찾기</button>
+									<button id="cancel" type="button" name="cancel">취소</button>
+									<br/>
+									<br/>
 								</div>
-								<div class="col-lg-12">
-									<label>평일 9시~18시 / 공휴일, 주말 휴무</label>
+								<br/>
+								<br/>
+								<div class="col-lg-12" id="resultMessage">
 								</div>
 							</div>
 						</div>
 					</form>
 				</div>
-				<!--  <div class="col-lg-6 pt-5 pt-lg-0">
-                            <form action="#">
-                                <div class="login-form">
-                                    <h4 class="login-title">Register</h4>
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <label>First Name</label>
-                                            <input type="text" placeholder="First Name">
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <label>Last Name</label>
-                                            <input type="text" placeholder="Last Name">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label>Email Address*</label>
-                                            <input type="email" placeholder="Email Address">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Password</label>
-                                            <input type="password" placeholder="Password">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Confirm Password</label>
-                                            <input type="password" placeholder="Confirm Password">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-custom-size lg-size btn-pronia-primary">Register</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div> -->
 			</div>
 	</div>
 	</div>
@@ -918,7 +849,7 @@
 
 	<!--Main JS (Common Activation Codes)-->
 	<script src="../resources/assets/js/main.js"></script>
-	<script src="../resources/assets/js/member/login.js"></script>
+	<script src="../resources/assets/js/member/findpassword.js"></script>
 
 </body>
 </html>

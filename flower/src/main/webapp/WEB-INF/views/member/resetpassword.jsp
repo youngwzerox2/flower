@@ -661,7 +661,7 @@
 					<div class="row h-100">
 						<div class="col-lg-12">
 							<div class="breadcrumb-item">
-								<h2 class="breadcrumb-heading">로그인 페이지</h2>
+								<h2 class="breadcrumb-heading">비밀번호 찾기 페이지</h2>
 								<ul>
 									<li><a href="index.html">홈</a></li>
 									<li>로그인</li>
@@ -672,63 +672,45 @@
 				</div>
 			</div>
 			<div class="login-area section-space-y-axis-100">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<form id="loginForm" name="loginForm" method="post" action="login">
-								<c:if test="${member == null }">
-									<div class="login-form">
-										<h4 class="login-title">로그인</h4>
-										<div class="row">
-											<div class="col-lg-12">
-												<label>이메일 주소</label> <input id="member_email" type="email"
-													name="member_email" placeholder="이메일을 입력하세요!">
-											</div>
-											<div class="col-lg-12">
-												<label>비밀번호</label> <input id="member_password" type="password"
-													name="member_password" placeholder="********">
-											</div>
-											<!-- <div class="col-md-4 pt-1 mt-md-0"> -->
-											<div class="forgotton-login_info">
-												<a href="register">회원가입</a><a href="findpassword">비밀번호 찾기</a><a href="findemail">가입한
-													이메일이 생각나지 않을 땐?</a>
-											</div>
-											<div class="col-lg-12 pt-5">
-												<button id="login" type="submit"
-													class="btn btn-custom-size lg-size btn-pronia-primary">로그인</button>
-												<button type = 'button' id="cancel"
-													class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
-											</div>
-								</c:if>
-								<%-- <c:if test="${member != null }">
-									<div>
-										<p>${member.member_email}님 환영합니다.</p>
-									</div>
-								</c:if>
-								<c:if test="${msg == false }">
-									<p style="color: red;">로그인 실패! 이메일과 비밀번호를 확인해주세요.</p>
-								</c:if> --%>
-							</form>
-						</div>
-					</div>
-
-					<%-- <c:if test="${member != null }">
-						<a href="logout">
-							<button id="logout" type="button">로그아웃</button>
-						</a>
-					</c:if> --%>
-				</div>
 
 				<div class="col-lg-6">
-					<form action="#">
+					<form action="resetpassword" method="post">
 						<div class="customerservice-form">
-							<h4 class="customerservice-title">고객센터</h4>
+							<h4 class="customerservice-title">변경하실 비밀번호를 입력해 주세요</h4>
 							<div class="row">
 								<div class="col-lg-12">
-									<label>070-1234-5678</label>
+									<label>비밀번호는 암호화 되어 저장되기 때문에 비밀번호를 잊으셨을 경우, 새로운 비밀번호로 재설정 해드립니다.</label>
+									<br/>
+									<br/>
+									<label style="margin-left: 35px;">새 비밀번호</label>
+									<input id="member_password" type="password" name="member_password" placeholder="영문, 숫자, 특수문자가 조합된 8~20자" required style="width: 300px;">
+									<br/>
+									<br/>
+									<label>새 비밀번호 확인</label>
+									<input id="member_passwordcheck" type="password" name="member_passwordcheck" required style="width: 300px;">
+									<br/>
+									<br/>
+									<button id="resetPassword" type="button" name="resetPassword" value="N">비밀번호 변경하기</button>
+									<button id="cancel" type="button" name="cancel">취소</button>
+									<br/>
+									<br/>
 								</div>
-								<div class="col-lg-12">
-									<label>평일 9시~18시 / 공휴일, 주말 휴무</label>
+								<%-- <div class="result-box">
+									<c:choose>
+										<c:when test="${empty findEmail}">
+										<p class="inquiry">조회결과가 없습니다.</p>
+										</c:when>
+								        <c:otherwise>
+								            <p>${findEmail.member_email}</p>
+								        </c:otherwise>
+									</c:choose>
+								</div> --%>
+								<br/>
+								<br/>
+								<div class="col-lg-12" id="resultMessage">
+									<!-- <label >이미 가입된 이메일입니다.</label><a href="login" style="margin-left: 10px; color: blue; text-decoration: underline;">로그인 페이지로 이동</a>
+								<br/>
+									<label>등록되지 않은 이메일입니다.</label><a href="register" style="margin-left: 10px; color: blue; text-decoration: underline;">회원가입 페이지로 이동</a> -->
 								</div>
 							</div>
 						</div>
@@ -918,7 +900,7 @@
 
 	<!--Main JS (Common Activation Codes)-->
 	<script src="../resources/assets/js/main.js"></script>
-	<script src="../resources/assets/js/member/login.js"></script>
+	<script src="../resources/assets/js/member/findemail.js"></script>
 
 </body>
 </html>

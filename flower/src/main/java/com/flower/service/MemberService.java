@@ -22,7 +22,7 @@ public interface MemberService {
 	public int idChk(MemberVO vo) throws Exception;
 	
 	// 이메일 찾기
-	public String findEmail(String member_email) throws Exception;
+	public String findEmailChk(String member_email) throws Exception;
 		
 	// 검색 조건별 회원 조회
 	List<MemberVO> searchMembers(Map<String, String> map);

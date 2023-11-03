@@ -70,7 +70,7 @@ public class MemberController {
 		
 		if(login == null ) {
 			//session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg", false);
+			//rttr.addFlashAttribute("msg", false);
 			return 1;
 		}else {
 			session.setAttribute("member", login);
@@ -96,10 +96,42 @@ public class MemberController {
 		return result;
 	}
 	
-	// 이메일 찾기
+	// 이메일 찾기(비밀번호에서 이메일찾기)
+	@ResponseBody
+	@RequestMapping("findEmailChk")
+	public String findEmailChk(String member_email) throws Exception{
+		System.out.println("[MemberController] member/findemail" + member_email);
+		String result = memberService.findEmailChk(member_email);
+		System.out.println("result:" + result );
+		if ( result == null) {
+			return "0";
+		}else {
+			return "1";
+		}
+			
+	}
+	
+	// 이메일 찾기 페이지
 	@RequestMapping("findemail")
-	public String findEmail() throws Exception {
+	public String findEmail() {
 		return "member/findemail";
 	}
+	
+	// 비밀번호 찾기 페이지
+	@RequestMapping("findpassword")
+	public String findPassword() throws Exception{
+		return "member/findpassword";
+	}
+	
+	// 비밀번호 초기화 페이지
+	@RequestMapping("resetpassword")
+	public String resetpassword() throws Exception{
+		return "member/resetpassword";
+	}
+	
+	
+	
+	
+	
 	
 }
