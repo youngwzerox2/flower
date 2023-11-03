@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.flower.vo.InquiriesVO;
+import com.flower.vo.MemberVO;
 
 @Repository
 public class InquiriesDAOImpl implements InquiriesDAO {
@@ -62,6 +63,11 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	public int selectRowTotal(Map map) {
 		// TODO Auto-generated method stub
 		return 0; //sqlSession.selectOne("inquiries.inquiriesConditionRowTotal", map);
+	}
+
+	@Override
+	public List<InquiriesVO> selectMyList(MemberVO vo) {
+		return sqlSession.selectList("inquiries.MypageSelectInquiry",vo);
 	}
 
 	

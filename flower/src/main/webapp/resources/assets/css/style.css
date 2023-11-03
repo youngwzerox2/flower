@@ -5580,6 +5580,46 @@ textarea {
 	    max-width: 110px;
 }
 
+
+#account-address tr td{
+	padding: 1px 1px;
+	word-break:break-all;
+	font-size : 0.9rem;
+	white-space:nowrap;
+}
+
+#account-address tr td:nth-child(3){
+	padding: 1px 1px;
+	word-break:break-word;
+	font-size : 0.9rem;
+	white-space:pre-line;
+	max-width: 100% !important;
+}
+
+#account-password .passwordsubmit{
+	text-align : center;
+}
+
+
+
+.rightbtn{
+	float: right;
+	 position: relative;
+	 bottom: 60px;
+	 background-color : #abd373;
+	 border : none;
+}
+
+.rightbtn:hover{
+	background: #b6cbb6;
+}
+
+.rightbtn:focus{
+	background: #b6cbb6;
+}
+
+
+
 /*----------------------------------------*/
 /*  23. Login Register
 /*----------------------------------------*/

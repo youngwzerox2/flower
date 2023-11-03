@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.flower.vo.InquiriesVO;
+import com.flower.vo.MemberVO;
 
 public interface InquiriesDAO {
 	
@@ -26,5 +27,8 @@ public interface InquiriesDAO {
 	
 	//삭제
 	int delete(int Inquiries_id);
+	
+	//Mypage selectMyList
+	List<InquiriesVO> selectMyList(MemberVO vo);
 
 }

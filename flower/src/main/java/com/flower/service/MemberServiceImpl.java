@@ -55,4 +55,15 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.searchMemberDetail(email);
 	}
 
+	// 마이페이지 비밀번호 업데이트
+	public void updatePassword(MemberVO vo) {
+		memberDAO.updatePassword(vo);
+	}
+
+	@Override
+	// 마이페이지 회원 탈퇴
+	public void memberWithdrawal(MemberVO vo) {
+		memberDAO.memberWithdrawal(vo);
+	}
+
 }

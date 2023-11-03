@@ -68,6 +68,15 @@
 		 LIMIT 1
 	</select>
 	
+	<!-- 마이페이지 비밀번호 업데이트 -->
+	<update id="updatePassword" parameterType="com.flower.vo.MemberVO">
+		UPDATE member set member_password = #{member_password}
+		WHERE member_id = #{member_id}
+	</update>
 	
-	
+	<!-- 마이페이지 회원 탈퇴 -->
+	<update id="memberWithdrawal">
+		UPDATE member set member_status = 'L' , member_leave_date = now()
+		WHERE member_id = #{member_id}
+	</update>	
 </mapper>

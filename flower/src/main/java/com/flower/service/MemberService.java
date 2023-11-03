@@ -29,4 +29,10 @@ public interface MemberService {
 
 	// 특정 회원 상세 조회
 	MemberVO searchMemberDetail(String email);
+	
+	// 마이페이지 비밀번호 업데이트
+	public void updatePassword(MemberVO vo);
+	
+	// 마이페이지 회원 탈퇴
+	public void memberWithdrawal(MemberVO vo);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.flower.dao.InquiriesDAO;
 import com.flower.dao.InquiriesDAOImpl;
 import com.flower.vo.InquiriesVO;
+import com.flower.vo.MemberVO;
 
 @Service
 public class InquiriesServiceImpl implements InquiriesService {
@@ -62,6 +63,12 @@ public class InquiriesServiceImpl implements InquiriesService {
 	public int selectRowTotal(Map map) {
 		// TODO Auto-generated method stub
 		return inquiriesDao.selectRowTotal(map);
+	}
+
+	@Override
+	//Mypage selectMyList
+	public List<InquiriesVO> selectMyList(MemberVO vo) {
+		return inquiriesDao.selectMyList(vo);
 	}
 
 }

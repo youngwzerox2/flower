@@ -80,4 +80,11 @@
 		
 	</select>
 	 -->
+	 
+	 <!-- Mypage select inquiries -->
+	 <select id="MypageSelectInquiry" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.InquiriesVO">
+	 select INQUIRIES_TITLE, INQUIRIES_REGISTER_DATE , INQUIRIES_COTENT, INQUIRIES_ANSWER_CONTENT , INQUIRIES_ANSWER_YN 
+	 from inquiries i join member m on i.MEMBER_ID = m.MEMBER_ID
+	 where m.MEMBER_ID = #{member_id}
+	 </select>
 </mapper>

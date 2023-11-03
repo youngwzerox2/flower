@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="OrderTableVO">
+<mapper namespace="OrderTableDAO">
 
 <!-- LoveMapper.xml -->
 <select id ="selectOrder" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.OrderTableVO">
-SELECT ot.ORDER_DETAIL_NUMBER,
+	SELECT ot.ORDER_DETAIL_NUMBER,
        COUNT(ot.ORDER_DETAIL_NUMBER) ORDER_DETAIL_NUMBER_COUNT,
        MIN(a.PRODUCT_IMAGE_FILE_NAME) PRODUCT_IMAGE_FILE_NAME, 
        MIN(p.PRODUCT_NAME) PRODUCT_NAME,
@@ -16,9 +16,9 @@ SELECT ot.ORDER_DETAIL_NUMBER,
 FROM order_table ot 
 JOIN product p ON ot.Product_ID = p.Product_ID 
 JOIN (SELECT PRODUCT_ID, MIN(PRODUCT_IMAGE_FILE_NAME) AS PRODUCT_IMAGE_FILE_NAME
-FROM product_image
+FROM product_image where product_image_type = 'list'
 GROUP BY PRODUCT_ID) a ON p.Product_ID = a.Product_ID
-WHERE MEMBER_ID = 44
+WHERE MEMBER_ID = #{member_id}
 GROUP BY ot.ORDER_DETAIL_NUMBER
 </select>
 
