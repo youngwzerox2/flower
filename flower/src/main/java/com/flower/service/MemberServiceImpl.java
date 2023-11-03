@@ -18,12 +18,6 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDAO memberDAO;
 	
 	@Override
-	public List<MemberVO> selectAllMembers() {
-		
-		return memberDAO.selectAllMembers();
-	}
-	
-	@Override
 	public void register(MemberVO vo) throws Exception{
 		 memberDAO.register(vo);
 	}
@@ -45,15 +39,6 @@ public class MemberServiceImpl implements MemberService{
 		String result = memberDAO.findEmailChk(member_email);
 		return result;
 		 
-	}
-
-	public List<MemberVO> searchMembers(Map<String, String> map) {
-		return memberDAO.searchMembers(map);
-	}
-
-	@Override
-	public MemberVO searchMemberDetail(String email) {
-		return memberDAO.searchMemberDetail(email);
 	}
 
 }

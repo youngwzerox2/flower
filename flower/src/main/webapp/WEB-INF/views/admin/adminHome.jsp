@@ -92,7 +92,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-9">
-                            <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
+                            <div class="tab-content myaccount-tab-content" id="account-page-tab-content" style="width : 150%">
                                 <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
                                     <div class="myaccount-dashboard">
                                         <p>Hello <b>Pronia</b> (not Pronia? <a href="login-register.html">Sign
@@ -111,10 +111,12 @@
 				                                            <option value="">전체</option>
 				                                            <option value="member_email">ID</option>
 				                                            <option value="member_name">고객명</option>
+				                                            <option value="member_status">회원상태</option>
+				                                            <option value="report_yn">신고여부</option>
 				                                        </select>
 			                                    	</li>
 			                                    	<li>
-		                                        	<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 70%">
+		                                        	<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
 			                                    	</li>
 			                                    	<li>
 			                                        <button id="memberSearchBtn" class="widgets-searchbox-btn" >
@@ -227,19 +229,26 @@
 
     </div>
 
-	<div id="popupModal" class="modal fade" role="dialog">
+	<div id="popupLimitModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">팝업 제목</h4>
+                    <h4 class="modal-title">회원 이용 제한</h4>
                 </div>
-                <div class="modal-body">
-                    <!-- 팝업 내용을 이 부분에 추가 -->
-                    <p id="emailContent"></p>
+                <div class="widgets-searchbox">
+                    <table class="table table-bordered table-hover">
+					  <tr>
+					    <th> 이용 제한 대상</th>
+					    <td id="limitEmail"></td>
+					  </tr>
+					  <tr>
+					    <th colspan="2" style="color: #FF0000">* 제한 시 해당 계정은 영구적으로 로그인이 불가능 합니다.</th>
+					  </tr>
+					</table>
                 </div>
                 <div class="modal-footer">
-                    <button id="closePopup" type="button" class="btn btn-danger" data-dismiss="modal">제한</button>
-                    <button id="limitApproval" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+                    <button id="btn-limitApproval" type="button" class="btn btn-danger" data-dismiss="modal">제한</button>
+                    <button id="btn-closePopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
                 </div>
             </div>
         </div>
