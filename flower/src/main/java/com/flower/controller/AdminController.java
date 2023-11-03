@@ -6,18 +6,19 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flower.service.MemberService;
-import com.flower.vo.MemberVO;
+import com.flower.service.AdminService;
+import com.flower.vo.AdminVO;
 
 @RestController
 public class AdminController {
 
 	@Autowired
-	private MemberService memberService;
+	private AdminService adminService;
 	
 	/*
 	 * 작성자	: 백두산
@@ -39,15 +40,15 @@ public class AdminController {
 	 * 작성일	: 2023-11-02
 	 * 메서드	: searchMembers
 	 * 인자	: searchKey, searchValue
-	 * 반환	: List<MemberVO>
+	 * 반환	: List<AdminVO>
 	 * 설명	: 검색조건에 맞는 모든 회원 조회
 	 * */
 	@GetMapping("admin/searchMembers")
-	public List<MemberVO> searchMembers(String searchKey, String searchValue) {
+	public List<AdminVO> searchMembers(String searchKey, String searchValue) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("searchKey", searchKey);
 		map.put("searchValue", searchValue);
-		return memberService.searchMembers(map);
+		return adminService.searchMembers(map);
 	}
 	
 	/*
@@ -55,11 +56,27 @@ public class AdminController {
 	 * 작성일	: 2023-11-02
 	 * 메서드	: searchMemberDetail
 	 * 인자	: email
-	 * 반환	: MemberVO
+	 * 반환	: AdminVO
 	 * 설명	: 특정 회원 상세 조회
 	 * */
 	@GetMapping("admin/searchMemberDetail")
-	public MemberVO searchMemberDetail(String email) {
-		return memberService.searchMemberDetail(email);
+	public AdminVO searchMemberDetail(String email) {
+		return adminService.searchMemberDetail(email);
 	}
+	
+	/*
+	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-03
+	 * 메서드	: limitMember
+	 * 인자	: email
+	 * 반환	: result
+	 * 설명	: 특정 회원 제한 조치
+	 * */
+	@PostMapping("admin/limitMember")
+	public int limitMember(String email) {
+		return adminService.limitMember(email);
+	}
+	
+	
+	
 }

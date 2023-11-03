@@ -1,12 +1,8 @@
 package com.flower.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import com.flower.vo.MemberVO;
 
@@ -15,11 +11,6 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
-	@Override
-	public List<MemberVO> selectAllMembers() {
-		return mybatis.selectList("memberDAO.selectAllMembers");
-	}
 	
 	@Override
 	public void register(MemberVO vo) throws Exception{
@@ -50,16 +41,6 @@ public class MemberDAOImpl implements MemberDAO{
 	public String findEmail(String member_email) throws Exception {	
 		String result = mybatis.selectOne("memberDAO.findEmail", member_email);
 		return result;
-	}
-
-	@Override
-	public List<MemberVO> searchMembers(Map<String, String> map) {
-		return mybatis.selectList("memberDAO.searchMembers", map);
-	}
-
-	@Override
-	public MemberVO searchMemberDetail(String email) {
-		return mybatis.selectOne("memberDAO.searchMemberDetail", email);
 	}
 
 }

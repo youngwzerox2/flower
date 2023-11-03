@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminDAO">
+    <!-- 공통 SQL 코드 정의 -->
+    <sql id="memberSQL">
+    	<![CDATA[
+	        WITH ADMIN_MEMBERS AS (
+	            SELECT
+	                  M.MEMBER_ID 	AS MEMBER_ID
+	                , M.ADMIN_STATUS AS ADMIN_STATUS
+	                , M.MEMBER_NAME AS MEMBER_NAME
+	                , M.MEMBER_EMAIL 			AS MEMBER_EMAIL
+	                , M.MEMBER_REGISTER_DATE 	AS MEMBER_REGISTER_DATE
+	                , M.MEMBER_LEAVE_DATE 		AS MEMBER_LEAVE_DATE
+	                , CASE
+	                	WHEN M.MEMBER_STATUS = 'N' THEN '일반'
+	                    WHEN M.MEMBER_STATUS = 'O' THEN '영구제한'
+	                    WHEN M.MEMBER_STATUS = 'L' THEN '탈퇴'
+	                    ELSE ''
+	                END 						AS MEMBER_STATUS
+	                , CASE
+	                    WHEN R.REPORTS_CNT > 0 THEN 'Y'
+	                    ELSE 'N'
+	                END 						AS REPORT_YN
+	                , CASE 
+	                	WHEN R.REPORTS_DATE IS NOT NULL THEN R.REPORTS_DATE
+						ELSE "없음"
+					END 						AS REPORTS_DATE
+					, CASE 
+						WHEN R.REPORT_CONTENTS IS NOT NULL THEN R.REPORT_CONTENTS
+						ELSE "없음"
+					END 						AS REPORT_CONTENTS 
+	            FROM MEMBER M
+	            LEFT OUTER JOIN REVIEWS R ON M.MEMBER_ID = R.MEMBER_ID
+	        )
+    	]]>
+    </sql>
+
+    <!-- 검색 조건별 회원 조회 -->
+    <select id="searchMembers" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
+        <include refid="memberSQL" />
+	        SELECT MEMBER_ID
+	        	 , ADMIN_STATUS
+	        	 , MEMBER_NAME
+	        	 , MEMBER_EMAIL
+	        	 , MEMBER_REGISTER_DATE
+	        	 , MEMBER_LEAVE_DATE
+	        	 , MEMBER_STATUS
+	        	 , REPORT_YN
+	          FROM ADMIN_MEMBERS
+        <if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
+        	 WHERE ${searchKey} LIKE '%${searchValue}%'
+        </if>
+          ORDER BY MEMBER_REGISTER_DATE DESC
+    </select>
+
+    <!-- 특정 회원 상세 조회 -->
+    <select id="searchMemberDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
+        <include refid="memberSQL" />
+	        SELECT MEMBER_ID
+	        	 , ADMIN_STATUS
+	        	 , MEMBER_NAME
+	        	 , MEMBER_EMAIL
+	        	 , MEMBER_REGISTER_DATE
+	        	 , MEMBER_LEAVE_DATE
+	        	 , MEMBER_STATUS
+	        	 , REPORT_YN
+	        	 , REPORT_CONTENTS
+	        	 , REPORTS_DATE
+	        	 , REPORT_CONTENTS
+	        FROM ADMIN_MEMBERS
+	       WHERE MEMBER_EMAIL = #{email}
+	       LIMIT 1
+    </select>
+
+    <!-- 특정 회원 이용 제한 -->
+    <update id="limitMember" parameterType="String">
+        UPDATE MEMBER
+        SET MEMBER_STATUS = 'O'
+        WHERE MEMBER_EMAIL = #{email}
+    </update>
+</mapper>
