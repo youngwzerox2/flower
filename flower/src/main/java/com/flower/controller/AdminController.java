@@ -20,7 +20,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	/*
+	/* 
 	 * 작성자	: 백두산
 	 * 작성일	: 2023-11-01
 	 * 메서드	: adminMain
