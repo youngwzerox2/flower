@@ -16,6 +16,7 @@ public interface ProductService {
 	// 상품 검색 결과 가져오기(목록)
 	
 	// 상품 상세 페이지 가져오기
+	ProductVO getProd(ProductVO vo);
 	
 	// 상품 등록
 	

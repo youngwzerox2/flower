@@ -177,7 +177,8 @@
                                             <a><span id="nav_cursor">seasons</span></a>
                                             <ul class="drop-menu">
                                                 <li>
-                                                    <a href="spring">Spring</a>
+                                                	<!-- href에 절대경로로 입력해야, 어느 페이지에서든 controller와 연결된다 -->
+                                                    <a href="<%=pjName%>/product/category/spring">Spring</a>
                                                 </li>
                                                 <li>
                                                     <a href="">Summer</a>
@@ -270,10 +271,10 @@
                                             <li class="drop-holder">
                                                 <a><span id="nav_cursor">Seasons</span></a>
                                                 <ul class="drop-menu">
-                                                    <li><a href="category/spring">Spring</a></li>
-                                                    <li><a href="category/summer">summer</a></li>
-                                                    <li><a href="category/Autumn">Autumn</a></li>
-                                                    <li><a href="category/Winter">Winter</a></li>
+                                                    <li><a href="<%=pjName%>/product/spring">Spring</a></li>
+                                                    <li><a href="summer">summer</a></li>
+                                                    <li><a href="Autumn">Autumn</a></li>
+                                                    <li><a href="Winter">Winter</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="">For Beginners</a></li>
@@ -293,7 +294,8 @@
                                             </a>
                                         </li>
                                         <li class="dropdown d-none d-lg-block">
-                                            <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="stickysettingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="false">
+                                            <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="
+settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="false">
                                                 <i class="pe-7s-users"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="stickysettingButton">
@@ -676,13 +678,3 @@
             <div class="global-overlay"></div>
         </header>
         <!-- Main Header Area End Here -->
-		
-        
-
-        <!-- Begin Scroll To Top -->
-       <!--  <a class="scroll-to-top" href="">
-            <i class="fa fa-angle-double-up"></i>
-        </a> -->
-        <!-- Scroll To Top End Here -->
-
-    <!-- </div> --><!-- main-wrapper end -->
