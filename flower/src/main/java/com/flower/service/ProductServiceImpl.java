@@ -34,5 +34,11 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getCateProdList(vo);
 	}
 
+	@Override
+	public ProductVO getProd(ProductVO vo) {
+//		return productDao.getProd(vo);
+		return null;
+	}
+
 
 }
