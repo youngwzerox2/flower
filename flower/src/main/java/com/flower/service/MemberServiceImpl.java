@@ -3,9 +3,10 @@ package com.flower.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.flower.dao.MemberDAO;
 import com.flower.vo.MemberVO;
@@ -40,10 +41,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-
-	public String findEmail(String member_email) throws Exception {
-		String result = memberDAO.findEmail(member_email);
+	public String findEmailChk(String member_email) throws Exception {
+		String result = memberDAO.findEmailChk(member_email);
 		return result;
+		 
 	}
 
 	public List<MemberVO> searchMembers(Map<String, String> map) {

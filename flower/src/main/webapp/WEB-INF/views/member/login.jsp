@@ -690,7 +690,7 @@
 											</div>
 											<!-- <div class="col-md-4 pt-1 mt-md-0"> -->
 											<div class="forgotton-login_info">
-												<a href="register">회원가입</a><a href="#">비밀번호 찾기</a><a href="findemail">가입한
+												<a href="register">회원가입</a><a href="findpassword">비밀번호 찾기</a><a href="findemail">가입한
 													이메일이 생각나지 않을 땐?</a>
 											</div>
 											<div class="col-lg-12 pt-5">
@@ -700,23 +700,23 @@
 													class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
 											</div>
 								</c:if>
-								<c:if test="${member != null }">
+								<%-- <c:if test="${member != null }">
 									<div>
 										<p>${member.member_email}님 환영합니다.</p>
 									</div>
 								</c:if>
 								<c:if test="${msg == false }">
 									<p style="color: red;">로그인 실패! 이메일과 비밀번호를 확인해주세요.</p>
-								</c:if>
+								</c:if> --%>
 							</form>
 						</div>
 					</div>
 
-					<c:if test="${member != null }">
+					<%-- <c:if test="${member != null }">
 						<a href="logout">
 							<button id="logout" type="button">로그아웃</button>
 						</a>
-					</c:if>
+					</c:if> --%>
 				</div>
 
 				<div class="col-lg-6">

@@ -49,7 +49,7 @@
                         <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
                             <div class="slide-content text-black">
                                 <h2 class="title">Indoor <br> Planters</h2>
-                                <p class="short-desc">Pronia, With 100% Natural, Organic & Plant Shop.</p>
+                                <p class="short-desc">별 헤는 밤이면</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
                                 </div>
@@ -254,7 +254,8 @@
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
+                                            	<!-- flower: 상품 상세 페이지 진입 버튼 -->
+                                                <a href="">
                                                     <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
                                                     <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
                                                 </a>
@@ -1780,5 +1781,3 @@
     </div>
 
 <%@include file="flower_footer.jsp" %>
-
-

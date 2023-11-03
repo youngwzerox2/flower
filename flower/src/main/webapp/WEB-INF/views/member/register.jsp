@@ -884,7 +884,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label>이메일주소*</label>
-                                            <input id="member_email" name="member_email" type="email" placeholder="이메일주소">
+                                            <input id="member_email" name="member_email" type="email" placeholder="이메일주소" >
                                         	<button id="idChk" class="idChk" type="button"  value="N">중복확인</button>
                                         	<div id="emailCheckResult"></div>
                                         	<br/>
@@ -894,7 +894,7 @@
                                             <input id="member_password" name="member_password" type="password" placeholder="비밀번호">
                                         </div>
                                         <div class="col-12">
-                                           <button id="join" class="btn btn-custom-size lg-size btn-pronia-primary" type="submit">회원가입하기</button>                                          	
+                                           <button id="join" class="btn btn-custom-size lg-size btn-pronia-primary" type="button">회원가입하기</button>                                          	
                                             <button type="button" id="cancel" class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
                                         </div>
                                     </div>

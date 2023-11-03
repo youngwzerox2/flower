@@ -47,9 +47,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public String findEmail(String member_email) throws Exception {	
-		String result = mybatis.selectOne("memberDAO.findEmail", member_email);
-		return result;
+	public String findEmailChk(String member_email) throws Exception {	 
+		return mybatis.selectOne("memberDAO.findEmailChk", member_email);
 	}
 
 	@Override

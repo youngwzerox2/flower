@@ -215,7 +215,7 @@
                                         <div class="col-md-4 col-sm-6">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="single-product-variable.html">
+                                                    <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
                                                     	<input type="hidden" name="${prod.product_id}"/>
                                                     	<img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_list1}.jpg" alt="${prod.product_name}1">
                                                     	<c:if test="${not empty prod.prod_imgs_list2}">
