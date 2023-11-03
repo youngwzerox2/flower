@@ -120,6 +120,10 @@
                                 <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
                                     <div class="myaccount-orders">
                                         <h4 class="small-title">나의 주문내역</h4>
+                                        <c:if test="${empty order}">
+                                        	주문 내역이 없습니다.
+                                        </c:if>
+                                        <c:if test="${not empty order}">
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-hover">
                                                 <tbody>
@@ -130,23 +134,24 @@
                                                         <th>주문금액</th>
                                                         <th>상태</th>
                                                     </tr>
-                                                    
                                                     <c:forEach items = "${order}" var = "order"  varStatus="st">
-                                                    <tr>
+                                                    <c:choose>
+                                                    	<c:when test="${ORDER_DETAIL_NUMBER == 1}">
+                                                    	 <tr>
                                                         <td>${order.order_date}</td>
-                                                        <td><a class="account-order-id" href="#">2021025416232</a></td>
+                                                        <td><a class="account-order-id" href="#">${order.order_detail_number}</a></td>
                                                         <td>
                                                         	<ul class = "orders_product_info">
                                                         		<li class = 'orders_product_info_img'>
                                                         			<div class = 'wrphover'>
-                                                        				<img src = '/flower/resources/assets/images/product/small-size/1-1-112x124.png'>
+                                                        				<img src = '/flower/resources/product/imgs/list/${order.product_image_file_name}.jpg'>
                                                         			</div>
                                                         		</li>
                                                         		<li class = "orders_product_info_num">
-                                                        			<div>꽃 이름 블라 블라 블라 블라</div>
+                                                        			<div>${order.product_name}</div>
                                                         			<div>
                                                         				<span>수량: </span>
-                                                        				<strong>1</strong>
+                                                        				<strong>${order.order_product_quantity}</strong>
                                                         				개
                                                         			</div>
                                                         			<div>
@@ -154,14 +159,45 @@
                                                         		</li>	
                                                        		</ul>
                                                         </td>
-                                                        <td>8,900원</td>
-                                                        <td>결제 확인중</td>
+                                                        <td>${order.ORDER_PRODUCT_PRICE}</td>
+                                                        <td>${order.ORDER_STATE}</td>
                                                     </tr>
+                                                    	</c:when>
+                                                    	<c:otherwise>
+                                                    		<tr>
+                                                       			 <td>${order.order_date}</td>
+                                                       			 <td><a class="account-order-id" href="#">${order.order_detail_number}</a></td>
+                                                        		<td>
+                                                        			<ul class = "orders_product_info">
+                                                        			<li class = 'orders_product_info_img'>
+                                                        			<div class = 'wrphover'>
+                                                        				<img src = '/flower/resources/product/imgs/list/${order.product_image_file_name}.jpg'>
+                                                        			</div>
+                                                        			</li>
+                                                        			<li class = "orders_product_info_num">
+                                                        				<div>${order.product_name}</div>
+                                                        				<div>
+                                                        				<span>수량: </span>
+                                                        				<strong>${order.order_product_quantity}</strong>
+                                                        				개
+                                                        			</div>
+                                                        			<div>
+                                                        				외 ${order.order_detail_number_count}개
+                                                        			</div>
+                                                        		</li>	
+                                                       		</ul>
+                                                        </td>
+                                                        <td>${order.order_product_price}원</td>
+                                                        <td>${order.order_state}</td>
+                                                    </tr>
+                                                    	</c:otherwise>
+                                                    </c:choose>
                                                     </c:forEach>
                                                    
                                                 </tbody>
                                             </table>
                                         </div>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-inquiry" role="tabpanel" aria-labelledby="account-inquiry-tab">

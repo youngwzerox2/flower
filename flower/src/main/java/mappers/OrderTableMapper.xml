@@ -5,10 +5,21 @@
 
 <!-- LoveMapper.xml -->
 <select id ="selectOrder" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.OrderTableVO">
-	select ot.*, p.PRODUCT_NAME PRODUCT_NAME
-	from order_table ot join product p
-	on ot.PRODUCT_ID = p.PRODUCT_ID 
-	where MEMBER_ID = #{member_id}
+SELECT ot.ORDER_DETAIL_NUMBER,
+       COUNT(ot.ORDER_DETAIL_NUMBER) ORDER_DETAIL_NUMBER_COUNT,
+       MIN(a.PRODUCT_IMAGE_FILE_NAME) PRODUCT_IMAGE_FILE_NAME, 
+       MIN(p.PRODUCT_NAME) PRODUCT_NAME,
+       MIN(ot.ORDER_DATE) ORDER_DATE,
+       MIN(ot.ORDER_STATE) ORDER_STATE,
+       sum(ot.ORDER_PRODUCT_PRICE) ORDER_PRODUCT_PRICE,
+       min(ot.ORDER_PRODUCT_QUANTITY) ORDER_PRODUCT_QUANTITY
+FROM order_table ot 
+JOIN product p ON ot.Product_ID = p.Product_ID 
+JOIN (SELECT PRODUCT_ID, MIN(PRODUCT_IMAGE_FILE_NAME) AS PRODUCT_IMAGE_FILE_NAME
+FROM product_image
+GROUP BY PRODUCT_ID) a ON p.Product_ID = a.Product_ID
+WHERE MEMBER_ID = 44
+GROUP BY ot.ORDER_DETAIL_NUMBER
 </select>
 
 

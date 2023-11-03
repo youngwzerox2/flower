@@ -28,5 +28,8 @@ public class OrderTableVO {
 	// 상품 이름	(PRODUCT TABLE)
 	private String product_name;
 	
+	// 상품 개수
+	private String order_detail_number_count;
+	
 	
 }
