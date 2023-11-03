@@ -25,7 +25,7 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	@Override
 	public List<InquiriesVO> selectList(Map map) {
 		// TODO Auto-generated method stub
-		return null; //sqlSession.selectList("inquiries.inquiriesListCondition", map);
+		return sqlSession.selectList("inquiries.inquiriesListCondition", map);
 	}
 
 	@Override
