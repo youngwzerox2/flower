@@ -54,7 +54,7 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">Single Product</h2>
+                                <h2 class="breadcrumb-heading">선택된 상품명</h2>
                                 <ul>
                                     <li><!-- flower: 링크 연결 요망 -->
                                         <a href="<%=pjName%>/flower_main.jsp">Home</a>
