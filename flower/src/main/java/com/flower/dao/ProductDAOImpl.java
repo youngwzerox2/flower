@@ -15,15 +15,59 @@ public class ProductDAOImpl implements ProductDAO{
 	private SqlSessionTemplate mybatis;
 	
 	public List<ProductVO> getCateProdList(ProductVO vo){
-		// System.out.println("SQL 결과로 사진목록이 어떻게 담기더라: " + result);
-		// [ProductVO(product_id=1, cate_id=null, product_name=유카, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=19000, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=1_list_1,1_list_2, prod_imgs_list_arr=[1_list_1, 1_list_2], prod_imgs_list1=1_list_1, prod_imgs_list2=1_list_2, file=null), ProductVO(product_id=2, cate_id=null, product_name=호스타, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=13000, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=2_list_1, prod_imgs_list_arr=[2_list_1], prod_imgs_list1=2_list_1, prod_imgs_list2=null, file=null), ProductVO(product_id=3, cate_id=null, product_name=설유화, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=4800, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=3_list_1, prod_imgs_list_arr=[3_list_1], prod_imgs_list1=3_list_1, prod_imgs_list2=null, file=null), ProductVO(product_id=4, cate_id=null, product_name=휴케라, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=7500, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=4_list_1,4_list_2, prod_imgs_list_arr=[4_list_1, 4_list_2], prod_imgs_list1=4_list_1, prod_imgs_list2=4_list_2, file=null), ProductVO(product_id=5, cate_id=null, product_name=유럽겹꽃쥐손이, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=14500, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=5_list_1,5_list_2, prod_imgs_list_arr=[5_list_1, 5_list_2], prod_imgs_list1=5_list_1, prod_imgs_list2=5_list_2, file=null), ProductVO(product_id=7, cate_id=null, product_name=조팝나무, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=17500, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=7_list_1,7_list_2, prod_imgs_list_arr=[7_list_1, 7_list_2], prod_imgs_list1=7_list_1, prod_imgs_list2=7_list_2, file=null), ProductVO(product_id=8, cate_id=null, product_name=클레마티스, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=26000, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=8_list_1, prod_imgs_list_arr=[8_list_1], prod_imgs_list1=8_list_1, prod_imgs_list2=null, file=null), ProductVO(product_id=9, cate_id=null, product_name=은청가문비, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=29000, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=9_list_1,9_list_2, prod_imgs_list_arr=[9_list_1, 9_list_2], prod_imgs_list1=9_list_1, prod_imgs_list2=9_list_2, file=null), ProductVO(product_id=10, cate_id=null, product_name=갈퀴조팝, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=4800, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=10_list_1,10_list_2, prod_imgs_list_arr=[10_list_1, 10_list_2], prod_imgs_list1=10_list_1, prod_imgs_list2=10_list_2, file=null), ProductVO(product_id=11, cate_id=null, product_name=겐페이조팝, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=4800, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=11_list_1,11_list_2, prod_imgs_list_arr=[11_list_1, 11_list_2], prod_imgs_list1=11_list_1, prod_imgs_list2=11_list_2, file=null), ProductVO(product_id=12, cate_id=null, product_name=목수국, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=31500, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=12_list_1,12_list_2, prod_imgs_list_arr=[12_list_1, 12_list_2], prod_imgs_list1=12_list_1, prod_imgs_list2=12_list_2, file=null), ProductVO(product_id=13, cate_id=null, product_name=애프터미드나잇, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=36000, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=13_list_1,13_list_2, prod_imgs_list_arr=[13_list_1, 13_list_2], prod_imgs_list1=13_list_1, prod_imgs_list2=13_list_2, file=null), ProductVO(product_id=14, cate_id=null, product_name=런어웨이브라이드, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=36000, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=14_list_1,14_list_2, prod_imgs_list_arr=[14_list_1, 14_list_2], prod_imgs_list1=14_list_1, prod_imgs_list2=14_list_2, file=null), ProductVO(product_id=15, cate_id=null, product_name=청매화붓꽃, product_content=null, product_keyword=null, blooming_season=null, blooming_time=null, pet_friendly=false, easy_care=false, product_light=null, inventory_quantity=null, product_price=3300, product_register_date=null, product_image_file_name=null, product_image_type=null, prod_imgs_lists=15_list_1,15_list_2, prod_imgs_list_arr=[15_list_1, 15_list_2], prod_imgs_list1=15_list_1, prod_imgs_list2=15_list_2, file=null)]
+		List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
+		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
+		System.out.println("SQL 결과(카테고리): " + result);
+		/***********
+		 * [ProductVO(product_id=1, cate_id=null, 
+		 * product_name=유카, product_content=null, product_keyword=null, 
+		 * blooming_season=null, blooming_time=null, 
+		 * pet_friendly=false, easy_care=false, product_light=null, 
+		 * inventory_quantity=null, 
+		 * product_price=19000, 
+		 * product_register_date=null, 
+		 * product_image_file_name=1_list_1.jpg,1_list_2.jpg, 
+		 * product_image_type=null, 
+		 * product_image_froute=null, 
+		 * prod_imgs_lists=[1_list_1.jpg, 1_list_2.jpg], 
+		 * prod_imgs_froutes=null, 
+		 * prod_img_main=null, prod_imgs_sub=null, prod_imgs_guide=null), 
+		 * 
+		 * */
+		// 
 		return mybatis.selectList("productDAO.getCateProdList", vo);
 	}
 
 	@Override
 	public ProductVO getProd(ProductVO vo) {
-//		ProductVO result = mybatis.selectOne("productDAO.getProd", vo);
-//		System.out.println("sql 맞았니(DAO): " + result);
+		ProductVO result = mybatis.selectOne("productDAO.getProd", vo);
+		ProductVO main = mybatis.selectOne("productDAO.getImgMain", vo);
+		ProductVO sub = mybatis.selectOne("productDAO.getImgSub", vo);
+		ProductVO guide = mybatis.selectOne("productDAO.getImgGuide", vo);
+		result.setProd_img_main(main.getProduct_image_file_name());
+		result.setProd_imgs_sub(sub.getProduct_image_file_name());
+		result.setProd_imgs_guide(guide.getProduct_image_file_name());
+		
+//		result.setProd_imgs_sub();
+//		result.setProd_imgs_guide();
+		System.out.println("sql결과(DAO): " + result);
+		/***************
+		 * sql결과: 
+		 * ProductVO(product_id=null, cate_id=null, 
+		 * product_name=유카, product_content=null, product_keyword=null, 
+		 * blooming_season=spring, blooming_time=null, 
+		 * pet_friendly=false, easy_care=false, product_light=DL, 
+		 * inventory_quantity=null, product_price=19000, product_register_date=null, 
+		 * product_image_file_name=1_guide1.jpg,1_guide2.jpg,1_main_wh570.jpg,1_sub1_wh633.jpg,1_sub2_wh860.jpg, 
+		 * product_image_type=jpg,jpg,jpg,jpg,jpg, 
+		 * product_image_froute=guide,guide,main,sub,sub, 
+		 * prod_imgs_lists=[1_guide1.jpg, 1_guide2.jpg, 1_main_wh570.jpg, 1_sub1_wh633.jpg, 1_sub2_wh860.jpg], 
+		 * prod_imgs_froutes=[guide, guide, main, sub, sub], 
+		 * prod_img_main=1_main_wh570.jpg, 
+		 * prod_imgs_sub=[1_sub1_wh633.jpg, 1_sub2_wh860.jpg], 
+		 * prod_imgs_guide=[1_guide1.jpg, 1_guide2.jpg])
+		 *
+		 * **/
 		return null;
 	}
 	

@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService{
 	// 상품 상세 페이지
 	@Override
 	public ProductVO getProd(ProductVO vo) {
-//		return productDao.getProd(vo);
+		productDao.getProd(vo);
 		return null;
 	}
 

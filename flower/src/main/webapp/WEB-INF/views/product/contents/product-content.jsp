@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% String pjName = "/flower"; %>
+<% String pjName 	= "/flower"; %>
+<% String imgRoute  = "/resources/product/imgs/"; %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -54,14 +56,7 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">선택된 상품명</h2>
-                                <ul>
-                                    <li><!-- flower: 링크 연결 요망 -->
-                                        <a href="<%=pjName%>/flower_main.jsp">Home</a>
-                                    </li>
-                                    <!-- flower: 선택된 상품명으로 할지 결정요망-->
-                                    <li>선택된 상품명</li>
-                                </ul>
+                                <h2 class="breadcrumb-heading">상품명</h2>
                             </div>
                         </div>
                     </div>
@@ -96,8 +91,8 @@
                                                 <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" alt="Product Image">
                                             </a>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> <!-- <div class="swiper-wrapper"> end -->
+                                </div> <!-- <div class="swiper-container single-product-slider"> end -->
                                 <div class="thumbs-arrow-holder">
                                     <div class="swiper-container single-product-thumbs">
                                         <div class="swiper-wrapper">
@@ -128,7 +123,7 @@
                             </div>
                         </div> <!-- flower: 상품사진 <div class="col-lg-6"> end -->
                         
-                        <!-- flower: 상품 개괄(장바구니담기/바로구매 버튼 등) -->
+                        <!-- flower: 상품 사진 우측 컨텐츠(장바구니담기/바로구매 버튼 등) -->
                         <div class="col-lg-6 pt-5 pt-lg-0">
                             <div class="single-product-content">
                                 <h2 class="title">American Marigold</h2>
@@ -255,6 +250,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+                        	<!-- flower: 상품상세하단- 탭메뉴(①information: 배송정보, 판매자정보, 상품청약철회 ②Description: 상품상세정보(키우는방법) ③Review ④QnA) -->
                             <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
@@ -271,39 +267,31 @@
                                         Reviews(3)
                                     </a>
                                 </li>
+                                <!-- flower: 상품상세하단 추가(QnA) → review 템플릿에서 일부분 사용요망! -->
+                                <li class="nav-item" role="presentation">
+                                    <a class="tab-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
+                                        QnA(3)
+                                    </a>
+                                </li>
                             </ul>
+                            <!-- flower: 상품상세하단- 탭메뉴의 내용(①information: 배송정보, 판매자정보, 상품청약철회 ②Description: 상품상세정보(키우는방법) ③Review ④QnA) -->
                             <div class="tab-content product-tab-content">
                                 <div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
                                     <div class="product-information-body">
-                                        <h4 class="title">Shipping</h4>
-                                        <p class="short-desc mb-4">The item will be shipped from China. So it need 15-20 days to
-                                            deliver. Our product is good with reasonable price and we believe you will worth it.
-                                            So please wait for it patiently! Thanks.Any question please kindly to contact us and
-                                            we promise to work hard to help you to solve the problem</p>
-                                        <h4 class="title">About return request</h4>
-                                        <p class="short-desc mb-4">If you don't need the item with worry, you can contact us
-                                            then we will help you to solve the problem, so please close the return request!
-                                            Thanks</p>
-                                        <h4 class="title">Guarantee</h4>
-                                        <p class="short-desc mb-0">If it is the quality question, we will resend or refund to
-                                            you; If you receive damaged or wrong items, please contact us and attach some
-                                            pictures about product, we will exchange a new correct item to you after the
-                                            confirmation.</p>
+                                        <h4 class="title">배송정보</h4>
+                                        <p class="short-desc mb-4">별헤는 밤이면 들려오는 그대 음성<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">상품청약철회</h4>
+                                        <p class="short-desc mb-4">하얗게 부서지는 꽃가루 되어<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">판매자정보</h4>
+                                        <p class="short-desc mb-0">그대 품안에 잠들고 싶어라<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="product-description-body">
-                                        <p class="short-desc mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                            do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                            qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
-                                            natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                                            sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                                            nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                                        <p class="short-desc mb-0">상품 상세 설명<br/>
+                                        (이미지로 불러올 것. product_id_description_number)<br/>
+                                        보일듯 말듯 가물거리는 안개 속에 싸인 길 잡힐 듯 말듯 멀어져가는 무지개와 같은 길<br/>
+                                        그 어디에서 날 기다리는지 둘러보아도 찾을 수 없네 <br/> 그대여 힘이 돼주오 나에게 주어진 길 찾을 수 있도록
                                         </p>
                                     </div>
                                 </div>

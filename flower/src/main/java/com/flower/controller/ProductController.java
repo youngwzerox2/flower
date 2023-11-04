@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -72,7 +73,8 @@ public class ProductController {
 	// 상품 상세 페이지 가져오기
 	@RequestMapping("/product/contents/product-content")
 	public void getProdContent(ProductVO vo, Model m) {
-		System.out.println("controller 접근은 됨!: " + vo.getProduct_id());
+		System.out.println("controller연결은 됨!: " + vo.getProduct_id());
+		productService.getProd(vo);
 //		ProductVO result = productService.getProd(vo);
 //		m.addAttribute("prod", result);
 		//return "/product/contents/product-content?product_id=" + vo.getProduct_id();

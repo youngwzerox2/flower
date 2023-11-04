@@ -5,10 +5,10 @@
 	 
 	 
 	<select id="getCateProdList" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
-		SELECT p.PRODUCT_ID, p.PRODUCT_NAME, p.PRODUCT_PRICE, group_concat(img.PRODUCT_IMAGE_FILE_NAME ORDER BY img.PRODUCT_IMAGE_FILE_NAME) prod_imgs_lists
+		SELECT p.PRODUCT_ID, p.PRODUCT_NAME, p.PRODUCT_PRICE, group_concat(img.PRODUCT_IMAGE_FILE_NAME ORDER BY img.PRODUCT_IMAGE_FILE_NAME) product_image_file_name
 		FROM product p INNER JOIN product_image img
 		ON p.product_id = img.product_id
-		WHERE img.PRODUCT_IMAGE_TYPE = 'list'
+		WHERE img.PRODUCT_IMAGE_FROUTE = 'list'
 		<if test="blooming_season != null">
 			AND p.BLOOMING_SEASON = #{blooming_season}
 		</if>
@@ -31,6 +31,38 @@
 		where p.blooming_season = #{blooming_season}
 		and img.product_image_type = 'list'
 		ORDER BY PRODUCT_ID;
+	</select>
+	
+	<select id="getProd" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		SELECT p.PRODUCT_NAME, p.PRODUCT_PRICE, p.BLOOMING_SEASON, p.PET_FRIENDLY, p.EASY_CARE, p.PRODUCT_LIGHT, p.BLOOMING_TIME, group_concat(img.PRODUCT_IMAGE_FILE_NAME ORDER BY img.PRODUCT_IMAGE_FILE_NAME) product_image_file_name, group_concat(img.PRODUCT_IMAGE_TYPE ORDER BY img.PRODUCT_IMAGE_TYPE) product_image_type, group_concat(img.PRODUCT_IMAGE_FROUTE ORDER BY img.PRODUCT_IMAGE_FILE_NAME) product_image_froute
+		FROM flower.product p INNER JOIN flower.product_image img
+		on p.product_id = img.product_id
+		WHERE p.PRODUCT_ID = #{product_id}
+		AND img.PRODUCT_IMAGE_FROUTE != 'list'
+		GROUP BY p.PRODUCT_ID
+	</select>
+	
+	<select id="getImgMain" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		SELECT img.PRODUCT_IMAGE_FILE_NAME
+		FROM product_image img
+		WHERE product_id = #{product_id}
+		AND PRODUCT_IMAGE_FROUTE = 'main'
+	</select>
+	
+	<select id="getImgSub" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		SELECT group_concat(img.PRODUCT_IMAGE_FILE_NAME ORDER BY img.PRODUCT_IMAGE_FILE_NAME) PRODUCT_IMAGE_FILE_NAME
+		FROM product_image img
+		WHERE product_id = #{product_id}
+		AND PRODUCT_IMAGE_FROUTE = 'sub'
+		GROUP BY img.product_id
+	</select>
+	
+	<select id="getImgGuide" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		SELECT group_concat(img.PRODUCT_IMAGE_FILE_NAME ORDER BY img.PRODUCT_IMAGE_FILE_NAME) PRODUCT_IMAGE_FILE_NAME
+		FROM product_image img
+		WHERE product_id = #{product_id}
+		AND PRODUCT_IMAGE_FROUTE = 'guide'
+		GROUP BY img.product_id
 	</select>
 	
 </mapper>

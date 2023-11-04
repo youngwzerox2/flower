@@ -271,7 +271,7 @@
                                             <li class="drop-holder">
                                                 <a><span id="nav_cursor">Seasons</span></a>
                                                 <ul class="drop-menu">
-                                                    <li><a href="<%=pjName%>/product/spring">Spring</a></li>
+                                                    <li><a href="<%=pjName%>/product/category/spring">Spring</a></li>
                                                     <li><a href="summer">summer</a></li>
                                                     <li><a href="Autumn">Autumn</a></li>
                                                     <li><a href="Winter">Winter</a></li>
