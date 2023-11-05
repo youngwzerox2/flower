@@ -8,7 +8,7 @@
 	select l.PRODUCT_ID PRODUCT_ID, pi2.PRODUCT_IMAGE_FILE_NAME PRODUCT_IMAGE_FILE_NAME, p.PRODUCT_NAME PRODUCT_NAME, p.PRODUCT_PRICE PRODUCT_PRICE
 	from love l join member m join product p join product_image pi2 
 	on l.PRODUCT_ID = p.PRODUCT_ID and l.MEMBER_ID = m.MEMBER_ID and p.PRODUCT_ID = pi2.PRODUCT_IMAGE_FILE_NAME 
-	where m.MEMBER_ID = #{member_id} and pi2.PRODUCT_IMAGE_TYPE = 'list'
+	where m.MEMBER_ID = #{member_id} and pi2.PRODUCT_IMAGE_FROUTE = 'list'
 	group by PRODUCT_ID
 	order by PRODUCT_ID
 

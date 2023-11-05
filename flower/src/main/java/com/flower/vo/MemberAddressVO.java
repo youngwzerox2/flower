@@ -18,4 +18,5 @@ public class MemberAddressVO {
 	private String recipient_tel;
 	private Integer default_delivery_address;
 	private String type;
+	private String recipient_detailaddress;
 }

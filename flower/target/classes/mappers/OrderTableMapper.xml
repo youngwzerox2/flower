@@ -16,7 +16,7 @@
 FROM order_table ot 
 JOIN product p ON ot.Product_ID = p.Product_ID 
 JOIN (SELECT PRODUCT_ID, MIN(PRODUCT_IMAGE_FILE_NAME) AS PRODUCT_IMAGE_FILE_NAME
-FROM product_image where product_image_type = 'list'
+FROM product_image where product_image_FROUTE = 'list'
 GROUP BY PRODUCT_ID) a ON p.Product_ID = a.Product_ID
 WHERE MEMBER_ID = #{member_id}
 GROUP BY ot.ORDER_DETAIL_NUMBER
