@@ -17,7 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<%=pjName %>/resources/assets/images/favicon.ico" />
-
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <!-- CSS
     ============================================ -->
 
@@ -48,14 +50,14 @@
                     <div class="swiper-slide animation-style-02">
                         <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
                             <div class="slide-content text-black">
-                                <h2 class="title">Indoor <br> Planters</h2>
-                                <p class="short-desc">별 헤는 밤이면</p>
+                                <h2 class="title">What if...</h2>
+                                <p class="short-desc">Only for an hour You're mine, all mine.</p>
                                 <div class="btn-wrap">
-                                    <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
+                                    <a class="btn btn-custom-size xl-size btn-pronia-primary" href="">Discover Now</a>
                                 </div>
                             </div>
                             <div class="slide-img">
-                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/2-1-960x741.jpg" alt="Slide Image">
+                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/flower_main1.jpg" alt="Slide Image">
                                 <div class="slide-count">
                                     <span class="data-count" data-count="01">
                                 <span class="forward-slash">/</span>
@@ -68,14 +70,14 @@
                     <div class="swiper-slide animation-style-02">
                         <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
                             <div class="slide-content text-black">
-                                <h2 class="title">Indoor <br> Planters</h2>
-                                <p class="short-desc">Pronia, With 100% Natural, Organic & Plant Shop.</p>
+                                <h2 class="title">Knock, <br> Knock</h2>
+                                <p class="short-desc">Are you still there?</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
                                 </div>
                             </div>
                             <div class="slide-img">
-                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/2-2-960x741.jpg" alt="Slide Image">
+                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/flower_main2.jpg" alt="Slide Image">
                                 <div class="slide-count">
                                     <span class="data-count" data-count="02">
                                 <span class="forward-slash">/</span>
@@ -88,14 +90,14 @@
                     <div class="swiper-slide animation-style-02">
                         <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
                             <div class="slide-content text-black">
-                                <h2 class="title">Indoor <br> Planters</h2>
-                                <p class="short-desc">Pronia, With 100% Natural, Organic & Plant Shop.</p>
+                                <h2 class="title">가을엔 <br> 역시</h2>
+                                <p class="short-desc">별헤는 밤이면 들려오는 그대의 음성</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
                                 </div>
                             </div>
                             <div class="slide-img">
-                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/2-3-960x741.jpg" alt="Slide Image">
+                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/flower_main3.jpg" alt="Slide Image">
                                 <div class="slide-count">
                                     <span class="data-count" data-count="03">
                                 <span class="forward-slash">/</span>
@@ -121,54 +123,194 @@
         </div>
         <!-- Slider Area End Here -->
 
-        <!-- Begin Banner Area -->
-        <div class="banner-area banner-style-2 section-space-top-100">
+		<!--  flower: 계절별 카테고리 -->
+        <!-- Begin Product Area -->
+        <div class="product-area section-space-top-100 section-space-bottom-90">
             <div class="container">
-                <div class="row g-y-30">
-                    <div class="col-md-6">
-                        <div class="banner-item img-hover-effect">
-                            <div class="banner-img">
-                                <img src="<%=pjName %>/resources/assets/images/banner/2-1-570x500.jpg" alt="Banner Image">
-                            </div>
-                            <div class="banner-content text-position-center">
-                                <span class="collection">New Collection</span>
-                                <h3 class="title">Indoore Plant</h3>
-                                <div class="button-wrap">
-                                    <a class="btn btn-custom-size btn-pronia-primary" href="shop.html">Shop
-                                        Now</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="section-title-wrap without-tab">
+                        <h2 class="section-title">Season</h2>
+                        <!-- 
+                        <p class="section-desc">We have special categories for those who love flower but know nothing.
+                        </p> -->
                     </div>
-                    <div class="col-md-6">
-                        <div class="banner-wrap row g-y-30">
-                            <div class="col-12">
-                                <div class="banner-item img-hover-effect">
-                                    <div class="banner-img">
-                                        <img src="<%=pjName %>/resources/assets/images/banner/2-2-570x235.jpg" alt="Banner Image">
-                                    </div>
-                                    <div class="banner-content text-position-left">
-                                        <span class="collection">Collection Of Cactus</span>
-                                        <h3 class="title">Plant Port</h3>
-                                        <div class="button-wrap">
-                                            <a class="btn btn-custom-size sm-size btn-pronia-primary" href="shop.html">Shop
-                                                Now</a>
+                    <div class="col-lg-12">
+                        <div class="swiper-container product-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide product-item">
+                                    <div class="product-img">
+                                        <a href="">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_spring.jpg" alt="Product Images">
+                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-10-270x300.jpg" alt="Product Images">
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="">봄부터 피는 꽃</a>
+                                        <!-- 
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">$23.45</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                         -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="banner-item img-hover-effect">
-                                    <div class="banner-img">
-                                        <img src="<%=pjName %>/resources/assets/images/banner/2-3-570x235.jpg" alt="Banner Image">
-                                    </div>
-                                    <div class="banner-content text-position-left">
-                                        <span class="collection">Collection Of Cactus</span>
-                                        <h3 class="title">Hanging Pots</h3>
-                                        <div class="button-wrap">
-                                            <a class="btn btn-custom-size sm-size btn-pronia-primary" href="shop.html">Shop
-                                                Now</a>
+                                <div class="swiper-slide product-item">
+                                    <div class="product-img">
+                                        <a href="">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_summer.jpg" alt="Product Images">
+                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-11-270x300.jpg" alt="Product Images">
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="">여름부터 피는 꽃</a>
+                                        <!-- 
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">$25.45</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <div class="swiper-slide product-item">
+                                    <div class="product-img">
+                                        <a href="">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_autumn.jpg" alt="Product Images">
+                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="">가을에 피는 꽃</a>
+                                        <!-- 
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">$30.45</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                         -->
+                                    </div>
+                                </div>
+                                <div class="swiper-slide product-item">
+                                    <div class="product-img">
+                                        <a href="">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_winter.jpg" alt="Product Images">
+                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="">겨울에도 피어요</a>
+                                        <!-- 
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">$45.00</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                         -->
                                     </div>
                                 </div>
                             </div>
@@ -177,30 +319,31 @@
                 </div>
             </div>
         </div>
-        <!-- Banner Area End Here -->
+        <!-- Product Area End Here -->
 
+		<!--  flower: 특별한 카테고리 -->
         <!-- Begin Product Area -->
         <div class="product-area section-space-top-100 section-space-bottom-90">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title mb-0">Our Products</h2>
+                    <h2 class="section-title mb-0">Special Categories</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="nav product-tab-nav tab-style-1" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="active" id="featured-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="true">
-                                    Featured
+                                    For Beginners
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="bestseller-tab" data-bs-toggle="tab" href="#bestseller" role="tab" aria-controls="bestseller" aria-selected="false">
-                                    Bestseller
+                                    Pet-Friendly
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="latest-tab" data-bs-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">
-                                    Latest
+                                    After Sunset
                                 </a>
                             </li>
                         </ul>
@@ -384,6 +527,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
@@ -560,6 +704,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                	-->
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="bestseller" role="tabpanel" aria-labelledby="bestseller-tab">
@@ -1281,287 +1426,9 @@
         </div>
         <!-- Product Area End Here -->
 
-        <!-- Begin Banner Area -->
-        <div class="banner-with-counter">
-            <div class="banner-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="banner-boxshadow">
-                                <div class="banner-item" data-bg-image="<%=pjName %>/resources/assets/images/banner/3-1-1208x542.jpg">
-                                    <div class="popup-btn">
-                                        <a class="popup-vimeo wave-btn" href="https://player.vimeo.com/video/172601404?autoplay=1">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <div class="icon">
-                                                <i class="pe-7s-play"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="counter-area">
-                <div class="container">
-                    <h2 class="counter-title">Lorem ipsum dolor sit amet, consectetur adipisicing <br> elit, sed do
-                        <span>eiusmod tempor</span> incididunt.
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="counter-item">
-                                <div class="count-wrap">
-                                    <h3 class="count mb-0" data-counterup-time="500">150</h3>
-                                    <span class="prefix">+</span>
-                                </div>
-                                <h4 class="count-title mb-0">Projects</h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="counter-item">
-                                <div class="count-wrap">
-                                    <h3 class="count mb-0" data-counterup-time="1000">359</h3>
-                                    <span class="prefix">+</span>
-                                </div>
-                                <h4 class="count-title mb-0">Clients</h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6 pt-4 pt-md-0">
-                            <div class="counter-item">
-                                <div class="count-wrap">
-                                    <h3 class="count mb-0" data-counterup-time="1500">251</h3>
-                                    <span class="prefix">+</span>
-                                </div>
-                                <h4 class="count-title mb-0">Rating</h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6 pt-4 pt-lg-0">
-                            <div class="counter-item">
-                                <div class="count-wrap">
-                                    <h3 class="count mb-0" data-counterup-time="2000">110</h3>
-                                    <span class="prefix">+</span>
-                                </div>
-                                <h4 class="count-title mb-0">Award</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Banner Area End Here -->
 
-        <!-- Begin Product Area -->
-        <div class="product-area section-space-top-100 section-space-bottom-90">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title-wrap without-tab">
-                        <h2 class="section-title">New Products</h2>
-                        <p class="section-desc">Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-                            roots in a piece of classical Latin literature
-                        </p>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="swiper-container product-slider">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide product-item">
-                                    <div class="product-img">
-                                        <a href="shop.html">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-9-270x300.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-10-270x300.jpg" alt="Product Images">
-                                        </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <a class="product-name" href="shop.html">American Marigold</a>
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$23.45</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide product-item">
-                                    <div class="product-img">
-                                        <a href="shop.html">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-10-270x300.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-11-270x300.jpg" alt="Product Images">
-                                        </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <a class="product-name" href="shop.html">Black Eyed Susan</a>
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$25.45</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide product-item">
-                                    <div class="product-img">
-                                        <a href="shop.html">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-11-270x300.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
-                                        </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <a class="product-name" href="shop.html">Bleeding Heart</a>
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$30.45</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide product-item">
-                                    <div class="product-img">
-                                        <a href="shop.html">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                        </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <a class="product-name" href="shop.html">Bloody Cranesbill</a>
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$45.00</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Area End Here -->
 
-        <!-- Begin Banner Area -->
-        <div class="banner-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="banner-bg-image img-hover-effect" data-bg-image="<%=pjName %>/resources/assets/images/banner/4-1-1170x400.jpg">
-                            <div class="inner-content">
-                                <span class="offer">Only Today</span>
-                                <h2 class="title">Indoore Plants & Poot</h2>
-                                <h3 class="discount">Up To <span>-50%</span> Off</h3>
-                                <div class="button-wrap">
-                                    <a class="btn btn-custom-size btn-pronia-primary" href="shop.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Banner Area End Here -->
+
 
         <!-- Begin Testimonial Area -->
         <div class="testimonial-area section-space-top-100 section-space-bottom-95">

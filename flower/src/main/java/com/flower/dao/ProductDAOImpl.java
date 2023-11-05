@@ -16,8 +16,8 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	public List<ProductVO> getCateProdList(ProductVO vo){
 		List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
-		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
-		System.out.println("SQL 결과(카테고리): " + result);
+//		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
+//		System.out.println("SQL 결과(카테고리): " + result);
 		/***********
 		 * [ProductVO(product_id=1, cate_id=null, 
 		 * product_name=유카, product_content=null, product_keyword=null, 
@@ -48,9 +48,10 @@ public class ProductDAOImpl implements ProductDAO{
 		result.setProd_imgs_sub(sub.getProduct_image_file_name());
 		result.setProd_imgs_guide(guide.getProduct_image_file_name());
 		
+		
 //		result.setProd_imgs_sub();
 //		result.setProd_imgs_guide();
-		System.out.println("sql결과(DAO): " + result);
+//		System.out.println("sql결과(DAO): " + result);
 		/***************
 		 * sql결과: 
 		 * ProductVO(product_id=null, cate_id=null, 
@@ -68,7 +69,7 @@ public class ProductDAOImpl implements ProductDAO{
 		 * prod_imgs_guide=[1_guide1.jpg, 1_guide2.jpg])
 		 *
 		 * **/
-		return null;
+		return result;
 	}
 	
 } //class ProductDAOImpl

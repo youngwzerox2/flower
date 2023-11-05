@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ShoppingCartDAO">
+	<insert id="addCart" parameterType="com.flower.vo.ShoppingCartVO">
+		INSERT INTO shopping_cart (member_id, product_id, shopping_cart_product_quantity)
+		VALUES (#{member_id}, #{product_id}, #{shopping_cart_product_quantity})
+	</insert>
+	
+</mapper>

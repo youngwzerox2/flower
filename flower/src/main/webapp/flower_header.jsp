@@ -10,7 +10,7 @@
                             <div class="header-middle-wrap position-relative">
 								
 								<!-- header: 로고 → 이미지 변경요망 -->
-                                <a href="index.html" class="header-logo"> 
+                                <a href="<%=pjName%>/flower_main" class="header-logo">
                                     <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
                                 </a>
 
@@ -257,7 +257,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-3 col-6">
 
-                                <a href="index.html" class="header-logo">
+                                <a href="<%=pjName%>/flower_main" class="header-logo">
                                     <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
                                 </a>
 

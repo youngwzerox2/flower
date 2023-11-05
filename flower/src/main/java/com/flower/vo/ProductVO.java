@@ -51,7 +51,7 @@ public class ProductVO {
 	 * 						① list: 상품목록(w270 h300)
 	 * 						② main: 상품상세-메인(w570 h633)
 	 * 						③ sub: 상품상세-서브(w570 h633) 
-	 * 						④ guide: 상품설명(키우는 방법)
+	 * 						④ guide: 상품설명(키우는 방법. 사이즈 미정. 단, w960 이하)
 	 */
 	
 	private String  	product_image_file_name;

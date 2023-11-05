@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/nice-select.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/magnific-popup.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/ion.rangeSlider.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
@@ -56,7 +57,7 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">상품명</h2>
+                                <h2 class="breadcrumb-heading">${prod.product_name}</h2>
                             </div>
                         </div>
                     </div>
@@ -72,42 +73,53 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                         	<!-- flower: 상품상세 사진(main, sub) -->
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-1-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-1-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/main/${prod.prod_img_main}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/main/${prod.prod_img_main}" alt="${prod.product_name} main">
                                             </a>
                                         </div>
                                         <div class="swiper-slide">
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-2-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-2-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[0]}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[0]}" alt="${prod.product_name} sub1">
                                             </a>
                                         </div>
+                                        
+                                        <c:if test="${not empty prod.prod_imgs_sub[1]}">
                                         <div class="swiper-slide">
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-3-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-3-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[1]}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[1]}" alt="${prod.product_name} sub2">
                                             </a>
                                         </div>
+                                        </c:if>
+                                        <c:if test="${not empty prod.prod_imgs_sub[2]}">
                                         <div class="swiper-slide">
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" alt="${prod.product_name} sub3">
                                             </a>
                                         </div>
+                                        </c:if>
+                                        
+                                        
                                     </div> <!-- <div class="swiper-wrapper"> end -->
                                 </div> <!-- <div class="swiper-container single-product-slider"> end -->
                                 <div class="thumbs-arrow-holder">
                                     <div class="swiper-container single-product-thumbs">
                                         <div class="swiper-wrapper">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-1-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/main/${prod.prod_img_main}" alt="Product Thumnail">
                                             </a>
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-2-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[0]}" alt="Product Thumnail">
                                             </a>
+                                            <c:if test="${not empty prod.prod_imgs_sub[1]}">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-3-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[1]}" alt="Product Thumnail">
                                             </a>
+                                            </c:if>
+                                            <c:if test="${not empty prod.prod_imgs_sub[2]}">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" alt="Product Thumnail">
                                             </a>
+                                            </c:if>
                                         </div>
                                         <!-- Add Arrows -->
                                         <div class=" thumbs-button-wrap d-none d-md-block">
@@ -126,9 +138,9 @@
                         <!-- flower: 상품 사진 우측 컨텐츠(장바구니담기/바로구매 버튼 등) -->
                         <div class="col-lg-6 pt-5 pt-lg-0">
                             <div class="single-product-content">
-                                <h2 class="title">American Marigold</h2>
+                                <h2 class="title" name="product_name">${prod.product_name}</h2>
                                 <div class="price-box">
-                                    <span class="new-price">$23.45</span>
+                                    <span class="new-price" name="product_price">${prod.product_price}</span>
                                 </div>
                                 <div class="rating-box-wrap pb-4">
                                     <div class="rating-box">
@@ -145,30 +157,40 @@
                                     </div>
                                 </div>
                                 <div class="product-category">
-                                    <span class="title">SKU:</span>
+                                    <span class="title">개화시기:</span>
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0);">Ch-256xl</a>
+                                            <a href="javascript:void(0);">${prod.blooming_season}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="product-category">
-                                    <span class="title">Categories :</span>
+                                    <span class="title">일조량 :</span>
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0);">Office,</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Home</a>
+                                            <a href="javascript:void(0);">${prod.product_light}</a>
                                         </li>
                                     </ul>
                                 </div>
+                                
                                 <div class="product-category product-tags">
-                                    <span class="title">Tags :</span>
+                                    <span class="title">특징 :</span>
                                     <ul>
+                                    	<c:if test="${prod.pet_friendly ne 'false'}">
                                         <li>
-                                            <a href="javascript:void(0);">Furniture</a>
+                                            <a href="javascript:void(0);">pet friendly</a>
                                         </li>
+                                        </c:if>
+                                        <c:if test="${prod.easy_care ne 'false' }">
+                                        <li>
+                                            <a href="javascript:void(0);">easy care</a>
+                                        </li>
+                                        </c:if>
+                                        <c:if test="${not empty blooming_time}">
+                                        <li>
+                                            <a href="javascript:void(0);">blooming in night</a>
+                                        </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                                 
@@ -183,12 +205,13 @@
                                 <ul class="quantity-with-btn">
                                     <li class="quantity">
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="1" type="text">
+                                            <input class="cart-plus-minus-box" name="product_quantity" id="product_quantity" value="1" type="text">
                                         </div>
                                     </li>
                                     <li class="add-to-cart">
-                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" href="cart.html">Add to
-                                            cart</a>
+                                    	<!-- href="/flower/cart" 단, 변수로! -->
+                                    	<input type="hidden" name="product_id" id="product_id" value="${prod.product_id}">
+                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" id="addCart">장바구니10</a>
                                     </li>
                                     <li class="add-to-cart">
                                         <a class="btn btn-custom-size lg-size btn-pronia-primary" href="">바로구매</a>
@@ -728,5 +751,6 @@
         <!-- Scroll To Top End Here -->
 
     </div>
-
+    <!--cart JS (flower: 추후 footer에 담아야 할..듯?)-->
+    <script src="<%=pjName %>/resources/assets/js/cart/cart.js"></script>
 <%@include file="/flower_footer.jsp" %>

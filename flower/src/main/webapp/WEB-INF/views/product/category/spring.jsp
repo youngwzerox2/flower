@@ -173,7 +173,7 @@
                             <div class="product-topbar">
                                 <ul>
                                     <li class="page-count">
-                                        <span>2014</span> Product Found of <span>30</span>
+                                        <span>2016</span> Product Found of <span>30</span>
                                     </li>
                                     <li class="product-view-wrap">
                                         <ul class="nav" role="tablist">
@@ -212,7 +212,7 @@
                                     	<tr>
                                        </c:if>
                                     	<td>
-                                        <div class="col-md-4 col-sm-6">
+                                        <div class="">
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
