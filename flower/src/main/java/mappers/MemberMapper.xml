@@ -53,7 +53,6 @@
 		WHERE member_id = #{member_id}
 	</update>
 	
-<<<<<<< HEAD
 	<!-- 비밀번호 초기화(찾기) -->
 	<update id="changePassword" parameterType="com.flower.vo.MemberVO">
 		update member set member_password = #{member_password}
@@ -68,10 +67,5 @@
 	
 
 	
-	
-	
-	
-=======
 
->>>>>>> refs/remotes/origin/1104Jinhwa
 </mapper>

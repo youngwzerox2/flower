@@ -61,7 +61,6 @@ $("#join").click(function(e) {
 		        $("#member_password").focus();
 		        return;
 		    }
-<<<<<<< HEAD
 		    
 		      if (!$("#termsOfService").is(":checked")) {
             alert("꽃물주 서비스 이용 약관에 동의해 주세요!");
@@ -78,9 +77,7 @@ $("#join").click(function(e) {
             return;
         }
 		    
-=======
         	
->>>>>>> refs/remotes/origin/20231104박민진
         // 모든 조건이 충족되면 폼을 제출
          $("form").submit();
          alert("회원가입이 완료되었습니다!")
