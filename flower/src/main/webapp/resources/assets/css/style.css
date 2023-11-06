@@ -1151,6 +1151,44 @@ blockquote p {
   right: 15px;
 }
 
+
+/* --- quantity to DB --- */
+.dbquantity .cart-plus-minus {
+  position: relative;
+  width: 76px;
+  text-align: left;
+}
+.dbquantity .cart-plus-minus .cart-plus-minus-box {
+  background-color: #505050;
+  border: 1px solid #505050;
+  color: #ffffff;
+  text-align: center;
+  width: 75px;
+  height: 50px;
+  border-radius: 5px;
+}
+.dbquantity .cart-plus-minus .dbqtybutton {
+  cursor: pointer;
+  position: absolute;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  font-size: 10px;
+  color: inherit;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #ffffff;
+}
+.dbquantity .cart-plus-minus .dbqtybutton.dec {
+  left: 15px;
+}
+.dbquantity .cart-plus-minus .dbqtybutton.inc {
+  left: auto;
+  right: 15px;
+}
+
 /* ---Price Box--- */
 .price-box span {
   font-size: 20px;
