@@ -116,7 +116,16 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="settingButton">
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                                <li><a class="dropdown-item" href="">Login | Register</a>
+                                                <li>
+	                                                <!-- 로그인 안된경우 -->
+	                                                <c:if test="${ empty member }">
+	                                                	<a class="dropdown-item" href="${pageContext.request.contextPath }/member/login">로그인</a>
+	                                                </c:if>
+	                                                
+	                                                <!-- 로그인 된경우 -->
+	                                                <c:if test="${ not empty member }">
+	                                                	<a class="dropdown-item" href="${pageContext.request.contextPath }/member/register">로그아웃</a>
+	                                                </c:if>
                                                 </li>
                                             </ul>
                                         </li>
@@ -437,7 +446,16 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="stickysettingButton">
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
-                                                <li><a class="dropdown-item" href="login-register.html">Login | Register</a>
+                                                <li>
+                                                	<!-- 로그인 안된경우 -->
+	                                                <c:if test="${ empty member }">
+	                                                	<a class="dropdown-item" href="${pageContext.request.contextPath }/member/login">로그인</a>
+	                                                </c:if>
+	                                                
+	                                                <!-- 로그인 된경우 -->
+	                                                <c:if test="${ not empty member }">
+	                                                	<a class="dropdown-item" href="${pageContext.request.contextPath }/member/register">로그아웃</a>
+	                                                </c:if>
                                                 </li>
                                             </ul>
                                         </li>
@@ -1064,13 +1082,13 @@
                                 </li>
 
                                 <li class="nav-item" role="presentation">
-                                    <a class="tab-btn" id="inquiries-tab" data-bs-toggle="tab" href="#inquiries" role="tab" aria-controls="inquiries" aria-selected="false">
+                                    <a class="active tab-btn" id="inquiries-tab" data-bs-toggle="tab" href="#inquiries" role="tab" aria-controls="inquiries" aria-selected="false">
                                         문의
                                     </a>
                                 </li>
                                 
                                 <li class="nav-item" role="presentation">
-                                    <a class="active tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
+                                    <a class="tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
                                         배송/교환/환불/판매자정보
                                     </a>
                                 </li>
@@ -1099,7 +1117,7 @@
                                 </div>
                                 
                                 <!-- 배송/교환/환불/판매자정보 -->
-                                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="product-description-body">
                                     	<h3>배송/교환/환불/판매자정보</h3>
                                     	Notice<br>
@@ -1118,29 +1136,53 @@
                                  <!-- 리뷰게시판 -->
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                     <div class="product-review-body">
+                                    
+                                    <!-- 리뷰쓰기 -->
+                                    <div class="inquiries_writing">
+	                                    <c:if test="${ not empty member }">
+	                                    	<input class="i_btn_writing" type="button" value="리뷰쓰기" onclick="insert_reviews_form();">
+	                                    </c:if>
+                                    </div>
+                                   
+                                    <!-- Data없는경우 -->
+                                	<c:if test="${ empty reviews_list }">
+                                		<tr>
+                                			<td colspan="5">
+                                				<div id="i_empty_message">게시물이 없습니다</div>
+                                			</td>
+                                		</tr>
+                                	</c:if>
 									
-									<form class="mb-3" name="myform" id="myform" method="post">
-									    <fieldset>
-											<span class="text-bold">별점을 선택해주세요</span>
-											<input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
-											<input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
-											<input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
-											<input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
-											<input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
-										</fieldset>
-										<div>
-											<textarea class="c_content" type="text" id="reviewContents" placeholder="별점을 주세요"></textarea>
-											<input id="comment_btn" class="btn btn-primary btn-sm" type="button" value="리뷰" onclick="add_comment();">
-									    </div>
-                           			</form>
+									
+									<!-- Data있는 경우 -->
+                                    <c:forEach var="vo" items="${ reviews_list }">
+										<div class="blog-comment mt-0">
+		                                    <h4 class="heading">리뷰</h4>
+			                                    <div class="blog-comment-item relpy-item">
+				                                    <div class="blog-comment-img">
+				                                    	<img src="${ pageContext.request.contextPath }/resources/assets/images/blog/avatar/1-1-120x120.png" alt="User Image">
+				                                    </div>
+				                                    <div class="blog-comment-content">
+					                                    <div class="user-meta">
+					                                   			<h2 class="user-name"><a href="reviews?reviews_id=${ vo.reviews_id }">${ vo.reviews_title }</a></h2>
+					                                    	<span class="date">${ vo.reviews_register_date }</span>
+					                                    </div>
+				                                    		<p class="user-comment">${ vo.reviews_content }</p>
+				                                    		<a class="btn btn-custom-size comment-btn style-2" href="javascript:void(0);">Reply</a>
+				                                    </div>
+			                                    </div>
+	                                    </div>
+	                                    <hr>
+									</c:forEach>
+										
+										<div class="r_page_menu">
+											${ revi_pageMenu }
+										</div>
+									
                                 	</div>
                                 </div>
-                                
-                                
-                                
-                            
-                                
-                                <div class="tab-pane fade" id="inquiries" role="tabpanel" aria-labelledby="reviews-tab">
+  
+                                <div class="tab-pane fade show active" id="inquiries" role="tabpanel" aria-labelledby="reviews-tab">
                                     <div class="product-review-body">
                                     
                                     <!-- 문의게시판 -->	
@@ -1151,24 +1193,25 @@
                                     		
                                     		<!-- 문의하기 -->
                                     		<div class="inquiries_writing">
-                                    			<input class="i_btn_writing" type="button" value="문의하기" onclick="insert_form();">
+	                                    		<c:if test="${ not empty member }">
+	                                    			<input class="i_btn_writing" type="button" value="문의하기" onclick="insert_form();">
+	                                    		</c:if>
                                     		</div>
-                                    		
+                                    		<!--  
                                     		<div class="i_select_box">
                                     			<div class="i_select">
                                     				<select id="search">
-                                    					<option class="all">전체</option>
-                                    					<option class="type">종류</option>
-                                    					<option class="title">제목</option>
-                                    					<option class="content">내용</option>
-                                    					<option class="title_content">제목+내용</option>
-                                    					<option class="regdate">작성일자</option>
+                                    					<option value="all">전체</option>
+                                    					<option value="title">제목</option>
+                                    					<option value="regdate">작성일자</option>
                                     				</select>
+                                    				 
                                     					<input id="search_text" value="" placeholder="검색어를 입력하세요">
                                     					<input class="btn btn-primary btn-sm" type="button" value="검색" onclick="find();">
+                                    			
                                     			</div>
                                     		</div>
-                                    		
+                                    		 -->
                                     		<div class="inquiries_info">
                                     			<table class="table">
                                     				<tr class="inquiries_table">
@@ -1188,12 +1231,12 @@
                                     				</c:if>
                                     				
                                     				<!-- Data있는 경우 -->
-                                    				<c:forEach var="vo" items="${ list }">
+                                    				<c:forEach var="vo" items="${ list }" varStatus="i">
                                     					<tr>
-                                    						<td class="i_list_on">${ vo.inquiries_id }</td>
-                                    						<td class="i_list_on">${ vo.inquiries_title }</td>
+                                    						<td class="i_list_on">${ i.count }</td>
+                                    						<td class="i_list_on"><a href="view?inquiries_id=${ vo.inquiries_id }">${ vo.inquiries_title }</a></td>
                                     						<td class="i_list_on">${ vo.inquiries_answer_yn }</td>
-                                    						<td class="i_list_on">${ fn:substring(vo.inquiries_register_date,0,16) }</td>
+                                    						<td class="i_list_on">${ vo.inquiries_register_date }</td>
                                     					</tr>
                                     					
                                     					
@@ -1205,7 +1248,7 @@
                                     			
                                     		</div>
                                     		
-                                    			<div class="b_page_menu">
+                                    			<div class="r_page_menu">
 													${ pageMenu }
 												</div>
                                     	</div>
@@ -1818,6 +1861,7 @@
     <!--Main JS (Common Activation Codes)-->
     <script src="${ pageContext.request.contextPath }/resources/assets/js/main.js"></script>
     <script src="${ pageContext.request.contextPath }/resources/assets/js/board/board.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/board/reviews.js"></script>
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

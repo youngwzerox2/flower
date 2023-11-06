@@ -1,4 +1,4 @@
-package com.flower.dao;
+package com.flower.service;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import com.flower.vo.InquiriesVO;
 import com.flower.vo.ReviewsVO;
 
-public interface ReviewsDAO {
+public interface ReviewsService {
 	
 	List<ReviewsVO> selectList();
 	List<ReviewsVO> selectList(Map map);

@@ -33,25 +33,20 @@
     <h2 class="heading">문의</h2>
        <form class="feedback-form" id="send_form">
            <!-- <div class="group-input"></div> -->
-              <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="inquiries_id" id="inquiries_id" placeholder="inquiries_id" class="input-field">
-               </div>
-               <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="member_id" id="member_id" placeholder="member_id" class="input-field">
-               </div>
-               <div class="form-field">
-                   <input type="text" name="inquiries_category" id="inquiries_category" placeholder="inquiries_category" class="input-field">
-               </div>
-           
            <div class="form-field mt-30">
                <input type="text" name="inquiries_title" id="inquiries_title" placeholder="inquiries_title" class="input-field">
            </div>
            <div class="form-field mt-30">
                <textarea name="inquiries_cotent" id="inquiries_cotent" placeholder="inquiries_cotent" class="textarea-field"></textarea>
            </div>
+           
+           <div class="form-field mt-30">
+               <textarea name="inquiries_answer_content" id="inquiries_answer_content" placeholder="inquiries_cotent" class="textarea-field"></textarea>
+           </div>
+           
            <div class="button-wrap pt-5" style="margin-top: 10px;">
-              <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" id="send">
-              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+              <input type="button" value="수정하기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="send(this.form);">
+              <input type="button" value="목록보기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
            </div>
        </form>
    </div>

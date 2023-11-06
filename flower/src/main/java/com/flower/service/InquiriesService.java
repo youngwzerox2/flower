@@ -10,7 +10,7 @@ public interface InquiriesService {
 	
 	List<InquiriesVO> selectList();
 	List<InquiriesVO> selectList(Map map);
-	InquiriesVO selectOne(int inquiries_id);
+	InquiriesVO selectOne(String inquiries_id);
 	
 	//전체 게시물 갯수
 	int selectRowTotal();
@@ -25,7 +25,7 @@ public interface InquiriesService {
 	int update(InquiriesVO vo);
 	
 	//삭제
-	int delete(int Inquiries_id);
+	int delete(String Inquiries_id);
 	
 	//Mypage selectMyList
 	List<InquiriesVO> selectMyList(MemberVO vo);
