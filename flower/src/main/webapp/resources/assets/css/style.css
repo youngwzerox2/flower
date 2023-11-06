@@ -5402,6 +5402,7 @@ blockquote p {
 .myaccount-orders .table th {
   vertical-align: middle;
   text-align: center;
+  height : 55px;
 }
 .myaccount-orders .small-title {
   margin-bottom: 15px;
@@ -5621,8 +5622,8 @@ textarea {
 	padding: 1px 1px;
 	word-break:break-word;
 	font-size : 0.9rem;
-	white-space:pre-line;
 	max-width: 100% !important;
+	
 }
 
 #account-password .passwordsubmit{
@@ -5644,11 +5645,81 @@ textarea {
 }
 
 .rightbtn:focus{
-	background: #b6cbb6;
+	background: #abd373;
 }
 
 
+.table_row{
+	display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px #7F858F solid;
+    font-size: 13px;
+    border-color: #d9d9d9;
+}
 
+#addAddressForm .modal-body ul.tr{
+	text-align: left;
+}
+
+#addAddressForm .modal-body ul{
+	display: table-row;
+	width : 100%;
+}
+
+#addAddressForm .modal-body ul>li{
+	display: table-cell;
+    vertical-align: middle;
+    word-break: break-all;
+    box-sizing: border-box;
+    padding: 10px;
+    border-right: 1px #ddd solid;
+    border-top: 1px #ddd solid;
+    padding: 5px 10px;
+}
+.size100{
+	width: 100%;
+}
+
+.stitle{
+	padding: 10px 0 8px;
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #333;
+    margin-top: -13px;
+    margin-bottom: 10px;
+    
+}
+
+.table_row .td select{
+	border: 1px solid #d9d9d9;
+}
+
+#addAddressForm .modal-body ul>li.th{
+	width : 86px;
+	background: #f8f8f8;
+	text-align: center;
+}
+
+#addAddressForm .modal-body input[type='text']{
+	font-size: 15px;
+    color: #808080;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 3px 0;
+    height: 40px !important;
+}
+
+.modal-footer {
+	justify-content : center;
+}
+
+#saveaddress{
+	background : #abd373;
+	border: none;
+}
 /*----------------------------------------*/
 /*  23. Login Register
 /*----------------------------------------*/
@@ -6152,12 +6223,13 @@ textarea {
 }
 
 .checkbox-form h3 {
-  border-bottom: 1px solid #dee2e6;
   font-size: 25px;
-  margin: 0 0 25px;
+  margin: 0 0 2px;
   padding-bottom: 10px;
   text-transform: uppercase;
   width: 100%;
+  font-weight: bold;
+  
 }
 @media (max-width: 991px) {
   .checkbox-form h3 {
@@ -6175,7 +6247,7 @@ textarea {
   padding: 0 0 0 15px;
 }
 .checkbox-form .checkout-form-list {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .checkbox-form .checkout-form-list input[type=text],
 .checkbox-form .checkout-form-list input[type=password],
@@ -6252,6 +6324,9 @@ textarea {
 .your-order {
   background: #f1f1f1;
   padding: 30px 40px 30px;
+  position: sticky;
+  top: 145px;
+}
 }
 .your-order h3 {
   border-bottom: 1px solid #dee2e6;
@@ -6260,6 +6335,7 @@ textarea {
   text-transform: uppercase;
   width: 100%;
 }
+
 @media (max-width: 767px) {
   .your-order h3 {
     font-size: 18px;
@@ -6348,6 +6424,183 @@ textarea {
   background-color: #abd373;
   color: #ffffff;
 }
+
+#myaddressTab .nav-link{
+	color : black;
+	background-color : #f1f1f1;
+}
+
+#myaddressTab .nav-item.show .nav-link, #myaddressTab .nav-link.active {
+	background-color : #abd373;
+}
+
+#myaddressTab li:nth-child(2) {
+	padding-left : 15px;
+}
+
+.ul_delivery > li {
+	padding: 10px 20px !important;
+    border-top: 0;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.ul_delivery .list {
+    margin: 0;
+}
+
+.ul_delivery .label {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    color: #808080;
+}
+
+.ul_delivery .list > li {
+    position: relative;
+    padding: 5px 0 5px 88px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #4d4d4d;
+}
+
+.list_01{
+	border-bottom: 1px solid #d9d9d9;
+}
+
+.list_01 li{
+	position: relative;
+    padding: 13px 20px 13px 160px !important;
+    font-size: 14px;
+    color: #808080;
+    border-top: 1px solid #d9d9d9;
+}
+
+.list_01 .label{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 145px;
+    color: #4d4d4d;
+    background-color: #f7f7f7;
+    border-right: 1px solid #d9d9d9;
+}
+
+.list_01 .label span{
+	position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.list_01 input[type='text']{
+	height: 40px;
+    text-indent: 13px;
+    text-align: left !important;
+    font-size: inherit;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.row .nav-tabs{
+	border : none;
+}
+
+.checkbox-form .tab-content {
+	padding-top:15px;
+}
+
+.list_01 button{
+	margin-left: 3px;
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    color: #009a3e !important;
+    background-color: #d6e9b9!important;
+    border: 1px solid #9dc560 !important;
+}
+
+.addressli input[type='text']{
+ 	margin-top: 5px;
+}
+
+.cart_contents {
+    border-top: none;
+    margin-top: 10px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
+    float: none !important;
+    display: block;
+}
+
+.cart_contents .cart_goods{
+	border-top: 1px #ddd solid;
+}
+
+.cart_list .block1 {
+    padding: 20px !important;
+}
+
+.cart_list .block{
+	display: table-cell;
+    vertical-align: top;
+    padding-left: 10px;
+    font-size: 13px;
+    line-height: 1.3;
+	float: none !important;
+    display: block;
+}
+
+.cart_list .goods_thumb {
+    width: 100%;
+    height: 120px;
+    border: 0;
+    border-radius: 4px;
+    max-width: 100%;
+    min-width: 50px;
+}
+
+.img_area{
+
+	width: 120px;
+    padding-right: 15px !important;
+   max-width: 120px;
+}
+
+.cart_list .block>ul>li{
+	display: table-cell;
+    vertical-align: top;
+}
+
+.cart_list .block1 > ul > li.option_area {
+    vertical-align: middle
+}
+
+.cart_list .goods_name {
+    padding-bottom : 20px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.cart_list {
+	border-bottom : 1px #ddd solid;
+	margin-bottom : 20px;
+}
+
+
+
+
 
 /*----------------------------------------*/
 /*  28. 404

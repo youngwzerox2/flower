@@ -21,4 +21,25 @@ public class MemberAddressServiceImpl implements MemberAddressService {
 		return dao.selectMemberAddress(vo);
 	}
 
+	@Override
+	public void addAddress(MemberAddressVO avo) {
+		dao.addAddress(avo);
+		
+	}
+
+	@Override
+	public void deleteAddress(Integer address_id) {
+		dao.deleteAddress(address_id);
+	}
+
+	@Override
+	public void updateAddress(MemberAddressVO avo) {
+		dao.updateAddress(avo);
+	}
+
+	@Override
+	public void replaceDefaultAddress(MemberAddressVO avo) {
+		dao.replaceDefaultAddress(avo);
+	}
+
 }

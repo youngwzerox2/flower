@@ -5,12 +5,29 @@
 
 <!-- Mypage MemberAddressList -->
 <select id ="MemberAddressList" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.MemberAddressVO">
-	select ma.type, ma.RECIPIENT_NAME, ma.RECIPIENT_ADDRESS, ma.RECIPIENT_TEL, ma.DEFAULT_DELIVERY_ADDRESS, ma.POSTAL_CODE
+	select ma.type, ma.RECIPIENT_NAME, ma.RECIPIENT_ADDRESS, ma.RECIPIENT_TEL, ma.DEFAULT_DELIVERY_ADDRESS, ma.POSTAL_CODE, ma.recipient_detailaddress, ma.address_id
 	from member m join member_address ma
 	where m.MEMBER_ID  = #{member_id}
 </select>
 
 
+<insert id="MemberAddAddress" parameterType="com.flower.vo.MemberAddressVO">
+	insert into member_address(member_id, recipient_name, postal_code, recipient_address, recipient_detailaddress, recipient_tel, default_delivery_address, type)
+	values (#{member_id}, #{recipient_name}, #{postal_code}, #{recipient_address}, #{recipient_detailaddress}, #{recipient_tel}, #{default_delivery_address}, #{type})
 
+</insert>
+
+<delete id="MemberDeleteAddress" parameterType="Integer">
+	delete from member_address where address_id = #{address_id}
+</delete>
+
+<update id="MemberUpdateAddress" parameterType="com.flower.vo.MemberAddressVO">
+	update member_address set recipient_name = #{recipient_name}, postal_code = #{postal_code}, recipient_address = #{recipient_address}, recipient_detailaddress = #{recipient_detailaddress}, recipient_tel = #{recipient_tel}, default_delivery_address = #{default_delivery_address}, type = #{type}
+	where address_id = #{address_id}
+</update>
+
+<update id="replaceDefaultAddress">
+update member_address set DEFAULT_DELIVERY_ADDRESS = 0 where MEMBER_ID = #{member_id} and DEFAULT_DELIVERY_ADDRESS = 1
+</update>
 
 </mapper>

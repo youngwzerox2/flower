@@ -104,7 +104,7 @@
 												<tr>
 											</c:if>
 												<td>
-													<a href ="#"><img src ="/flower/resources/product/imgs/list/${img.product_image_file_name}.jpg"></a>
+													<a href ="#"><img src ="/flower/resources/product/imgs/list/${img.product_image_file_name}"></a>
                                     				<div>${img.product_name} </div>
                                     				<div>${img.product_price}원 </div>
 												</td>
@@ -144,7 +144,7 @@
                                                         	<ul class = "orders_product_info">
                                                         		<li class = 'orders_product_info_img'>
                                                         			<div class = 'wrphover'>
-                                                        				<img src = '/flower/resources/product/imgs/list/${order.product_image_file_name}.jpg'>
+                                                        				<img src = '/flower/resources/product/imgs/list/${order.product_image_file_name}'>
                                                         			</div>
                                                         		</li>
                                                         		<li class = "orders_product_info_num">
@@ -171,7 +171,7 @@
                                                         			<ul class = "orders_product_info">
                                                         			<li class = 'orders_product_info_img'>
                                                         			<div class = 'wrphover'>
-                                                        				<img src = '/flower/resources/product/imgs/list/${order.product_image_file_name}.jpg'>
+                                                        				<img src = '/flower/resources/product/imgs/list/${order.product_image_file_name}'>
                                                         			</div>
                                                         			</li>
                                                         			<li class = "orders_product_info_num">
@@ -238,52 +238,82 @@
                                 <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
                                     <div class="myaccount-orders (address)">
                                     	<h4 class="small-title">나의 배송지</h4>
-                                    		<button class = 'btn rightbtn btn-primary' id = 'add-address' data-bs-toggle = 'modal' data-bs-target="#addAddressForm" ><span>배송지 추가</span></button>
-                                    		<div class="modal fade" id="addAddressForm" tabindex="-1" aria-labelledby="addAddressFormlabel" aria-hidden="true">
-  	<div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addAddressFormlabel">배송지 추가/수정</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form id = 'in_Address' method='post'>
-      	<div>
-      		<h5>자주쓰는 배송지는 최대 10개까지 등록할 수 있습니다.</h5>
-      	<div>
-      		<ul>
-      			<li>그룹</li>
-      			<li>
-      				<div>
-      					<select>
-      						<option>집</option>
-      						<option>회사</option>
-      						<option>기타</option>
-      					</select>
-      				</div>
-      			<input type = 'text' name = 'address_group' class = 'mb5' size = '20' maxlength='20'>
-      			</li>
-      		</ul>
-      	</div>	
-      		
-      		
-      	</div>
-      
-      </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">수정하기</button>
-      </div>
-    </div>
-  </div>
-</div>
+                                    	<button class = 'btn rightbtn btn-primary' id = 'add-address' data-bs-toggle = 'modal' data-bs-target="#addAddressForm" ><span>배송지 추가</span></button>
+                                    	<div class="modal fade" id="addAddressForm" tabindex="-1" aria-labelledby="addAddressFormlabel" data-bs-keyboard="false" 	data-bs-backdrop="static" aria-hidden="true">
+  											<div class="modal-dialog">
+   											 	<div class="modal-content">
+      												<div class="modal-header">
+       													 <h5 class="modal-title" id="addAddressFormlabel">배송지 추가/수정</h5>
+      													  <button type="button" id = 'closeForm' class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     												 </div>
+     											 <div class="modal-body">
+     											 <form id = 'in_Address' method='post' action = '/flower/mypage/in_Address'>
+      												<div>
+      													<input type = hidden id = 'address_id' name = 'address_id'>
+      													<h5 class = 'stitle'>자주쓰는 배송지는 최대 10개까지 등록할 수 있습니다.</h5>
+      													<div class = 'table_row'>
+      														<ul class = 'tr'>
+      															<li class = 'th'>그룹</li>
+      															<li class = 'td'>
+      																<div>
+      																	<select id = 'selectType' >
+      																		<option value = '집'>집</option>
+      																		<option value = '회사'>회사</option>
+      																		<option value = '기타'>기타</option>
+      																	</select>
+      																</div>
+      																<input id = 'addressType' type = 'text' name = 'type' class = 'mb5' size = '20' maxlength='20' value = '집' readonly>
+      																<div>
+      																	<label>
+      																		<input type = 'checkbox' name='default_delivery_address' value = '1' id = 'default_delivery_address'>
+      																		<span>기본 배송지로 지정</span>
+      																	</label>
+      																</div>
+      															</li>
+      														</ul>
+      														<ul class = 'tr'>
+      															<li class = 'th'>받는 분</li>
+      															<li>
+      																<input id = 'recipient_name' name = 'recipient_name' type = 'text' size = '20'>
+      																<input type = 'hidden' value = '${member.member_id}' name = 'member_id'>
+      															</li>
+      														</ul>
+      														<ul class = 'tr'>
+      															<li class = 'th'>주소</li>
+      															<li>
+      																<input type = 'text' readonly style = 'width : 90px;' id = 'Mypage-postcode' name = 'postal_code'>
+      																<button type = 'button' style = 'height: 40px; border: 1px solid #d9d9d9;' id = 'searchpost' name = 'postal_code'>우편번호 검색</button>
+      																<div>
+      																	<input class = size100 type = 'text' id = 'Mypage-address' name = 'recipient_address' readonly>
+      																</div>
+      																<div>
+      																	<input class = size100 type = 'text' id = 'Mypage-detailaddress' name = 'recipient_detailaddress' placeholder = '상세 주소'>
+      																</div>
+      															</li>
+      														</ul>
+      														<ul class = 'tr'>
+      															<li class = 'th'>휴대폰번호</li>
+      															<li>
+      																<input type = 'text' id = 'recipient_tel' name = 'recipient_tel' placeholder = '-포함'>
+      															</li>
+      														</ul>
+      													</div>	
+     											 	</div>
+     											 </form>
+     										 </div>
+    										  <div class="modal-footer">
+     											   <button type="button" class="btn btn-primary" id = 'saveaddress'>추가하기</button>
+     										 </div>
+    										</div>
+ 										 </div>
+									</div>
                                     	<c:if test="${empty memberaddress}">
                                     	<div>
                                         	나의 배송지가 없습니다.
                                         </div>
                                         </c:if>
                                         <c:if test="${not empty memberaddress}">
-                                    	<div class="table-responsive">
+                                    	<div>
                                             <table class="table table-bordered table-hover">
                                                 <tbody>
                                                     <tr>
@@ -297,12 +327,15 @@
                                                     <tr>
                                                         <td>${address.type}</td>
                                                         <td>${address.recipient_name}</td>
-                                                        <td>[${address.postal_code}] ${address.recipient_address}</td>
+                                                        <td>
+                                                        <span>[${address.postal_code}]</span><span>${address.recipient_address}</span><br/><span>${address.recipient_detailaddress}</span></td>
                                                         <td>${address.recipient_tel}</td>
-                                                        <td><a href="#" class="btn btn-dark"><span>수정</span></a>
-                                                        	<a href="#" class="btn"><span>삭제</span></a>
+                                                        <td><a class="updateAddress btn btn-dark"><span>수정</span></a>
+                                                        	<a class="deleteAddress btn btn-light"><span>삭제</span></a>
                                                         </td>
                                                     </tr>
+                                                    <input type = 'hidden' value = '${address.address_id}' name = 'address_id' id = "mypage_address_id">
+                                                    <input type = 'hidden' value = '${address.default_delivery_address}' name = 'mypage_default_delivery_address' id = "mypage_default_delivery_address">
                                                    </c:forEach>
                                                 </tbody>
                                             </table>
@@ -540,6 +573,7 @@
     <script src="/flower/resources/assets/js/plugins/ion.rangeSlider.min.js"></script>
     <script src="/flower/resources/assets/js/plugins/mailchimp-ajax.js"></script>
     <script src="/flower/resources/assets/js/plugins/jquery.counterup.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!--Main JS (Common Activation Codes)-->
     <script src="/flower/resources/assets/js/main.js"></script>

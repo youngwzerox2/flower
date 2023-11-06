@@ -9,4 +9,16 @@ public interface MemberAddressDAO {
 
 	//Mypage select MemberAddress
 	public List<MemberAddressVO> selectMemberAddress(MemberVO vo);
+	
+	//Mypage insert MemberAddress
+	public void addAddress(MemberAddressVO vo);
+	
+	//Mypage delete MemberAddress
+	public void deleteAddress(Integer address_id);
+	
+	//Mypage update MemberAddress
+	public void updateAddress(MemberAddressVO vo);
+	
+	//Mypage replaceDefaultAddres
+	public void replaceDefaultAddress(MemberAddressVO avo);
 }
