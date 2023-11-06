@@ -7,4 +7,27 @@
 		VALUES (#{member_id}, #{product_id}, #{shopping_cart_product_quantity})
 	</insert>
 	
+	<select id="getCartList" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.ShoppingCartVO">
+		SELECT sc.shopping_cart_id, sc.member_id, sc.PRODUCT_ID, pi2.product_name, pi2.product_price, sc.SHOPPING_CART_PRODUCT_QUANTITY, pi2.PRODUCT_IMAGE_FILE_NAME 
+		FROM shopping_cart sc
+		INNER JOIN (
+		SELECT img.product_image_file_name, p.product_name, p.product_price, p.product_id
+		FROM product_image img
+		INNER JOIN product p
+		ON img.product_id = p.product_id
+		WHERE img.product_image_froute = 'list'
+		AND img.product_image_file_name LIKE '%1.%g'
+		) pi2
+		ON sc.PRODUCT_ID = pi2.PRODUCT_ID
+		WHERE member_id = #{member_id}
+	</select>
+	
+	<select id="getCartTotal" parameterType="com.flower.vo.MemberVO" resultType="Integer">
+		SELECT sum(p.product_price * sc.SHOPPING_CART_PRODUCT_QUANTITY) total_cart
+		FROM product p
+		INNER JOIN shopping_cart sc
+		ON p.PRODUCT_ID = sc.PRODUCT_ID
+		WHERE sc.MEMBER_ID = #{member_id} 
+	</select>
+	
 </mapper>

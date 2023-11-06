@@ -26,6 +26,7 @@ public class MemberDAOImpl implements MemberDAO{
 		//System.out.println(vo.toString());
 		
 		MemberVO result = mybatis.selectOne("memberDAO.login", vo);
+		
 		System.out.println(result);
 		
 		return result;

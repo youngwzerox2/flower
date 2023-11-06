@@ -12,25 +12,29 @@
  		prod_id = $('#product_id').val();
  		prod_quan = $('#product_quantity').val();
  		$.ajax({
- 			type: 'POST',
+ 			type: 'GET',
  			url: '/flower/cart?product_id=' + prod_id,
  			data: {
  				shopping_cart_product_quantity: prod_quan
  			},
  			success: function(result){
- 				if(confirm('장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?')) { 				
- 					//'http://localhost:8080/flower/WEB-INF/views/cart/cart.jsp';
- 					// ../../cart/cart.jsp >> 파일 [/cart/cart.jsp]을(를) 찾을 수 없습니다.
- 					// ../cart/cart.jsp >> /product/cart/cart.jsp
- 					location.href= '/flower/cart/cart';
+ 				if(confirm('장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?')) {
+ 					location.href = '/flower/cart/cart';
  				} else {
  					return false;
  				}				
  			},
  			error: function(error){
- 				console.log("err: " + error);
+ 				if(confirm('로그인이 필요한 서비스입니다. 로그인 하시겠습니까?')){
+ 					// 로그인 '창'으로 띄우고 싶지....만
+ 					location.href='/flower/member/login';
+ 					
+ 				} else {
+ 					return false;
+ 				}
  			}
- 		});
- 	}); 
+ 		}); // ajax end
+ 		
+ 	}); // #addCart.click end
  	
- }) //$(function(){})
+ }) // $(function(){}) end
