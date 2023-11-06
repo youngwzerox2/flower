@@ -30,10 +30,10 @@ public class ShoppingCartController {
 	
 	
 	
-	@RequestMapping("/cart/{page}")
-	public String viewPage(@PathVariable String page) {
-		return "/cart/"+page;
-	}
+	/*
+	 * @RequestMapping("/cart/{page}") public String viewPage(@PathVariable String
+	 * page) { return "/cart/"+page; }
+	 */
 	
 	
 	// 장바구니 담기
@@ -61,5 +61,14 @@ public class ShoppingCartController {
 		m.addAttribute("cartList", result);
 		m.addAttribute("cartTotal", cart_total);
 	} // getCartList()
+	
+	
+	// 장바구니에 담긴 각 상품 수량 조절
+	@RequestMapping("/updateCartQuan")
+	public void updateCartQuan(HttpSession sess, ShoppingCartVO scvo, Model m) {
+		MemberVO mvo = (MemberVO)sess.getAttribute("member");
+		
+		//System.out.println("controller 연결은 되었는가?" + mvo.getMember_id() + ", " + scvo.getShopping_cart_id() + ", " + scvo.getShopping_cart_product_quantity());
+	}
 	
 }
