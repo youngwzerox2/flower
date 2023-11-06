@@ -77,7 +77,8 @@
                                     <a id="account-products-tab" data-bs-toggle="collapse" href="#account-products_info" role="tab" aria-hidden="true">상품</a>
                                 </li>
                                 <li class = 'sub-nav-item collapse' id = "account-products_info" >
-                                	<a class="nav-link" id = account-products-tab data-bs-toggle="tab" role="tab" aria-controls="account-productsControll" href="#account-products" aria-expanded="false" style="text-align: right;">상품 관리</a>
+                                	<a class="nav-link" id="account-product-info-tab" data-bs-toggle="tab" role="tab" aria-controls="account-productsControll" href="#account-products" aria-expanded="false" style="text-align: right;">상품 관리</a>
+                                	<a class="nav-link" id="account-product-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-detail" href="#account-product-detail" aria-expanded="false" style="text-align: right; display: none;" >상품 관리 상세</a>
                                 	<a class="nav-link" id = account-inquiries-tab data-bs-toggle="tab" role="tab" aria-controls="account-inquiriesControll" href="#account-inquiries" aria-expanded="false" style="text-align: right;">문의 관리</a>
                                 	<a class="nav-link" id = account-reviews-tab data-bs-toggle="tab" role="tab" aria-controls="account-reviewsControll" href="#account-reviews" aria-expanded="false" style="text-align: right;">리뷰 관리</a>
                                 	<a class="nav-link" id = account-orders-tab data-bs-toggle="tab" role="tab" aria-controls="account-ordersControll" href="#account-orders" aria-expanded="false" style="text-align: right;">주문 관리</a>
@@ -107,7 +108,7 @@
 										<div class="widgets-searchbox">
 												<ul>								        
 													<li class="short">
-				                                        <select class="nice-select">
+				                                        <select class="nice-select" id="memberSelectbox">
 				                                            <option value="">전체</option>
 				                                            <option value="member_email">ID</option>
 				                                            <option value="member_name">고객명</option>
@@ -137,12 +138,10 @@
 								        <h4 class="small-title">회원 관리 상세</h4><br/>
 										<div class="widgets-searchbox">
 											<div class="table-responsive">
-											
 									            <div class="compare-table table-responsive">
 							                        <table class="table table-bordered table-hover mb-0">
 							                            <tbody id="memberDetail"></tbody>
 							                        </table>
-							                        
 							                        <div class="member-topbar" style="position:absoluted; padding-top: 20px; padding-left: 80%;">
 									                    <ul>
 									                    <li id="goMemberList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
@@ -158,23 +157,61 @@
 								</div>
                                 <div class="tab-pane fade" id="account-products" role="tabpanel" aria-labelledby="account-products-tab">
                                     <div class="myaccount-products">
-                                        <p>The following addresses will be used on the checkout page by default.</p>
-                                        <div class="row">
-                                            <div class="col">
-                                                <h4 class="small-title">BILLING ADDRESS</h4>
-                                                <address>
-                                                    1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem
-                                                </address>
-                                            </div>
-                                            <div class="col">
-                                                <h4 class="small-title">SHIPPING ADDRESS</h4>
-                                                <address>
-                                                    1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem
-                                                </address>
-                                            </div>
-                                        </div>
+                                        <h4 class="small-title">상품 관리</h4><br/>
+										<div class="widgets-searchbox">
+												<ul>								        
+													<li class="short">
+				                                        <select class="nice-select" id="productSelectbox">
+				                                            <option value="">전체</option>
+				                                            <option value="product_name">상품명</option>
+				                                            <option value="product_content">상품설명</option>
+				                                            <option value="product_state">상품노출여부</option>
+				                                        </select>
+			                                    	</li>
+			                                    	<li>
+		                                        	<input class="input-field" id="productSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+			                                    	</li>
+			                                    	<li>
+			                                        <button id="productSearchBtn" class="widgets-searchbox-btn" >
+			                                            <i class="fa fa-search"></i>
+			                                        </button>
+			                                    	</li>
+										        </ul>
+		                                </div>
+		                                <div style="position:absoluted;padding-top : 50px;padding-left: 90%; padding-bottom: 10px;">
+		                                	<ul>
+												<li id="registerProduct" class="mb-xs mt-xs mr-xs btn btn-primary"> 신규상품등록 </li>
+									        </ul>
+		                                </div>
+								        <div class="table-responsive">
+								            <table class="table table-bordered table-hover">
+								                <tbody id="productList"></tbody>
+								            </table>
+								        </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="account-product-detail" aria-labelledby="account-product-tab">
+								    <div class="myaccount-products">
+								        <h4 class="small-title">상품 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="productDetail"></tbody>
+							                        </table>
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 80%;">
+									                    <ul>
+									                    <li id="goProductList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goProductHide" class="mb-xs mt-xs mr-xs btn btn-danger"></li>
+									                    </ul>
+							                     	</div>
+							                        
+						                    	</div>
+									            
+									        </div>
+		                                </div>
+								    </div>
+								</div>
                                 <div class="tab-pane fade" id="account-setting" role="tabpanel" aria-labelledby="account-setting-tab">
                                     <div class="myaccount-setting">
                                         <form action="#" class="myaccount-form">
@@ -249,6 +286,32 @@
                 <div class="modal-footer">
                     <button id="btn-limitApproval" type="button" class="btn btn-danger" data-dismiss="modal">제한</button>
                     <button id="btn-closePopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<div id="popupVisibleModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">상품 노출 확인</h4>
+                </div>
+                <div class="widgets-searchbox">
+                    <table class="table table-bordered table-hover">
+					  <tr>
+					    <th> 노출 제한 대상</th>
+					    <td id="visibleProduct"></td>
+					    <td id="visibleStatus" style="display: none;"></td>
+					  </tr>
+					  <tr>
+					    <th colspan="2" style="color: #FF0000">* 실행 시 사용자 화면에서 해당 상품의 노출/숨김이 변경됩니다.</th>
+					  </tr>
+					</table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-visibleProduct" type="button" class="btn btn-danger" data-dismiss="modal"></button>
+                    <button id="btn-closeVisiblePopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
                 </div>
             </div>
         </div>

@@ -1,8 +1,11 @@
 package com.flower.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +23,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	/*
+	/* 
 	 * 작성자	: 백두산
 	 * 작성일	: 2023-11-01
 	 * 메서드	: adminMain
@@ -77,6 +80,43 @@ public class AdminController {
 		return adminService.limitMember(email);
 	}
 	
+	/*
+	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-06
+	 * 메서드	: searchProducts
+	 * 인자	: searchKey, searchValue
+	 * 반환	: List<AdminVO>
+	 * 설명	: 검색조건에 맞는 모든 상품 조회
+	 * */
+	@GetMapping("admin/searchProducts")
+	public List<AdminVO> searchProducts(String searchKey, String searchValue) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchKey", searchKey);
+		map.put("searchValue", searchValue);
+		return adminService.searchProducts(map);
+	}
 	
+	/*
+	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-06
+	 * 메서드	: searchProductDetail
+	 * 인자	: productId
+	 * 반환	: AdminVO
+	 * 설명	: 특정 상품 상세 조회
+	 * */
+	@GetMapping("admin/searchProductDetail")
+	public Map<String, List<?>> searchProductDetail(String productId) {
+		Map<String, List<?>> result = new HashMap<String, List<?>>();
+		List<AdminVO> product 	= new ArrayList<AdminVO>();
+		List<AdminVO> imgs 		= new ArrayList<AdminVO>();
+		
+		product = adminService.searchProductDetail(productId);
+		imgs	= adminService.searchProductImgs(productId);
+		
+		result.put("product", product);
+		result.put("imgs", imgs);
+		
+		return result;
+	}
 	
 }

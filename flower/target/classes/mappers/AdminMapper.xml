@@ -37,6 +37,50 @@
     	]]>
     </sql>
 
+	<sql id="productSQL">
+    	<![CDATA[
+	        WITH ADMIN_PRODUCTS AS (
+	            SELECT 
+					  P.PRODUCT_ID				AS PRODUCT_ID
+					, P.CATE_ID					AS CATE_ID
+					, P.PRODUCT_NAME			AS PRODUCT_NAME
+					, P.PRODUCT_CONTENT			AS PRODUCT_CONTENT
+					, P.PRODUCT_KEYWORD			AS PRODUCT_KEYWORD
+					, P.BLOOMING_SEASON			AS BLOOMING_SEASON
+					, P.BLOOMING_TIME			AS BLOOMING_TIME
+					, CASE
+						WHEN P.PET_FRIENDLY = 1 THEN "O"
+				    	ELSE "X"
+				  	END 						AS PET_FRIENDLY
+					, CASE
+						WHEN P.EASY_CARE = 1 THEN "O"
+				    	ELSE "X"
+				  	END 						AS EASY_CARE
+					, P.INVENTORY_QUANTITY		AS INVENTORY_QUANTITY
+					, P.PRODUCT_PRICE			AS PRODUCT_PRICE
+					, P.PRODUCT_REGISTER_DATE	AS PRODUCT_REGISTER_DATE
+					, P.PRODUCT_STATE			AS PRODUCT_STATE
+					, CASE 
+    					WHEN P.PRODUCT_LIGHT = "DL" THEN "직광"  
+    					WHEN P.PRODUCT_LIGHT = "IDL" THEN "간접광"  
+    					WHEN P.PRODUCT_LIGHT = "SH" THEN "그늘"  
+    					WHEN P.PRODUCT_LIGHT = "NM" THEN "일조량영향적음"  
+    					ELSE "알 수 없음"
+  					END AS PRODUCT_LIGHT
+					, L.LIKES					AS LIKES
+				FROM PRODUCT P
+		  LEFT OUTER JOIN (SELECT 
+							  PRODUCT_ID AS PRODUCT_ID 
+							, COUNT(MEMBER_ID) AS LIKES
+						     FROM LOVE
+					     GROUP BY PRODUCT_ID 
+						  ) L
+				  ON P.PRODUCT_ID = L.PRODUCT_ID 
+	        )
+    	]]>
+    </sql>
+    
+    <!-- 회원 영역  -->
     <!-- 검색 조건별 회원 조회 -->
     <select id="searchMembers" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
         <include refid="memberSQL" />
@@ -49,8 +93,9 @@
 	        	 , MEMBER_STATUS
 	        	 , REPORT_YN
 	          FROM ADMIN_MEMBERS
+	         WHERE 1=1
         <if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
-        	 WHERE ${searchKey} LIKE '%${searchValue}%'
+        	   AND ${searchKey} LIKE '%${searchValue}%'
         </if>
           ORDER BY MEMBER_REGISTER_DATE DESC
     </select>
@@ -74,10 +119,61 @@
 	       LIMIT 1
     </select>
 
+
     <!-- 특정 회원 이용 제한 -->
     <update id="limitMember" parameterType="String">
         UPDATE MEMBER
         SET MEMBER_STATUS = 'O'
         WHERE MEMBER_EMAIL = #{email}
     </update>
+    
+    <!-- 상품 영역  -->
+	<select id="searchProducts" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
+		<include refid="productSQL" />
+			SELECT PRODUCT_ID
+				 , PRODUCT_NAME
+				 , PRODUCT_CONTENT
+				 , INVENTORY_QUANTITY
+				 , PRODUCT_PRICE
+				 , PRODUCT_STATE
+				 , LIKES
+			  FROM ADMIN_PRODUCTS
+			 WHERE 1=1
+        <if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
+        	   AND ${searchKey} LIKE '%${searchValue}%'
+        </if>
+          ORDER BY INVENTORY_QUANTITY ASC
+	</select>
+	
+	 <select id="searchProductDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
+        <include refid="productSQL" />
+	        SELECT PRODUCT_ID
+	        	 , CATE_ID
+				 , PRODUCT_NAME
+				 , PRODUCT_CONTENT
+				 , PRODUCT_KEYWORD
+				 , BLOOMING_SEASON
+				 , BLOOMING_TIME
+				 , PET_FRIENDLY
+				 , EASY_CARE
+				 , INVENTORY_QUANTITY
+				 , PRODUCT_PRICE
+				 , PRODUCT_REGISTER_DATE
+				 , PRODUCT_STATE
+				 , PRODUCT_LIGHT
+				 , LIKES
+	        FROM ADMIN_PRODUCTS
+	       WHERE PRODUCT_ID = #{productId}
+	       LIMIT 1
+    </select>
+    
+    <select id="searchProductImgs" parameterType="String" resultType="com.flower.vo.AdminVO">
+    	SELECT PRODUCT_IMAGE_FILE_NAME
+    		 , PRODUCT_IMAGE_FLOWER_NAME
+    		 , PRODUCT_IMAGE_TYPE
+    		 , PRODUCT_IMAGE_FROUTE
+    	  FROM PRODUCT_IMAGE
+    	 WHERE PRODUCT_ID = #{productId}
+  	  ORDER BY PRODUCT_IMAGE_FROUTE ASC
+    </select>
 </mapper>

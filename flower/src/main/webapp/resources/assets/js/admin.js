@@ -3,7 +3,7 @@ $(function(){
 	// *********************************************
 	// *******************EVENT*********************
 	// *********************************************
-	// 회원 > 회원관리 버튼 클릭 이벤트
+	// 회원 > 회원관리 탭 클릭 이벤트
 	$("#account-member-info-tab").click(function(){
 		searchMembers();
 	});
@@ -42,22 +42,7 @@ $(function(){
 	// 회원 이용 제한 > 제한 버튼 클릭 이벤트
 	$(document).on("click", "#btn-limitApproval", function(){
 		let email = $("#limitEmail").text();
-		
-		$.ajax({
-			  type 		: "post"
-			, url		: "../admin/limitMember"
-			, data		: { email : email}
-			, success	: function(){
-				alert("회원 이용 제한이 처리 되었습니다.");
-				closeLimitPopup();
-				selectOneMember(email);
-			}
-			, 
-			error 	: function(err){
-				alert("회원 이용 제한 조치 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
-				console.log(err);
-			}
-		});
+		limitUser(email);
 	});
 	
 	// 회원 이용 제한 > 닫기 버튼 클릭 이벤트
@@ -70,10 +55,65 @@ $(function(){
 	    alert("신고내용 버튼 클릭");
 	});
 	
+	// 상품 > 상품관리 탭 클릭 이벤트
+	$("#account-products-tab").click(function(){
+		searchProducts();
+	});
 	
+	// 상품관리 > 돋보기 버튼 클릭 이벤트
+	$("#productSearchBtn").click(function(){
+		searchProducts();
+	});
+		
+    // 상품관리 > 엔터키 이벤트
+    $("#productSearchValue").on('keypress', function(e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            searchProducts();
+        }
+    });
+	
+	// 상품관리 > 상세보기 버튼 클릭 이벤트
+	$(document).on("click", ".productId", function() {
+	    let productId = $(this).text();
+	    selectOneProduct(productId);
+	    $("#account-product-info-detail-tab").tab('show');
+	});
+	
+	// 상품 관리 상세 > 목록 버튼 클릭 이벤트
+	$("#goProductList").on("click", function(){
+		$("#account-product-info-tab").tab('show');
+	});
+	
+	// 상품 관리 상세 > 상품노출거부 버튼 클릭 이벤트
+	$("#goProductHide").on("click", function(){
+		let proId 	= $("#productDetailId").text();
+		let proStat = $("#proVisiStatus").text();
+		openVisible(proId, proStat);
+	});
+	
+	// 상품 노출 확인 > 수정 버튼 클릭 이벤트
+	$(document).on("click", "#btn-visibleProduct", function(){
+		let proId = $("#visibleProduct").text();
+		visibleProduct(proId);
+	});
+	
+	// 상품 노출 확인 > 닫기 버튼 클릭 이벤트
+	$(document).on("click", "#btn-closeVisiblePopup", function(){
+		closeVisiblePopup();
+	});
 	// *********************************************
 	// ****************function*********************
 	// *********************************************
+	
+	// 숫자 형식화
+	function formatNumberWithCommas(number) {
+		if (number === null || number === undefined) {
+	    	return "0";
+	  	}
+	  	
+	  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
 	
 	// 회원 검색
 	function searchMembers(){
@@ -81,7 +121,7 @@ $(function(){
 			  type		: "get"
 			, url		: "../admin/searchMembers"
 			, data: {
-			      searchKey: $(".nice-select").val()
+			      searchKey: $("#memberSelectbox").val()
 			    , searchValue: $("#memberSearchValue").val()
 			}
 			, dataType 	: "json"
@@ -186,5 +226,197 @@ $(function(){
 		searchMembers();
 	}
 	
+	// 이용자 사용 제한
+	function limitUser(email){
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/limitMember"
+			, data		: { email : email}
+			, success	: function(){
+				alert("회원 이용 제한이 처리 되었습니다.");
+				closeLimitPopup();
+				selectOneMember(email);
+			}
+			, 
+			error 	: function(err){
+				alert("회원 이용 제한 조치 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
 	
+	// 상품 조회
+	function searchProducts(){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchProducts"
+			, data: {
+			      searchKey: $("#productSelectbox").val()
+			    , searchValue: $("#productSearchValue").val()
+			}
+			, dataType 	: "json"
+			, success 	: function(result){
+				let productList = $("#productList");
+				productList.empty();
+				
+				productList.append("<tr style='background-color: #f6f7fb'><th style='text-align: center'>상품ID</th style='text-align: center'><th style='text-align: center'>상품명</th style='text-align: center'><th style='text-align: center'>상품설명</th style='text-align: center'><th style='text-align: center'>가격</th><th style='text-align: center'>좋아요</th><th style='text-align: center'>재고</th><th style='text-align: center'>상품노출여부</th></tr>");
+				
+				if (result && result.length > 0) {
+	                for (row of result) {
+	                    let tr 				= $("<tr/>");
+	                    let productId 		= $("<td/>").append($("<a class='productId' style='color:blue; text-decoration:underline; display: block; text-align: center;'/>").text(row["product_id"]).hover(function() { $(this).css("cursor", "pointer"); }));
+	                    let productName 	= $("<td style='text-align: center'/>").html(row["product_name"]);
+	                    let productContent	= $("<td style='text-align: center'/>").html(row["product_content"]);
+	                    let productPrice 	= $("<td style='text-align: right'/>").html(formatNumberWithCommas(row["product_price"]));
+	                    let productLikes	= $("<td style='text-align: right'/>").html(formatNumberWithCommas(row["likes"]));
+	                    let productQuantity = $("<td style='text-align: center'/>").html(formatNumberWithCommas(row["inventory_quantity"]));
+	                    let productState	= $("<td style='text-align: center'/>").html(row["product_state"]);
+	
+	                    tr.append(productId);
+	                    tr.append(productName);
+	                    tr.append(productContent);
+	                    tr.append(productPrice);
+	                    tr.append(productLikes);
+	                    tr.append(productQuantity);
+	                    tr.append(productState);
+	
+	                    productList.append(tr);
+	                }
+	            } else {
+	                productList.append("<tr><td colspan='7' style='text-align: center'>데이터가 존재하지 않습니다.</td></tr>");
+	            }
+				
+			}
+			, error 	: function(err){
+				alert("상품 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 상품 상세 조회
+	function selectOneProduct(productId){
+    	$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchProductDetail"
+			, data: { productId: productId }
+			, dataType 	: "json"
+			, success 	: function(result){
+				let product = result.product;
+				let imgs 	= result.imgs;
+				let productDetail = $("#productDetail");
+				productDetail.empty();
+				
+				if (product && product.length > 0) {
+	                for (row of product) {
+	                    let pId			= $("<tr/>").append($("<th>상품ID</th>")).append($("<td id='productDetailId' colspan='2'/>").html(row["product_id"]));
+		                let pcateId 	= $("<tr/>").append($("<th>카테고리ID</th>")).append($("<td colspan='2'/>").html(row["cate_id"]));
+		                let pName	 	= $("<tr/>").append($("<th>상품명</th>")).append($("<td colspan='2'/>").html(row["product_name"]));
+		                let pContent	= $("<tr/>").append($("<th>상품설명</th>")).append($("<td colspan='2'/>").html(row["product_content"]));
+		                let pKeyword	= $("<tr/>").append($("<th>상품키워드</th>")).append($("<td colspan='2'/>").html(row["product_keyword"]));
+		                let pBloSeason	= $("<tr/>").append($("<th>개화시기</th>")).append($("<td colspan='2'/>").html(row["blooming_season"]));
+		                let pBloTime	= $("<tr/>").append($("<th>개화시간</th>")).append($("<td colspan='2'/>").html(row["blooming_time"]));
+		                let pPetFriend	= $("<tr/>").append($("<th>펫친화여부</th>")).append($("<td colspan='2'/>").html(row["pet_friendly"]));
+		                let pEasyCare	= $("<tr/>").append($("<th>초보자여부</th>")).append($("<td colspan='2'/>").html(row["easy_care"]));
+		                let pQuantity	= $("<tr/>").append($("<th>재고수량</th>")).append($("<td colspan='2'/>").html(formatNumberWithCommas(row["inventory_quantity"])));
+		                let pPrice		= $("<tr/>").append($("<th>상품가격</th>")).append($("<td colspan='2'/>").html(formatNumberWithCommas(row["product_price"])));
+		                let pRegDate	= $("<tr/>").append($("<th>상품등록일</th>")).append($("<td colspan='2'/>").html(row["product_register_date"]));
+		                let pState		= $("<tr/>").append($("<th>상품노출여부</th>")).append($("<td id='proVisiStatus' colspan='2'/>").html(row["product_state"]));
+		                let pLight		= $("<tr/>").append($("<th>상품채광</th>")).append($("<td colspan='2'/>").html(row["product_light"]));
+		                let pLikes		= $("<tr/>").append($("<th>좋아요</th>")).append($("<td colspan='2'/>").html(formatNumberWithCommas(row["likes"])));
+		                
+		                productDetail.append(pId);
+		                productDetail.append(pRegDate);
+		                productDetail.append(pcateId);
+		                productDetail.append(pName);
+		                productDetail.append(pContent);
+		                productDetail.append(pKeyword);
+		                productDetail.append(pBloSeason);
+		                productDetail.append(pBloTime);
+		                productDetail.append(pPetFriend);
+		                productDetail.append(pLight);
+		                productDetail.append(pEasyCare);
+		                productDetail.append(pPrice);
+		                productDetail.append(pQuantity);
+		                productDetail.append(pLikes);
+		                productDetail.append(pState);
+		                
+		                if(row["product_state"] == "Y"){
+            				$("#goProductHide").text(" 상품노출거부 ");
+            			}else{
+            				$("#goProductHide").text(" 상품노출희망 ");
+            			}
+	                }
+	                
+	            }
+	            
+	           	let imgRow = $("<tr rowspan='4'/>")
+				  .append($("<th>상품 이미지</th>"))
+				  .append(
+				    $("<td>").append(
+				      $("<table border='2'>")
+				        .append($("<tr>").append("<td style='border: 1px solid #000000;'>가이드</td>").append("<td id='pGuide'/>"))
+                        .append($("<tr>").append("<td style='border: 1px solid #000000;'>리스트</td>").append("<td id='pList' />"))
+                        .append($("<tr>").append("<td style='border: 1px solid #000000;'>메인</td>").append("<td id='pMain'/>"))
+                        .append($("<tr>").append("<td style='border: 1px solid #000000;'>서브</td>").append("<td id='pSub'/>"))
+				    )
+				);
+	            
+	            productDetail.append(imgRow);
+	            
+	            if (imgs && imgs.length > 0) {
+	                for (row of imgs) {
+	                    let img = $("<img>").attr("src", "../resources/product/imgs/" + row["product_image_froute"] + "/" + row["product_image_file_name"]);
+	                    switch (row["product_image_froute"]) {
+	                        case "guide":
+	                            $("#pGuide").append($("<td/>").append(img));
+	                            break;
+	                        case "list":
+	                            $("#pList").append($("<td/>").append(img));
+	                            break;
+	                        case "main":
+	                            $("#pMain").append($("<td/>").append(img));
+	                            break;
+	                        case "sub":
+	                            $("#pSub").append($("<td/>").append(img));
+	                            break;
+	                        default:
+	                            break;
+	                    }
+	                }
+            	}
+            	
+			}
+			, error 	: function(err){
+				alert("상품 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+			
+		});
+	}
+	
+	// 상품 상세 > 팝업 오픈
+	function openVisible(proId, proStat) {
+        $("#visibleProduct").text(proId);
+        $("#visibleStatus").text(proStat);
+        if(proStat == "Y"){
+        	$("#btn-visibleProduct").text("숨김");
+        }else{
+        	$("#btn-visibleProduct").text("노출");
+        }
+        
+        $("#popupVisibleModal").modal("show");
+    }
+
+	// 상품 노출 확인 > 수정 버튼 클릭
+	function visibleProduct(proId){
+		
+	}
+	    
+    // 상품 노출 확인 > 팝업 닫기
+	function closeVisiblePopup() {
+		$("#popupVisibleModal").modal("hide");
+	}
+    
+    
 });
