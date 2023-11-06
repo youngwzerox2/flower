@@ -76,10 +76,7 @@ $("#join").click(function(e) {
             alert("개인정보 제 3자 제공에 동의해 주세요!");
             return;
         }
-        
-         
 		    
-        
         // 모든 조건이 충족되면 폼을 제출
          $("form").submit();
          alert("회원가입이 완료되었습니다!")
