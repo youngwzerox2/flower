@@ -21,4 +21,9 @@ public interface MemberDAO {
 	
 	// 마이페이지 회원 탈퇴
 	public void memberWithdrawal(MemberVO vo);
+	
+	// 비밀번호 초기화(찾기)
+	public void changePassword(MemberVO vo) throws Exception;
+
+
 }

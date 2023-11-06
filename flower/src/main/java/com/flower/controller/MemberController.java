@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -99,13 +100,16 @@ public class MemberController {
 	// 이메일 찾기(비밀번호에서 이메일찾기)
 	@ResponseBody
 	@RequestMapping("findEmailChk")
-	public String findEmailChk(String member_email) throws Exception{
+	public String findEmailChk(String member_email, HttpSession session) throws Exception{
 		System.out.println("[MemberController] member/findemail" + member_email);
 		String result = memberService.findEmailChk(member_email);
 		System.out.println("result:" + result );
 		if ( result == null) {
 			return "0";
 		}else {
+			// 
+			session.setAttribute("memberEmail", member_email);
+			System.out.println("세션보냄");
 			return "1";
 		}
 			
@@ -129,6 +133,34 @@ public class MemberController {
 		return "member/resetpassword";
 	}
 	
+	// 비밀번호 초기화(찾기) 페이지
+	@PostMapping("changepassword")
+	public String changepassword(HttpSession session, String member_password) throws Exception{
+		
+		// 이메일 주소를 세션에서 가져옴
+		String memberEmail = (String) session.getAttribute("memberEmail");
+		System.out.println("세션에서 가져온 이메일:" + memberEmail);
+		System.out.println(member_password +"새로운비밀번호");
+		
+		if (memberEmail != null && member_password != null) {
+		MemberVO vo = new MemberVO();
+		vo.setMember_email(memberEmail);
+		vo.setMember_password(member_password);
+		System.out.println(vo + "이메일과 비밀번호");
+		
+		
+		// memberService를 사용하여 비밀번호 변경을 수행
+		memberService.changePassword(vo);
+		System.out.println(vo +"비밀번호 변경");
+		// 비밀번호 변경 후 세션을 무효화시켜 로그인 페이지로 이동
+		session.invalidate();
+		return "member/login";
+	     
+		}
+	
+		// 이메일이 없거나 새 비밀번호가 없는 경우, 비밀번호 초기화 페이지로 이동
+		return "member/resetpassword";
+	}
 	
 	
 	

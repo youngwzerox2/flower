@@ -130,6 +130,35 @@ img {
   outline: 0;
 }
 
+/* 서비스약관동의 */
+.agreeservice {
+  -webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+/* .agreement-content {
+    display: none;
+    max-height: 500px; 박스칸의 최대 높이
+    overflow-y: auto; 세로 스크롤바를 표시할 수 있게 함
+} */
+
+/* 스타일을 적용할 박스칸 클래스 */
+.agreement-content {
+    border: 1px solid black;
+    padding: 10px;
+    max-height: 100px; /* 원하는 높이 설정 (스크롤이 필요한 경우) */
+    overflow-y: auto; /* 세로 스크롤바 표시 (내용이 박스를 넘어가면 스크롤 가능) */
+}
+
+/* 스타일을 적용할 박스칸 내의 텍스트 스타일 (선택사항) */
+.agreement-content p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
 /* ---Custom Container--- */
 @media (min-width: 1400px) {
   .container {

@@ -44,7 +44,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	// 마이페이지 비밀번호 업데이트
+	// 마이페이지 비밀번호 업데이트, 비밀번호 초기화(찾기)
 	public void updatePassword(MemberVO vo) {
 		mybatis.update("memberDAO.updatePassword",vo);
 	}
@@ -54,5 +54,14 @@ public class MemberDAOImpl implements MemberDAO{
 	public void memberWithdrawal(MemberVO vo) {
 		mybatis.update("memberDAO.memberWithdrawal",vo);
 	}
+
+	@Override
+	public void changePassword(MemberVO vo) throws Exception {
+		mybatis.update("memberDAO.changePassword",vo); 
+	}
+
+
+
+
 
 }

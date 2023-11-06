@@ -9,7 +9,7 @@
 <title>꽃물주</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>꽃물주 - 로그인</title>
+<title>꽃물주 - 비밀번호 초기화</title>
 <meta name="robots" content="index, follow" />
 <meta name="description"
 	content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
@@ -661,7 +661,7 @@
 					<div class="row h-100">
 						<div class="col-lg-12">
 							<div class="breadcrumb-item">
-								<h2 class="breadcrumb-heading">비밀번호 찾기 페이지</h2>
+								<h2 class="breadcrumb-heading">비밀번호  페이지</h2>
 								<ul>
 									<li><a href="index.html">홈</a></li>
 									<li>로그인</li>
@@ -674,7 +674,7 @@
 			<div class="login-area section-space-y-axis-100">
 
 				<div class="col-lg-6">
-					<form action="resetpassword" method="post">
+					<form action="changepassword" id="resetpassword" method="post">
 						<div class="customerservice-form">
 							<h4 class="customerservice-title">변경하실 비밀번호를 입력해 주세요</h4>
 							<div class="row">
@@ -900,7 +900,7 @@
 
 	<!--Main JS (Common Activation Codes)-->
 	<script src="../resources/assets/js/main.js"></script>
-	<script src="../resources/assets/js/member/findemail.js"></script>
+	<script src="../resources/assets/js/member/resetpassword.js"></script>
 
 </body>
 </html>

@@ -41,7 +41,8 @@ public class MemberServiceImpl implements MemberService{
 		 
 	}
 
-	// 마이페이지 비밀번호 업데이트
+	@Override
+	// 마이페이지 비밀번호 업데이트, 비밀번호 초기화(찾기)
 	public void updatePassword(MemberVO vo) {
 		memberDAO.updatePassword(vo);
 	}
@@ -51,5 +52,13 @@ public class MemberServiceImpl implements MemberService{
 	public void memberWithdrawal(MemberVO vo) {
 		memberDAO.memberWithdrawal(vo);
 	}
+
+	@Override
+	public void changePassword(MemberVO vo) throws Exception {
+		memberDAO.changePassword(vo);
+	}
+
+
+
 
 }

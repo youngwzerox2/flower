@@ -16,9 +16,10 @@ $(function() {
                    alert("등록된 이메일입니다. 비밀번호 초기화 페이지로 이동합니다");
                    location.href = "/flower/member/resetpassword";
                 } else if (data == '0') {
-                    alert("등록되지 않은 이메일입니다. 다시 입력해주세요");
-                    $("#member_email").val("");
-                    $("#member_email").focus(); 
+                    alert("등록되지 않은 이메일입니다. 회원가입 페이지로 이동합니다");
+                    //$("#member_email").val("");
+                    //$("#member_email").focus(); 
+                    location.href = "/flower/member/register";
                 }
             }
         });

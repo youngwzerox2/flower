@@ -2,6 +2,15 @@
 var isCheckEmail = false;
 
 var pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+
+  // "모두 동의" 체크박스 클릭 이벤트 처리
+          $("#allAgreements").change(function() {
+	              var isChecked = $(this).prop("checked");
+	              
+	           // 모든 약관 동의 체크박스들을 선택/해제
+	          $(".agreeservice input[type='checkbox']").prop("checked", isChecked);
+          });
+
 // 회원가입하기
 $("#join").click(function(e) { 
     e.preventDefault(); // 기본 폼 제출 방지
@@ -41,6 +50,7 @@ $("#join").click(function(e) {
             
          if (password.length < 8 || password.length > 20) {
 		        alert("비밀번호는 영문, 숫자, 특수문자 조합으로 최소 8자 이상, 20자 이내로 입력해주세요.");
+		        $("#member_password").val("");
 		        $("#member_password").focus();
 		        return;
 		    }
@@ -51,6 +61,24 @@ $("#join").click(function(e) {
 		        $("#member_password").focus();
 		        return;
 		    }
+		    
+		      if (!$("#termsOfService").is(":checked")) {
+            alert("꽃물주 서비스 이용 약관에 동의해 주세요!");
+            return;
+        }
+        
+          if (!$("#privacyPolicy").is(":checked")) {
+            alert("개인정보 처리방침에 동의해 주세요!");
+            return;
+        }
+        
+          if (!$("#dataProcessingAgreement").is(":checked")) {
+            alert("개인정보 제 3자 제공에 동의해 주세요!");
+            return;
+        }
+        
+         
+		    
         
         // 모든 조건이 충족되면 폼을 제출
          $("form").submit();

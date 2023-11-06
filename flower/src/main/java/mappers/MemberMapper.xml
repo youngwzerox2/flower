@@ -53,4 +53,21 @@
 		WHERE member_id = #{member_id}
 	</update>	
 	
+	<!-- 비밀번호 초기화(찾기) -->
+	<update id="changePassword" parameterType="com.flower.vo.MemberVO">
+		update member set member_password = #{member_password}
+		where member_email = #{member_email}
+	</update>
+	
+	<!-- 이메일 값 받아오기 -->
+	<select id="getMemberByEmail" resultType="com.flower.vo.MemberVO">
+        SELECT * FROM MEMBER 
+        WHERE MEMBER_EMAIL = #{member_email}
+    </select>
+	
+
+	
+	
+	
+	
 </mapper>

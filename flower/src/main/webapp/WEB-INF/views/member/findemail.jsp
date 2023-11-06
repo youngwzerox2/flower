@@ -9,10 +9,10 @@
 <title>꽃물주</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>꽃물주 - 로그인</title>
+<title>꽃물주 - 이메일찾기</title>
 <meta name="robots" content="index, follow" />
 <meta name="description"
-	content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
+	content="Pronia plant store bootstrap 5 template is an awesome websitㄴe template for any home plant shop.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
