@@ -116,6 +116,11 @@ $(function(){
 		 return false
 		 }
 		 
+		 if($("#Mypage-detailaddress").val()==''){
+			 alert("상세주소를 입력해주세요.")
+			 return false
+		 }
+		 
 		 if($('#recipient_tel').val()==""){
 			 alert("휴대폰 번호를 입력해주세요.")
 			 return false
