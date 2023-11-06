@@ -8,9 +8,18 @@
                     <div class="row align-items-center">
                         <div class="col-lg-12">
                             <div class="header-middle-wrap position-relative">
-								
+								<div class="header-contact d-none d-lg-flex">
+									<c:choose>
+										<c:when test="${not empty sessionScope.member}">
+											<div>어서오세요, ${sessionScope.member.member_name}님</div>
+										</c:when>
+										<c:otherwise>
+											<div>즐거운 꽃구경:)</div>
+										</c:otherwise>
+									</c:choose>
+                                </div>
 								<!-- header: 로고 → 이미지 변경요망 -->
-                                <a href="index.html" class="header-logo"> 
+                                <a href="<%=pjName%>/flower_main" class="header-logo">
                                     <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
                                 </a>
 
@@ -54,10 +63,19 @@
                                         </li>
 										<!-- header: 장바구니 -->
                                         <li class="minicart-wrap me-3 me-lg-0">
-                                            <a href="#miniCart" class="minicart-btn toolbar-btn">
-                                                <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity">3</span>
-                                            </a>
+                                        	<c:choose>
+                                        	 <c:when test="${not empty sessionScope.member}">
+                                        	 	<a href="<%=pjName%>/cart/cart" class="minicart-btn toolbar-btn">
+                                                 <i class="pe-7s-shopbag"></i>
+                                                 <span class="quantity">${sessionScope.member.member_cart_quan}</span>
+                                             	</a>
+                                             </c:when>
+                                             <c:otherwise>
+                                             	<a id="toCartwithoutLogin" class="minicart-btn toolbar-btn">
+                                             		<i class="pe-7s-shopbag"></i>
+                                             	</a>                                             	
+                                             </c:otherwise>
+                                            </c:choose>
                                         </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
@@ -82,7 +100,7 @@
                                 <nav class="main-nav">
                                     <ul>
                                         <li class="drop-holder">
-                                            <a href="index.html">Home</a>
+                                            <a href="<%=pjName%>/flower_main.html">Home</a>
 											<!-- nav: home - dropdown → 숨긴다 -->
 											<!--
                                             <ul class="drop-menu">
@@ -257,7 +275,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-3 col-6">
 
-                                <a href="index.html" class="header-logo">
+                                <a href="<%=pjName%>/flower_main" class="header-logo">
                                     <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
                                 </a>
 
@@ -266,12 +284,12 @@
                                 <div class="main-menu">
                                     <nav class="main-nav">
                                         <ul>
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="<%=pjName%>/flower_main.html">Home</a></li>
                                             <li><a href="">All</span></a></li>
                                             <li class="drop-holder">
                                                 <a><span id="nav_cursor">Seasons</span></a>
                                                 <ul class="drop-menu">
-                                                    <li><a href="<%=pjName%>/product/spring">Spring</a></li>
+                                                    <li><a href="<%=pjName%>/product/category/spring">Spring</a></li>
                                                     <li><a href="summer">summer</a></li>
                                                     <li><a href="Autumn">Autumn</a></li>
                                                     <li><a href="Winter">Winter</a></li>

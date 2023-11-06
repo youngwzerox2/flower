@@ -46,76 +46,59 @@ public class ProductVO {
 	// 상품 이미지 (PRODUCT_IMAGE TABLE)
 	/********************************
 	 * foreign key: product_id
-	 * product_image_type: 이미지 출력 위치
+	 * product_image_type: jpg, png 등
+	 * product_image_froute: 이미지 내용에 따른 폴더 위치
 	 * 						① list: 상품목록(w270 h300)
 	 * 						② main: 상품상세-메인(w570 h633)
 	 * 						③ sub: 상품상세-서브(w570 h633) 
-	 * 						④ description: 상품설명
+	 * 						④ guide: 상품설명(키우는 방법. 사이즈 미정. 단, w960 이하)
 	 */
+	
 	private String  	product_image_file_name;
 	private String		product_image_type;
+	private String		product_image_froute;
 	
 	
-	// test - 한 상품의 여러 이미지를 담아올 때: 배열 or 각 변수
-	// result: 배열형에는 SQL 결과가 null값으로 담긴다. 
-	// ☞ 원시자료형이어야 담기는 듯!(내 경우에는 String!)
-	private String		prod_imgs_lists;
-	private String[] 	prod_imgs_list_arr;
-	private String 		prod_imgs_list1;
-	private String 		prod_imgs_list2;
-	
-	public void setProd_imgs_lists(String prod_imgs_lists) {
-		this.prod_imgs_lists = prod_imgs_lists;
-		this.prod_imgs_list_arr = this.prod_imgs_lists.split(",");
-		this.prod_imgs_list1 = this.prod_imgs_list_arr[0];
-		if(prod_imgs_list_arr.length > 1) {
-			this.prod_imgs_list2 = this.prod_imgs_list_arr[1];
-//			System.out.println("이곳은 VO: " + this.prod_imgs_list2);
-		}		
-	} // setProd_imgs_list_arr
+	// group_concat으로 담겨온 값을 배열로 변환하여 담을 변수
+	// 파일명, 경로(guide, main, sub, list), 파일유형(jpg, png등)
+	private String[]	prod_imgs_lists;
+	private String[]	prod_imgs_froutes;
+//	private String[]	prod_imgs_types;
+	private String		prod_img_main;
+	private String[]	prod_imgs_sub;
+	private String[]	prod_imgs_guide;
 	
 	
-	/*********
-	 * input type=file의 name값과 동일해야 한다.*/
-	MultipartFile file;
 	
-	public void setFile(MultipartFile file) {
-		
-		this.file = file;
-		
-		// 업로드 파일 접근
-		if(!file.isEmpty()) {
-			// this.b_fname = file.getOriginalFilename();
-			// this.b_fsize = file.getSize();
-			
-			// 실제 저장된 파일명 만들기
-			// 기존 파일명과 동일할 경우 덮어쓰이는 일을 방지
-			// Universally Unique IDentifier; 128-bit value
-			// UUID uuid = UUID.randomUUID();
-			// 추후에는 b_fname 빼세요. 왜냐면, 업로드 하는 파일 이름들에 특수기호 등이 붙어 안 깔끔한 경우 많아용 
-			//this.b_realfname = uuid.toString() + "_" + b_fname;
-			
-			/**************************
-			 * 아래 file은 import java.io.file 임!
-			 * 사용자가 업로드한 파일이 저장될 경로 지정.
-			 * 해당 파일은 resource 폴더 안에 있어야 사용자가 접근 가능하다.
-			 * 추후에 아래의 리소스 경로는 웹서버 경로로 지정해야 한다.
-			 * */
-		
-			//File f = new File("C:\\Springwork\\hFileBoard\\src\\main\\webapp\\resources\\upload\\"+b_realfname);
-			
-			// 아래 경로는 추후 웹서버 경로로 변경해야 함!(적어도, 테스트하는 사람의 컴퓨터의 경로와 매치시켜야 함)
-			File f = new File("C:\\Users\\ict0314\\git\\flower\\flower\\src\\main\\webapp\\resources\\product\\imgs\\" + "");
-			
-			try {
-				file.transferTo(f);
-			} catch(IllegalStateException e) {
-				e.printStackTrace();
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
-		} // if (!file.isEmpty)
-	} // setFile
+	// group_concat으로 담겨온 이미지 파일명을 배열로 변환
+	public void setProduct_image_file_name(String product_image_file_name) {
+		this.product_image_file_name = product_image_file_name;
+		this.prod_imgs_lists = product_image_file_name.split(",");
+	} //setProd_imgs_list_arr
+	
+	public void setProd_imgs_sub(String prod_imgs) {
+		this.prod_imgs_sub = prod_imgs.split(",");
+	} // setProd_imgs_sub()
+	
+	public void setProd_imgs_guide(String prod_imgs) {
+		this.prod_imgs_guide = prod_imgs.split(",");
+	} //setProd_imgs_guide()
+	
+	// group_concat으로 담겨온 이미지 경로를 배열로 변환
+	public void setProduct_image_froute(String product_image_froute){
+		this.product_image_froute = product_image_froute;
+		this.prod_imgs_froutes = product_image_froute.split(",");
+	} //setProduct_image_fRoute
+	
+	// group_concat으로 담겨온 이미지 유형(jpg, png 등)을 배열로 변환
+//	public void setProduct_image_type(String prodcuct_image_type) {
+//		this.product_image_type = prodcuct_image_type;
+//		this.prod_imgs_types = product_image_type.split(",");
+//	} //setProduct_image_type
+	
+	
+	
+	
 	
 	
 } //class ProductVO

@@ -173,7 +173,7 @@
                             <div class="product-topbar">
                                 <ul>
                                     <li class="page-count">
-                                        <span>12</span> Product Found of <span>30</span>
+                                        <span>2016</span> Product Found of <span>30</span>
                                     </li>
                                     <li class="product-view-wrap">
                                         <ul class="nav" role="tablist">
@@ -212,14 +212,14 @@
                                     	<tr>
                                        </c:if>
                                     	<td>
-                                        <div class="col-md-4 col-sm-6">
+                                        <div class="">
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
                                                     	<input type="hidden" name="${prod.product_id}"/>
-                                                    	<img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_list1}.jpg" alt="${prod.product_name}1">
-                                                    	<c:if test="${not empty prod.prod_imgs_list2}">
-                                                        	<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_list2}.jpg" alt="${prod.product_name}2">
+                                                    	<img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
+                                                    	<c:if test="${not empty prod.prod_imgs_lists[1]}">
+                                                        	<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[1]}" alt="${prod.product_name}2">
                                                         </c:if>
                                                     </a>
                                                     <!-- flower: 이미지 위에 좋아요, 카트버튼 -->
@@ -275,7 +275,7 @@
                                     </div> <!-- <div class="product-grid-view row g-y-20"> end -->
                                 </div> <!-- <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab"> end -->
                                 
-                                <!-- flower: product list 상품 사진 목록(한 줄에 하나씩) -->
+                                <!-- flower: product list 상품 사진 목록(한 줄에 하나씩) → 추후 편집요망 -->
                                 <div class="tab-pane fade" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
                                     <div class="product-list-view row g-y-30">
                                         <div class="col-12">
@@ -903,6 +903,7 @@
         <!-- Begin Modal Area -->
         <div class="modal quick-view-modal fade" id="quickModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="quickModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
+            <!-- flower: 상품 사진 위 quickview 누르면 나오는 창(추후 여유되면 하자) -->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-tippy="Close" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">

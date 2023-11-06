@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% String pjName = "/flower"; %>
+<% String pjName 	= "/flower"; %>
+<% String imgRoute  = "/resources/product/imgs/"; %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -28,6 +30,7 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/nice-select.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/magnific-popup.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/ion.rangeSlider.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
@@ -54,14 +57,7 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">Single Product</h2>
-                                <ul>
-                                    <li><!-- flower: 링크 연결 요망 -->
-                                        <a href="<%=pjName%>/flower_main.jsp">Home</a>
-                                    </li>
-                                    <!-- flower: 선택된 상품명으로 할지 결정요망-->
-                                    <li>선택된 상품명</li>
-                                </ul>
+                                <h2 class="breadcrumb-heading">${prod.product_name}</h2>
                             </div>
                         </div>
                     </div>
@@ -77,42 +73,53 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                         	<!-- flower: 상품상세 사진(main, sub) -->
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-1-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-1-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/main/${prod.prod_img_main}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/main/${prod.prod_img_main}" alt="${prod.product_name} main">
                                             </a>
                                         </div>
                                         <div class="swiper-slide">
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-2-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-2-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[0]}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[0]}" alt="${prod.product_name} sub1">
                                             </a>
                                         </div>
+                                        
+                                        <c:if test="${not empty prod.prod_imgs_sub[1]}">
                                         <div class="swiper-slide">
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-3-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-3-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[1]}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[1]}" alt="${prod.product_name} sub2">
                                             </a>
                                         </div>
+                                        </c:if>
+                                        <c:if test="${not empty prod.prod_imgs_sub[2]}">
                                         <div class="swiper-slide">
-                                            <a href="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" class="single-img gallery-popup">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" alt="Product Image">
+                                            <a href="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" class="single-img gallery-popup">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" alt="${prod.product_name} sub3">
                                             </a>
                                         </div>
-                                    </div>
-                                </div>
+                                        </c:if>
+                                        
+                                        
+                                    </div> <!-- <div class="swiper-wrapper"> end -->
+                                </div> <!-- <div class="swiper-container single-product-slider"> end -->
                                 <div class="thumbs-arrow-holder">
                                     <div class="swiper-container single-product-thumbs">
                                         <div class="swiper-wrapper">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-1-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/main/${prod.prod_img_main}" alt="Product Thumnail">
                                             </a>
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-2-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[0]}" alt="Product Thumnail">
                                             </a>
+                                            <c:if test="${not empty prod.prod_imgs_sub[1]}">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-3-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[1]}" alt="Product Thumnail">
                                             </a>
+                                            </c:if>
+                                            <c:if test="${not empty prod.prod_imgs_sub[2]}">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %>/resources/assets/images/product/large-size/1-4-570x633.jpg" alt="Product Thumnail">
+                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" alt="Product Thumnail">
                                             </a>
+                                            </c:if>
                                         </div>
                                         <!-- Add Arrows -->
                                         <div class=" thumbs-button-wrap d-none d-md-block">
@@ -128,12 +135,12 @@
                             </div>
                         </div> <!-- flower: 상품사진 <div class="col-lg-6"> end -->
                         
-                        <!-- flower: 상품 개괄(장바구니담기/바로구매 버튼 등) -->
+                        <!-- flower: 상품 사진 우측 컨텐츠(장바구니담기/바로구매 버튼 등) -->
                         <div class="col-lg-6 pt-5 pt-lg-0">
                             <div class="single-product-content">
-                                <h2 class="title">American Marigold</h2>
+                                <h2 class="title" name="product_name">${prod.product_name}</h2>
                                 <div class="price-box">
-                                    <span class="new-price">$23.45</span>
+                                    <span class="new-price" name="product_price">${prod.product_price}</span>
                                 </div>
                                 <div class="rating-box-wrap pb-4">
                                     <div class="rating-box">
@@ -150,30 +157,40 @@
                                     </div>
                                 </div>
                                 <div class="product-category">
-                                    <span class="title">SKU:</span>
+                                    <span class="title">개화시기:</span>
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0);">Ch-256xl</a>
+                                            <a href="javascript:void(0);">${prod.blooming_season}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="product-category">
-                                    <span class="title">Categories :</span>
+                                    <span class="title">일조량 :</span>
                                     <ul>
                                         <li>
-                                            <a href="javascript:void(0);">Office,</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Home</a>
+                                            <a href="javascript:void(0);">${prod.product_light}</a>
                                         </li>
                                     </ul>
                                 </div>
+                                
                                 <div class="product-category product-tags">
-                                    <span class="title">Tags :</span>
+                                    <span class="title">특징 :</span>
                                     <ul>
+                                    	<c:if test="${prod.pet_friendly ne 'false'}">
                                         <li>
-                                            <a href="javascript:void(0);">Furniture</a>
+                                            <a href="javascript:void(0);">pet friendly</a>
                                         </li>
+                                        </c:if>
+                                        <c:if test="${prod.easy_care ne 'false' }">
+                                        <li>
+                                            <a href="javascript:void(0);">easy care</a>
+                                        </li>
+                                        </c:if>
+                                        <c:if test="${not empty blooming_time}">
+                                        <li>
+                                            <a href="javascript:void(0);">blooming in night</a>
+                                        </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                                 
@@ -188,12 +205,13 @@
                                 <ul class="quantity-with-btn">
                                     <li class="quantity">
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="1" type="text">
+                                            <input class="cart-plus-minus-box" name="product_quantity" id="product_quantity" value="1" type="text">
                                         </div>
                                     </li>
                                     <li class="add-to-cart">
-                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" href="cart.html">Add to
-                                            cart</a>
+                                    	<!-- href="/flower/cart" 단, 변수로! -->
+                                    	<input type="hidden" name="product_id" id="product_id" value="${prod.product_id}">
+                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" id="addCart">장바구니10</a>
                                     </li>
                                     <li class="add-to-cart">
                                         <a class="btn btn-custom-size lg-size btn-pronia-primary" href="">바로구매</a>
@@ -255,6 +273,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
+                        	<!-- flower: 상품상세하단- 탭메뉴(①information: 배송정보, 판매자정보, 상품청약철회 ②Description: 상품상세정보(키우는방법) ③Review ④QnA) -->
                             <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
@@ -271,39 +290,31 @@
                                         Reviews(3)
                                     </a>
                                 </li>
+                                <!-- flower: 상품상세하단 추가(QnA) → review 템플릿에서 일부분 사용요망! -->
+                                <li class="nav-item" role="presentation">
+                                    <a class="tab-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
+                                        QnA(3)
+                                    </a>
+                                </li>
                             </ul>
+                            <!-- flower: 상품상세하단- 탭메뉴의 내용(①information: 배송정보, 판매자정보, 상품청약철회 ②Description: 상품상세정보(키우는방법) ③Review ④QnA) -->
                             <div class="tab-content product-tab-content">
                                 <div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
                                     <div class="product-information-body">
-                                        <h4 class="title">Shipping</h4>
-                                        <p class="short-desc mb-4">The item will be shipped from China. So it need 15-20 days to
-                                            deliver. Our product is good with reasonable price and we believe you will worth it.
-                                            So please wait for it patiently! Thanks.Any question please kindly to contact us and
-                                            we promise to work hard to help you to solve the problem</p>
-                                        <h4 class="title">About return request</h4>
-                                        <p class="short-desc mb-4">If you don't need the item with worry, you can contact us
-                                            then we will help you to solve the problem, so please close the return request!
-                                            Thanks</p>
-                                        <h4 class="title">Guarantee</h4>
-                                        <p class="short-desc mb-0">If it is the quality question, we will resend or refund to
-                                            you; If you receive damaged or wrong items, please contact us and attach some
-                                            pictures about product, we will exchange a new correct item to you after the
-                                            confirmation.</p>
+                                        <h4 class="title">배송정보</h4>
+                                        <p class="short-desc mb-4">별헤는 밤이면 들려오는 그대 음성<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">상품청약철회</h4>
+                                        <p class="short-desc mb-4">하얗게 부서지는 꽃가루 되어<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">판매자정보</h4>
+                                        <p class="short-desc mb-0">그대 품안에 잠들고 싶어라<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="product-description-body">
-                                        <p class="short-desc mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                            do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                            qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
-                                            natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                                            sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-                                            nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                                        <p class="short-desc mb-0">상품 상세 설명<br/>
+                                        (이미지로 불러올 것. product_id_description_number)<br/>
+                                        보일듯 말듯 가물거리는 안개 속에 싸인 길 잡힐 듯 말듯 멀어져가는 무지개와 같은 길<br/>
+                                        그 어디에서 날 기다리는지 둘러보아도 찾을 수 없네 <br/> 그대여 힘이 돼주오 나에게 주어진 길 찾을 수 있도록
                                         </p>
                                     </div>
                                 </div>
@@ -740,5 +751,6 @@
         <!-- Scroll To Top End Here -->
 
     </div>
-
+    <!--cart JS (flower: 추후 footer에 담아야 할..듯?)-->
+    <script src="<%=pjName %>/resources/assets/js/cart/cart.js"></script>
 <%@include file="/flower_footer.jsp" %>

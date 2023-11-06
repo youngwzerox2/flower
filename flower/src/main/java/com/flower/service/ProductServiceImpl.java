@@ -28,16 +28,17 @@ public class ProductServiceImpl implements ProductService{
 		return null;
 	}
 
+	// 선택된 카테고리 상품 목록
 	@Override
 	public List<ProductVO> getCateProdList(ProductVO vo) {
 //		System.out.println("service called!: " + vo);
 		return productDao.getCateProdList(vo);
 	}
 
+	// 상품 상세 페이지
 	@Override
 	public ProductVO getProd(ProductVO vo) {
-//		return productDao.getProd(vo);
-		return null;
+		return productDao.getProd(vo);
 	}
 
 

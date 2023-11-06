@@ -5854,6 +5854,7 @@ textarea {
 
 .coupon-all {
   margin-top: 30px;
+  margin-bottom: 15px;
 }
 .coupon-all .coupon {
   float: left;
@@ -5868,7 +5869,9 @@ textarea {
   padding: 0 10px;
 }
 .coupon-all .coupon input.button,
-.coupon-all .coupon2 input.button {
+.coupon-all .coupon2 input.button,
+.cart-total .left input.button,
+.cart-total .right input.button {
   background-color: #505050;
   border: 0 none;
   border-radius: 2px;
@@ -5886,9 +5889,12 @@ textarea {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   width: inherit;
+  border-radius: 8px;
 }
 .coupon-all .coupon input.button:hover,
-.coupon-all .coupon2 input.button:hover {
+.coupon-all .coupon2 input.button:hover,
+.cart-total .left input.button:hover,
+.cart-total .right input.button:hover {
   background-color: #abd373;
 }
 .coupon-all .coupon.coupon2,
@@ -5942,6 +5948,42 @@ textarea {
 .cart-page-total a:hover {
   background-color: #abd373;
   color: #ffffff;
+}
+
+.cart-total {
+	margin-top: 15px;
+}
+
+.cart-total h1 {
+	font-size: 40px;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+
+.cart-total .left {
+	float: left;
+}
+
+.cart-total .right{
+	float: right;
+	margin: 0;
+}
+
+.cart-total .right table {
+	table-layout: auto;
+}
+
+.cart-total .right table td {
+	padding: 3px 12px 3px;
+}
+
+.cart-total .right span {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.table-content .table-responsive {
+	margin-top: 20px;
 }
 
 /*----------------------------------------*/
