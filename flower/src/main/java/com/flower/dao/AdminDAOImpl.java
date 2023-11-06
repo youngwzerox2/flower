@@ -15,6 +15,9 @@ public class AdminDAOImpl implements AdminDAO{
 	@Autowired
 	private SqlSessionTemplate st;
 	
+	/**
+	 * 회원 관련
+	 * */
 	@Override
 	public List<AdminVO> searchMembers(Map<String, String> map) {
 		return st.selectList("adminDAO.searchMembers", map);
@@ -29,4 +32,23 @@ public class AdminDAOImpl implements AdminDAO{
 	public int limitMember(String email) {
 		return st.update("adminDAO.limitMember", email);
 	}
+	
+	/**
+	 * 상품 관련
+	 * */
+	@Override
+	public List<AdminVO> searchProducts(Map<String, String> map) {
+		return st.selectList("adminDAO.searchProducts", map);
+	}
+
+	@Override
+	public List<AdminVO> searchProductDetail(String productId) {
+		return st.selectList("adminDAO.searchProductDetail", productId);
+	}
+
+	@Override
+	public List<AdminVO> searchProductImgs(String productId) {
+		return st.selectList("adminDAO.searchProductImgs", productId);
+	}	
+
 }

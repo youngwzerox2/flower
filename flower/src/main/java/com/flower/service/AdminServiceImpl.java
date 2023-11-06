@@ -15,6 +15,9 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDAO adminDAO;
 
+	/**
+	 * 회원 관련
+	 * */
 	@Override
 	public List<AdminVO> searchMembers(Map<String, String> map) {
 		return adminDAO.searchMembers(map);
@@ -24,10 +27,28 @@ public class AdminServiceImpl implements AdminService{
 	public AdminVO searchMemberDetail(String email) {
 		return adminDAO.searchMemberDetail(email);
 	}
-
+	
 	@Override
 	public int limitMember(String email) {
 		return adminDAO.limitMember(email);
+	}
+
+	/**
+	 * 상품 관련
+	 * */
+	@Override
+	public List<AdminVO> searchProducts(Map<String, String> map) {
+		return adminDAO.searchProducts(map);
+	}
+	
+	@Override
+	public List<AdminVO> searchProductDetail(String productId) {
+		return adminDAO.searchProductDetail(productId);
+	}
+
+	@Override
+	public List<AdminVO> searchProductImgs(String productId) {
+		return adminDAO.searchProductImgs(productId);
 	}
 
 }
