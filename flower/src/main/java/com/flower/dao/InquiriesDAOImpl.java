@@ -29,9 +29,9 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	}
 
 	@Override
-	public InquiriesVO selectOne(int reviews_id) {
+	public InquiriesVO selectOne(String inquiries_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("inquiries.inquiriesOne", inquiries_id);
 	}
 
 	@Override
@@ -44,11 +44,11 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	@Override
 	public int update(InquiriesVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("inquiries.inquiriesUpdate", vo);
 	}
 
 	@Override
-	public int delete(int Inquiries_id) {
+	public int delete(String inquiries_id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -56,13 +56,13 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	@Override
 	public int selectRowTotal() {
 		// TODO Auto-generated method stub
-		return 0; //sqlSession.selectOne("inquiries.inquiriesRowTotal");
+		return sqlSession.selectOne("inquiries.inquiriesRowTotal");
 	}
 
 	@Override
 	public int selectRowTotal(Map map) {
 		// TODO Auto-generated method stub
-		return 0; //sqlSession.selectOne("inquiries.inquiriesConditionRowTotal", map);
+		return sqlSession.selectOne("inquiries.inquiriesConditionRowTotal", map);
 	}
 
 	@Override

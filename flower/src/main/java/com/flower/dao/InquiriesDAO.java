@@ -10,7 +10,7 @@ public interface InquiriesDAO {
 	
 	List<InquiriesVO> selectList();
 	List<InquiriesVO> selectList(Map map);
-	InquiriesVO selectOne(int inquiries_id);
+	InquiriesVO selectOne(String inquiries_id);
 	
 	
 	//전체 게시물 갯수
@@ -26,7 +26,7 @@ public interface InquiriesDAO {
 	int update(InquiriesVO vo);
 	
 	//삭제
-	int delete(int Inquiries_id);
+	int delete(String inquiries_id);
 	
 	//Mypage selectMyList
 	List<InquiriesVO> selectMyList(MemberVO vo);

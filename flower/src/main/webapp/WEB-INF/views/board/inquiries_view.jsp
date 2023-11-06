@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,26 +34,32 @@
     <h2 class="heading">문의</h2>
        <form class="feedback-form" id="send_form">
            <!-- <div class="group-input"></div> -->
-              <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="inquiries_id" id="inquiries_id" placeholder="inquiries_id" class="input-field">
-               </div>
                <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="member_id" id="member_id" placeholder="member_id" class="input-field">
+			   	   제목 : ${ vo.inquiries_title }
                </div>
-               <div class="form-field">
-                   <input type="text" name="inquiries_category" id="inquiries_category" placeholder="inquiries_category" class="input-field">
+               
+               <div class="form-field me-md-30 mb-30 mb-md-0">
+                   내용 : ${ vo.inquiries_cotent }
                </div>
-           
-           <div class="form-field mt-30">
-               <input type="text" name="inquiries_title" id="inquiries_title" placeholder="inquiries_title" class="input-field">
-           </div>
-           <div class="form-field mt-30">
-               <textarea name="inquiries_cotent" id="inquiries_cotent" placeholder="inquiries_cotent" class="textarea-field"></textarea>
-           </div>
-           <div class="button-wrap pt-5" style="margin-top: 10px;">
-              <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" id="send">
-              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
-           </div>
+               
+               <div class="form-field me-md-30 mb-30 mb-md-0">
+                   답변내용 : ${ vo.inquiries_answer_content }
+               </div>
+
+	           <div class="button-wrap pt-5" style="margin-top: 10px;">
+		           <c:if test="${ vo.member_id eq member.member_id }">
+		              <input type="button" value="수정" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="modify_form('${ vo.inquiries_id }');">
+		              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="del('${vo.inquiries_id}');">
+		           </c:if>
+		           
+	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+	           </div>
+	           <!-- 
+	           <div>
+			   	  <textarea id="" rows="5" cols=""></textarea>
+			   	  <input class="btn btn-primary btn-sm" type="button" value="답변" onclick="add_comment();">
+			   </div>
+	            -->
        </form>
    </div>
 </body>

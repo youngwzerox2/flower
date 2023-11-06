@@ -12,7 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/inquiries.css">
-<script src="${ pageContext.request.contextPath }/resources/assets/js/board/board.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/assets/js/board/reviews.js"></script>
 
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/style.css">
 
@@ -29,30 +29,41 @@
 </head>
 <body>
 
-   <div class="feedback-area" id="box">
-    <h2 class="heading">문의</h2>
-       <form class="feedback-form" id="send_form">
+   <div class="feedback-area">
+    <h2 class="heading">리뷰</h2>
+       <form class="feedback-form">
            <!-- <div class="group-input"></div> -->
               <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="inquiries_id" id="inquiries_id" placeholder="inquiries_id" class="input-field">
+                   <input type="text" name="reviews_id" id="reviews_id" placeholder="reviews_id" class="input-field">
                </div>
                <div class="form-field me-md-30 mb-30 mb-md-0">
                    <input type="text" name="member_id" id="member_id" placeholder="member_id" class="input-field">
                </div>
+               <div class="form-field me-md-30 mb-30 mb-md-0">
+                   <input type="text" name="product_id" id="product_id" placeholder="product_id" class="input-field">
+               </div>
                <div class="form-field">
-                   <input type="text" name="inquiries_category" id="inquiries_category" placeholder="inquiries_category" class="input-field">
+                   <input type="text" name="reviews_title" id="reviews_title" placeholder="reviews_title" class="input-field">
                </div>
            
            <div class="form-field mt-30">
-               <input type="text" name="inquiries_title" id="inquiries_title" placeholder="inquiries_title" class="input-field">
+           	   <textarea name="reviews_content" id="reviews_content" placeholder="reviews_content" class="textarea-field"></textarea>
            </div>
            <div class="form-field mt-30">
-               <textarea name="inquiries_cotent" id="inquiries_cotent" placeholder="inquiries_cotent" class="textarea-field"></textarea>
+               <input type="text" name="reviews_score" id="reviews_score" placeholder="reviews_score" class="input-field">
            </div>
+            <div class="form-field mt-30">
+               <input type="text" name="reports_cnt" id="reports_cnt" placeholder="reports_cnt" class="input-field">
+           </div>
+           <div class="form-field mt-30">
+           	   <textarea name="reports_contents" id="reports_contents" placeholder="reports_contents" class="textarea-field"></textarea>
+           </div>
+           
            <div class="button-wrap pt-5" style="margin-top: 10px;">
-              <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" id="send">
+              <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="send(this.form)">
               <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
            </div>
+           
        </form>
    </div>
 </body>

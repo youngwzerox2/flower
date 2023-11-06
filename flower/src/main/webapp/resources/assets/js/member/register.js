@@ -38,7 +38,7 @@ $("#join").click(function(e) {
              $("#member_password").focus();
              return;
         }
-            
+        
          if (password.length < 8 || password.length > 20) {
 		        alert("비밀번호는 영문, 숫자, 특수문자 조합으로 최소 8자 이상, 20자 이내로 입력해주세요.");
 		        $("#member_password").focus();
@@ -51,7 +51,7 @@ $("#join").click(function(e) {
 		        $("#member_password").focus();
 		        return;
 		    }
-        
+        	
         // 모든 조건이 충족되면 폼을 제출
          $("form").submit();
          alert("회원가입이 완료되었습니다!")

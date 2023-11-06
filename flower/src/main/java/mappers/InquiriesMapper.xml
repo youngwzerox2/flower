@@ -8,8 +8,56 @@
 	 	select * from inquiries order by inquiries_id desc
 	 
 	 </select>
-	 
-	 <insert id="inquiriesInsert" parameterType="com.flower.vo.InquiriesVO">
+
+	 <!-- 조건별 조회 -->
+	 <select id="inquiriesListCondition" parameterType="Map" resultType="com.flower.vo.InquiriesVO">
+	 	SELECT * 
+			FROM
+				(
+					SELECT
+						@row_number:=@row_number+1 AS no,
+						b.*
+					FROM 
+						(
+							SELECT * FROM inquiries
+							<trim prefix="where">
+								<if test="title!=null">
+									inquiries_title LIKE CONCAT('%', #{title}, '%')
+								</if>
+								<if test="regdate!=null">
+									DATE_FORMAT(inquiries_register_date, '%Y-%m-%d') = #{regdate}
+								</if>
+							</trim>
+						) b,
+						(SELECT @row_number:=0) as r
+				) ranked
+			WHERE no BETWEEN ${ start } AND ${ end }
+	 </select>
+	
+	<!-- 검색 조건별 -->
+	<select id="inquiriesConditionRowTotal" parameterType="Map" resultType="int">
+		SELECT IFNULL(COUNT(*), 0) FROM inquiries;
+		<trim prefix="where" prefixOverrides="or">
+			<if test="title!=null">
+				inquiries_title LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="regdate!=null">
+				DATE_FORMAT(inquiries_register_date, '%Y-%m-%d') = #{regdate}
+			</if>
+		</trim>
+	</select>
+	
+	<!-- 전체 게시물수 -->
+	<select id="inquiriesRowTotal" resultType="int">
+		SELECT IFNULL(COUNT(*), 0) FROM inquiries;
+	</select>
+	
+	<select id="inquiriesOne" parameterType="string" resultType="com.flower.vo.InquiriesVO">
+		SELECT * FROM inquiries WHERE inquiries_id=#{ inquiries_id }
+	</select>
+	
+	<!-- 추가 -->
+	<insert id="inquiriesInsert" parameterType="com.flower.vo.InquiriesVO">
 	 	INSERT INTO inquiries(inquiries_id, member_id, inquiries_category, inquiries_title, inquiries_cotent, inquiries_register_date)
 	 	VALUES( 
 	 			#{ inquiries_id },
@@ -21,9 +69,15 @@
 			   )	
 	 </insert>
 	 
-	 <select id="inquiriesListCondition" parameterType="Map" resultType="com.flower.vo.InquiriesVO">
-	 	SELECT * FROM inquiries order BY inquiries_id LIMIT ${ start }, ${ end }
-	 </select>
+	 <update id="inquiriesUpdate" parameterType="com.flower.vo.InquiriesVO">
+	 	update inquiries set inquiries_id            = #{ inquiries_id },
+							 member_id               = #{ member_id },
+							 inquiries_category      = #{ inquiries_category },
+							 inquiries_title         = #{ inquiries_title },
+							 inquiries_cotent        = #{ inquiries_cotent },
+							 inquiries_register_date = now()
+		where inquiries_id = #{ inquiries_id };
+	 </update>
 	 
 	 <!-- Mypage select inquiries -->
 	 <select id="MypageSelectInquiry" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.InquiriesVO">

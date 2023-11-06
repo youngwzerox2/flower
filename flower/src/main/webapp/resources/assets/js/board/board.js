@@ -2,17 +2,40 @@
  * 
  */
 function insert_form(){
-	
+
 		location.href = 'insert_form';
 
+}
+
+function find(){
+		
+	var search      = $("#search").val();
+	var search_text = $("#search_text").val().trim();
+	
+	//전체검색이면 검색창 내용 지워라
+	if(search=='all'){
+		$("#search_text").val("");
+	}
+	
+	if(search!='all'&& search_text==''){
+		
+		alert('검색어를 입력하세요');
+		$("#search_text").val(""); //값지우기
+		$("#search_text").focus();
+		return;
+	}
+	
+	location.href = "product?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8");
+		
 }
 
 
 $(document).ready(function(){
 
+
 	$('#send').click(function(){
 		
-		
+		alert('ddd');
 		var inquiries_title = $('#inquiries_title').val().trim();
 		var inquiries_cotent = $('#inquiries_cotent').val().trim();
 		
@@ -38,57 +61,48 @@ $(document).ready(function(){
 	
 });
 
-	function add_comment(){
-	
-		//입력값 읽어오기
-		var c_content = $(".c_content").val().trim();
-		
+function add_comment(){
+
+	var c_content = $("#c_content").val().trim();
+			
 		if(c_content==''){
 			alert('내용을 입력하세요');
-			$(".c_content").val();
-			$(".c_content").focus();
+			$("#c_content").val();
+			$("#c_content").focus();
+			return;
+		}
+
+}
+
+function modify_form(inquiries_id){
+	
+	location.href="modify_form?inquiries_id=" + inquiries_id
+	
+}
+
+
+function send(f){
+		
+		var inquiries_title  = f.inquiries_title.value.trim();
+		var inquiries_cotent = f.inquiries_cotent.value.trim();
+		
+		if(inquiries_title==''){
+			
+			alert('제목을 입력하세요')
+			f.inquiries_title.value='';
+			f.inquiries_title.focus();
 			return;
 		}
 		
-		//Ajax전송
-		$.ajax({
-			url			: '/board/insert',
-			data		: {'c_content': c_content, 
-				   		   'inquiries_id' : '${ vo.inquiries_id }'
-				           },
-			dateType	: 'json',
-			success		: function(result_data){
-				
-				result_data = {"result":"success"}
-				result_data = {"result":"fail"}
-				
-				if(result_data.result=="success"){
-					
-					//리뷰목록 읽어오기
-					comment_list(1);
-					
-				}else{
-					alert("댓글쓰기 실패");
-				}
-				
-			},
-			error		: function(err){
-				alert('ddss');
-				alert(err.responseText);
-			}
+		if(inquiries_cotent==''){
 			
-		});//end_ajax
+			alert('내용을 입력하세요')
+			f.inquiries_cotent.value='';
+			f.inquiries_cotent.focus();
+			return;
+		}
 		
-	
+		f.action = "modify";
+		f.submit();
 	}
-	
-
-
-
-
-
-
-
-
-
 

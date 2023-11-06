@@ -30,9 +30,9 @@ public class InquiriesServiceImpl implements InquiriesService {
 	}
 
 	@Override
-	public InquiriesVO selectOne(int inquiries_id) {
+	public InquiriesVO selectOne(String inquiries_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return inquiriesDao.selectOne(inquiries_id);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class InquiriesServiceImpl implements InquiriesService {
 	}
 
 	@Override
-	public int delete(int Inquiries_id) {
+	public int delete(String Inquiries_id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

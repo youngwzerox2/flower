@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviews">
+
+	 <select id="reviewsSelect" resultType="com.flower.vo.ReviewsVO">
+	 	select * from reviews order by reviews_id desc
+	 </select>
+	 
+	  <!-- 조건별 조회 -->
+	 <select id="reviewsListCondition" parameterType="Map" resultType="com.flower.vo.ReviewsVO">
+	 	SELECT * 
+			FROM
+				(
+					SELECT
+						@row_number:=@row_number+1 AS no,
+						b.*
+					FROM 
+						(
+							SELECT * FROM reviews
+							<trim prefix="where">
+								<if test="title!=null">
+									reviews_title LIKE CONCAT('%', #{title}, '%')
+								</if>
+							</trim>
+						) b,
+						(SELECT @row_number:=0) as r
+				) ranked
+			WHERE no BETWEEN ${ revi_start } AND ${ revi_end }
+	 </select>
+	
+	<!-- 검색 조건별 -->
+	<select id="reviewsConditionRowTotal" parameterType="Map" resultType="int">
+		SELECT IFNULL(COUNT(*), 0) FROM reviews;
+		<trim prefix="where" prefixOverrides="or">
+			<if test="title!=null">
+				reviews_title LIKE CONCAT('%', #{title}, '%')
+			</if>
+		</trim>
+	</select>
+	
+	<select id="reviewsOne" parameterType="string" resultType="com.flower.vo.ReviewsVO">
+		SELECT * FROM reviews WHERE reviews_id=#{ reviews_id }
+	</select>
+	
+	<!-- 전체 게시물수 -->
+	<select id="reviewsRowTotal" resultType="int">
+		SELECT IFNULL(COUNT(*), 0) FROM reviews;
+	</select>
+
+	 <!-- 추가 -->
+	<insert id="reviewsInsert" parameterType="com.flower.vo.ReviewsVO">
+	
+		insert into reviews values( #{ reviews_id },
+									#{ member_id },
+								    #{ product_id },
+								    #{ reviews_title },
+								    now(),
+								    #{ reviews_content },
+								    #{ reviews_score },
+								    #{ reports_cnt },
+								    #{ reports_contents },
+								  	now()
+									);
+			
+	 </insert>
+	 
+</mapper>
