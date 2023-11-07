@@ -105,27 +105,50 @@ $(function(){
 		$.each(price, function(index, value){
 			totalprice = totalprice + parseInt(price)
 		})
+		
+		// 페이지 불러지자마자 값적용
 		$(".order-total").find('span').text(totalprice+"원")
+		
 		
 		// end of 토탈금액 구하기
 		
+		//주문 상세번호 날짜로 만들기
+		
+		var today = new Date();
+		var hours = today.getHours(); // 시
+		var minutes = today.getMinutes();  // 분
+		var seconds = today.getSeconds();  // 초
+		var milliseconds = today.getMilliseconds();
+		var makeMerchantUid = `${hours}` + `${minutes}` + `${seconds}` + `${milliseconds}`;
+		
+		// 상품 이름 외 n개
+		var productsname = $(".goods_name").find('a')
+		console.log(productsname)
+		
+		$.each(productsname, function(index, productname){
+		
+		console.log(productname)
+		})
+		
+		
+		// 결제 함수
 		function kakaopay(){
 			IMP.init('imp35575482')
 		
 			IMP.request_pay({
      		 pg: "kakaopay.TC0ONETIME",
      		 pay_method: "card",
-     		 merchant_uid: "615152301",   // 주문번호
+     		 merchant_uid: "flower" + makeMerchantUid,   // 주문번호
      		 name: "노르웨이 회전 의자",
-     		 amount: 1000,                         // 숫자 타입
+     		 amount: totalprice,                         // 숫자 타입
      		 buyer_email: "gildong@gmail.com",
-    		  buyer_name: "홍길자",
-    		  buyer_tel: "010-4242-4242",
-    		  buyer_addr: "서울특별시 강남구 신사동",
+    		 buyer_name: "홍길자",
+    		 buyer_tel: "010-4242-4242",
+    		 buyer_addr: "서울특별시 강남구 신사동",
      		 buyer_postcode: "01181"
    		 }, function (rsp) { // callback
    		 		if(rsp.success){
-   		 		alert("완료")
+   		 		alert(rsp.imp_uid)
    		 		} else{
    		 		alert("실패" + rsp.error_msg)
    		 		}

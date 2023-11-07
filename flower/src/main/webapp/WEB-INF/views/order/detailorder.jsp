@@ -73,81 +73,135 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-12">
-                                <div class="checkbox-form">
-                                	<h3>주문 상품 정보</h3>
-                                	<div class = 'cart_list'>
-                                	<ul class = 'cart_contents'>
-                                		<li class = cart_goods>
-                                			<div class = 'block block1'>
-                                				<ul>
-                                					<li class = 'img_area'>
-                                						<a href = '#'>
-                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/1_list_1.jpg' class = 'goods_thumb'>
-                                						</a>
-                                					</li>
-                                					<li class = 'option_area'>
-                                						<div class = 'goods_name'>
-                                							<a href = '#'>야생화</a>
+                        	<div class="checkbox-form">
+                                <h3>주문 상품 정보</h3>
+                                <div class = 'order_list botmargin40'>
+                                	<ul class = 'order_list_cate'>
+                                		<li class = 'width300'>주문상품</li>
+                                		<li>수량</li>
+                                		<li>금액</li>
+                                		<li>상태</li>
+                                	</ul>
+                                	<ul class = 'order_list_body'>
+                                		<li>
+                                			<ul class = 'board_goods_list'>
+                                				<li class = 'pic'>
+                                					<a>
+                                						<div class = 'wrphover'>
+                                							<img src = '/flower/resources/product/imgs/list/1_list_1.jpg'>
                                 						</div>
-                                						<div>
-                                							<span>
-                                								수량
-                                							</span>
-                                							1 개
-                                							<span>
-                                								15000
-                                							</span>
-                                							원
-                                						</div>
-                                					</li>
-                                				</ul>
-                                			</div>
+                                					</a>
+                                				</li>
+                                				<li class = 'info'>
+                                					<div>
+                                						<a>꽃이름 블라블라블라</a>
+                                					</div>
+                                				</li>
+                                			</ul>
+                                		</li>
+                                		<li>
+                                			<span>1개</span>
+                                		</li>
+                                		<li>
+                                			<span>19000원</span>
+                                		</li>
+                                		<li>
+                                			<span>결제완료</span>
                                 		</li>
                                 	</ul>
-                                	</div>
-                                    <h3>주문자</h3>
-                                    <ul class = 'orderer'>
-                                      	<li>
-                                      	 	<ul class = 'list_02'>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>주문자명</span></span>
-                                      	 			<input type = 'text' style = 'width : 170px;' placeholder = '주문자 이름' required>
+                                	<ul class = 'order_list_body'>
+                                		<li>
+                                			<ul class = 'board_goods_list'>
+                                				<li class = 'pic'>
+                                					<a>
+                                						<div class = 'wrphover'>
+                                							<img src = '/flower/resources/product/imgs/list/1_list_1.jpg'>
+                                						</div>
+                                					</a>
+                                				</li>
+                                				<li class = 'info'>
+                                					<div>
+                                						<a>꽃이름 블라블라블라</a>
+                                					</div>
+                                				</li>
+                                			</ul>
+                                		</li>
+                                		<li>
+                                			<span>1개</span>
+                                		</li>
+                                		<li>
+                                			<span>19000원</span>
+                                		</li>
+                                		<li>
+                                			<span>결제완료</span>
+                                		</li>
+                                	</ul>
+                                </div>
+                                <h3>주문자</h3>
+                                 <ul class = 'botmargin40'>
+                                 	<li>
+                                      	 <ul class = 'list_02'>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>주문자명</span></span>
+                                      	 		<label>박종건</label>
+                                      	 	</li>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>휴대폰번호</span></span>
+                                      	 		<label>010-4396-4561</label>
+                                      	 	</li>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>이메일</span></span>
+                                      	 		<label>${member.member_email}</label>
+                                      	 	</li>
+                                      	 </ul>
+                                  	</li>
+                                </ul>
+                                <h3>배송지</h3>
+                                 <ul>
+                                      <li>
+                                      	 <ul class = 'list_02'>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>이름</span></span>
+                                      	 		<label>박종건</label>
+                                      	 	</li>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>주소</span></span>
+                                      	 		<label><span>(22352)</span> <span>경기도 고양시 덕양구</span> <span>얄리얄리 얄랴성가리</span></label>
                                       	 		</li>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>휴대폰번호</span></span>
-                                      	 			<input type = 'text' style = 'width : 170px;' placeholder = '-포함' required>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>휴대폰번호</span></span>
+                                      	 		<label>01043937941</label>
+                                      	 	</li>
+                                      </ul>
+                                      </li>
+                                 </ul>
+                           </div>
+                       </div>
+                    	<div class="col-lg-6 col-12">
+							<div class="checkbox-form">
+                        		<h3>주문결제정보</h3>
+                                 <ul class = botborder>
+                                      <li>
+                                      	 <ul class = 'list_02'>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>주문번호</span></span>
+                                      	 		<label>202311070205</label>
+                                      	 	</li>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>결제일시</span></span>
+                                      	 		<label>2023-11-07 18:00:00</label>
                                       	 		</li>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>이메일</span></span>
-                                      	 			${member.member_email}
-                                      	 		</li>
-                                      	 	</ul>
-                                      	</li>
-                                    </ul>
-                                    <h3>배송지</h3>
-                                    <ul id = 'defaultaddress'>
-                                      	<li>
-                                      	 	<ul class = 'list_02'>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>이름</span></span>
-                                      	 			<label>박종건</label>
-                                      	 		</li>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>주소</span></span>
-                                      	 			<label><span>(22352)</span> <span>경기도 고양시 덕양구</span> <span>얄리얄리 얄랴성가리</span></label>
-                                      	 		</li>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>휴대폰번호</span></span>
-                                      	 			<label>01043937941</label>
-                                      	 		</li>
-                                      	 	</ul>
-                                      	</li>
-                                    </ul>
-                                   </div>
-                       		 </div>
-                        <div class="col-lg-6 col-12">
-                        	<div>
-                        		오른쪽내용
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>결제방식</span></span>
+                                      	 		<label>카카오페이(일시불)</label>
+                                      	 	</li>
+                                      	 	<li>
+                                      	 		<span class = 'label'><span>결제금액</span></span>
+                                      	 		<label>5,000원</label>
+                                      	 	</li>
+                                      </ul>
+                                   </li>
+                                </ul>
                         	</div>
                         </div>
                     </div>
