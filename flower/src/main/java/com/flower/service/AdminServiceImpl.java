@@ -33,6 +33,22 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.limitMember(email);
 	}
 
+	@Override
+	public AdminVO searchReportContent(String reportId) {
+		return adminDAO.searchReportContent(reportId);
+	}
+	
+	@Override
+	public int reportCancel(Map<String, String> map) {
+		return adminDAO.reportCancel(map);
+	}
+	
+	@Override
+	public int deleteReportTarget(String reviewId) {
+		return adminDAO.deleteReportTarget(reviewId);
+	}
+	
+	
 	/**
 	 * 상품 관련
 	 * */
@@ -49,6 +65,25 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<AdminVO> searchProductImgs(String productId) {
 		return adminDAO.searchProductImgs(productId);
+	}
+
+	@Override
+	public int modifyProductVisible(Map<String, String> map) {
+		return adminDAO.modifyProductVisible(map);
+	}
+
+	/**
+	 * 설정 관련
+	 * */
+	// policy 개수 확인
+	@Override
+	public int selectPolicyColumnCnt() {
+		return adminDAO.selectPolicyColumnCnt();
+	}
+
+	@Override
+	public List<AdminVO> selectPolicyColumn() {
+		return adminDAO.selectPolicyColumn();
 	}
 
 }

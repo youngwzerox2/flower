@@ -7,7 +7,8 @@
 <select id ="MemberAddressList" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.MemberAddressVO">
 	select ma.type, ma.RECIPIENT_NAME, ma.RECIPIENT_ADDRESS, ma.RECIPIENT_TEL, ma.DEFAULT_DELIVERY_ADDRESS, ma.POSTAL_CODE, ma.recipient_detailaddress, ma.address_id
 	from member m join member_address ma
-	where m.MEMBER_ID  = #{member_id}
+	where m.MEMBER_ID  = 44
+	order by ma.DEFAULT_DELIVERY_ADDRESS desc
 </select>
 
 

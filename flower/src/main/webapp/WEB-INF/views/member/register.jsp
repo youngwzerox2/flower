@@ -1,5 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String pjName = "/flower"; %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,8 +56,11 @@
 		</div>
 	</div>
 	<div class="main-wrapper">
-
+	<%@ include file="/flower_header.jsp" %>
 		<!-- Begin Main Header Area -->
+<<<<<<< HEAD
+		
+=======
 		<header class="main-header-area">
 			<div class="header-top bg-pronia-primary d-none d-lg-block">
 				<div class="container">
@@ -103,7 +110,7 @@
 										123 456 789</a>
 								</div>
 
-								<a href="index.html" class="header-logo"> <img
+								<a href="/flower/flower_main.jsp" class="header-logo"> <img
 									src="../resources/assets/images/logo/dark.png"
 									alt="Header Logo">
 								</a>
@@ -631,6 +638,7 @@
 			</div>
 			<div class="global-overlay"></div>
 		</header>
+>>>>>>> refs/remotes/origin/20231107박민진
 		<!-- Main Header Area End Here -->
 
 		<!-- Begin Main Content Area -->
@@ -642,10 +650,6 @@
 						<div class="col-lg-12">
 							<div class="breadcrumb-item">
 								<h2 class="breadcrumb-heading">회원가입 페이지</h2>
-								<ul>
-									<li><a href="index.html">홈</a></li>
-									<li>회원가입</li>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -658,12 +662,11 @@
 						<div class="col-lg-6 pt-5 pt-lg-0">
 							<form action="register" method="post" id="regForm">
 								<div class="login-form">
+								<!-- 팝업 창 -->
+
+								
 									<h4 class="login-title">회원가입</h4>
 									<div class="row">
-										<!-- <div class="col-md-6 col-12">
-                                            <label>성</label>
-                                            <input type="text" placeholder="성">
-                                        </div> -->
 										<div class="col-md-6 col-12">
 											<label>회원명</label> <input id="member_name" name="member_name"
 												type="text" placeholder="회원명" pattern="[A-Za-z가-힣]*"
@@ -672,10 +675,13 @@
 										<div class="col-md-12">
 											<label>이메일주소*</label> <input id="member_email"
 												name="member_email" type="email" placeholder="이메일주소">
-											<button id="idChk" class="idChk" type="button" value="N">중복확인</button>
+											<button id="idChk" class="btn btn-custom-size lg-size btn-pronia-primary" type="button" value="N">중복확인</button>
+											<br/>
+											<br/>
 											<div id="emailCheckResult"></div>
-											<br />
+											<br/>
 										</div>
+										
 										<div class="col-md-6">
 											<label>비밀번호</label> <input id="member_password"
 												name="member_password" type="password" placeholder="비밀번호">
@@ -687,24 +693,13 @@
 										<div class="agreeservice">
 									    <!-- 서비스 이용 약관 동의 -->
 									    <div>
-									    	<label>서비스 이용 약관 동의</label>
+									    	<label>꽃물주 서비스 이용 약관 동의</label>
 									    	<div class="agreement-content">
-									           <p>서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           서비스 이용 약관 내용입니다. 여기에 약관 내용을 추가하세요.
-									           </p>
+									           <p>${companyPolicy.terms_Of_Service}</p>
 									        </div>
 									        <br/>
 									        <label for="termsOfService">
-									        	<input type="checkbox" id="termsOfService" name="termsOfService">동의함 (필수)
+									        	<input type="checkbox" id="termsOfService" name="termsOfService"> 동의함 (필수)
 									        </label>
 									    </div>
 									    <br/>
@@ -713,22 +708,11 @@
 									   <div>
 										    <label>개인정보 처리방침 동의</label>
 										    <div class="agreement-content">
-										      <p>개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      개인정보 처리방침 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										      </p>
+										      <p>${companyPolicy.privacy_Policy}</p>
 										    </div>
 										    <br/>
 										    <label for="privacyPolicy">
-										        <input type="checkbox" id="privacyPolicy" name="privacyPolicy">동의함 (필수)
+										        <input type="checkbox" id="privacyPolicy" name="privacyPolicy"> 동의함 (필수)
 										    </label>
 										</div>
 										<br/>
@@ -737,29 +721,18 @@
 									   <div>
 										    <label>개인정보 처리 위탁 동의</label>
 										    <div class="agreement-content">
-										       <p>개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       개인정보 처리 위탁 동의 내용입니다. 여기에 약관 내용을 추가하세요.
-										       </p>
+										       <p>${companyPolicy.data_Processing_Agreement}</p>
 										    </div>
 										    <br/>
 										    <label for="dataProcessingAgreement">
-										        <input type="checkbox" id="dataProcessingAgreement" name="dataProcessingAgreement">동의함 (필수)
+										        <input type="checkbox" id="dataProcessingAgreement" name="dataProcessingAgreement"> 동의함 (필수)
 										    </label>
 										</div>
 									    
 									    <!-- 모두 동의 체크박스 -->
 									    <div>
 									        <label for="allAgreements">
-									        	 <input type="checkbox" id="allAgreements" name="allAgreements">모두 동의
+									        	 <input type="checkbox" id="allAgreements" name="allAgreements"> 모두 동의
 									        </label>
 									    </div>
 									</div>
@@ -773,6 +746,15 @@
 											<button type="button" id="cancel"
 												class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
 										</div>
+										
+											<!-- 팝업창 -->
+										<div id="myModal" class="modal">
+										  <div class="modal-content">
+										    <span class="close">&times;</span>
+										    <p id="modalMessage"></p>
+										  </div>
+										</div>
+										
 									</div>
 								</div>
 							</form>
@@ -783,6 +765,7 @@
 				</div>
 			</div>
 	</div>
+	
 	</main>
 	<!-- Main Content Area End Here -->
 
@@ -906,8 +889,6 @@
 	<a class="scroll-to-top" href=""> <i class="fa fa-angle-double-up"></i>
 	</a>
 	<!-- Scroll To Top End Here -->
-
-	</div>
 
 	<!-- Global Vendor, plugins JS -->
 

@@ -59,11 +59,7 @@
 		where member_email = #{member_email}
 	</update>
 	
-	<!-- 이메일 값 받아오기 -->
-	<select id="getMemberByEmail" resultType="com.flower.vo.MemberVO">
-        SELECT * FROM MEMBER 
-        WHERE MEMBER_EMAIL = #{member_email}
-    </select>
+	
 	
 	<!-- 로그인 시, 해당 회원의 장바구니 상품 목록 개수 불러오기 by 최진화 -->
 	<select id="getCartQuan" parameterType="com.flower.vo.MemberVO" resultType="Integer">

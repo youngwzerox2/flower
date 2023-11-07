@@ -2,6 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String pjName = "/flower"; %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,58 +53,13 @@
 		</div>
 	</div>
 	<div class="main-wrapper">
+		<%@ include file="/flower_header.jsp"%>
 
 		<!-- Begin Main Header Area -->
-		<header class="main-header-area">
-			<div class="header-top bg-pronia-primary d-none d-lg-block">
-				<div class="container">
-					<div class="row align-items-center">
-						<div class="col-6">
-							<div class="header-top-left">
-								<span class="pronia-offer">HELLO EVERYONE! 25% Off All
-									Products</span>
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="header-top-right">
-								<ul class="dropdown-wrap">
-									<li class="dropdown">
-										<button class="btn btn-link dropdown-toggle ht-btn"
-											type="button" id="currencyButton" data-bs-toggle="dropdown"
-											aria-label="currency" aria-expanded="false">USD</button>
-										<ul class="dropdown-menu" aria-labelledby="currencyButton">
-											<li><a class="dropdown-item" href="#">GBP</a></li>
-											<li><a class="dropdown-item" href="#">ISO</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<button class="btn btn-link dropdown-toggle ht-btn"
-											type="button" id="languageButton" data-bs-toggle="dropdown"
-											aria-label="language" aria-expanded="false">English
-										</button>
-										<ul class="dropdown-menu" aria-labelledby="languageButton">
-											<li><a class="dropdown-item" href="#">French</a></li>
-											<li><a class="dropdown-item" href="#">Italian</a></li>
-											<li><a class="dropdown-item" href="#">Spanish</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="header-middle py-30">
-				<div class="container">
-					<div class="row align-items-center">
-						<div class="col-lg-12">
-							<div class="header-middle-wrap position-relative">
-								<div class="header-contact d-none d-lg-flex">
-									<i class="pe-7s-call"></i> <a href="tel://+00-123-456-789">+00
-										123 456 789</a>
-								</div>
 
-								<a href="index.html" class="header-logo"> <img
+<<<<<<< HEAD
+=======
+								<a href="/flower/flower_main.jsp" class="header-logo"> <img
 									src="../resources/assets/images/logo/dark.png"
 									alt="Header Logo">
 								</a>
@@ -651,6 +608,7 @@
 			</div>
 			<div class="global-overlay"></div>
 		</header>
+>>>>>>> refs/remotes/origin/20231107박민진
 		<!-- Main Header Area End Here -->
 
 		<!-- Begin Main Content Area -->
@@ -662,10 +620,6 @@
 						<div class="col-lg-12">
 							<div class="breadcrumb-item">
 								<h2 class="breadcrumb-heading">로그인 페이지</h2>
-								<ul>
-									<li><a href="index.html">홈</a></li>
-									<li>로그인</li>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -675,48 +629,34 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="loginForm" name="loginForm" method="post" action="login">
-								<c:if test="${member == null }">
-									<div class="login-form">
-										<h4 class="login-title">로그인</h4>
-										<div class="row">
-											<div class="col-lg-12">
-												<label>이메일 주소</label> <input id="member_email" type="email"
-													name="member_email" placeholder="이메일을 입력하세요!">
-											</div>
-											<div class="col-lg-12">
-												<label>비밀번호</label> <input id="member_password" type="password"
-													name="member_password" placeholder="********">
-											</div>
-											<!-- <div class="col-md-4 pt-1 mt-md-0"> -->
-											<div class="forgotton-login_info">
-												<a href="register">회원가입</a><a href="findpassword">비밀번호 찾기</a><a href="findemail">가입한
-													이메일이 생각나지 않을 땐?</a>
-											</div>
-											<div class="col-lg-12 pt-5">
-												<button id="login" type="submit"
-													class="btn btn-custom-size lg-size btn-pronia-primary">로그인</button>
-												<button type = 'button' id="cancel"
-													class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
-											</div>
-								</c:if>
-								<%-- <c:if test="${member != null }">
-									<div>
-										<p>${member.member_email}님 환영합니다.</p>
-									</div>
-								</c:if>
-								<c:if test="${msg == false }">
-									<p style="color: red;">로그인 실패! 이메일과 비밀번호를 확인해주세요.</p>
-								</c:if> --%>
+							<form id="loginForm" name="loginForm" method="post"
+								action="login">
+								<div class="login-form">
+									<h4 class="login-title">로그인</h4>
+									<div class="row">
+										<div class="col-lg-12">
+											<label>이메일 주소</label> <input id="member_email" type="email"
+												name="member_email" placeholder="이메일을 입력하세요!">
+										</div>
+										<div class="col-lg-12">
+											<label>비밀번호</label> <input id="member_password"
+												type="password" name="member_password"
+												placeholder="********">
+										</div>
+										<!-- <div class="col-md-4 pt-1 mt-md-0"> -->
+										<div class="forgotton-login_info">
+											<a href="register">회원가입</a><a href="findpassword">비밀번호 찾기</a><a
+												href="findemail">가입한 이메일이 생각나지 않을 땐?</a>
+										</div>
+										<div class="col-lg-12 pt-5">
+											<button id="login" type="submit"
+												class="btn btn-custom-size lg-size btn-pronia-primary">로그인</button>
+											<button type='button' id="cancel"
+												class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
+										</div>
 							</form>
 						</div>
 					</div>
-
-					<%-- <c:if test="${member != null }">
-						<a href="logout">
-							<button id="logout" type="button">로그아웃</button>
-						</a>
-					</c:if> --%>
 				</div>
 
 				<div class="col-lg-6">
@@ -734,40 +674,7 @@
 						</div>
 					</form>
 				</div>
-				<!--  <div class="col-lg-6 pt-5 pt-lg-0">
-                            <form action="#">
-                                <div class="login-form">
-                                    <h4 class="login-title">Register</h4>
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <label>First Name</label>
-                                            <input type="text" placeholder="First Name">
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <label>Last Name</label>
-                                            <input type="text" placeholder="Last Name">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label>Email Address*</label>
-                                            <input type="email" placeholder="Email Address">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Password</label>
-                                            <input type="password" placeholder="Password">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Confirm Password</label>
-                                            <input type="password" placeholder="Confirm Password">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-custom-size lg-size btn-pronia-primary">Register</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div> -->
 			</div>
-	</div>
 	</div>
 	</main>
 	<!-- Main Content Area End Here -->
@@ -893,7 +800,6 @@
 	</a>
 	<!-- Scroll To Top End Here -->
 
-	</div>
 
 	<!-- Global Vendor, plugins JS -->
 

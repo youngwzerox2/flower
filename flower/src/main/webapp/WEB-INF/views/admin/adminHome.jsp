@@ -106,53 +106,31 @@
 								    <div class="myaccount-members">
 								        <h4 class="small-title">회원 관리</h4><br/>
 										<div class="widgets-searchbox">
-												<ul>								        
-													<li class="short">
-				                                        <select class="nice-select" id="memberSelectbox">
-				                                            <option value="">전체</option>
-				                                            <option value="member_email">ID</option>
-				                                            <option value="member_name">고객명</option>
-				                                            <option value="member_status">회원상태</option>
-				                                            <option value="report_yn">신고여부</option>
-				                                        </select>
-			                                    	</li>
-			                                    	<li>
-		                                        	<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
-			                                    	</li>
-			                                    	<li>
-			                                        <button id="memberSearchBtn" class="widgets-searchbox-btn" >
-			                                            <i class="fa fa-search"></i>
-			                                        </button>
-			                                    	</li>
-										        </ul>
+											<ul>								        
+												<li class="short">
+			                                        <select class="nice-select" id="memberSelectbox">
+			                                            <option value="">전체</option>
+			                                            <option value="member_email">ID</option>
+			                                            <option value="member_name">고객명</option>
+			                                            <option value="member_status">회원상태</option>
+			                                            <option value="report_yn">신고여부</option>
+			                                        </select>
+		                                    	</li>
+		                                    	<li>
+	                                        	<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+		                                    	</li>
+		                                    	<li>
+		                                        <button id="memberSearchBtn" class="widgets-searchbox-btn" >
+		                                            <i class="fa fa-search"></i>
+		                                        </button>
+		                                    	</li>
+									        </ul>
 		                                </div>
 								        <div class="table-responsive">
 								            <table class="table table-bordered table-hover">
 								                <tbody id="memberList"></tbody>
 								            </table>
 								        </div>
-								    </div>
-								</div>
-								<div class="tab-pane fade" id="account-member-detail" aria-labelledby="account-member-tab">
-								    <div class="myaccount-members">
-								        <h4 class="small-title">회원 관리 상세</h4><br/>
-										<div class="widgets-searchbox">
-											<div class="table-responsive">
-									            <div class="compare-table table-responsive">
-							                        <table class="table table-bordered table-hover mb-0">
-							                            <tbody id="memberDetail"></tbody>
-							                        </table>
-							                        <div class="member-topbar" style="position:absoluted; padding-top: 20px; padding-left: 80%;">
-									                    <ul>
-									                    <li id="goMemberList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
-									                    <li id="goLimitation" class="mb-xs mt-xs mr-xs btn btn-danger"> 제한 </li>
-									                    </ul>
-							                     	</div>
-							                        
-						                    	</div>
-									            
-									        </div>
-		                                </div>
 								    </div>
 								</div>
                                 <div class="tab-pane fade" id="account-products" role="tabpanel" aria-labelledby="account-products-tab">
@@ -163,8 +141,8 @@
 													<li class="short">
 				                                        <select class="nice-select" id="productSelectbox">
 				                                            <option value="">전체</option>
+				                                            <option value="product_id">상품ID</option>
 				                                            <option value="product_name">상품명</option>
-				                                            <option value="product_content">상품설명</option>
 				                                            <option value="product_state">상품노출여부</option>
 				                                        </select>
 			                                    	</li>
@@ -199,9 +177,10 @@
 							                        <table class="table table-bordered table-hover mb-0">
 							                            <tbody id="productDetail"></tbody>
 							                        </table>
-							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 80%;">
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 77%;">
 									                    <ul>
 									                    <li id="goProductList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goProductModify" class="mb-xs mt-xs mr-xs btn btn-warning"> 수정 </li>
 									                    <li id="goProductHide" class="mb-xs mt-xs mr-xs btn btn-danger"></li>
 									                    </ul>
 							                     	</div>
@@ -251,21 +230,49 @@
                                         </form>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="account-member-detail" aria-labelledby="account-member-tab">
+								    <div class="myaccount-members">
+								        <h4 class="small-title">회원 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="memberDetail"></tbody>
+							                        </table>
+							                        <div class="member-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
+									                    <ul>
+									                    <li id="goMemberList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goLimitation" class="mb-xs mt-xs mr-xs btn btn-danger"> 제한 </li>
+									                    </ul>
+							                     	</div>
+							                        
+						                    	</div>
+									            
+									        </div>
+		                                </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-policies" aria-labelledby="account-policies-tab">
+								    <div class="myaccount-policies">
+								        <h4 class="small-title">정책 관리</h4><br/>
+								        <div class="table-responsive">
+									        <ul class="nav product-tab-nav tab-style-1" id="myTab" role="tablist"></ul>
+								            <table class="table table-bordered table-hover">
+								                <tbody id="poliesList"></tbody>
+								            </table>
+								        </div>
+								    </div>
+								</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-
-        <!-- Begin Scroll To Top -->
         <a class="scroll-to-top" href="">
             <i class="fa fa-angle-double-up"></i>
         </a>
-        <!-- Scroll To Top End Here -->
-
     </div>
-
 	<div id="popupLimitModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -290,7 +297,67 @@
             </div>
         </div>
     </div>
-    
+    <div id="popupReportModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">신고 내역</h4>
+                </div>
+                <div class="widgets-searchbox">
+                    <div style="position:absoluted; padding-bottom: 10px; padding-left: 79%;">
+               			<button id="btn-cancelReport" type="button" class="btn btn-danger" data-dismiss="modal">신고취소</button>
+               		</div>
+                    <table class="table table-bordered table-hover">
+					  <tr style="display: none;">
+					    <th> 회원 아이디 </th>
+					    <td id="reportMemberId"></td>
+					  </tr>
+					  <tr>
+					    <th> 이용 제한 대상 </th>
+					    <td id="reportEmail"></td>
+					  </tr>
+					  <tr>
+					    <th> 상품ID </th>
+					    <td id="reportProductId"></td>
+					  </tr>
+					  <tr>
+					    <th> 리뷰 번호 </th>
+					    <td id="reportReviewId"></td>
+					  </tr>
+					  <tr>
+					  <tr>
+					    <th> 리뷰 제목 </th>
+					    <td id="reportTitle"></td>
+					  </tr>
+					  <tr>
+					    <th> 리뷰 내용 </th>
+					    <td id="reportReviewContent"></td>
+					  </tr>
+					  <tr>
+					    <th> 리뷰 작성일 </th>
+					    <td id="reportReviewRegiDate"></td>
+					  </tr>
+					  <tr>
+					    <th> 신고 횟수 </th>
+					    <td id="reportCnt"></td>
+					  </tr>
+					  <tr>
+					    <th> 최근 신고 내용 </th>
+					    <td id="reportContent"></td>
+					  </tr>
+					  <tr>
+					    <th> 최근 신고일 </th>
+					    <td id="reportDate"></td>
+					  </tr>
+					</table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-deleteReportTarget" type="button" class="btn btn-danger" data-dismiss="modal">해당 글 삭제</button>
+                    <button id="btn-closeReportPopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+                </div>
+           	</div>
+       	</div>
+   	</div>
 	<div id="popupVisibleModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -300,12 +367,12 @@
                 <div class="widgets-searchbox">
                     <table class="table table-bordered table-hover">
 					  <tr>
-					    <th> 노출 제한 대상</th>
+					    <th> 노출 제한 상품 </th>
 					    <td id="visibleProduct"></td>
 					    <td id="visibleStatus" style="display: none;"></td>
 					  </tr>
 					  <tr>
-					    <th colspan="2" style="color: #FF0000">* 실행 시 사용자 화면에서 해당 상품의 노출/숨김이 변경됩니다.</th>
+					    <th colspan="2" style="color: #FF0000">* 실행 시 해당 상품의 노출/숨김이 변경됩니다.</th>
 					  </tr>
 					</table>
                 </div>
@@ -338,6 +405,6 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="../resources/assets/js/main.js"></script>
-    <script src="../resources/assets/js/admin.js"></script>
+    <script src="../resources/assets/js/admin/admin.js"></script>
 </body>
 </html>

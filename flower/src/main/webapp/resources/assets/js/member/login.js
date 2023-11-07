@@ -40,8 +40,10 @@ $(function() {
                 },
                 success: function(response) {
                     if (response == 0) {
-                        alert("로그인에 성공하였습니다!"); // 로그인 성공 알림
+                        alert("로그인에 성공하였습니다! 메인페이지로 이동합니다"); // 로그인 성공 알림
                        window.location.href = "/flower/flower_main.jsp"; // 메인 페이지로 리다이렉트
+                     } else if (response == 2) {
+                        alert("탈퇴한 회원이거나 제재를 받은 회원입니다."); 
                     } else {
                         alert("이메일 또는 비밀번호가 잘못되었습니다.");
                     }

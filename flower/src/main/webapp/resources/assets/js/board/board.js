@@ -3,7 +3,21 @@
  */
 function insert_form(){
 
+	var loginCheck = $('.loginCheck').text();
+	//alert(loginCheck);
+
+	if(loginCheck == '로그인'){
+	
+		if(confirm('로그인 후 이용가능합니다\n로그인 하시겠습니까??')==true){
+			location.href = '/flower/member/login';
+			return;	
+		}
+		 
+	}else {
 		location.href = 'insert_form';
+	}
+		
+	
 
 }
 

@@ -58,7 +58,6 @@
            <div class="form-field mt-30">
            	   <textarea name="reports_contents" id="reports_contents" placeholder="reports_contents" class="textarea-field"></textarea>
            </div>
-           
            <div class="button-wrap pt-5" style="margin-top: 10px;">
               <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="send(this.form)">
               <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">

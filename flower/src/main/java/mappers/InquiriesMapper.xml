@@ -4,8 +4,7 @@
 <mapper namespace="inquiries">
 
 	 <select id="inquiriesSelect" resultType="com.flower.vo.InquiriesVO">
-	 
-	 	select * from inquiries order by inquiries_id desc
+	 	SELECT * FROM inquiries;
 	 
 	 </select>
 
@@ -19,13 +18,10 @@
 						b.*
 					FROM 
 						(
-							SELECT * FROM inquiries
+							SELECT * FROM inquiries ORDER BY inquiries_id DESC
 							<trim prefix="where">
 								<if test="title!=null">
 									inquiries_title LIKE CONCAT('%', #{title}, '%')
-								</if>
-								<if test="regdate!=null">
-									DATE_FORMAT(inquiries_register_date, '%Y-%m-%d') = #{regdate}
 								</if>
 							</trim>
 						) b,
@@ -40,9 +36,6 @@
 		<trim prefix="where" prefixOverrides="or">
 			<if test="title!=null">
 				inquiries_title LIKE CONCAT('%', #{title}, '%')
-			</if>
-			<if test="regdate!=null">
-				DATE_FORMAT(inquiries_register_date, '%Y-%m-%d') = #{regdate}
 			</if>
 		</trim>
 	</select>
@@ -70,10 +63,7 @@
 	 </insert>
 	 
 	 <update id="inquiriesUpdate" parameterType="com.flower.vo.InquiriesVO">
-	 	update inquiries set inquiries_id            = #{ inquiries_id },
-							 member_id               = #{ member_id },
-							 inquiries_category      = #{ inquiries_category },
-							 inquiries_title         = #{ inquiries_title },
+	 	update inquiries set inquiries_title         = #{ inquiries_title },
 							 inquiries_cotent        = #{ inquiries_cotent },
 							 inquiries_register_date = now()
 		where inquiries_id = #{ inquiries_id };

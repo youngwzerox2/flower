@@ -1,9 +1,12 @@
 $(function() {
 
     $("#findPassword").click(function() {
+        var emailInput = $("#member_email");
         var email = $("#member_email").val();
-        if (email === "") alert("이메일을 입력해 주세요.");
-        else {
+        if (email === "") {
+            alert("이메일을 입력해 주세요.");
+            emailInput.focus();
+        }else {
             // 이메일을 서버로 보내어 처리하는 로직을 추가
             $.ajax({
             url: "findEmailChk",

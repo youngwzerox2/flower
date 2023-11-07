@@ -70,6 +70,7 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 		return sqlSession.selectList("inquiries.MypageSelectInquiry",vo);
 	}
 
+
 	
 	
 	

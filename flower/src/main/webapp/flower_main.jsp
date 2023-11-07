@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <% String pjName = "/flower"; %>
-<% String test = "/flower"; %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -50,8 +50,8 @@
                     <div class="swiper-slide animation-style-02">
                         <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
                             <div class="slide-content text-black">
-                                <h2 class="title">What if...</h2>
-                                <p class="short-desc">Only for an hour You're mine, all mine.</p>
+                                <h2 class="title">나의 작은 꽃</h2>
+                                <p class="short-desc">지지 말고 활짝 피렴</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-custom-size xl-size btn-pronia-primary" href="">Discover Now</a>
                                 </div>
@@ -68,10 +68,10 @@
                         </div>
                     </div>
                     <div class="swiper-slide animation-style-02">
-                        <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
+                        <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/bg3-2.jpg">
                             <div class="slide-content text-black">
-                                <h2 class="title">Knock, <br> Knock</h2>
-                                <p class="short-desc">Are you still there?</p>
+                                <h2 class="title">그대 모습은 <br> 보랏빛처럼</h2>
+                                <p class="short-desc">살며시 다가왔지</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
                                 </div>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide animation-style-02">
-                        <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/2-1.jpg">
+                        <div class="slide-inner style-2" data-bg-image="<%=pjName %>/resources/assets/images/slider/bg/bg3-3.jpg">
                             <div class="slide-content text-black">
                                 <h2 class="title">가을엔 <br> 역시</h2>
                                 <p class="short-desc">별헤는 밤이면 들려오는 그대의 음성</p>
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="slide-img">
-                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/flower_main3.jpg" alt="Slide Image">
+                                <img src="<%=pjName %>/resources/assets/images/slider/slide-img/flower_main4.jpg" alt="Slide Image">
                                 <div class="slide-count">
                                     <span class="data-count" data-count="03">
                                 <span class="forward-slash">/</span>
@@ -378,7 +378,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="board/product">American Marigold</a>
+                                                <a class="product-name" href="board/product">장미</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$23.45</span>
                                                 </div>
@@ -423,7 +423,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Black Eyed Susan</a>
+                                                <a class="product-name" href="shop.html">수국</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$25.45</span>
                                                 </div>
@@ -467,7 +467,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Bleeding Heart</a>
+                                                <a class="product-name" href="shop.html">해바라기</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$30.45</span>
                                                 </div>
@@ -511,7 +511,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Bloody Cranesbill</a>
+                                                <a class="product-name" href="shop.html">데이지</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$45.00</span>
                                                 </div>
