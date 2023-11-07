@@ -103,7 +103,7 @@
 										123 456 789</a>
 								</div>
 
-								<a href="index.html" class="header-logo"> <img
+								<a href="/flower/flower_main.jsp" class="header-logo"> <img
 									src="../resources/assets/images/logo/dark.png"
 									alt="Header Logo">
 								</a>

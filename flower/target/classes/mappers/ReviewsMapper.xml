@@ -4,7 +4,10 @@
 <mapper namespace="reviews">
 
 	 <select id="reviewsSelect" resultType="com.flower.vo.ReviewsVO">
-	 	select * from reviews order by reviews_id desc
+	 	SELECT IF(COUNT(*) > 0, 1, 0) as review_permission
+			FROM order_table 
+		WHERE member_id = #{member_id} 
+		  AND product_id = #{product_id}
 	 </select>
 	 
 	  <!-- 조건별 조회 -->
@@ -64,5 +67,12 @@
 									);
 			
 	 </insert>
+	 
+	 <update id="reviewsUpdate" parameterType="com.flower.vo.ReviewsVO">
+	 	update reviews set reviews_title           = #{ reviews_title },
+						   reviews_content         = #{ reviews_content },
+						   reviews_register_date   = now()
+		where reviews_id = #{ reviews_id };
+	 </update>
 	 
 </mapper>

@@ -9,8 +9,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.flower.mycommon.MyConstant;
 import com.flower.service.InquiriesService;
@@ -180,6 +184,27 @@ public class BoardController {
 		
 		return "board/reviews_view";
 	}
+
+	@RequestMapping("reviews_form")
+	public String reviews_modify_form(String reviews_id,Model model) {
+		
+		//1.수정 데이터 정보 1건 얻어오기
+		ReviewsVO vo = reviewsService.selectOne(reviews_id);
+		
+		//2.결과적으로 request binding
+		model.addAttribute("vo", vo);
+		
+		return "board/reviews_modify_form";
+	}
 	
+	@RequestMapping("reviews_modify")
+	public String reviews_modify(ReviewsVO vo, Model model) {
+		
+		reviewsService.update(vo);
+		
+		model.addAttribute("reviews_id", vo.getReviews_id());
+		
+		return "redirect:view";
+	}
 	
 }
