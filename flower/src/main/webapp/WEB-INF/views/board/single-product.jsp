@@ -119,12 +119,12 @@
                                                 <li>
 	                                                <!-- 로그인 안된경우 -->
 	                                                <c:if test="${ empty member }">
-	                                                	<a class="dropdown-item" href="${pageContext.request.contextPath }/member/login">로그인</a>
+	                                                	<a class="dropdown-item loginCheck" href="${pageContext.request.contextPath }/member/login">로그인</a>
 	                                                </c:if>
 	                                                
 	                                                <!-- 로그인 된경우 -->
 	                                                <c:if test="${ not empty member }">
-	                                                	<a class="dropdown-item" href="${pageContext.request.contextPath }/member/register">로그아웃</a>
+	                                                	<a class="dropdown-item  loginCheck" href="${pageContext.request.contextPath }/member/register">로그아웃</a>
 	                                                </c:if>
                                                 </li>
                                             </ul>
@@ -1139,11 +1139,10 @@
                                     
                                     <!-- 리뷰쓰기 -->
                                     <div class="inquiries_writing">
-	                                    <c:if test="${ not empty member }">
-	                                    	<input class="i_btn_writing" type="button" value="리뷰쓰기" onclick="insert_reviews_form();">
-	                                    </c:if>
+	                                    <input class="i_btn_writing" type="button" value="리뷰쓰기" onclick="insert_reviews_form();">
                                     </div>
-                                   
+
+                                    
                                     <!-- Data없는경우 -->
                                 	<c:if test="${ empty reviews_list }">
                                 		<tr>
@@ -1168,7 +1167,6 @@
 					                                    	<span class="date">${ vo.reviews_register_date }</span>
 					                                    </div>
 				                                    		<p class="user-comment">${ vo.reviews_content }</p>
-				                                    		<a class="btn btn-custom-size comment-btn style-2" href="javascript:void(0);">Reply</a>
 				                                    </div>
 			                                    </div>
 	                                    </div>
@@ -1193,17 +1191,14 @@
                                     		
                                     		<!-- 문의하기 -->
                                     		<div class="inquiries_writing">
-	                                    		<c:if test="${ not empty member }">
-	                                    			<input class="i_btn_writing" type="button" value="문의하기" onclick="insert_form();">
-	                                    		</c:if>
+	                                    		<input class="i_btn_writing" type="button" value="문의하기" onclick="insert_form();">
                                     		</div>
-                                    		<!--  
+                                  	
                                     		<div class="i_select_box">
                                     			<div class="i_select">
                                     				<select id="search">
                                     					<option value="all">전체</option>
                                     					<option value="title">제목</option>
-                                    					<option value="regdate">작성일자</option>
                                     				</select>
                                     				 
                                     					<input id="search_text" value="" placeholder="검색어를 입력하세요">
@@ -1211,7 +1206,7 @@
                                     			
                                     			</div>
                                     		</div>
-                                    		 -->
+                                    		 
                                     		<div class="inquiries_info">
                                     			<table class="table">
                                     				<tr class="inquiries_table">
@@ -1235,7 +1230,15 @@
                                     					<tr>
                                     						<td class="i_list_on">${ i.count }</td>
                                     						<td class="i_list_on"><a href="view?inquiries_id=${ vo.inquiries_id }">${ vo.inquiries_title }</a></td>
-                                    						<td class="i_list_on">${ vo.inquiries_answer_yn }</td>
+                                    						
+                                    						<c:choose>
+                                    							<c:when test="${ vo.inquiries_answer_yn == 1 }">
+                                    								<td class="i_list_on">Y</td>
+                                    							</c:when>
+                                    							<c:otherwise>
+                                    								<td class="i_list_on">N</td>
+                                    							</c:otherwise>
+                                    						</c:choose>
                                     						<td class="i_list_on">${ vo.inquiries_register_date }</td>
                                     					</tr>
                                     					

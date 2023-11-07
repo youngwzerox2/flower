@@ -55,7 +55,7 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 	@Override
 	public int update(ReviewsVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("reviews.reviewsUpdate", vo);
 	}
 
 	@Override

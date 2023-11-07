@@ -13,7 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/inquiries.css">
-<script src="${ pageContext.request.contextPath }/resources/assets/js/board/board.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/assets/js/board/reviews.js"></script>
 
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/style.css">
 
@@ -31,6 +31,16 @@
 <body>
 
    <div class="feedback-area" id="box">
+   
+   <!-- 로그인 안된경우 -->
+   <c:if test="${ empty member }">
+   	<input type="hidden" value="로그인" class="loginCheck">
+   </c:if>
+   <!-- 로그인 된경우 -->
+   <c:if test="${ not empty member }">
+   	<input type="hidden" value="로그아웃" class="loginCheck">
+   </c:if>
+   
     <h2 class="heading">리뷰</h2>
        <form class="feedback-form" id="send_form">
            <!-- <div class="group-input"></div> -->
@@ -48,18 +58,12 @@
 
 	           <div class="button-wrap pt-5" style="margin-top: 10px;">
 		           <c:if test="${ (vo.member_id eq member.member_id) }">
-		              <input type="button" value="수정" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="modify_form('${ vo.reviews_id }');">
+		              <input type="button" value="수정" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_form('${ vo.reviews_id }');">
 		              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="del('${vo.reviews_id}');">
 		           </c:if>
 		           
 	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
 	           </div>
-	           <!-- 
-	           <div>
-			   	  <textarea id="c_content" rows="5" cols=""></textarea>
-			   	  <input class="btn btn-primary btn-sm" type="button" value="답변" onclick="add_comment();">
-			   </div>
-	            -->
        </form>
    </div>
 </body>

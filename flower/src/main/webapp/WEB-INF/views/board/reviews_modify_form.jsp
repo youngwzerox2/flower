@@ -29,37 +29,20 @@
 </head>
 <body>
 
-   <div class="feedback-area">
+   <div class="feedback-area" id="box">
     <h2 class="heading">리뷰</h2>
        <form class="feedback-form">
            <!-- <div class="group-input"></div> -->
-              <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="reviews_id" id="reviews_id" placeholder="reviews_id" class="input-field">
-               </div>
-               <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="member_id" id="member_id" placeholder="member_id" class="input-field">
-               </div>
-               <div class="form-field me-md-30 mb-30 mb-md-0">
-                   <input type="text" name="product_id" id="product_id" placeholder="product_id" class="input-field">
-               </div>
-               <div class="form-field">
-                   <input type="text" name="reviews_title" id="reviews_title" placeholder="reviews_title" class="input-field">
-               </div>
+           <div class="form-field">
+               <input type="text" name="reviews_title" id="reviews_title" placeholder="reviews_title" class="input-field">
+           </div>
            
            <div class="form-field mt-30">
            	   <textarea name="reviews_content" id="reviews_content" placeholder="reviews_content" class="textarea-field"></textarea>
            </div>
-           <div class="form-field mt-30">
-               <input type="text" name="reviews_score" id="reviews_score" placeholder="reviews_score" class="input-field">
-           </div>
-            <div class="form-field mt-30">
-               <input type="text" name="reports_cnt" id="reports_cnt" placeholder="reports_cnt" class="input-field">
-           </div>
-           <div class="form-field mt-30">
-           	   <textarea name="reports_contents" id="reports_contents" placeholder="reports_contents" class="textarea-field"></textarea>
-           </div>
+           
            <div class="button-wrap pt-5" style="margin-top: 10px;">
-              <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="send(this.form)">
+              <input type="button" value="수정하기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_modify(this.form)">
               <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
            </div>
            
