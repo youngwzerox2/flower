@@ -38,6 +38,7 @@
 -----------------------------------------------------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Grandiflora+One&family=Noto+Sans+KR:wght@400;600&family=Song+Myung&display=swap');
 /*----------------------------------------*/
 /*  01. Template default CSS
 /*----------------------------------------*/
@@ -52,7 +53,8 @@ body {
 }
 
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-weight: 600;
   color: #525252;
 }
 
@@ -1115,7 +1117,7 @@ blockquote p {
 }
 
 /* ---Quantity--- */
-.quantity .cart-plus-minus {
+.quantity .cart-plus-minus{
   position: relative;
   width: 76px;
   text-align: left;
@@ -1147,6 +1149,49 @@ blockquote p {
   left: 15px;
 }
 .quantity .cart-plus-minus .qtybutton.inc {
+  left: auto;
+  right: 15px;
+}
+
+
+/* --- quantity to DB --- */
+
+.table-content table td.dbquantity .cart-plus-minus-db{	
+	margin: 0 auto;
+}
+
+.dbquantity .cart-plus-minus-db {
+  position: relative;
+  width: 76px;
+  text-align: left;
+}
+.dbquantity .cart-plus-minus-db .cart-plus-minus-box-db {
+  background-color: #505050;
+  border: 1px solid #505050;
+  color: #ffffff;
+  text-align: center;
+  width: 75px;
+  height: 50px;
+  border-radius: 5px;
+}
+.dbquantity .cart-plus-minus-db .dbqtybutton {
+  cursor: pointer;
+  position: absolute;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  font-size: 10px;
+  color: inherit;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #ffffff;
+}
+.dbquantity .cart-plus-minus-db .dbqtybutton.dbdec {
+  left: 15px;
+}
+.dbquantity .cart-plus-minus-db .dbqtybutton.dbinc {
   left: auto;
   right: 15px;
 }
@@ -1236,6 +1281,7 @@ blockquote p {
 /*  02. Animation
 /*----------------------------------------*/
 .swiper-slide .slide-inner .slide-content {
+  font-weight: 300;
   opacity: 0;
 }
 .swiper-slide.swiper-slide-active .slide-inner .slide-content {
@@ -1591,6 +1637,7 @@ blockquote p {
 
 /* ---Header Contact--- */
 .header-contact {
+  font-family: 'Grandiflora One', cursive;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1626,6 +1673,7 @@ blockquote p {
 
 /* ---Main Header--- */
 .main-nav > ul {
+  font-family: 'Noto Sans KR', sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1927,6 +1975,7 @@ blockquote p {
 /*----------------------------------------*/
 /* ---Main Slider--- */
 .slide-inner {
+  font-family: 'Song Myung', serif;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6438,7 +6487,6 @@ textarea {
 }
 .your-order .your-order-table table thead tr th {
   border-top: medium none;
-  font-weight: normal;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
@@ -6573,6 +6621,17 @@ textarea {
     border-right: 1px solid #d9d9d9;
 }
 
+.list_02 .label{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 145px;
+    color: #4d4d4d;
+    background-color: #f7f7f7;
+    border-right: 1px solid #d9d9d9;
+}
+
 .list_01 .label span{
 	position: absolute;
     top: 50%;
@@ -6583,7 +6642,53 @@ textarea {
     -ms-transform: translateY(-50%);
 }
 
-.list_01 input[type='text']{
+.list_02 .label span{
+	position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.list_02{
+	border-bottom: 1px solid #d9d9d9;
+}
+
+.list_02 button:focus, .list_02 button:active
+{
+	border: 1px #ccc solid;
+	outline: none;
+}
+
+.orderer{
+	padding-bottom : 15px;
+}
+
+.btn_resp{
+	vertical-align: top !important;
+    height: 19px;
+    padding: 1px 2px;
+    line-height: 17px;
+    color: #808080;
+    border-radius: 4px;
+    border: 1px #ccc solid;
+    background: #fff;
+    font-size: 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.chooseaddress{
+	margin-left : 3px;
+}
+
+.list_02 button + button{
+	margin : 0;
+}
+
+.list_01 input[type='text'], .list_02 input[type='text']{
 	height: 40px;
     text-indent: 13px;
     text-align: left !important;
@@ -6685,7 +6790,97 @@ textarea {
 	margin-bottom : 20px;
 }
 
+.real {
+	border-top: 1px solid #d9d9d9;
+}
 
+.list_02 li {
+	position: relative;
+    padding: 13px 20px 13px 160px !important;
+    font-size: 14px;
+    color: #808080;
+    border-top: 1px solid #d9d9d9;
+}
+
+#selectaddress li label{
+	cursor : pointer;
+}
+
+.order_list{
+    border-bottom-color: #d9d9d9;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-top: 1px #333 solid;
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 13px;
+}
+
+.order_list>ul{
+	 display: table-row;
+}
+
+.order_list>.order_list_cate> li{
+	font-weight: 700;
+    color: #4d4d4d;
+    background-color: #f7f7f7;
+    border-top: none;
+    border-bottom : 1px solid #d9d9d9;
+}
+
+.order_list>ul> li{
+	padding: 20px 0;
+    line-height: 20px;
+    font-size: 15px;
+    color: #808080;
+    border-left: 0;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+
+.order_list_body img{
+	margin: 0;
+    width: 100%;
+    height: 90px;
+    border: 0;
+    border-radius: 4px;
+}
+
+.width300{
+	width : 300px !important;
+}
+
+.board_goods_list{
+	display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+li.pic {
+	width: 120px;
+    padding-right: 15px;
+}
+
+.info{
+	vertical-align: middle;
+	color: #808080;
+}
+
+.board_goods_list>li {
+    display: table-cell;
+}
+
+.botmargin40{
+	margin-bottom : 40px;
+}
+
+.botborder{
+	border-top: 1px #333 solid;
+}
 
 
 

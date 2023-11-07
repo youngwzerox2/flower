@@ -2,39 +2,74 @@
  * 
  */
  
- $(function(){
- 	
- 	// 장바구니 담기
- 	$('#addCart').click(function(e){
- 		// console.log('You found me!: ' + $(this));
- 		console.log('수량: ' + $('#product_quantity').val());
- 		console.log('상품id: ' + $('#product_id').val());
- 		prod_id = $('#product_id').val();
- 		prod_quan = $('#product_quantity').val();
- 		$.ajax({
- 			type: 'GET',
- 			url: '/flower/cart?product_id=' + prod_id,
- 			data: {
- 				shopping_cart_product_quantity: prod_quan
- 			},
- 			success: function(result){
- 				if(confirm('장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?')) {
- 					location.href = '/flower/cart/cart';
- 				} else {
- 					return false;
- 				}				
- 			},
- 			error: function(error){
- 				if(confirm('로그인이 필요한 서비스입니다. 로그인 하시겠습니까?')){
- 					// 로그인 '창'으로 띄우고 싶지....만
- 					location.href='/flower/member/login';
- 					
- 				} else {
- 					return false;
- 				}
- 			}
- 		}); // ajax end
- 		
- 	}); // #addCart.click end
- 	
- }) // $(function(){}) end
+/*----------------------------------------*/
+/*  QTY Button to DB by Jin
+/*----------------------------------------*/
+    // 수량변경 버튼 이벤트
+    
+    $('.dbqtybutton').on('click', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        const cartId = $('#cartId').val();
+        
+        const price = stringNumberToInt($button.parent().parent().siblings().find('span').html());
+                
+        let cart_prod_subset_sum1 = stringNumberToInt($button.parent().parent().siblings().find('.cart_subset_sum').html());
+        const cart_prod_subset_sum = $button.parent().parent().siblings().find('.cart_subset_sum');
+        
+        if ($button.hasClass('dbinc')) {
+            var newVal = parseFloat(oldValue) + 1;
+            $.ajax({
+            	type: 'POST',
+            	url: '/flower/updateCartQuan',
+            	data: {
+            		shopping_cart_id: cartId,
+            		shopping_cart_product_quantity: newVal
+            	},
+            	success: function(result){
+            		cart_prod_subset_sum.html(formatNumberWithCommas(price * newVal));
+            		
+            	},
+            	error: function(err){
+            		console.log("실패");
+            	}
+            });
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 1) {
+                var newVal = parseFloat(oldValue) - 1;
+                $.ajax({
+            		type: 'POST',
+            		url: '/flower/updateCartQuan',
+            		data: {
+            			shopping_cart_id: cartId,
+            			shopping_cart_product_quantity: newVal
+            		},
+            		success: function(result){
+            			cart_prod_subset_sum.html(formatNumberWithCommas(price * newVal));
+            		},
+            		error: function(err){
+            			console.log("실패");
+            		}
+            	});
+            } else {
+                newVal = 1;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    }); // 수량변경 버튼 이벤트 end
+    
+    
+    // 콤마 찍힌 숫자를 정수형으로 변환
+    function stringNumberToInt(stringNumber) {
+    	return parseInt(stringNumber.replace(/,/g, ''));
+    }
+    
+    // 숫자 형식화
+	function formatNumberWithCommas(number) {
+		if (number === null || number === undefined) {
+	    	return "0";
+	  	}
+	  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+ 

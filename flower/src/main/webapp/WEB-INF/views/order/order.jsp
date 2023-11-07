@@ -31,6 +31,9 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="/flower/resources/assets/css/style.css">
+    
+     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+     <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 </head>
 
@@ -45,7 +48,7 @@
         </div>
     </div>
     <div class="main-wrapper">
-  <%@ include file="flower_header.jsp" %>
+  <%@ include file="/flower_header.jsp" %>
        
         <!-- Begin Main Content Area -->
         <main class="main-content">
@@ -75,25 +78,26 @@
                                 	<h3>주문 상품 정보</h3>
                                 	<div class = 'cart_list'>
                                 	<ul class = 'cart_contents'>
+                                	<c:forEach items = '${cartList}' var = 'product'>
                                 		<li class = cart_goods>
                                 			<div class = 'block block1'>
                                 				<ul>
                                 					<li class = 'img_area'>
                                 						<a href = '#'>
-                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/1_list_1.jpg' class = 'goods_thumb'>
+                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/${product.product_image_file_name}' class = 'goods_thumb'>
                                 						</a>
                                 					</li>
                                 					<li class = 'option_area'>
                                 						<div class = 'goods_name'>
-                                							<a href = '#'>유산슬</a>
+                                							<a href = '#'>${product.product_name}</a>
                                 						</div>
                                 						<div>
                                 							<span>
                                 								수량
                                 							</span>
-                                							1개
+                                							${product.shopping_cart_product_quantity} 개
                                 							<span>
-                                								15000
+                                								${product.shopping_cart_product_quantity * product.product_price}
                                 							</span>
                                 							원
                                 						</div>
@@ -101,57 +105,64 @@
                                 				</ul>
                                 			</div>
                                 		</li>
-                                		<li class = cart_goods>
-                                			<div class = 'block block1'>
-                                				<ul>
-                                					<li class = 'img_area'>
-                                						<a href = '#'>
-                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/1_list_1.jpg' class = 'goods_thumb'>
-                                						</a>
-                                					</li>
-                                					<li class = 'option_area'>
-                                						<div class = 'goods_name'>
-                                							<a href = '#'>짜장면</a>
-                                						</div>
-                                						<div>
-                                							<span>
-                                								수량
-                                							</span>
-                                							1개
-                                							<span>
-                                								25000
-                                							</span>
-                                							원
-                                						</div>
-                                					</li>
-                                				</ul>
-                                			</div>
-                                		</li>
+                                	</c:forEach>
                                 	</ul>
                                 	</div>
                                     <h3>주문자</h3>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="checkout-form-list">
-                                                <label>주문자명 <span class="required">*</span></label>
-                                                <input placeholder="주문자 이름" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>휴대폰번호</label>
-                                                <input placeholder="-포함" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>이메일 <span class="required">*</span></label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ul class = 'orderer'>
+                                      	<li>
+                                      	 	<ul class = 'list_02'>
+                                      	 		<li>
+                                      	 			<span class = 'label'><span>주문자명</span></span>
+                                      	 			<input type = 'text' style = 'width : 170px;' placeholder = '주문자 이름' required>
+                                      	 		</li>
+                                      	 		<li>
+                                      	 			<span class = 'label'><span>휴대폰번호</span></span>
+                                      	 			<input type = 'text' style = 'width : 170px;' placeholder = '-포함' required>
+                                      	 		</li>
+                                      	 		<li>
+                                      	 			<span class = 'label'><span>이메일</span></span>
+                                      	 			${member.member_email}
+                                      	 		</li>
+                                      	 	</ul>
+                                      	</li>
+                                    </ul>
                                     <h3>배송지</h3>
-                                    <ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab'>
+                                     <c:forEach items = '${addressList}' var = 'address'>
+                                    <c:if test = '${address.default_delivery_address eq 1}'>
+                                    <ul id = 'defaultaddress'>
+                                    </c:if>
+                                     <c:if test = '${address.default_delivery_address ne 1}'>
+                                    <ul id = 'defaultaddress' style = "display : none;">
+                                    </c:if>
+                                      	<li>
+                                      	 	<ul class = 'list_02'>
+                                      	 		<li>
+                                      	 			<span class = 'label'><span>이름</span></span>
+                                      	 			<label>${address.recipient_name}</label>
+                                      	 			<button type = 'button' class = 'btn_resp chooseaddress'>다른배송지 선택</button>
+                                      	 			<button type = 'button' class = 'btn_resp modifyaddress'>수정</button>
+                                      	 		</li>
+                                      	 		<li>
+                                      	 			<span class = 'label'><span>주소</span></span>
+                                      	 			<label><span>(${address.postal_code})</span> <span>${address.recipient_address}</span> <span>${address.recipient_detailaddress}</span></label>
+                                      	 		</li>
+                                      	 		<li>
+                                      	 			<span class = 'label'><span>휴대폰번호</span></span>
+                                      	 			<label>${address.recipient_tel}</label>
+                                      	 		</li>
+                                      	 	</ul>
+                                      	</li>
+                                    </ul>
+                                    </c:forEach>
+                                    <c:forEach items = '${addressList}' var = 'address' end = '0'>
+                                   	 <c:if test = '${address.default_delivery_address ne 1}'>
+                                    	<ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab'>
+                                  	  </c:if>
+                                  	  <c:if test = '${address.default_delivery_address eq 1}'>
+                                    	<ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab' style = "display : none;">
+                                  	  </c:if>
+                                    </c:forEach>
                                   	  <li>
                                    		<button id = 'selectaddress-tab' type = 'button' class = 'btn btn-primary nav-link ' data-bs-toggle="tab" data-bs-target="#selectaddress"  role="tab" aria-controls="selectaddress" aria-selected="false">주소 선택하기</button>
                                    	 </li>
@@ -159,44 +170,35 @@
                                    	 	<button id = 'newaddress-tab' type = 'button' class = 'btn btn-secondary nav-link active' data-bs-toggle="tab" data-bs-target="#newaddress" role="tab" aria-controls="newaddress" aria-selected="ture">신규/수정</button>
                                    	 </li>
                                     </ul>
-                                    <div class = "tab-content" id = 'myaddressTabContent'>
+                                     <c:forEach items = '${addressList}' var = 'address' end = '0'>
+                                   	 <c:if test = '${address.default_delivery_address ne 1}'>
+                                    	<div class = "tab-content" id = 'myaddressTabContent'>
+                                  	  </c:if>
+                                  	  <c:if test = '${address.default_delivery_address eq 1}'>
+                                    	<div class = "tab-content" id = 'myaddressTabContent' style = "display : none;">
+                                  	  </c:if>
+                                    </c:forEach>
                                    		<div class="row tab-pane fade" id = 'selectaddress' role = 'tabpanel' aria-labelledby ='selectaddress-tab'>
-                                      	 	<ul class = 'ul_delivery'>
+                                      	 	<c:forEach items = '${addressList}' var = 'address'>
+                                      	 	<ul class = 'ul_delivery real'>
                                       	 		<li>
                                       	 			<ul class = 'list'>
                                       	 				<li>
                                       	 					<span class = 'label'>이름</span>
-                                      	 					<label>박종건</label>
+                                      	 					<label>${address.recipient_name}</label>
                                       	 				</li>
                                       	 				<li>
                                       	 					<span class = 'label'>주소</span>
-                                      	 					<label>(11568)경기도 고양시 얄리얄리 얄랴성</label>
+                                      	 					<label><span>(${address.postal_code})</span> <span>${address.recipient_address}</span> <span>${address.recipient_detailaddress}</span></label>
                                       	 				</li>
                                       	 				<li>
                                       	 					<span class = 'label'>휴대폰번호</span>
-                                      	 					<label>010-4393-7941</label>
+                                      	 					<label>${address.recipient_tel}</label>
                                       	 				</li>
                                       	 			</ul>
                                       	 		</li>
                                       	 	</ul>
-                                      	 	<ul class = 'ul_delivery'>
-                                      	 		<li>
-                                      	 			<ul class = 'list'>
-                                      	 				<li>
-                                      	 					<span class = 'label'>이름</span>
-                                      	 					<label>김갑수</label>
-                                      	 				</li>
-                                      	 				<li>
-                                      	 					<span class = 'label'>주소</span>
-                                      	 					<label>(11568)경기도 고양시 얄리얄리 얄랴성</label>
-                                      	 				</li>
-                                      	 				<li>
-                                      	 					<span class = 'label'>휴대폰번호</span>
-                                      	 					<label>010-4393-7941</label>
-                                      	 				</li>
-                                      	 			</ul>
-                                      	 		</li>
-                                      	 	</ul>
+                                      	 	</c:forEach>
                                     	</div>
                                     	<div class="row tab-pane fade  show active" id = 'newaddress' role = 'tabpanel' aria-labelledby ='newaddress-tab'>
                                       	 	<ul class = 'list_01'>
@@ -204,22 +206,22 @@
                                       	 			<span class = 'label'>
                                       	 				<span>받는분</span>
                                       	 			</span>
-                                      	 			<input type= 'text' style='width:113px;' required placeholder = '받는분'>
+                                      	 			<input type= 'text' style='width:113px;' id = 'modifyname' required placeholder = '받는분'>
                                       	 		</li>
                                       	 		<li class = 'addressli' style = 'display: list-item;'>
                                       	 			<span class = 'label'>
                                       	 				<span>주소</span>
                                       	 			</span>
-                                      	 			<input type= 'text' style='width:113px;' required placeholder = '우편번호'>
-                                      	 			<button type = 'button'>검색</button>
-                                      	 			<input type= 'text' style = 'width : 100%;' required placeholder = '주소'>
-                                      	 			<input type= 'text' style = 'width : 100%;' required placeholder = '상세주소'>
+                                      	 			<input type= 'text' style='width:113px;' required placeholder = '우편번호' id = 'modifypostcode'>
+                                      	 			<button type = 'button' id = 'searchaddress'>검색</button>
+                                      	 			<input type= 'text' style = 'width : 100%;' required placeholder = '주소' id = 'modifyaddress'>
+                                      	 			<input type= 'text' style = 'width : 100%;' required placeholder = '상세주소' id = 'modifydetailaddress'>
                                       	 		</li>
                                       	 		<li>
                                       	 			<span class = 'label'>
                                       	 				<span>휴대폰번호</span>
                                       	 			</span>
-                                      	 			<input type= 'text' required placeholder = '휴대폰번호'>
+                                      	 			<input type= 'text' required placeholder = '휴대폰번호' id = 'modifytel'>
                                       	 		</li>
                                       	 		<li>
                                       	 			<span class = 'label'>
@@ -227,7 +229,7 @@
                                       	 			</span>
                                       	 			<div>
                                       	 				<label>
-                                      	 					<input type = 'checkbox' value = '1'>
+                                      	 					<input type = 'checkbox' value = '1' id = 'modifydefault'>
                                       	 					<span>배송주소록에 저장</span>
                                       	 				</label>
                                       	 			</div>
@@ -250,23 +252,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        	<c:forEach items = '${cartList}' var = 'product'>
                                             <tr class="cart_item">
-                                                <td class="cart-product-name">유산슬<strong
+                                                <td class="cart-product-name">${product.product_name}<strong
                                                 class="product-quantity">
-                                                x 1</strong></td>
-                                                <td class="cart-product-total"><span class="amount">15,000원</span></td>
+                                                x ${product.shopping_cart_product_quantity}</strong></td>
+                                                <td class="cart-product-total"><span class="amount">${product.shopping_cart_product_quantity * product.product_price}원</span></td>
                                             </tr>
-                                            <tr class="cart_item">
-                                                <td class="cart-product-name"> 짜장면<strong
-                                                class="product-quantity">
-                                                × 1</strong></td>
-                                                <td class="cart-product-total"><span class="amount">25,000원</span></td>
-                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr class="order-total">
                                                 <th>Order Total</th>
-                                                <td><strong><span class="amount">40,000원</span></strong></td>
+                                                <td><strong><span class="amount">${product.total_cart}원</span></strong></td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -333,7 +331,7 @@
                                             </div>
                                         </div>
                                         <div class="order-button-payment">
-                                            <input value="Place order" type="submit">
+                                            <input value="Place order" type="button" id = 'payment'>
                                         </div>
                                     </div>
                                 </div>
@@ -352,5 +350,8 @@
         <!-- Scroll To Top End Here -->
 
     </div>
+    
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/flower/resources/assets/js/order/order.js"></script>
-    <%@include file="flower_footer.jsp" %>
+    
+    <%@include file="/flower_footer.jsp" %>

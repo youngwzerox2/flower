@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
 			
@@ -63,7 +65,8 @@
                                         <li class="minicart-wrap me-3 me-lg-0">
                                         	<c:choose>
                                         	 <c:when test="${not empty sessionScope.member}">
-                                        	 	<a href="<%=pjName%>/cart/cart" class="minicart-btn toolbar-btn">
+                                        	 	<!-- toolbar-btn -->
+                                        	 	<a href="<%=pjName%>/cart/cart" class="minicart-btn">
                                                  <i class="pe-7s-shopbag"></i>
                                                  <span class="quantity">${sessionScope.member.member_cart_quan}</span>
                                              	</a>
@@ -337,12 +340,21 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                             </a>
                                         </li>
                                         <!-- flower: header(sticky) 연결요망 -->
-                                        <li class="minicart-wrap me-3 me-lg-0">
-                                            <a href="#miniCart" class="minicart-btn toolbar-btn">
-                                                <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity">3</span>
-                                            </a>
-                                        </li>
+                                             <c:choose>
+                                        	<c:when test="${not empty sessionScope.member}">
+                                        		<!-- toolbar-btn -->
+                                        	 	<a href="<%=pjName%>/cart/cart" class="minicart-btn">
+                                                 <i class="pe-7s-shopbag"></i>
+                                                 <span class="quantity">${cart.shopping_cart_product_quantity}</span>
+                                             	</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                             	<a id="toCartwithoutLogin" class="minicart-btn">
+                                             		<i class="pe-7s-shopbag"></i>
+                                             	</a>                                             	
+                                            </c:otherwise>
+                                        </c:choose>
+                                        
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
                                                 <i class="pe-7s-menu"></i>

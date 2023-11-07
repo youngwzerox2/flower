@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <% String pjName = "/flower"; %>
 <% String header = "/flower/flower_header.jsp"; %>
 <% String footer = "/flower/flower_footer.jsp"; %>
 <% String resource = "/flower/resources/product/imgs/list"; %>
-<% String test = "assets/images/breadcrumb/bg/1-1-1919x388.jpg"; %>
+
+
+
 <%-- <c:set var="pjName" value="<%=pjName%>" /> --%>
 
 <!DOCTYPE html>
@@ -251,7 +255,7 @@
                                                 <div class="product-content">
                                                     <a class="product-name" href="single-product-variable.html">${prod.product_name}</a>
                                                     <div class="price-box pb-1">
-                                                        <span class="new-price">${prod.product_price}</span>
+                                                        <span class="new-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" /></span>
                                                     </div>
                                                     <div class="rating-box">
                                                         <ul>

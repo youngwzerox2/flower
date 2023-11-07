@@ -34,6 +34,16 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO {
 	public Integer getCartTotal(MemberVO mvo) {
 		return mybatis.selectOne("ShoppingCartDAO.getCartTotal", mvo);
 	}
+
+	// 장바구니에 담긴 상품 수량 변경
+	@Override
+	public Integer updateCartProdQuan(ShoppingCartVO scvo) {
+		//Integer result = mybatis.update("ShoppingCartDAO.updateCartProdQuan", scvo);
+		//System.out.println(result);
+		return mybatis.update("ShoppingCartDAO.updateCartProdQuan", scvo);
+	}
+	
+	
 	
 	
 	

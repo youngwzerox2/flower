@@ -2,11 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ShoppingCartDAO">
+
+	<!-- 장바구니에 담기 -->
 	<insert id="addCart" parameterType="com.flower.vo.ShoppingCartVO">
 		INSERT INTO shopping_cart (member_id, product_id, shopping_cart_product_quantity)
 		VALUES (#{member_id}, #{product_id}, #{shopping_cart_product_quantity})
 	</insert>
 	
+	<!-- (로그인한 회원의) 장바구니에 담긴 상품 목록 불러오기-->
 	<select id="getCartList" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.ShoppingCartVO">
 		SELECT sc.shopping_cart_id, sc.member_id, sc.PRODUCT_ID, pi2.product_name, pi2.product_price, sc.SHOPPING_CART_PRODUCT_QUANTITY, pi2.PRODUCT_IMAGE_FILE_NAME 
 		FROM shopping_cart sc
@@ -22,6 +25,7 @@
 		WHERE member_id = #{member_id}
 	</select>
 	
+	<!-- (로그인한 회원의) 장바구니에 담긴 상품 목록의 총액 계산하여 리턴 -->
 	<select id="getCartTotal" parameterType="com.flower.vo.MemberVO" resultType="Integer">
 		SELECT sum(p.product_price * sc.SHOPPING_CART_PRODUCT_QUANTITY) total_cart
 		FROM product p
@@ -29,5 +33,13 @@
 		ON p.PRODUCT_ID = sc.PRODUCT_ID
 		WHERE sc.MEMBER_ID = #{member_id} 
 	</select>
+	
+	<!-- 장바구니에 담긴 상품 수량 변경 -->
+	<update id="updateCartProdQuan" parameterType="com.flower.vo.ShoppingCartVO">
+		UPDATE shopping_cart
+		SET SHOPPING_CART_PRODUCT_QUANTITY = #{shopping_cart_product_quantity}
+		WHERE SHOPPING_CART_ID = #{shopping_cart_id}
+	</update>
+	
 	
 </mapper>
