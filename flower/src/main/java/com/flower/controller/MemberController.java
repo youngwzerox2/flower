@@ -1,6 +1,5 @@
 package com.flower.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,11 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.flower.service.CompanyService;
 import com.flower.service.MemberService;
+import com.flower.vo.CompanyVO;
 import com.flower.vo.MemberVO;
 
 @Controller
@@ -27,6 +27,9 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private CompanyService companyService;
+	
 	// 로그인 페이지 부르기
 	@RequestMapping("login")
 	public String login() {
@@ -36,8 +39,11 @@ public class MemberController {
 	
 	// 회원가입 페이지 부르기
 	@RequestMapping("register")
-	public String register(MemberVO vo) {
+	public String register(MemberVO vo, Model model) throws Exception {
 		System.out.println("register 진입");
+		CompanyVO companyPolicy = companyService.getCompanyPolicy();
+		model.addAttribute("companyPolicy", companyPolicy);
+		System.out.println("companyPolicy값 얻어오기:" + companyPolicy );
 		return "member/register";
 	}
 	
@@ -70,14 +76,20 @@ public class MemberController {
 		MemberVO login = memberService.login(vo);
 		
 		if(login == null ) {
-			//session.setAttribute("member", null);
-			//rttr.addFlashAttribute("msg", false);
+			// 사용자가 로그인 실패한 경우
 			return 1;
+		} else {
+			String memberStatus = login.getMember_status();
+			
+			if("L".equals(memberStatus) || "O".equals(memberStatus)) {
+				// "L" 또는 "O" 상태의 사용자가 로그인을 시도한 경우
+				return 2;
 		}else {
+			// 로그인이 성공한 경우
 			session.setAttribute("member", login);
 			return 0;
 		}
-		
+	  }
 	}
 	
 	// 로그아웃 get
@@ -148,7 +160,6 @@ public class MemberController {
 		vo.setMember_password(member_password);
 		System.out.println(vo + "이메일과 비밀번호");
 		
-		
 		// memberService를 사용하여 비밀번호 변경을 수행
 		memberService.changePassword(vo);
 		System.out.println(vo +"비밀번호 변경");
@@ -157,6 +168,7 @@ public class MemberController {
 		return "member/login";
 	     
 		}
+		
 	
 		// 이메일이 없거나 새 비밀번호가 없는 경우, 비밀번호 초기화 페이지로 이동
 		return "member/resetpassword";

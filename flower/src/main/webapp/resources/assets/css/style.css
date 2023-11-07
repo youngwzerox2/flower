@@ -146,9 +146,9 @@ img {
 
 /* 스타일을 적용할 박스칸 클래스 */
 .agreement-content {
-    border: 1px solid black;
+    border: 2px solid #abd373;
     padding: 10px;
-    max-height: 100px; /* 원하는 높이 설정 (스크롤이 필요한 경우) */
+    max-height: 150px; /* 원하는 높이 설정 (스크롤이 필요한 경우) */
     overflow-y: auto; /* 세로 스크롤바 표시 (내용이 박스를 넘어가면 스크롤 가능) */
 }
 
@@ -2693,6 +2693,38 @@ blockquote p {
 }
 
 /* ---Offcanvas Search Area--- */
+/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+
 .modal-bg-dark {
   background-color: rgba(0, 0, 0, 0.6);
 }
@@ -5723,8 +5755,17 @@ textarea {
 /*----------------------------------------*/
 /*  23. Login Register
 /*----------------------------------------*/
+#member_email {
+    margin-right: 50px; /* 원하는 크기의 간격을 설정하세요. */
+}
+ 
+ #member_name, #member_email, #member_password, #member_passwordcheck {
+    border: 2px solid #abd373;
+    padding: 10px;
+}
+ 
  .idChk {
-    margin-bottom: 20px; /* 원하는 크기의 마진을 지정하세요. */
+    margin-bottom: 20px; 
  }
 
 .login-form, .customerservice-form {
@@ -5833,6 +5874,10 @@ textarea {
 
 .forgotton-password_info a {
   font-size: 14px;
+}
+
+.error-text {
+    color: red; /* 텍스트를 빨간색으로 설정 */
 }
 
 /*----------------------------------------*/

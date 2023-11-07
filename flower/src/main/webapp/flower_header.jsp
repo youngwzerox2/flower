@@ -45,14 +45,12 @@
 													<c:when test="${empty sessionScope.member}">
 														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
-												<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
 														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
-
-												
 											</ul>
 										</li>
 										<!-- header: 좋아요(찜) 버튼 → 숨길까? -->
@@ -320,11 +318,11 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                             	<!-- flower: header(sticky) 나의 계정 연결요망! -->
                                                 <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">Mypage</a></li>
                                                 <!-- flower: header(sticky) 로그인, 회원가입 연결요망! -->
-                                           <c:choose>
+                                          		 <c:choose>
 													<c:when test="${empty sessionScope.member}">
 														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
-												<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
 														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
@@ -371,11 +369,11 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
                                         <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">Mypage</a></li>
-                                       <c:choose>
+                                       			<c:choose>
 													<c:when test="${empty sessionScope.member}">
 														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
-												<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
 														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
