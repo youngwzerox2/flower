@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
 			
@@ -65,7 +67,7 @@
                                         <li class="minicart-wrap me-3 me-lg-0">
                                         	<c:choose>
                                         	 <c:when test="${not empty sessionScope.member}">
-                                        	 	<a href="<%=pjName%>/cart/cart" class="minicart-btn toolbar-btn">
+                                        	 	<a href= "<%=pjName %>/cart/cart" class="minicart-btn">
                                                  <i class="pe-7s-shopbag"></i>
                                                  <span class="quantity">${sessionScope.member.member_cart_quan}</span>
                                              	</a>

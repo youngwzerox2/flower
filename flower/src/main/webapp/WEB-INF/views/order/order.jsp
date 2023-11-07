@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="main-wrapper">
-  <%@ include file="flower_header.jsp" %>
+  <%@ include file="/flower_header.jsp" %>
        
         <!-- Begin Main Content Area -->
         <main class="main-content">
@@ -75,25 +75,26 @@
                                 	<h3>주문 상품 정보</h3>
                                 	<div class = 'cart_list'>
                                 	<ul class = 'cart_contents'>
+                                	<c:forEach items = '${cartList}' var = 'product'>
                                 		<li class = cart_goods>
                                 			<div class = 'block block1'>
                                 				<ul>
                                 					<li class = 'img_area'>
                                 						<a href = '#'>
-                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/1_list_1.jpg' class = 'goods_thumb'>
+                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/${product.product_image_file_name}' class = 'goods_thumb'>
                                 						</a>
                                 					</li>
                                 					<li class = 'option_area'>
                                 						<div class = 'goods_name'>
-                                							<a href = '#'>유산슬</a>
+                                							<a href = '#'>${product.product_name}</a>
                                 						</div>
                                 						<div>
                                 							<span>
                                 								수량
                                 							</span>
-                                							1개
+                                							${product.shopping_cart_product_quantity} 개
                                 							<span>
-                                								15000
+                                								${product.shopping_cart_product_quantity * product.product_price}
                                 							</span>
                                 							원
                                 						</div>
@@ -101,32 +102,7 @@
                                 				</ul>
                                 			</div>
                                 		</li>
-                                		<li class = cart_goods>
-                                			<div class = 'block block1'>
-                                				<ul>
-                                					<li class = 'img_area'>
-                                						<a href = '#'>
-                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/1_list_1.jpg' class = 'goods_thumb'>
-                                						</a>
-                                					</li>
-                                					<li class = 'option_area'>
-                                						<div class = 'goods_name'>
-                                							<a href = '#'>짜장면</a>
-                                						</div>
-                                						<div>
-                                							<span>
-                                								수량
-                                							</span>
-                                							1개
-                                							<span>
-                                								25000
-                                							</span>
-                                							원
-                                						</div>
-                                					</li>
-                                				</ul>
-                                			</div>
-                                		</li>
+                                	</c:forEach>
                                 	</ul>
                                 	</div>
                                     <h3>주문자</h3>
@@ -151,7 +127,29 @@
                                         </div>
                                     </div>
                                     <h3>배송지</h3>
-                                    <ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab'>
+                                     <c:forEach items = '${addressList}' var = 'address'>
+                                    <c:if test = '${address.default_delivery_address eq 1}'>
+                                    <ul class = 'ul_delivery real'>
+                                      	 		<li>
+                                      	 			<ul class = 'list'>
+                                      	 				<li>
+                                      	 					<span class = 'label'>이름</span>
+                                      	 					<label>${address.recipient_name}</label>
+                                      	 				</li>
+                                      	 				<li>
+                                      	 					<span class = 'label'>주소</span>
+                                      	 					<label>(${address.postal_code}) ${address.recipient_address} ${recipient_detailaddress}</label>
+                                      	 				</li>
+                                      	 				<li>
+                                      	 					<span class = 'label'>휴대폰번호</span>
+                                      	 					<label>${address.recipient_tel}</label>
+                                      	 				</li>
+                                      	 			</ul>
+                                      	 		</li>
+                                      	 	</ul>
+                                    </c:if>
+                                    </c:forEach>
+                                    <ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab' hidden>
                                   	  <li>
                                    		<button id = 'selectaddress-tab' type = 'button' class = 'btn btn-primary nav-link ' data-bs-toggle="tab" data-bs-target="#selectaddress"  role="tab" aria-controls="selectaddress" aria-selected="false">주소 선택하기</button>
                                    	 </li>
@@ -159,44 +157,28 @@
                                    	 	<button id = 'newaddress-tab' type = 'button' class = 'btn btn-secondary nav-link active' data-bs-toggle="tab" data-bs-target="#newaddress" role="tab" aria-controls="newaddress" aria-selected="ture">신규/수정</button>
                                    	 </li>
                                     </ul>
-                                    <div class = "tab-content" id = 'myaddressTabContent'>
+                                    <div class = "tab-content" id = 'myaddressTabContent' hidden>
                                    		<div class="row tab-pane fade" id = 'selectaddress' role = 'tabpanel' aria-labelledby ='selectaddress-tab'>
+                                      	 	<c:forEach items = '${addressList}' var = 'address'>
                                       	 	<ul class = 'ul_delivery'>
                                       	 		<li>
                                       	 			<ul class = 'list'>
                                       	 				<li>
                                       	 					<span class = 'label'>이름</span>
-                                      	 					<label>박종건</label>
+                                      	 					<label>${address.recipient_name}</label>
                                       	 				</li>
                                       	 				<li>
                                       	 					<span class = 'label'>주소</span>
-                                      	 					<label>(11568)경기도 고양시 얄리얄리 얄랴성</label>
+                                      	 					<label>(${address.postal_code}) ${address.recipient_address} ${recipient_detailaddress}</label>
                                       	 				</li>
                                       	 				<li>
                                       	 					<span class = 'label'>휴대폰번호</span>
-                                      	 					<label>010-4393-7941</label>
+                                      	 					<label>${address.recipient_tel}</label>
                                       	 				</li>
                                       	 			</ul>
                                       	 		</li>
                                       	 	</ul>
-                                      	 	<ul class = 'ul_delivery'>
-                                      	 		<li>
-                                      	 			<ul class = 'list'>
-                                      	 				<li>
-                                      	 					<span class = 'label'>이름</span>
-                                      	 					<label>김갑수</label>
-                                      	 				</li>
-                                      	 				<li>
-                                      	 					<span class = 'label'>주소</span>
-                                      	 					<label>(11568)경기도 고양시 얄리얄리 얄랴성</label>
-                                      	 				</li>
-                                      	 				<li>
-                                      	 					<span class = 'label'>휴대폰번호</span>
-                                      	 					<label>010-4393-7941</label>
-                                      	 				</li>
-                                      	 			</ul>
-                                      	 		</li>
-                                      	 	</ul>
+                                      	 	</c:forEach>
                                     	</div>
                                     	<div class="row tab-pane fade  show active" id = 'newaddress' role = 'tabpanel' aria-labelledby ='newaddress-tab'>
                                       	 	<ul class = 'list_01'>
@@ -353,4 +335,4 @@
 
     </div>
     <script src="/flower/resources/assets/js/order/order.js"></script>
-    <%@include file="flower_footer.jsp" %>
+    <%@include file="/flower_footer.jsp" %>

@@ -147,7 +147,7 @@
                                                 	<tr>
                                                 		<td><span>전체 항목 합계</span></td>
                                                 		<td>${cartTotal}</td>
-                                                		<td><a href=""><input class="button" type="button" name="" id="" value="전체 항목 결제하기"></a></td>
+                                                		<td><a href="/flower/order/orderInfo"><input class="button" type="button" name="" id="" value="전체 항목 결제하기"></a></td>
                                             	</table>
                                             </div><!-- <div class="cart-total right"> end -->
                                         </div> <!--  <div class="cart-page-total"> end -->
