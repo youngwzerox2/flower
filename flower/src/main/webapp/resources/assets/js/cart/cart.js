@@ -6,9 +6,6 @@
  	
  	// 장바구니 담기
  	$('#addCart').click(function(e){
- 		// console.log('You found me!: ' + $(this));
- 		console.log('수량: ' + $('#product_quantity').val());
- 		console.log('상품id: ' + $('#product_id').val());
  		prod_id = $('#product_id').val();
  		prod_quan = $('#product_quantity').val();
  		$.ajax({
@@ -26,9 +23,7 @@
  			},
  			error: function(error){
  				if(confirm('로그인이 필요한 서비스입니다. 로그인 하시겠습니까?')){
- 					// 로그인 '창'으로 띄우고 싶지....만
  					location.href='/flower/member/login';
- 					
  				} else {
  					return false;
  				}
@@ -36,5 +31,17 @@
  		}); // ajax end
  		
  	}); // #addCart.click end
+ 	
+
+ 	
+ 	
+ 	// 숫자 형식화
+	function formatNumberWithCommas(number) {
+		if (number === null || number === undefined) {
+	    	return "0";
+	  	}
+	  	
+	  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
  	
  }) // $(function(){}) end

@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pronia - Cart</title>
+    <title>꽃물주 - 장바구니</title>
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,6 +98,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="product-name">
+                                                	<input type="hidden" value="${cart.shopping_cart_id}" id="cartId">
                                                 	<a href="">${cart.product_name}</a>
                                                     <a id="remove_item">
                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"
