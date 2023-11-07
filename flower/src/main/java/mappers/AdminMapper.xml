@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adminDAO">
-    <!-- 공통 SQL 코드 정의 -->
+	<!-- ************************************************************* -->
+    <!-- ***************** 공통 SQL 코드 정의 *************************** -->
+    <!-- ************************************************************* -->
     <sql id="memberSQL">
     	<![CDATA[
 	        WITH ADMIN_MEMBERS AS (
@@ -20,7 +22,7 @@
 	                    ELSE ''
 	                END 						AS MEMBER_STATUS
 	                , CASE
-	                    WHEN R.REPORTS_CNT > 0 THEN 'Y'
+	                    WHEN R.ADMIN_ACTION_YN = 'N' AND R.REPORTS_CNT > 0 THEN 'Y'
 	                    ELSE 'N'
 	                END 						AS REPORT_YN
 	                , CASE 
@@ -31,8 +33,11 @@
 						WHEN R.REPORT_CONTENTS IS NOT NULL THEN R.REPORT_CONTENTS
 						ELSE "없음"
 					END 						AS REPORT_CONTENTS 
-	            FROM MEMBER M
-	            LEFT OUTER JOIN REVIEWS R ON M.MEMBER_ID = R.MEMBER_ID
+					, R.ADMIN_ACTION_YN			AS ADMIN_ACTION_YN 
+					, R.REPORTS_CNT				AS REPORTS_CNT
+	            FROM MEMBER  M
+	      LEFT OUTER JOIN REVIEWS R 
+	              ON M.MEMBER_ID = R.MEMBER_ID
 	        )
     	]]>
     </sql>
@@ -80,7 +85,9 @@
     	]]>
     </sql>
     
-    <!-- 회원 영역  -->
+    <!-- ************************************************************* -->
+    <!-- ************************** 회원 영역 ************************** -->
+    <!-- ************************************************************* -->
     <!-- 검색 조건별 회원 조회 -->
     <select id="searchMembers" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
         <include refid="memberSQL" />
@@ -114,20 +121,58 @@
 	        	 , REPORT_CONTENTS
 	        	 , REPORTS_DATE
 	        	 , REPORT_CONTENTS
+	        	 , REPORTS_CNT
+	        	 , ADMIN_ACTION_YN
 	        FROM ADMIN_MEMBERS
 	       WHERE MEMBER_EMAIL = #{email}
 	       LIMIT 1
     </select>
 
-
     <!-- 특정 회원 이용 제한 -->
     <update id="limitMember" parameterType="String">
         UPDATE MEMBER
-        SET MEMBER_STATUS = 'O'
-        WHERE MEMBER_EMAIL = #{email}
+           SET MEMBER_STATUS = 'O'
+         WHERE MEMBER_EMAIL  = #{email}
     </update>
     
-    <!-- 상품 영역  -->
+    <!-- 특정 회원의 신고 내역 조회 -->
+    <select id="searchReportContent" parameterType="String" resultType="com.flower.vo.AdminVO">
+    	SELECT REVIEWS_ID
+    		 , MEMBER_ID
+    		 , PRODUCT_ID
+    		 , REVIEWS_TITLE
+    		 , REVIEWS_CONTENT
+    		 , REVIEWS_REGISTER_DATE
+    		 , REPORT_CONTENTS
+    		 , REPORTS_CNT
+    		 , REPORTS_DATE
+    	  FROM REVIEWS
+    	 WHERE MEMBER_ID = #{reportId}
+      ORDER BY REVIEWS_REGISTER_DATE DESC
+    	 LIMIT 1
+    </select>
+    
+    <!-- 신고 취소 -->
+    <update id="reportCancel" parameterType="hashmap">
+    	UPDATE REVIEWS
+    	   SET REPORTS_CNT 		= 0
+    	     , REPORT_CONTENTS 	= NULL
+    	     , REPORTS_DATE		= NULL
+    	 WHERE MEMBER_ID 		= #{memberId}
+    	   AND PRODUCT_ID		= #{productId}
+    </update>
+    
+    <!-- 특정 리뷰 삭제 (관리자) -->
+    <update id="deleteReportTarget" parameterType="String">
+    	UPDATE REVIEWS
+    	   SET ADMIN_ACTION_YN = "Y"
+    	 WHERE REVIEWS_ID = #{reviewId}
+    </update>
+    
+    <!-- ************************************************************* -->
+    <!-- ************************** 상품 영역 ************************** -->
+    <!-- ************************************************************* -->
+    <!-- 검색 조건별 상품 조회 -->
 	<select id="searchProducts" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
 		<include refid="productSQL" />
 			SELECT PRODUCT_ID
@@ -145,7 +190,7 @@
           ORDER BY INVENTORY_QUANTITY ASC
 	</select>
 	
-	 <select id="searchProductDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
+	<select id="searchProductDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
         <include refid="productSQL" />
 	        SELECT PRODUCT_ID
 	        	 , CATE_ID
@@ -176,4 +221,30 @@
     	 WHERE PRODUCT_ID = #{productId}
   	  ORDER BY PRODUCT_IMAGE_FROUTE ASC
     </select>
+    
+    <update id="modifyProductVisible" parameterType="hashmap">
+		UPDATE PRODUCT
+           SET PRODUCT_STATE = #{proStat}
+         WHERE PRODUCT_ID 	 = #{proId}
+    </update>
+    
+    <!-- ************************************************************* -->
+    <!-- ************************** 설정 영역 ************************** -->
+    <!-- ************************************************************* -->
+    <!-- policy 개수 조회 -->
+    <select id="selectPolicyColumnCnt" resultType="int">
+    	SELECT COUNT(*) 	AS COLUMN_COUNT
+		  FROM INFORMATION_SCHEMA.COLUMNS
+		 WHERE TABLE_SCHEMA = "FLOWER"
+		   AND TABLE_NAME 	= "COMPANY_POLICY"
+    </select>
+    
+    <select id="selectPolicyColumn" resultType="com.flower.vo.AdminVO">
+    	SELECT COLUMN_NAME
+    	  	 , COLUMN_COMMENT
+		  FROM INFORMATION_SCHEMA.COLUMNS
+		 WHERE TABLE_SCHEMA = "FLOWER"
+		   AND TABLE_NAME 	= "COMPANY_POLICY"
+    </select>
+    
 </mapper>

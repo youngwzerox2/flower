@@ -15,8 +15,10 @@ import lombok.NoArgsConstructor;
 public class AdminVO {
 	
 	/**
-	 * 회원 정보
-	 * */
+	 *  *************************************************************
+     *  ************************** 회원 정보 ************************** 
+     *  ************************************************************* 
+     *  */
 	private Integer member_id;				// 회원 ID
 	private boolean admin_status;			// 관리자여부
 	private String member_email;			// 회원 email
@@ -28,10 +30,13 @@ public class AdminVO {
 	private String report_yn;				// 신고여부
 	private String report_contents;			// 신고내용
 	private String reports_date;			// 신고일
+	private String admin_action_yn;			// 관리자조치여부
 	
 	/**
-	 * 상품 정보
-	 * */
+	 *  *************************************************************
+     *  ************************** 상품 정보 ************************** 
+     *  ************************************************************* 
+     *  */
 	private Integer product_id;					// 상품고유번호
 	private Integer cate_id;					// 카데고리ID
 	private String product_name;				// 상품명
@@ -74,4 +79,23 @@ public class AdminVO {
 		}
 		
 	}
+	
+	/**
+	 *  *************************************************************
+     *  ************************** 리뷰 정보 ************************** 
+     *  ************************************************************* 
+     *  */
+	private String reviews_id;
+	private String reviews_title;
+	private String reviews_content;
+	private String reviews_register_date;
+	
+	/**
+	 *  *************************************************************
+     *  ************************** 설정 정보 ************************** 
+     *  ************************************************************* 
+     *  */
+	private String column_name;
+	private String column_comment;
+	
 }
