@@ -46,6 +46,21 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 		return shoppingCartDao.updateCartProdQuan(scvo);
 	}
 	
+	// 장바구니에 일부 상품만 선택(update)
+	@Override
+	public Integer selectCartProd(ShoppingCartVO scvo) {
+		shoppingCartDao.selectCartProd(scvo);
+		return null;
+	}
 	
+
+	// 장바구니에 담긴 상품 삭제
+	@Override
+	public Integer deleteCartProd(ShoppingCartVO scvo) {
+		// shoppingCartDao.deleteCartProd(scvo);
+		return shoppingCartDao.deleteCartProd(scvo);
+	}
+
+
 
 } //class ShoppingCartServiceImpl

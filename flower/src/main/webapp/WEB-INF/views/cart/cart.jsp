@@ -90,7 +90,7 @@
                                           <c:forEach items="${cartList}" var="cart">                                        
                                             <tr>
                                                 <td class="product_selSubSet">
-                                                	<input type="checkbox" id="product_subset" name="product_subset">
+                                                	<input type="checkbox" class="product_each" name="product_each">
                                                 	
                                                 </td>
                                                 <td class="product-thumbnail">
@@ -101,7 +101,7 @@
                                                 <td class="product-name">
                                                 	<input type="hidden" value="${cart.shopping_cart_id}" id="cartId">
                                                 	<a href="">${cart.product_name}</a>
-                                                    <a id="remove_item">
+                                                    <a class="remove_item">
                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"
                                                     data-tippy-animation="shift-away" data-tippy-delay="50"
                                                     data-tippy-arrow="true" data-tippy-theme="sharpborder"></i>

@@ -66,22 +66,50 @@ public class ShoppingCartController {
 	// 장바구니에 담긴 각 상품 수량 조절
 	@RequestMapping("/updateCartQuan")
 	@ResponseBody
-	public Integer updateCartQuan(HttpSession sess, ShoppingCartVO scvo, Model m) {
+	public Integer updateCartQuan(HttpSession sess, ShoppingCartVO scvo) {
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		Integer result = shoppingCartService.updateCartProdQuan(scvo);
-		System.out.println("컨트롤러 접근");
-		System.out.println("SQL결과: " + result);
+		//System.out.println("컨트롤러 접근");
+		//System.out.println("SQL결과: " + result);
 		
-		// 변경된 상품 수량이 반영된 db 호출하여 전송
-		/*
-		 * List<ShoppingCartVO> cartList = shoppingCartService.getCartList(mvo); Integer
-		 * cart_total = shoppingCartService.getCartTotal(mvo);
-		 * m.addAttribute("cartList", cartList); m.addAttribute("cartTotal",
-		 * cart_total);
-		 */
+		
 		return result;
 		// System.out.println("controller 연결은 되었는가?" + mvo.getMember_id() + ", " + scvo.getShopping_cart_id() + ", " + scvo.getShopping_cart_product_quantity());
 		// ShoppingCartVO(shopping_cart_id=94, member_id=null, product_id=null, shopping_cart_product_quantity=4, product_image_file_name=null, product_name=null, product_price=null, total_cart=null)
 	}
+	
+	
+	// 장바구니 상품 중 일부만 선택(결제 / 삭제)
+	@RequestMapping("/selectCartProd")
+	@ResponseBody
+	public Integer selectCartProd(HttpSession sess, ShoppingCartVO scvo, Model m) {
+		MemberVO mvo = (MemberVO)sess.getAttribute("member");
+		if(mvo.getMember_id() != null) {
+			System.out.println("카트 상품 선택 controller접근 성공");
+			shoppingCartService.selectCartProd(scvo);
+			return 1;
+//			return shoppingCartService.deleteCartProd(scvo);
+		} else {
+			return 0;
+		}
+		
+	}
+	
+	// 장바구니에 담긴 상품 삭제
+	@RequestMapping("/deleteCartProd")
+	@ResponseBody
+	public Integer deleteCartProd(HttpSession sess, ShoppingCartVO scvo, Model m) {
+		MemberVO mvo = (MemberVO)sess.getAttribute("member");
+		if(mvo.getMember_id() != null) {
+			//System.out.println("카트 상품 삭제 controller접근 성공");
+			return shoppingCartService.deleteCartProd(scvo);
+		} else {
+			return 0;
+		}
+	}
+	
+	
+	
+	
 	
 }

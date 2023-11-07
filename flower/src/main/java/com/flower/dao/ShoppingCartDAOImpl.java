@@ -42,9 +42,34 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO {
 		//System.out.println(result);
 		return mybatis.update("ShoppingCartDAO.updateCartProdQuan", scvo);
 	}
+
+	// 장바구니에 일부 상품만 선택(update, toggle)
+	@Override
+	public Integer selectCartProd(ShoppingCartVO scvo) {
+		Integer chk = mybatis.selectOne("ShoppingCartDAO.isSelected", scvo);
+		System.out.println("selected: " + chk);
+		Integer result = 1;
+		Integer rs = 1;
+		if(chk == 1) {
+			rs = mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
+			System.out.println("sql 결과(선택해제): " + rs);
+			return mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
+		} else if (chk == 0) {
+			result = mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
+			System.out.println("sql 결과(선택): " + result);
+			return mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
+		}
+		
+		return (result == 1) ? result: rs;
+	}
 	
-	
-	
-	
-	
+	// 장바구니에 담긴 상품 삭제
+	@Override
+	public Integer deleteCartProd(ShoppingCartVO scvo) {
+//		Integer result = mybatis.delete("ShoppingCartDAO.deleteCartProd", scvo);
+//		System.out.println("상품삭제SQL결과: " + result);
+		return mybatis.delete("ShoppingCartDAO.deleteCartProd", scvo);
+//		return null;
+	}
+
 } //class ShoppingCartDAOImpl

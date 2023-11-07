@@ -41,5 +41,32 @@
 		WHERE SHOPPING_CART_ID = #{shopping_cart_id}
 	</update>
 	
+	<!-- 장바구니에 담긴 상품 삭제 -->
+	<delete id="deleteCartProd" parameterType="com.flower.vo.ShoppingCartVO">
+		DELETE FROM shopping_cart
+		WHERE SHOPPING_CART_ID = #{shopping_cart_id}
+	</delete>
+	
+	<!-- 선택한 상품의 선택 상태(selected) 조회 -->
+	<select id="isSelected" parameterType="com.flower.vo.ShoppingCartVO" resultType="Integer">
+		SELECT selected
+		FROM shopping_cart
+		WHERE SHOPPING_CART_ID = #{shopping_cart_id}
+	</select>
+
+		
+	<!-- 장바구니에 담긴 상품 일부 선택 -->
+	<update id="selectCartProd" parameterType="com.flower.vo.ShoppingCartVO">
+		UPDATE shopping_cart
+		SET selected = 1
+		WHERE shopping_cart_id = #{shopping_cart_id}
+	</update>
+	
+	<!-- 장바구니에서 이미 선택된 상품 선택 해제-->
+	<update id="unselectCartProd" parameterType="com.flower.vo.ShoppingCartVO">
+		UPDATE shopping_cart
+		SET selected = 0
+		WHERE shopping_cart_id = #{shopping_cart_id}
+	</update>
 	
 </mapper>
