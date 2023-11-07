@@ -1,8 +1,9 @@
 $(function(){
 
-	// *********************************************
-	// *******************EVENT*********************
-	// *********************************************
+	// ******************************************************************************************
+	// *****************************************EVENT********************************************
+	// ******************************************************************************************
+	
 	// 회원 > 회원관리 탭 클릭 이벤트
 	$("#account-member-info-tab").click(function(){
 		searchMembers();
@@ -52,7 +53,29 @@ $(function(){
 	
 	// 회원상세 > 신고내용 버튼 클릭 이벤트
 	$(document).on("click", ".reportContent", function() {
-	    alert("신고내용 버튼 클릭");
+		let realId = $("#realId").text();
+		let detailId = $("#detailId").text();
+		let adminAction = $("#adminActionYn").text();
+		
+	    openReportPopup(realId, detailId, adminAction);
+	});
+	
+	// 신고 내역 팝업 > 신고 취소 버튼 클릭 이벤트
+	$(document).on("click", "#btn-cancelReport", function(){
+		let memberId = $("#reportMemberId").text();
+		reportCancel(memberId);
+	});
+	
+	// 신고 내역 팝업 > 해당 글 삭제 버튼 클릭 이벤트
+	$(document).on("click", "#btn-deleteReportTarget", function(){
+		let reviewId = $("#reportReviewId").text();
+		deleteReportTarget(reviewId);
+	});
+	
+	// 신고 내역 팝업 > 닫기 버튼 클릭 이벤트
+	$(document).on("click", "#btn-closeReportPopup", function(){
+		let email = $("#reportEmail").text();
+		closeReportPopup(email);
 	});
 	
 	// 상품 > 상품관리 탭 클릭 이벤트
@@ -95,16 +118,23 @@ $(function(){
 	// 상품 노출 확인 > 수정 버튼 클릭 이벤트
 	$(document).on("click", "#btn-visibleProduct", function(){
 		let proId = $("#visibleProduct").text();
-		visibleProduct(proId);
+		let proStat = $("#proVisiStatus").text();
+		visibleProduct(proId, proStat);
 	});
 	
 	// 상품 노출 확인 > 닫기 버튼 클릭 이벤트
 	$(document).on("click", "#btn-closeVisiblePopup", function(){
 		closeVisiblePopup();
 	});
-	// *********************************************
-	// ****************function*********************
-	// *********************************************
+	
+	// 설정 > 정책관리 탭 클릭 이벤트
+	$("#account-policies-tab").click(function(){
+		searchPolicies();
+	});
+	
+	// ******************************************************************************************
+	// ************************************function**********************************************
+	// ******************************************************************************************
 	
 	// 숫자 형식화
 	function formatNumberWithCommas(number) {
@@ -175,6 +205,7 @@ $(function(){
 				let memberDetail = $("#memberDetail");
 				memberDetail.empty();
 
+                let mId 		= $("<tr style='display: none;'/>").append($("<th>realID</th>")).append($("<td id='realId'/>").html(result.member_id));
                 let mEmail 		= $("<tr/>").append($("<th>ID</th>")).append($("<td id='detailId'/>").html(result.member_email));
                 let mName 		= $("<tr/>").append($("<th>고객명</th>")).append($("<td/>").html(result.member_name));
                 let mRegiDate 	= $("<tr/>").append($("<th>가입일</th>")).append($("<td/>").html(result.member_register_date));
@@ -183,9 +214,12 @@ $(function(){
                 let mAddress	= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html("거구장 3층, 한국ICT 3강의실"));
                 let mStatus		= $("<tr/>").append($("<th>회원상태</th>")).append($("<td/>").html(result.member_status));
                 let mReportYn	= $("<tr/>").append($("<th>신고여부</th>")).append($("<td/>").html(result.report_yn));
+                let mReportCnt	= $("<tr/>").append($("<th>신고횟수</th>")).append($("<td id='reportCnt'/>").html(result.reports_cnt));
                 let mReportDay	= $("<tr/>").append($("<th>신고일</th>")).append($("<td/>").html(result.reports_date));
+                let adminAction	= $("<tr/>").append($("<th>관리자조치</th>")).append($("<td id='adminActionYn'/>").html(result.admin_action_yn));
                 let mReportCont	= reportTag(result.report_contents);
                 
+                memberDetail.append(mId);
                 memberDetail.append(mEmail);
                 memberDetail.append(mName);
                 memberDetail.append(mRegiDate);
@@ -194,7 +228,9 @@ $(function(){
                 memberDetail.append(mAddress);
                 memberDetail.append(mStatus);
                 memberDetail.append(mReportYn);
+                memberDetail.append(mReportCnt);
                 memberDetail.append(mReportDay);
+                memberDetail.append(adminAction);
                 memberDetail.append(mReportCont);
 				
 			}
@@ -245,6 +281,100 @@ $(function(){
 		});
 	}
 	
+	// 회원상세 > 신고내용 버튼 클릭 이벤트
+	function openReportPopup(realId, detailId, adminAction){
+		 $("#popupReportModal").modal("show");
+		 $("#reportMemberId").text(realId);
+		 $("#reportEmail").text(detailId);
+		 
+		 $.ajax({
+			  type 		: "get"
+			, url		: "../admin/searchReportContent"
+			, data		: { realId : realId}
+			, dataType 	: "json"
+			, success	: function(result){
+				$("#reportProductId").text(result.product_id);
+				$("#reportReviewId").text(result.reviews_id);
+				$("#reportTitle").text(result.reviews_title);
+				$("#reportReviewContent").text(result.reviews_content);
+				$("#reportReviewRegiDate").text(result.reviews_register_date);
+				$("#reportCnt").text(result.reports_cnt);
+				$("#reportContent").text(result.report_contents);
+				$("#reportDate").text(result.reports_date);
+				
+				// 관리자 조치에 따른 글삭제 버튼 컨트롤
+				if (adminAction == "Y") {
+                	$("#btn-deleteReportTarget").prop("disabled", true);
+	            } else {
+	                $("#btn-deleteReportTarget").prop("disabled", false);
+	            }
+	            
+	            // 신고횟수에 따른 신고취소 버튼 컨트롤
+	            if(result.reports_cnt > 0){
+	            	$("#btn-cancelReport").prop("disabled", false);
+	            }else{
+	            	$("#btn-cancelReport").prop("disabled", true);
+	            }
+			}
+			, 
+			error 	: function(err){
+				alert("신고 내용 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 신고 취소
+	function reportCancel(memberId){
+		let proId = $("#reportProductId").text();
+		let email = $("#reportEmail").text();
+		
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/reportCancel"
+			, data		: { 
+							memberId  : memberId 
+						  , productId : proId	
+						  }
+			, success	: function(){
+				alert("신고 취소 처리 되었습니다.");
+				closeReportPopup(email);
+			}
+			, 
+			error 	: function(err){
+				alert("신고 취소처리 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 해당 글 삭제
+	function deleteReportTarget(reviewId){
+		let proId = $("#reportProductId").text();
+		let email = $("#reportEmail").text();
+		
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/deleteReportTarget"
+			, data		: { reviewId : reviewId }
+			, success	: function(result){
+				alert("해당 글 삭제가 처리 되었습니다.");
+				closeReportPopup(email);
+			}
+			, 
+			error 	: function(err){
+				alert("해당 글 삭제 처리 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 신고 내역 팝업 닫기
+	function closeReportPopup(email){
+		$("#popupReportModal").modal("hide");
+		selectOneMember(email);
+	}
+	
 	// 상품 조회
 	function searchProducts(){
 		$.ajax({
@@ -259,7 +389,7 @@ $(function(){
 				let productList = $("#productList");
 				productList.empty();
 				
-				productList.append("<tr style='background-color: #f6f7fb'><th style='text-align: center'>상품ID</th style='text-align: center'><th style='text-align: center'>상품명</th style='text-align: center'><th style='text-align: center'>상품설명</th style='text-align: center'><th style='text-align: center'>가격</th><th style='text-align: center'>좋아요</th><th style='text-align: center'>재고</th><th style='text-align: center'>상품노출여부</th></tr>");
+				productList.append("<tr style='background-color: #f6f7fb'><th style='text-align: center'>상품ID</th><th style='text-align: center'>상품명</th><th style='text-align: center'>가격</th><th style='text-align: center'>좋아요</th><th style='text-align: center'>재고</th><th style='text-align: center'>상품노출</th></tr>");
 				
 				if (result && result.length > 0) {
 	                for (row of result) {
@@ -274,7 +404,7 @@ $(function(){
 	
 	                    tr.append(productId);
 	                    tr.append(productName);
-	                    tr.append(productContent);
+	                    //tr.append(productContent);
 	                    tr.append(productPrice);
 	                    tr.append(productLikes);
 	                    tr.append(productQuantity);
@@ -321,7 +451,7 @@ $(function(){
 		                let pQuantity	= $("<tr/>").append($("<th>재고수량</th>")).append($("<td colspan='2'/>").html(formatNumberWithCommas(row["inventory_quantity"])));
 		                let pPrice		= $("<tr/>").append($("<th>상품가격</th>")).append($("<td colspan='2'/>").html(formatNumberWithCommas(row["product_price"])));
 		                let pRegDate	= $("<tr/>").append($("<th>상품등록일</th>")).append($("<td colspan='2'/>").html(row["product_register_date"]));
-		                let pState		= $("<tr/>").append($("<th>상품노출여부</th>")).append($("<td id='proVisiStatus' colspan='2'/>").html(row["product_state"]));
+		                let pState		= $("<tr/>").append($("<th>상품노출</th>")).append($("<td id='proVisiStatus' colspan='2'/>").html(row["product_state"]));
 		                let pLight		= $("<tr/>").append($("<th>상품채광</th>")).append($("<td colspan='2'/>").html(row["product_light"]));
 		                let pLikes		= $("<tr/>").append($("<th>좋아요</th>")).append($("<td colspan='2'/>").html(formatNumberWithCommas(row["likes"])));
 		                
@@ -409,14 +539,55 @@ $(function(){
     }
 
 	// 상품 노출 확인 > 수정 버튼 클릭
-	function visibleProduct(proId){
-		
+	function visibleProduct(proId, proStat){
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/modifyProductVisible"
+			, data		: { 
+							  proId   : proId
+							, proStat : proStat
+						  }
+			, success	: function(){
+				alert("상품 노출 정보가 수정 되었습니다.");
+				closeVisiblePopup();
+				selectOneProduct(proId);
+			}
+			, 
+			error 	: function(err){
+				alert("상품 노출 정보 수정 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
 	}
 	    
     // 상품 노출 확인 > 팝업 닫기
 	function closeVisiblePopup() {
 		$("#popupVisibleModal").modal("hide");
+		searchProducts();
 	}
     
+    // 정책관리 조회
+    function searchPolicies(){
+    	$.ajax({
+			  type 		: "get"
+			, url		: "../admin/selectPolicyColumn"
+			, dataType 	: "json"
+			, success	: function(result){
+				let listLength = result.length;
+				
+				$("#myTab").empty();
+				
+      			for (row of result) {
+                    let tabLi = $("<li class='nav-item'/>").append($("<a data-bs-toggle='tab' href='#featured' role='tab' aria-controls='featured' aria-selected='true' role='presentation' />").attr("id", row["column_name"]).text(row["column_comment"]));
+                    $("#myTab").append(tabLi);
+                }
+			}
+			, 
+			error 	: function(err){
+				alert("정책관리 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+    }
     
 });
