@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <% String pjName 	= "/flower"; %>
 <% String imgRoute  = "/resources/product/imgs/"; %>
-
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" var="commaPrice" />
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -140,7 +141,7 @@
                             <div class="single-product-content">
                                 <h2 class="title" name="product_name">${prod.product_name}</h2>
                                 <div class="price-box">
-                                    <span class="new-price" name="product_price">${prod.product_price}</span>
+                                    <span class="new-price" name="product_price">${commaPrice}</span>
                                 </div>
                                 <div class="rating-box-wrap pb-4">
                                     <div class="rating-box">
@@ -751,6 +752,6 @@
         <!-- Scroll To Top End Here -->
 
     </div>
-    <!--cart JS (flower: 추후 footer에 담아야 할..듯?)-->
-    <script src="<%=pjName %>/resources/assets/js/cart/cart.js"></script>
+    <!--page-content JS (flower: 추후 footer에 담아야 할..듯?)-->
+    <script src="<%=pjName %>/resources/assets/js/product/product-content.js"></script>
 <%@include file="/flower_footer.jsp" %>
