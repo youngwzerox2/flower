@@ -15,4 +15,7 @@ public interface ShoppingCartService {
 	// 장바구니에 담긴 상품들의 가격 총합
 	Integer getCartTotal(MemberVO mvo);
 	
+	// 장바구니에 담긴 상품의 수량 변경
+	Integer updateCartProdQuan(ShoppingCartVO scvo);
+	
 } //interface ShoppingCartService

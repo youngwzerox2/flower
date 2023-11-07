@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <% String pjName = "/flower"; %>
 <% String resource = "/resources/product/imgs/list/"; %>
 
@@ -29,7 +30,9 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/nice-select.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/magnific-popup.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/ion.rangeSlider.min.css" />
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- 숫자 format jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/df-number-format/2.1.6/jquery.number.min.js"></script>
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
 
@@ -66,7 +69,7 @@
                 								<input class="button mt-xxs-30" id="selectAll" name="selectAll" value="selectAll" type="button">
                                 			</div>
                                 			<div class="coupon2">
-                                				<input class="button" id="updateCart" name="update_cart" value="Update cart" type="button">
+                                				<input class="button" id="updateCart" name="update_cart" value="delete" type="button">
                                 			</div>
                             			</div>
                         			</div>
@@ -107,19 +110,21 @@
                                                     </a>
                                                      
                                                 </td>
-                                                <td class="product-price"><span class="amount">${cart.product_price}</span></td>
-                                                <td class="quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="${cart.shopping_cart_product_quantity}" type="text">
-                                                        <div class="dec qtybutton">
+                                                <td class="product-price"><span class="amount cart_prod_price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.product_price}" /></span></td>
+                                                <td class="dbquantity">
+                                                    <div class="cart-plus-minus-db">
+                                                        <input class="cart-plus-minus-box-db cart_prod_quan" value="${cart.shopping_cart_product_quantity}" type="text">
+                                                        
+                                                        <div class="dbdec dbqtybutton">
                                                             <i class="fa fa-minus"></i>
                                                         </div>
-                                                        <div class="inc qtybutton">
+                                                        <div class="dbinc dbqtybutton">
                                                             <i class="fa fa-plus"></i>
                                                         </div>
+                                                        
                                                     </div>
                                                 </td>
-                                                <td class="product-subtotal"><span class="amount">${cart.product_price * cart.shopping_cart_product_quantity}</span></td>
+                                                <td class="product-subtotal"><span class="amount cart_subset_sum"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cart.product_price * cart.shopping_cart_product_quantity}" /></span></td>
                                             </tr>
                                           </c:forEach>  
                                         </tbody>
@@ -147,7 +152,7 @@
                                                 	</tr>
                                                 	<tr>
                                                 		<td><span>전체 항목 합계</span></td>
-                                                		<td>${cartTotal}</td>
+                                                		<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${cartTotal}" /></td>
                                                 		<td><a href=""><input class="button" type="button" name="" id="" value="전체 항목 결제하기"></a></td>
                                             	</table>
                                             </div><!-- <div class="cart-total right"> end -->
@@ -170,5 +175,6 @@
         <!-- Scroll To Top End Here -->
 
     </div> <!-- <div class="main-wrapper"> end -->
-
+    <!--cart JS (flower: 추후 footer에 담아야 할..듯?)-->
+    <script src="<%=pjName %>/resources/assets/js/cart/cart.js"></script>
 	<%@include file="../../../flower_footer.jsp" %>
