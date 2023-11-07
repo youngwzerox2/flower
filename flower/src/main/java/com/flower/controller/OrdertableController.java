@@ -30,9 +30,15 @@ public class OrdertableController {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		List<ShoppingCartVO> result = SCser.getCartList(mvo);
 		List<MemberAddressVO> resul = MAser.selectMemberAddress(mvo);
+		System.out.println(result);
 		m.addAttribute("cartList", result);
 		m.addAttribute("addressList", resul);
 		return "order/order";
+	}
+	
+	@RequestMapping("detailorder")
+	public void detailorder() {
+		
 	}
 	
 }
