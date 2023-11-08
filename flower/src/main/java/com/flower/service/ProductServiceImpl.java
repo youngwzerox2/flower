@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.flower.dao.ProductDAO;
 import com.flower.dao.ProductDAOImpl;
+import com.flower.vo.LoveVO;
 import com.flower.vo.ProductVO;
 
 @Service("productService")
@@ -39,6 +40,13 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductVO getProd(ProductVO vo) {
 		return productDao.getProd(vo);
+	}
+
+	// 상품 찜 update
+	@Override
+	public Integer updateLove(LoveVO vo) {
+		
+		return productDao.updateLove(vo);
 	}
 
 

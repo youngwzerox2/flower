@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.flower.vo.LoveVO;
 import com.flower.vo.ProductVO;
 
 @Repository("productDAO")
@@ -14,6 +15,7 @@ public class ProductDAOImpl implements ProductDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 상품 목록 출력
 	public List<ProductVO> getCateProdList(ProductVO vo){
 		List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
 //		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
@@ -38,6 +40,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return mybatis.selectList("productDAO.getCateProdList", vo);
 	}
 
+	// 상품 상세 출력
 	@Override
 	public ProductVO getProd(ProductVO vo) {
 		ProductVO result = mybatis.selectOne("productDAO.getProd", vo);
@@ -71,5 +74,25 @@ public class ProductDAOImpl implements ProductDAO{
 		 * **/
 		return result;
 	}
+
+	// 상품 찜 update
+	@Override
+	public Integer updateLove(LoveVO vo) {
+		List<LoveVO> loveList = mybatis.selectList("chkLoveList", vo);
+		System.out.println("해당 멤버의 찜한 목록 조회 결과: " + loveList);
+		// contains를 제대로 정정하기 바람!
+		System.out.println("이미 찜한 상태인지 확인: " + loveList.contains(vo.getProduct_id()));
+		/*
+		 * if(loveList.contains(vo.getProduct_id())) { // 이미 찜한 상품이었다면 해제 Integer chk =
+		 * mybatis.delete("productDAO.prodUnLove", vo);
+		 * System.out.println("찜 해제 sql 결과"+ chk); return
+		 * mybatis.delete("productDAO.prodUnLove", vo); } else { // 찜하지 않은 상품이었다면 상품id,
+		 * 멤버 id 입력 Integer test = mybatis.insert("productDAO.prodLove", vo);
+		 * System.out.println("찜 입력sql 결과: " + test); return
+		 * mybatis.insert("productDAO.prodLove", vo); }
+		 */
+		return null;
+	}
+	
 	
 } //class ProductDAOImpl

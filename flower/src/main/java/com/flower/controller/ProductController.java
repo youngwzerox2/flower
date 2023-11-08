@@ -2,14 +2,17 @@ package com.flower.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flower.service.ProductService;
+import com.flower.vo.LoveVO;
+import com.flower.vo.MemberVO;
 import com.flower.vo.ProductVO;
 
 @Controller
@@ -90,6 +93,24 @@ public class ProductController {
 	// 상품 등록 → 관리자 화면에서 다룬다.
 	// 상품 수정 → 관리자 화면에서 다룬다.
 	// 상품 삭제 → 관리자 화면에서 다룬다.
+	
+	
+	
+	// 찜(마음에든꽃 혹은 love 혹은 wishlist) update
+	@RequestMapping("/love")
+	public Integer updateLove(HttpSession sess, ProductVO pvo, Model m) {
+		
+		MemberVO mvo = (MemberVO)sess.getAttribute("member");
+		LoveVO lvo = new LoveVO();
+		lvo.setMember_id(mvo.getMember_id());
+		lvo.setProduct_id(Integer.valueOf(pvo.getProduct_id()));
+		System.out.println("love controller 접근 성공! love vo: " + lvo);
+		System.out.println("결과값 확인: " + productService.updateLove(lvo));
+		return productService.updateLove(lvo);
+		
+		
+	}
+	
 	
 	
 

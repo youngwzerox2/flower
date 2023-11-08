@@ -2742,8 +2742,8 @@ blockquote p {
 }
 
 /* ---Offcanvas Search Area--- */
-/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
-.modal {
+/* 팝업 창 스타일 (원하는 스타일로 수정 가능) by 영우*/
+/* .modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -2771,7 +2771,7 @@ blockquote p {
   font-size: 24px;
   margin: 10px;
   cursor: pointer;
-}
+} */
 
 
 .modal-bg-dark {

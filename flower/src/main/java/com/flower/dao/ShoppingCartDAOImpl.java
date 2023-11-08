@@ -46,21 +46,23 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO {
 	// 장바구니에 일부 상품만 선택(update, toggle)
 	@Override
 	public Integer selectCartProd(ShoppingCartVO scvo) {
-		Integer chk = mybatis.selectOne("ShoppingCartDAO.isSelected", scvo);
-		System.out.println("selected: " + chk);
-		Integer result = 1;
-		Integer rs = 1;
+		// Integer chk = mybatis.selectOne("ShoppingCartDAO.isSelected", scvo);
+		// System.out.println("selected: " + chk);
+		Integer chk = scvo.getSelected();
+		
+		Integer sel = 1;
+		Integer unsel = 0;
 		if(chk == 1) {
-			rs = mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
-			System.out.println("sql 결과(선택해제): " + rs);
-			return mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
-		} else if (chk == 0) {
-			result = mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
-			System.out.println("sql 결과(선택): " + result);
+			sel = mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
+			// System.out.println("sql 결과(선택): " + sel);
 			return mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
+		} else if (chk == 0) {
+			unsel = mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
+			// System.out.println("sql 결과(선택해제): " + unsel);
+			return mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
 		}
 		
-		return (result == 1) ? result: rs;
+		return (sel == 1) ? sel: unsel;
 	}
 	
 	// 장바구니에 담긴 상품 삭제

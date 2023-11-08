@@ -18,7 +18,7 @@
     <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="<%=pjName %>/resources/assets/images/logo/tulips.png" />
 
     <!-- CSS
     ============================================ -->
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-filled.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/animate.min.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/nice-select.css">
@@ -35,9 +36,10 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
+    <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/product.css">
+    
 
 </head>
-
 <body>
     <div class="preloader-activate preloader-active open_tm_preloader">
         <div class="preloader-area-wrap">
@@ -210,18 +212,21 @@
                                         </div>
                                     </li>
                                     <li class="add-to-cart">
-                                    	<!-- href="/flower/cart" 단, 변수로! -->
                                     	<input type="hidden" name="product_id" id="product_id" value="${prod.product_id}">
-                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" id="addCart">장바구니10</a>
+                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" id="addCart">장바구니</a>
                                     </li>
                                     <li class="add-to-cart">
                                         <a class="btn btn-custom-size lg-size btn-pronia-primary" href="">바로구매</a>
                                     </li>
-                                    <li class="wishlist-btn-wrap">
-                                        <a class="custom-circle-btn" href="wishlist.html">
-                                            <i class="pe-7s-like"></i>
-                                        </a>
+                                    <!-- 좋아요/찜/love 버튼 -->
+                                    <li class="love-btn add-to-wishlist">
+                                    	<div class="add-to-wishlist" id="love_content">
+                                            <i class="pe-7s-leaf"></i>
+                                        </div>
                                     </li>
+                                </ul>
+                                
+                                    
                                     
                                     <!-- flower: 대단한 기능이지만 숨긴다 -->
                                     <!-- <li class="compare-btn-wrap">
@@ -229,7 +234,7 @@
                                             <i class="pe-7s-refresh-2"></i>
                                         </a>
                                     </li> -->
-                                </ul>
+                                
                                 
                                 <!-- flower: 서비스 안내 이미지 → 일조량을 이미지로 대체할지 결정요망(일단 주석처리) -->
                                 <!--
