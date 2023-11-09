@@ -154,7 +154,7 @@ function reviews_find(){
 		return;
 	}
 	
-	//location.href = "product?reviews_search=" + search + "&reviews_search_text=" + encodeURIComponent(reviews_search_text,"utf-8");
+	location.href = "product?reviews_search=" + reviews_search + "&reviews_search_text=" + encodeURIComponent(reviews_search_text,"utf-8");
 }
 
 
