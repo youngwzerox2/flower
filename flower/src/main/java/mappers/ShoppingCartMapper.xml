@@ -68,4 +68,9 @@
 		WHERE shopping_cart_id = #{shopping_cart_id}
 	</update>
 	
+	<delete id="deleteAllCart" parameterType="com.flower.vo.MemberVO">
+		DELETE FROM shooping_cart
+		WHERE MEMBER_ID = #{member_id}
+	</delete>
+	
 </mapper>

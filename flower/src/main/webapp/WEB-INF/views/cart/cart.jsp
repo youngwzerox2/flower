@@ -99,7 +99,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="product-name">
-                                                	<input type="hidden" value="${cart.shopping_cart_id}" id="cartId">
+                                                	<input type="hidden" value="${cart.shopping_cart_id}" class="cartId">
                                                 	<a href="">${cart.product_name}</a>
                                                     <a class="remove_item">
                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"

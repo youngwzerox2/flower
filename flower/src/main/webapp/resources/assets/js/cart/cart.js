@@ -9,7 +9,7 @@
     $('.dbqtybutton').on('click', function () {
         const $button = $(this);
         const oldValue = $button.parent().find('input').val();
-        const cartId = $('#cartId').val();
+        const cartId = $button.parents('tr').find('.cartId').val();
         
         // 해당 상품이 선택되었는지 감지하자
         const isSelected = $button.parentsUntil('tbody').find('.product_each').hasClass("product_each checked");

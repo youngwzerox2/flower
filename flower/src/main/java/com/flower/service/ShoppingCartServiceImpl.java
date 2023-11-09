@@ -61,6 +61,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 		return shoppingCartDao.deleteCartProd(scvo);
 	}
 
+	@Override
+	public void deleteAllCart(MemberVO mvo) {
+		shoppingCartDao.deleteAllCart(mvo);
+	}
+
 
 
 } //class ShoppingCartServiceImpl
