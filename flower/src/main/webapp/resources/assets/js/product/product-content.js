@@ -35,7 +35,7 @@
 	
 	// 상세 페이지에서 찜btn 클릭 이벤트
 	$('#love_content').click(function(){
-	
+		console.log("You find me!");
 		prod_id = $('#product_id').val();
  		const iCon = $(this).find('i');
  		

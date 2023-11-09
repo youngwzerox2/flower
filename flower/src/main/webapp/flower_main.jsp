@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-filled.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/animate.min.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/nice-select.css">
