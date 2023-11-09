@@ -2742,39 +2742,6 @@ blockquote p {
 }
 
 /* ---Offcanvas Search Area--- */
-/* 팝업 창 스타일 (원하는 스타일로 수정 가능) by 영우*/
-/* .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.7);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 70%;
-  max-width: 400px;
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 24px;
-  margin: 10px;
-  cursor: pointer;
-} */
-
-/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
-/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
 
 .modal-bg-dark {
   background-color: rgba(0, 0, 0, 0.6);

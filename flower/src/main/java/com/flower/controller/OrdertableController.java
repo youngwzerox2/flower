@@ -44,6 +44,7 @@ public class OrdertableController {
 		return "order/order";
 	}
 	
+	// 주문 상세 db insert
 	@PostMapping("detailorder")
 	public String detailorder(@ModelAttribute OrderTableListVo Listvo, Model m){
 		
@@ -54,16 +55,16 @@ public class OrdertableController {
 		return "redirect:detailorderpage/" + detail_number;
 	}
 	
+	// 주문 상세페이지 이동
 	@RequestMapping("detailorderpage/{detail_number}")
 	public String detailorderpage(@PathVariable String detail_number,HttpSession session,  Model m ) {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		OrderTableVO OTvo = new OrderTableVO();
 		OTvo.setMember_id(mvo.getMember_id());
 		OTvo.setOrder_detail_number(detail_number);
-		System.out.println(OTvo);
 		List<OrderTableVO> orderList = OTser.selectOrderListbydetailnumber(OTvo);
+		SCser.deleteAllCart(mvo);
 		m.addAttribute("orderList", orderList);
-		System.out.println(orderList);
 		return "order/detailorderpage";
 	}
 }
