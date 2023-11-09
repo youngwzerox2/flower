@@ -8,6 +8,7 @@
  	$('#addCart').click(function(e){
  		prod_id = $('#product_id').val();
  		prod_quan = $('#product_quantity').val();
+ 		
  		$.ajax({
  			type: 'GET',
  			url: '/flower/cart?product_id=' + prod_id,
@@ -24,6 +25,7 @@
  			error: function(error){
  				if(confirm('로그인이 필요한 서비스입니다. 로그인 하시겠습니까?')){
  					location.href='/flower/member/login';
+ 					console.log(error)
  				} else {
  					return false;
  				}
@@ -86,5 +88,18 @@
 	  	
 	  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
+	
+	// 바로구매 버튼
+	$("#onlyoneorder").click(function(){
+		if($("#memberid").val()==''){
+			if(confirm('로그인이 필요한 서비스입니다. 로그인 하시겠습니까?')){
+ 				location.href='/flower/member/login';
+ 		} else {
+ 				return false;
+ 				}
+		}	else {
+			$("#productinfo").submit();
+		}
+	})
  	
  }) // $(function(){}) end

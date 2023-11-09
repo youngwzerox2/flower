@@ -77,7 +77,7 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO {
 
 	@Override
 	public void deleteAllCart(MemberVO mvo) {
-		mybatis.delete("",mvo);
+		mybatis.delete("ShoppingCartDAO.deleteAllCart",mvo);
 	}
 	
 	

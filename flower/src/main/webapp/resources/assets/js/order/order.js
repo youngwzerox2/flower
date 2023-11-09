@@ -213,11 +213,14 @@ $(function(){
 				}
 			}
 			
+			// 카트에서 구매했는지 체크
+			add(myForm, "notbuyfromcart", $("#notbuyfromcart").val())
+			
 			myForm.setAttribute("action","/flower/order/detailorder")
 			myForm.setAttribute("method","POST")
 			document.body.appendChild(myForm)
-			
-			kakaopay();
+			myForm.submit();
+			//kakaopay();
 			
 			// 결제 함수
 		
@@ -256,7 +259,7 @@ $(function(){
    		 		
    		 		alert("결제가 완료되었습니다")
    		 		
-   		 		myForm.submit();
+   		 		//myForm.submit();
    		 		
    		 		} else{
    		 		 var msg = '오류로 인하여 결제가 시작되지 못하였습니다.';

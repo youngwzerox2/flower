@@ -52,6 +52,7 @@
        
         <!-- Begin Main Content Area -->
         <main class="main-content">
+        	<input type = 'hidden' value='${notbuyfromcart}' id = 'notbuyfromcart' name = 'notbuyfromcart'>
             <div class="breadcrumb-area breadcrumb-height" data-bg-image="/flower/resources/assets/images/breadcrumb/bg/1-1-1919x388.jpg">
                 <div class="container h-100">
                     <div class="row h-100">
@@ -78,6 +79,7 @@
                                 	<h3>주문 상품 정보</h3>
                                 	<div class = 'cart_list'>
                                 	<ul class = 'cart_contents'>
+                                	<c:if test="${not empty cartList}">
                                 	<c:forEach items = '${cartList}' var = 'product'>
                                 		<li class = cart_goods>
                                 			<div class = 'block block1'>
@@ -106,6 +108,35 @@
                                 			</div>
                                 		</li>
                                 	</c:forEach>
+                                	</c:if>
+                                	<c:if test="${not empty product}">
+                                	<li class = cart_goods>
+                                			<div class = 'block block1'>
+                                				<ul>
+                                					<li class = 'img_area'>
+                                						<a href = '#'>
+                                							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/${product.product_image_file_name}' class = 'goods_thumb'>
+                                							<input class = 'productimage' type = hidden value = '${product.product_image_file_name}'>
+                                						</a>
+                                					</li>
+                                					<li class = 'option_area'>
+                                						<div class = 'goods_name'>
+                                							<a href = '#'>${product.product_name}</a>
+                                							<input class = 'productid' type = 'hidden' value = '${product.product_id}'>
+                                						</div>
+                                						<div>
+                                							<span>
+                                								수량
+                                							</span><span class = 'goods_quantity'>${product.shopping_cart_product_quantity}</span>
+                                							 개
+                                							<span class = 'goods_subtotalprice'>${product.shopping_cart_product_quantity * product.product_price}</span>
+                                							원
+                                						</div>
+                                					</li>
+                                				</ul>
+                                			</div>
+                                		</li>
+                                	</c:if>
                                 	</ul>
                                 	</div>
                                     <h3>주문자</h3>
@@ -176,7 +207,7 @@
                                   	  </c:if>
                                     </c:forEach>
                                    		<div class="row tab-pane fade" id = 'selectaddress' role = 'tabpanel' aria-labelledby ='selectaddress-tab'>
-                                      	 	<c:if test="${not empty member}"></c:if>
+                                      	 	<c:if test="${not empty member}">
                                       	 	<c:forEach items = '${addressList}' var = 'address'>
                                       	 	<ul class = 'ul_delivery real'>
                                       	 		<li>
@@ -197,6 +228,7 @@
                                       	 		</li>
                                       	 	</ul>
                                       	 	</c:forEach>
+                                      	 	</c:if>
                                     	</div>
                                     	<div class="row tab-pane fade  show active" id = 'newaddress' role = 'tabpanel' aria-labelledby ='newaddress-tab'>
                                       	 	<ul class = 'list_01'>
@@ -239,6 +271,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <c:if test="${not empty cartList}">
                                         	<c:forEach items = '${cartList}' var = 'product'>
                                             <tr class="cart_item">
                                                 <td class="cart-product-name">${product.product_name}<strong
@@ -247,6 +280,15 @@
                                                 <td class="cart-product-total"><span class="amount">${product.shopping_cart_product_quantity * product.product_price}원</span></td>
                                             </tr>
                                             </c:forEach>
+                                        </c:if>
+                                        <c:if test="${not empty product}">
+                                        <tr class="cart_item">
+                                             <td class="cart-product-name">${product.product_name}<strong
+                                             class="product-quantity">
+                                              x ${product.shopping_cart_product_quantity}</strong></td>
+                                             <td class="cart-product-total"><span class="amount">${product.shopping_cart_product_quantity * product.product_price}원</span></td>
+                                         </tr>
+                                        </c:if>
                                         </tbody>
                                         <tfoot>
                                             <tr class="order-total">

@@ -5,8 +5,10 @@
 
 	<!-- 장바구니에 담기 -->
 	<insert id="addCart" parameterType="com.flower.vo.ShoppingCartVO">
-		INSERT INTO shopping_cart (member_id, product_id, shopping_cart_product_quantity)
+		INSERT INTO shopping_cart(member_id, product_id, shopping_cart_product_quantity)
 		VALUES (#{member_id}, #{product_id}, #{shopping_cart_product_quantity})
+		on DUPLICATE key update
+		shopping_cart_product_quantity = shopping_cart_product_quantity + VALUES(shopping_cart_product_quantity)
 	</insert>
 	
 	<!-- (로그인한 회원의) 장바구니에 담긴 상품 목록 불러오기-->
@@ -69,7 +71,7 @@
 	</update>
 	
 	<delete id="deleteAllCart" parameterType="com.flower.vo.MemberVO">
-		DELETE FROM shooping_cart
+		DELETE FROM shopping_cart
 		WHERE MEMBER_ID = #{member_id}
 	</delete>
 	

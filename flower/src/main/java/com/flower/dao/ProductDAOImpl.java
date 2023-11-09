@@ -47,9 +47,11 @@ public class ProductDAOImpl implements ProductDAO{
 		ProductVO main = mybatis.selectOne("productDAO.getImgMain", vo);
 		ProductVO sub = mybatis.selectOne("productDAO.getImgSub", vo);
 		ProductVO guide = mybatis.selectOne("productDAO.getImgGuide", vo);
+		ProductVO list = mybatis.selectOne("productDAO.getList", vo);
 		result.setProd_img_main(main.getProduct_image_file_name());
 		result.setProd_imgs_sub(sub.getProduct_image_file_name());
 		result.setProd_imgs_guide(guide.getProduct_image_file_name());
+		result.setProd_img_list(list.getProduct_image_file_name());
 		
 		
 //		result.setProd_imgs_sub();

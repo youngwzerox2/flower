@@ -14,4 +14,5 @@ public class OrderTableListVo {
 
 	
 	private List<OrderTableVO> Listvo;
+	private String notbuyfromcart;
 }
