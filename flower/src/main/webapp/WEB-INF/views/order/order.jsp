@@ -85,20 +85,20 @@
                                 					<li class = 'img_area'>
                                 						<a href = '#'>
                                 							<img  class = 'goods_thumb' src = '/flower/resources/product/imgs/list/${product.product_image_file_name}' class = 'goods_thumb'>
+                                							<input class = 'productimage' type = hidden value = '${product.product_image_file_name}'>
                                 						</a>
                                 					</li>
                                 					<li class = 'option_area'>
                                 						<div class = 'goods_name'>
                                 							<a href = '#'>${product.product_name}</a>
+                                							<input class = 'productid' type = 'hidden' value = '${product.product_id}'>
                                 						</div>
                                 						<div>
                                 							<span>
                                 								수량
-                                							</span>
-                                							${product.shopping_cart_product_quantity} 개
-                                							<span>
-                                								${product.shopping_cart_product_quantity * product.product_price}
-                                							</span>
+                                							</span><span class = 'goods_quantity'>${product.shopping_cart_product_quantity}</span>
+                                							 개
+                                							<span class = 'goods_subtotalprice'>${product.shopping_cart_product_quantity * product.product_price}</span>
                                 							원
                                 						</div>
                                 					</li>
@@ -114,15 +114,12 @@
                                       	 	<ul class = 'list_02'>
                                       	 		<li>
                                       	 			<span class = 'label'><span>주문자명</span></span>
-                                      	 			<input type = 'text' style = 'width : 170px;' placeholder = '주문자 이름' required>
-                                      	 		</li>
-                                      	 		<li>
-                                      	 			<span class = 'label'><span>휴대폰번호</span></span>
-                                      	 			<input type = 'text' style = 'width : 170px;' placeholder = '-포함' required>
+                                      	 			<span>${member.member_name}</span>
                                       	 		</li>
                                       	 		<li>
                                       	 			<span class = 'label'><span>이메일</span></span>
-                                      	 			${member.member_email}
+                                      	 			<span>${member.member_email}</span>
+                                      	 			<input type = 'hidden' value = '${member.member_id}'>
                                       	 		</li>
                                       	 	</ul>
                                       	</li>
@@ -179,6 +176,7 @@
                                   	  </c:if>
                                     </c:forEach>
                                    		<div class="row tab-pane fade" id = 'selectaddress' role = 'tabpanel' aria-labelledby ='selectaddress-tab'>
+                                      	 	<c:if test="${not empty member}"></c:if>
                                       	 	<c:forEach items = '${addressList}' var = 'address'>
                                       	 	<ul class = 'ul_delivery real'>
                                       	 		<li>
@@ -212,27 +210,16 @@
                                       	 			<span class = 'label'>
                                       	 				<span>주소</span>
                                       	 			</span>
-                                      	 			<input type= 'text' style='width:113px;' required placeholder = '우편번호' id = 'modifypostcode'>
+                                      	 			<input type= 'text' style='width:113px;' readonly placeholder = '우편번호' id = 'modifypostcode'>
                                       	 			<button type = 'button' id = 'searchaddress'>검색</button>
-                                      	 			<input type= 'text' style = 'width : 100%;' required placeholder = '주소' id = 'modifyaddress'>
-                                      	 			<input type= 'text' style = 'width : 100%;' required placeholder = '상세주소' id = 'modifydetailaddress'>
+                                      	 			<input type= 'text' style = 'width : 100%;' readonly placeholder = '주소' id = 'modifyaddress'>
+                                      	 			<input type= 'text' style = 'width : 100%;' placeholder = '상세주소' id = 'modifydetailaddress'>
                                       	 		</li>
                                       	 		<li>
                                       	 			<span class = 'label'>
                                       	 				<span>휴대폰번호</span>
                                       	 			</span>
-                                      	 			<input type= 'text' required placeholder = '휴대폰번호' id = 'modifytel'>
-                                      	 		</li>
-                                      	 		<li>
-                                      	 			<span class = 'label'>
-                                      	 				<span>배송저장</span>
-                                      	 			</span>
-                                      	 			<div>
-                                      	 				<label>
-                                      	 					<input type = 'checkbox' value = '1' id = 'modifydefault'>
-                                      	 					<span>배송주소록에 저장</span>
-                                      	 				</label>
-                                      	 			</div>
+                                      	 			<input type= 'text' required placeholder = '-포함' id = 'modifytel'>
                                       	 		</li>
                                       	 	</ul>
                                     	</div>

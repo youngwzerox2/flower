@@ -23,5 +23,20 @@ GROUP BY ot.ORDER_DETAIL_NUMBER
 </select>
 
 
+<insert id = 'insertOrder' parameterType="com.flower.vo.OrderTableVO">
+	INSERT INTO order_table (product_id, member_id, order_product_price, order_detail_number, order_date, recipient_name, postal_code, recipient_address, recipient_tel, order_product_quantity, order_state) VALUES (#{product_id}, #{member_id}, #{order_product_price}, #{order_detail_number}, now(),  #{recipient_name}, #{postal_code}, #{recipient_address}, #{recipient_tel}, #{order_product_quantity}, #{order_state})
+</insert>
+
+<select id="selectOrderByDetailNumber" parameterType="com.flower.vo.OrderTableVO" resultType="com.flower.vo.OrderTableVO">
+select ot.PRODUCT_ID , ot.MEMBER_ID , ot.ORDER_DETAIL_NUMBER , MIN(ot.ORDER_DATE) ORDER_DATE, MIN(ot.RECIPIENT_NAME) RECIPIENT_NAME, MIN(ot.POSTAL_CODE) POSTAL_CODE, MIN(ot.RECIPIENT_ADDRESS) RECIPIENT_ADDRESS, MIN(ot.RECIPIENT_TEL) RECIPIENT_TEL, MIN(ot.ORDER_PRODUCT_QUANTITY) ORDER_PRODUCT_QUANTITY, MIN(ot.ORDER_STATE) ORDER_STATE, MIN(pi2.PRODUCT_IMAGE_FILE_NAME) PRODUCT_IMAGE_FILE_NAME ,p.PRODUCT_NAME, MIN(ot.ORDER_PRODUCT_PRICE) ORDER_PRODUCT_PRICE  
+from order_table ot join product_image pi2 
+on ot.PRODUCT_ID = pi2.PRODUCT_ID 
+join product p
+on ot.PRODUCT_ID = p.PRODUCT_ID 
+where ot.ORDER_DETAIL_NUMBER = #{order_detail_number} and MEMBER_ID = #{member_id} and pi2.PRODUCT_IMAGE_FROUTE ='list'
+group by PRODUCT_ID
+</select>
+
+
 
 </mapper>

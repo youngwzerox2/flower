@@ -103,7 +103,7 @@ $(function(){
 				
 		// 배열을 가지고 토탈금액 구하기
 		$.each(price, function(index, value){
-			totalprice = totalprice + parseInt(price)
+			totalprice = totalprice + parseInt(value)
 		})
 		
 		// 페이지 불러지자마자 값적용
@@ -112,26 +112,115 @@ $(function(){
 		
 		// end of 토탈금액 구하기
 		
-		//주문 상세번호 날짜로 만들기
+	
+		$("#payment").click(function(){
 		
-		var today = new Date();
-		var hours = today.getHours(); // 시
-		var minutes = today.getMinutes();  // 분
-		var seconds = today.getSeconds();  // 초
-		var milliseconds = today.getMilliseconds();
-		var makeMerchantUid = `${hours}` + `${minutes}` + `${seconds}` + `${milliseconds}`;
+		// 배송지 정보 확인
 		
-		// 상품 이름 외 n개
-		var productsname = $(".goods_name").find('a')
-		console.log(productsname)
-		
-		$.each(productsname, function(index, productname){
-		
-		console.log(productname)
-		})
+		if($("#modifyname").val() == '' || $("#modifypostcode").val() == '' || $("#modifyaddress").val() == '' || $("#modifydetailaddress").val() == '' || $("#modifytel").val() ==''){
+			alert("배송지 정보를 입력하세요")
+			return false;
+			
+		}	// 배송지 정보 체크
 		
 		
-		// 결제 함수
+		if($("#defaultaddress").css("display") != 'none'){
+			var recipient_name = $("#defaultaddress").find('.list_02').children('li').eq(0).children('label').text()
+			var recipient_postalcode = $("#defaultaddress").find('.list_02').children('li').eq(1).children('label').children('span').eq(0).text().substr(1,5)
+			var recipient_address = $("#defaultaddress").find('.list_02').children('li').eq(1).children('label').children('span').eq(1).text()
+			var recipient_detailaddress = $("#defaultaddress").find('.list_02').children('li').eq(1).children('label').children('span').eq(2).text()
+			var recipient_tel = $("#defaultaddress").find('.list_02').children('li').eq(2).children('label').text()
+			
+		} else{
+		
+			var recipient_name = $("#modifyname").val()
+			var recipient_postalcode = $("#modifypostcode").val()
+			var recipient_address = $("#modifyaddress").val()
+			var recipient_detailaddress = $("#modifydetailaddress").val()
+			var recipient_tel = $("#modifytel").val() 
+			
+			} //end of 배송지 값 저장
+			
+			// pay에 넣을 정보들
+		
+			// 상품 이름 외 n개
+			var Arrayname = new Array();
+			var productsname = $(".goods_name").find('a')
+			$.each(productsname, function(index, productname){
+			Arrayname[index] = productname.text
+			})
+			var payproductname = Arrayname[0] + ' 외 ' + (Arrayname.length - 1) + '개'
+		
+			// 이메일
+			var payemail = $('.orderer .list_02').children('li').eq(1).children('span').eq(1).text()
+			// 회원 ID
+			var memberid = $('.orderer .list_02').children('li').eq(1).children('input').val()
+			// 주문자 이름
+			var payname = $('.orderer .list_02').children('li').eq(0).find('input').val()
+		
+			
+			//주문 상세번호 날짜로 만들기
+		
+			var today = new Date();
+			
+			var year = today.getFullYear(); // 년도
+			var month = today.getMonth() +1; // 월
+			var date = "0" + today.getDate();
+			var hours = today.getHours(); // 시
+			var minutes = today.getMinutes();  // 분
+			var seconds = today.getSeconds();  // 초
+			var milliseconds = today.getMilliseconds();
+			var makeMerchantUid =  `${year}` + `${month}` + `${date}` +`${hours}` + `${minutes}` + `${seconds}` + `${milliseconds}`;
+			
+			
+			// 컨트롤러에 넘길 값 정리
+			var productids = $(".goods_name").find('input')
+			var subtotalprice = $(".goods_subtotalprice").text()
+			var dataArray = []
+			var product_list = $(".option_area")
+			
+			// 키 밸류로 vo에 넘길 값 생성
+			$.each(product_list, function(index, productinfo){
+				var productids = $(this).find('.productid').val()
+				var productname = $(this).find('a').text()
+				var productimage = $(this).find('.productimage').val()
+				var quantity = $(this).find('.goods_quantity').text()
+				var price = parseInt($(this).find('.goods_subtotalprice').text()) / parseInt($(this).find('.goods_quantity').text())
+				
+				
+				const data = {"product_name" : productimage, "product_image_file_name" : productimage, "product_id" : productids, "order_product_price" : price, "order_detail_number" : "flower" + makeMerchantUid, "recipient_name" : recipient_name, "postal_code" : recipient_postalcode, "recipient_address" : (recipient_address +" "+ recipient_detailaddress), recipient_tel : recipient_tel, "order_product_quantity" : quantity, "order_state" : "주문완료", "member_id" : memberid }
+				dataArray.push(data)	
+			})
+			
+			// input 동적 생성
+			function add(form, name, value){
+			
+			var element = document.createElement("input")
+			element.setAttribute("value", value);
+			element.setAttribute("name", name);
+			
+			form.appendChild(element);
+			
+			}
+			
+			let myForm = document.createElement('form')
+			
+			// input 값 지정
+			for(let i = 0; i < dataArray.length; i++){
+			for (const [key, value] of Object.entries(dataArray[i])){
+			const name = `Listvo[${i}].${key}`;
+			add(myForm, name, value)
+				}
+			}
+			
+			myForm.setAttribute("action","/flower/order/detailorder")
+			myForm.setAttribute("method","POST")
+			document.body.appendChild(myForm)
+			
+			kakaopay();
+			
+			// 결제 함수
+		
 		function kakaopay(){
 			IMP.init('imp35575482')
 		
@@ -139,23 +228,48 @@ $(function(){
      		 pg: "kakaopay.TC0ONETIME",
      		 pay_method: "card",
      		 merchant_uid: "flower" + makeMerchantUid,   // 주문번호
-     		 name: "노르웨이 회전 의자",
+     		 name: payproductname,
      		 amount: totalprice,                         // 숫자 타입
-     		 buyer_email: "gildong@gmail.com",
-    		 buyer_name: "홍길자",
-    		 buyer_tel: "010-4242-4242",
-    		 buyer_addr: "서울특별시 강남구 신사동",
-     		 buyer_postcode: "01181"
+     		 buyer_email: payemail,
+    		 buyer_name: payname,
+    		 buyer_addr: recipient_address + recipient_detailaddress,
+     		 buyer_postcode: recipient_postalcode,
+     		 
    		 }, function (rsp) { // callback
    		 		if(rsp.success){
-   		 		alert(rsp.imp_uid)
+   		 		
+   		 		/*
+   		 		$.ajax({
+   		 			type : 'post',
+   		 			url : '/flower/order/detailorder',
+   		 			data : orderList,
+   		 			success : function(result){
+   		 			alert("db연동 성공")
+   		 			},
+   		 			error : function(err){
+   		 			console.log("db연동 실패 추후 삭제" + err)
+   		 			}
+   		 			
+   		 		})	// end of ajax
+   		 		
+   		 		*/
+   		 		
+   		 		alert("결제가 완료되었습니다")
+   		 		
+   		 		myForm.submit();
+   		 		
    		 		} else{
-   		 		alert("실패" + rsp.error_msg)
-   		 		}
-   			 });
-		}
+   		 		 var msg = '오류로 인하여 결제가 시작되지 못하였습니다.';
+       			 msg += '에러내용 : ' + rsp.error_msg;
+        		 alert(msg);
+   		 		}	// end of 결제 에러
+   		 		
+   			 });	// end of 결제 콜백
+   			 
+		}	// end of 결제 함수
+			
+			
+		})	// end of 결제버튼
 		
-		$("#payment").click(function(){
-			location.href = "detailorder"
-		})
+		
 })

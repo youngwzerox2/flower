@@ -139,7 +139,7 @@
                                                     	<c:when test="${order.order_detail_number_count == '1'}">
                                                     	 <tr>
                                                         <td>${order.order_date}</td>
-                                                        <td><a class="account-order-id" href="#">${order.order_detail_number}</a></td>
+                                                        <td><a class="account-order-id" href="/flower/order/detailorderpage/${order.order_detail_number}">${order.order_detail_number}</a></td>
                                                         <td>
                                                         	<ul class = "orders_product_info">
                                                         		<li class = 'orders_product_info_img'>
@@ -166,7 +166,7 @@
                                                     	<c:otherwise>
                                                     		<tr>
                                                        			 <td>${order.order_date}</td>
-                                                       			 <td><a class="account-order-id" href="#">${order.order_detail_number}</a></td>
+                                                       			 <td><a class="account-order-id" href="/flower/order/detailorderpage/${order.order_detail_number}">${order.order_detail_number}</a></td>
                                                         		<td>
                                                         			<ul class = "orders_product_info">
                                                         			<li class = 'orders_product_info_img'>

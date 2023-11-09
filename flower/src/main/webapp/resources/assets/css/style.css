@@ -2773,6 +2773,8 @@ blockquote p {
   cursor: pointer;
 } */
 
+/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
+/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
 
 .modal-bg-dark {
   background-color: rgba(0, 0, 0, 0.6);
