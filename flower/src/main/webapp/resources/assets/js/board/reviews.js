@@ -2,19 +2,28 @@
  * 
  */
  
- 
 function insert_reviews_form(userId, productId){
 	
 	var loginCheck = $('.loginCheck').text();
-	alert(loginCheck);
-	
 	
 	if(loginCheck == '로그인'){
 	
-		if(confirm('로그인 후 이용가능합니다\n로그인 하시겠습니까??')==true){
-			location.href = '/flower/member/login';
-			return;	
-		}
+		Swal.fire({
+			  title: "리뷰",
+			  html: '<h5>로그인을 하신 후 이용해 주시기 바랍니다.<h5>',
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '예',
+			  cancelButtonText: '아니오'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				  				  
+				  location.href = '/flower/member/login';
+			  }
+			   
+			});
 		 
 	}else {
 	
@@ -22,12 +31,55 @@ function insert_reviews_form(userId, productId){
 		location.href = 'insert_reviews_form';
 		
 	}
-	
-	
-	
-	
 
 }
+
+function reviews_form(reviews_id){
+
+	Swal.fire({
+		  title: "문의",
+		  html: '<h3>수정하시겠습니까??<h3>',
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '예',
+		  cancelButtonText: '아니오'
+		}).then((result) => {
+		  
+			//예 버튼클릭
+			if (result.isConfirmed) {
+			  	
+				location.href="reviews_modify_form?reviews_id=" + reviews_id 
+		  }
+
+		});
+
+}
+
+function reviews_del(reviews_id){
+		
+		Swal.fire({
+			  title: "게시판",
+			  html: '<h3>삭제하시겠습니까??<h3>',
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '예',
+			  cancelButtonText: '아니오'
+			}).then((result) => {
+			  
+				//예 버튼클릭
+				if (result.isConfirmed) {
+				  	
+				  location.href = "reviews_delete?reviews_id=" + reviews_id;
+				  
+			  }
+
+			});
+		
+	}//end_del
 
 
 
@@ -54,19 +106,13 @@ function send(f){
 		}
 		
 		f.action = "reviews_insert";
+		
 		f.submit();
 	}
 
-function reviews_form(reviews_id){
-
-	if(confirm('수정하시겠습니까??')==true){
-			location.href="reviews_form?reviews_id=" + reviews_id
-			return;	
-		}
-}
 
 function reviews_modify(f){
-	alert('qoqoqo');
+
 	var reviews_title   = f.reviews_title.value.trim();
 	var reviews_content = f.reviews_content.value.trim();
 	
@@ -89,7 +135,6 @@ function reviews_modify(f){
 	f.action = "reviews_modify";
 	f.submit();
 }
-
 
 
 

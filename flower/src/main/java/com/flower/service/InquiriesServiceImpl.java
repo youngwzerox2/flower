@@ -44,13 +44,13 @@ public class InquiriesServiceImpl implements InquiriesService {
 	@Override
 	public int update(InquiriesVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return inquiriesDao.update(vo);
 	}
 
 	@Override
-	public int delete(String Inquiries_id) {
+	public int delete(String inquiries_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return inquiriesDao.delete(inquiries_id);
 	}
 
 	@Override

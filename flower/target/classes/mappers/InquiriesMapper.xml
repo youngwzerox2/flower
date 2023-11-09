@@ -5,29 +5,18 @@
 
 	 <select id="inquiriesSelect" resultType="com.flower.vo.InquiriesVO">
 	 	SELECT * FROM inquiries;
-	 
 	 </select>
 
 	 <!-- 조건별 조회 -->
 	 <select id="inquiriesListCondition" parameterType="Map" resultType="com.flower.vo.InquiriesVO">
-	 	SELECT * 
-			FROM
-				(
-					SELECT
-						@row_number:=@row_number+1 AS no,
-						b.*
-					FROM 
-						(
-							SELECT * FROM inquiries ORDER BY inquiries_id DESC
-							<trim prefix="where">
-								<if test="title!=null">
-									inquiries_title LIKE CONCAT('%', #{title}, '%')
-								</if>
-							</trim>
-						) b,
-						(SELECT @row_number:=0) as r
-				) ranked
-			WHERE no BETWEEN ${ start } AND ${ end }
+	 	SELECT * FROM (
+					    SELECT
+					        ROW_NUMBER() OVER (ORDER BY inquiries_id DESC) AS no,
+					        i.*,
+					        (SELECT IFNULL(COUNT(*), 0) FROM inquiries) AS inquiries_count
+					    FROM (select * FROM inquiries) i
+					   ) ranked
+		WHERE no BETWEEN ${ start } AND ${ end }
 	 </select>
 	
 	<!-- 검색 조건별 -->
@@ -68,6 +57,10 @@
 							 inquiries_register_date = now()
 		where inquiries_id = #{ inquiries_id };
 	 </update>
+	 
+	 <delete id="inquiriesDelete" parameterType="string">
+	 	delete from inquiries where inquiries_id = #{ inquiries_id }
+	 </delete>
 	 
 	 <!-- Mypage select inquiries -->
 	 <select id="MypageSelectInquiry" parameterType="com.flower.vo.MemberVO" resultType="com.flower.vo.InquiriesVO">

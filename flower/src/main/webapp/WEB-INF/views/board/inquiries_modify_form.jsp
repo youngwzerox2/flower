@@ -32,12 +32,12 @@
    <div class="feedback-area" id="box">
     <h2 class="heading">문의</h2>
        <form class="feedback-form" id="send_form">
-           <!-- <div class="group-input"></div> -->
+           <input name="inquiries_id" type="hidden" value="${vo.inquiries_id}" />
            <div class="form-field mt-30">
-               <input type="text" name="inquiries_title" id="inquiries_title" placeholder="inquiries_title" class="input-field">
+               <input value="${ vo.inquiries_title }" type="text" name="inquiries_title" id="inquiries_title" placeholder="inquiries_title" class="input-field">
            </div>
            <div class="form-field mt-30">
-               <textarea name="inquiries_cotent" id="inquiries_cotent" placeholder="inquiries_cotent" class="textarea-field"></textarea>
+               <textarea name="inquiries_cotent" id="inquiries_cotent" placeholder="inquiries_cotent" class="textarea-field">${ vo.inquiries_cotent }</textarea>
            </div>
            
            <div class="button-wrap pt-5" style="margin-top: 10px;">

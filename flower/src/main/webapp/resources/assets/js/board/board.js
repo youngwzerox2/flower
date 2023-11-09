@@ -7,19 +7,53 @@ function insert_form(){
 	//alert(loginCheck);
 
 	if(loginCheck == '로그인'){
-	
-		if(confirm('로그인 후 이용가능합니다\n로그인 하시겠습니까??')==true){
-			location.href = '/flower/member/login';
-			return;	
-		}
+		
+		Swal.fire({
+			  title: "문의하기",
+			  html: '<h5>로그인을 하신 후 이용해 주시기 바랍니다.<h5>',
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '예',
+			  cancelButtonText: '아니오'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				  				  
+				  location.href = '/flower/member/login';
+			  }
+			   
+			});
 		 
 	}else {
 		location.href = 'insert_form';
 	}
-		
 	
-
 }
+
+function del(inquiries_id){
+		
+		Swal.fire({
+			  title: "게시판",
+			  html: '<h3>삭제하시겠습니까??<h3>',
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '예',
+			  cancelButtonText: '아니오'
+			}).then((result) => {
+			  
+				//예 버튼클릭
+				if (result.isConfirmed) {
+				  	
+				  location.href = "inquiries_delete?inquiries_id=" + inquiries_id;
+				  
+			  }
+
+			});
+		
+	}//end_del
 
 function find(){
 		
