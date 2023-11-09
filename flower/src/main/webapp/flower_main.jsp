@@ -34,6 +34,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
+    <!-- Jin's CSS for header logo-->
+	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
 
 </head>
 

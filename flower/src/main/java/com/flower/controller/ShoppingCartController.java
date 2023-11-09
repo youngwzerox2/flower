@@ -66,9 +66,11 @@ public class ShoppingCartController {
 	// 장바구니에 담긴 각 상품 수량 조절
 	@RequestMapping("/updateCartQuan")
 	@ResponseBody
-	public Integer updateCartQuan(HttpSession sess, ShoppingCartVO scvo) {
+	public Integer updateCartQuan(HttpSession sess, ShoppingCartVO scvo, Model m) {
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		Integer result = shoppingCartService.updateCartProdQuan(scvo);
+		Integer cart_total = shoppingCartService.getCartTotal(mvo);
+		m.addAttribute("cartTotal", cart_total);
 		//System.out.println("컨트롤러 접근");
 		//System.out.println("SQL결과: " + result);
 		
@@ -80,19 +82,19 @@ public class ShoppingCartController {
 	
 	
 	// 장바구니 상품 중 일부만 선택(결제 / 삭제)
+	// js에서 has/add/removeClass로 scvo에 selected 값 설정한다. (화면을 벗어났을 경우)
 	@RequestMapping("/selectCartProd")
 	@ResponseBody
 	public Integer selectCartProd(HttpSession sess, ShoppingCartVO scvo, Model m) {
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		if(mvo.getMember_id() != null) {
-			System.out.println("카트 상품 선택 controller접근 성공");
+			//System.out.println("카트 상품 선택 controller접근 성공(selected값확인): " + scvo.getSelected());
 			shoppingCartService.selectCartProd(scvo);
 			return 1;
 //			return shoppingCartService.deleteCartProd(scvo);
 		} else {
 			return 0;
 		}
-		
 	}
 	
 	// 장바구니에 담긴 상품 삭제

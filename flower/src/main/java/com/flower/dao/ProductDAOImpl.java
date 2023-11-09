@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.flower.vo.LoveVO;
 import com.flower.vo.ProductVO;
 
 @Repository("productDAO")
@@ -14,6 +15,7 @@ public class ProductDAOImpl implements ProductDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	// 상품 목록 출력
 	public List<ProductVO> getCateProdList(ProductVO vo){
 		List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
 //		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
@@ -38,6 +40,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return mybatis.selectList("productDAO.getCateProdList", vo);
 	}
 
+	// 상품 상세 출력
 	@Override
 	public ProductVO getProd(ProductVO vo) {
 		ProductVO result = mybatis.selectOne("productDAO.getProd", vo);
@@ -71,5 +74,37 @@ public class ProductDAOImpl implements ProductDAO{
 		 * **/
 		return result;
 	}
+
+	// 상품 찜 update
+	@Override
+	public Integer updateLove(LoveVO vo) {
+		// 해당 멤버의 찜한 목록 조회
+		Integer chk = mybatis.selectOne("chkLoveList", vo);
+		System.out.println("찜한 목록 조회: " + chk);
+		Integer ins = 0;
+		Integer del = 0;
+		if(chk != null) {
+			del = mybatis.delete("productDAO.prodUnLove", vo);
+			System.out.println("찜 해제 sql 결과"+ del); 
+			return del;
+		} else {
+			// 찜하지 않은 상품이었다면 상품id,멤버 id 입력
+			ins = mybatis.insert("productDAO.prodLove", vo);
+			System.out.println("찜 입력sql 결과: " + ins); 
+			return ins;
+		}
+	}
+
+	// 상품 찜 상태 조회
+	@Override
+	public Integer isLove(LoveVO vo) {
+		Integer result = mybatis.selectOne("chkLoveList", vo);
+		
+		// select product_id, member_id 했을 경우 
+		// 찜한 상품 조회SQL 결과: 2 (찜한 상품이 1개여도! 아마도 컬럼수가 integer result가 되는 듯?)
+		System.out.println("찜한 상품 조회SQL 결과: " + result);
+		return result;
+	}
+	
 	
 } //class ProductDAOImpl

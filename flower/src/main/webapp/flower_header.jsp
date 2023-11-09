@@ -21,8 +21,11 @@
 									</c:choose>
                                 </div>
 								<!-- header: 로고 → 이미지 변경요망 -->
-                                <a href="<%=pjName%>/flower_main" class="header-logo">
-                                    <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
+                                <a href="<%=pjName%>/flower_main" class="">
+                                    <!-- flower: 로고, 캐치프레이즈 수정중 -->
+                                    <!-- <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo"> -->
+                                    <div class="header-logo-text"><span id="logo1">꽃</span>을 <span id="logo2">사</span>랑하는 사람은<br/>꽃에 <span id="logo3">물</span><span id="logo4">水</span>을 줘요</div>						
+                                    <div class="header-logo-abbr">꽃사수</div>
                                 </a>
 
                                 <div class="header-right">
@@ -101,7 +104,8 @@
                                 <nav class="main-nav">
                                     <ul>
                                         <li class="drop-holder">
-                                            <a href="<%=pjName%>/flower_main.html">Home</a>
+                                         	<!-- flower: 메뉴 이름 1/-->
+                                            <a href="<%=pjName%>/flower_main.html">홈스윗홈</a>
 											<!-- nav: home - dropdown → 숨긴다 -->
 											<!--
                                             <ul class="drop-menu">
@@ -114,8 +118,8 @@
                                             </ul> -->
                                         </li>
                                         <li class="megamenu-holder">
-											
-                                            <a href="shop.html">All</a>
+											<!-- flower: 메뉴 이름 2/-->
+                                            <a href="shop.html">모든꽃보기</a>
 											<!-- flower nav: all의 드롭다운 → 숨긴다 -->
 											<!--
                                             <ul class="drop-menu megamenu">
@@ -193,11 +197,12 @@
                                         </li>
                                         <li class="drop-holder"> 
                                             <!-- seasons에서 a태그 빼고, css/js로 cursor만 주도록 한다. -->
-                                            <a><span id="nav_cursor">seasons</span></a>
+                                            <!-- flower: 메뉴 이름 3/-->
+                                            <a><span id="nav_cursor">사계</span></a>
                                             <ul class="drop-menu">
                                                 <li>
                                                 	<!-- href에 절대경로로 입력해야, 어느 페이지에서든 controller와 연결된다 -->
-                                                    <a href="<%=pjName%>/product/category/spring">Spring</a>
+                                                    <a href="<%=pjName%>/product/category/spring">봄</a>
                                                 </li>
                                                 <li>
                                                     <a href="">Summer</a>
@@ -231,17 +236,17 @@
                                                 <!-- flower: dropdown의 dropdown 숨긴다 end -->
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="">For Beginners</a>
+                                        <li><!-- flower: 메뉴 이름 3/-->
+                                            <a href="">초보자용꽃</a>
                                         </li>
-                                        <li>
-                                            <a href="">Pet-Friendly</a>
+                                        <li><!-- flower: 메뉴 이름 4/-->
+                                            <a href="">반려동물안심꽃</a>
                                         </li>
-                                        <li>
-                                            <a href="">After sunset</a>
+                                        <li><!-- flower: 메뉴 이름 5/-->
+                                            <a href="">밤에피는꽃</a>
                                         </li>
-                                        <li>
-                                            <a href="">Faux</a>
+                                        <li><!-- flower: 메뉴 이름 6/-->
+                                            <a href="">꽃이조화</a>
                                         </li>
                                         <!-- flower: nav 중 안 쓰는 메뉴 pages(drop down), contact us 숨긴다 -->
                                         <!-- 

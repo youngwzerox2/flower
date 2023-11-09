@@ -11,4 +11,5 @@ public class LoveVO {
 
 	private Integer product_id;
 	private Integer member_id;
+	
 }
