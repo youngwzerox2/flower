@@ -46,7 +46,14 @@ public class ShoppingCartController {
 			return 0;
 		} else {
 			scvo.setMember_id(mvo.getMember_id());
-			return shoppingCartService.addCart(scvo);
+			Integer result = shoppingCartService.addCart(scvo);
+			// DUPLICATE로 인해 update되면 result가 2
+			//화면에서 장바구니 수량 플러스(session값 수정)
+			if(result == 1) {
+				mvo.setMember_cart_quan(mvo.getMember_cart_quan()+1);
+				sess.setAttribute("member", mvo);
+			}
+			return result;
 		}	
 	}
 	
@@ -105,7 +112,11 @@ public class ShoppingCartController {
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		if(mvo.getMember_id() != null) {
 			//System.out.println("카트 상품 삭제 controller접근 성공");
-			return shoppingCartService.deleteCartProd(scvo);
+			Integer result = shoppingCartService.deleteCartProd(scvo);
+			//화면에서 장바구니 수량 마이너스(session값 수정)
+			mvo.setMember_cart_quan(mvo.getMember_cart_quan()-1);
+			sess.setAttribute("member", mvo);
+			return result;
 		} else {
 			return 0;
 		}

@@ -62,6 +62,7 @@ public class ProductVO {
 	// group_concat으로 담겨온 값을 배열로 변환하여 담을 변수
 	// 파일명, 경로(guide, main, sub, list), 파일유형(jpg, png등)
 	private String[]	prod_imgs_lists;
+	private String		prod_img_list;
 	private String[]	prod_imgs_froutes;
 //	private String[]	prod_imgs_types;
 	private String		prod_img_main;

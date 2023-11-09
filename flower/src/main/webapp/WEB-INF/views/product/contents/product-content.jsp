@@ -58,6 +58,7 @@
         <!-- Begin Main Content Area  -->
         <main class="main-content">
             <div class="breadcrumb-area breadcrumb-height" data-bg-image="<%=pjName %>/resources/assets/images/breadcrumb/bg/1-1-1919x388.jpg">
+            	<input type = 'hidden' id = 'memberid' value = '${member.member_id}'>
                 <div class="container h-100">
                     <div class="row h-100">
                         <div class="col-lg-12">
@@ -143,7 +144,12 @@
                         <!-- flower: 상품 사진 우측 컨텐츠(장바구니담기/바로구매 버튼 등) -->
                         <div class="col-lg-6 pt-5 pt-lg-0">
                             <div class="single-product-content">
+                            <form action="/flower/order/detailproductorder" id = 'productinfo' method = "post">
                                 <h2 class="title" name="product_name">${prod.product_name}</h2>
+                                <input type = 'hidden' name = 'product_image_file_name' value = '${prod.prod_img_list}'>
+                                <input type = 'hidden' name = 'product_price' value = '${prod.product_price}'>
+                                <input type = 'hidden' name = 'product_id' value = '${prod.product_id}'>
+                                <input type = 'hidden' name = 'product_name' value = '${prod.product_name}'>
                                 <div class="price-box">
                                     <span class="new-price" name="product_price">${commaPrice}</span>
                                 </div>
@@ -210,15 +216,16 @@
                                 <ul class="quantity-with-btn">
                                     <li class="quantity">
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" name="product_quantity" id="product_quantity" value="1" type="text">
+                                            <input class="cart-plus-minus-box" name="shopping_cart_product_quantity" id="product_quantity" value="1" type="text">
                                         </div>
                                     </li>
                                     <li class="add-to-cart">
                                     	<input type="hidden" name="product_id" id="product_id" value="${prod.product_id}">
                                         <a class="btn btn-custom-size lg-size btn-pronia-primary" id="addCart">장바구니</a>
                                     </li>
+                                    
                                     <li class="add-to-cart">
-                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" href="">바로구매</a>
+                                        <a class="btn btn-custom-size lg-size btn-pronia-primary" id = 'onlyoneorder'>바로구매</a>
                                     </li>
                                     <!-- flower: 좋아요/찜/love 버튼 -->
                                     <li class="love-btn add-to-wishlist">
@@ -237,6 +244,7 @@
                                         </div>
                                     </li>
                                 </ul>
+                               </form>
                                 
                                     
                                     

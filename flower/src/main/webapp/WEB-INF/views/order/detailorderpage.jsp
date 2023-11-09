@@ -82,7 +82,7 @@
                                 		<li>금액</li>
                                 		<li>상태</li>
                                 	</ul>
-                                	<c:forEach items = '${orderList}' var = 'orderproduct'>
+                                	<c:forEach items = '${orderList}' var = 'orderproduct' varStatus="st">
                                 	<ul class = 'order_list_body'>
                                 		<li>
                                 			<ul class = 'board_goods_list'>
@@ -101,6 +101,9 @@
                                 			</ul>
                                 		</li>
                                 		<li>
+                                			<c:if test="${st.index ne 0}">
+                                			<c:if test="${orderList[st.index-1].product_name eq orderList[st.index].product_name}">aaaaaaaaaaaaaa</c:if>
+                                			</c:if>
                                 			<span>${orderproduct.order_product_quantity}개</span>
                                 		</li>
                                 		<li>

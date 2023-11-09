@@ -60,7 +60,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 		// shoppingCartDao.deleteCartProd(scvo);
 		return shoppingCartDao.deleteCartProd(scvo);
 	}
-
+	
+	// 장바구니 전체 삭제
 	@Override
 	public void deleteAllCart(MemberVO mvo) {
 		shoppingCartDao.deleteAllCart(mvo);

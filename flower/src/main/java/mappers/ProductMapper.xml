@@ -110,6 +110,15 @@
 	
 	
 	
+	<!-- 바로주문하기 눌렀을때 가져갈 이미지 -->
+	<select id="getList" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO" >
+	SELECT min(PRODUCT_IMAGE_FILE_NAME) PRODUCT_IMAGE_FILE_NAME
+		FROM product_image img
+		WHERE product_id = #{product_id}
+		AND PRODUCT_IMAGE_FROUTE = 'list'
+		group by PRODUCT_ID
+	</select>
+	
 	
 	<!-- 상품 찜 상태 조회: 해당 회원이 좋아한 상품이 있는지 가져온다. -->
 	<select id="chkLoveList" parameterType="com.flower.vo.LoveVO" resultType="Integer">
