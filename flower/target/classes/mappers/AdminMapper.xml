@@ -32,9 +32,15 @@
 					, CASE 
 						WHEN R.REPORT_CONTENTS IS NOT NULL THEN R.REPORT_CONTENTS
 						ELSE "없음"
-					END 						AS REPORT_CONTENTS 
-					, R.ADMIN_ACTION_YN			AS ADMIN_ACTION_YN 
-					, R.REPORTS_CNT				AS REPORTS_CNT
+					END 						AS REPORT_CONTENTS
+					, CASE
+						WHEN R.ADMIN_ACTION_YN ='Y' THEN 'Y'
+						ELSE 'N'
+					END							AS ADMIN_ACTION_YN 
+					, CASE
+						WHEN R.REPORTS_CNT > 0 THEN R.REPORTS_CNT
+						ELSE '0'
+					END							AS REPORTS_CNT
 	            FROM MEMBER  M
 	      LEFT OUTER JOIN REVIEWS R 
 	              ON M.MEMBER_ID = R.MEMBER_ID
@@ -81,6 +87,25 @@
 					     GROUP BY PRODUCT_ID 
 						  ) L
 				  ON P.PRODUCT_ID = L.PRODUCT_ID 
+	        )
+    	]]>
+    </sql>
+    
+    <sql id="orderSQL">
+    	<![CDATA[
+	        WITH ADMIN_ORDERS AS (
+	            SELECT ORDER_DETAIL_NUMBER								 AS ORDER_DETAIL_NUMBER	
+					 , MAX(PRODUCT_ID) 									 AS PRODUCT_ID
+					 , MAX(RECIPIENT_NAME) 								 AS RECIPIENT_NAME
+					 , COUNT(ORDER_ID) 									 AS TOTAL_ORDER_CNT
+					 , SUM(ORDER_PRODUCT_QUANTITY) 						 AS TOTAL_PRODUCT_CNT
+					 , SUM(ORDER_PRODUCT_PRICE * ORDER_PRODUCT_QUANTITY) AS TOTAL_ORDER_PRICE
+					 , MAX(ORDER_STATE) 								 AS ORDER_STATE
+					 , MAX(ORDER_DATE)									 AS ORDER_DATE
+					 , MAX(RECIPIENT_ADDRESS)							 AS RECIPIENT_ADDRESS
+					 , MAX(RECIPIENT_TEL) 								 AS RECIPIENT_TEL
+				  FROM ORDER_TABLE
+			  GROUP BY ORDER_DETAIL_NUMBER
 	        )
     	]]>
     </sql>
@@ -190,6 +215,7 @@
           ORDER BY INVENTORY_QUANTITY ASC
 	</select>
 	
+	<!-- 상품 상세 조회 -->
 	<select id="searchProductDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
         <include refid="productSQL" />
 	        SELECT PRODUCT_ID
@@ -212,6 +238,53 @@
 	       LIMIT 1
     </select>
     
+    <!-- 신규 상품ID 조회 -->
+    <select id="selectNewProductId" resultType="int">
+    	SELECT MAX(PRODUCT_ID) + 1 AS NEW_PRODUCT_ID
+    	  FROM PRODUCT
+    </select>
+    
+    <!-- 상품 등록 -->
+    <insert id="registerProduct" parameterType="com.flower.vo.AdminVO">
+    	INSERT INTO PRODUCT
+	    (
+	          PRODUCT_ID
+	        , PRODUCT_NAME
+	        , INVENTORY_QUANTITY
+	        , PRODUCT_PRICE
+	        , PRODUCT_REGISTER_DATE
+	        , PRODUCT_STATE
+	    )
+	    VALUES
+	    (
+	          #{product_id}
+	        , #{product_name}
+	        , #{inventory_quantity}
+	        , #{product_price}
+	        , NOW()
+	        , #{product_state}
+	    )
+    </insert>
+    
+    <!-- 상품 이미지 등록 -->
+    <insert id="registerProductImg" parameterType="com.flower.vo.AdminVO">
+	    INSERT INTO PRODUCT_IMAGE
+		    (
+		          PRODUCT_IMAGE_FILE_NAME
+		        , PRODUCT_ID
+		        , PRODUCT_IMAGE_FLOWER_NAME
+		        , PRODUCT_IMAGE_FROUTE
+		    )
+		    VALUES
+		    (
+		          #{product_image_file_name}
+		        , #{product_id}
+		        , #{product_name}
+		        , #{product_image_froute}
+		    )
+    </insert>
+    
+    <!-- 이미지 조회 -->
     <select id="searchProductImgs" parameterType="String" resultType="com.flower.vo.AdminVO">
     	SELECT PRODUCT_IMAGE_FILE_NAME
     		 , PRODUCT_IMAGE_FLOWER_NAME
@@ -222,23 +295,80 @@
   	  ORDER BY PRODUCT_IMAGE_FROUTE ASC
     </select>
     
+    <!-- 상품노출여부 수정 -->
     <update id="modifyProductVisible" parameterType="hashmap">
 		UPDATE PRODUCT
            SET PRODUCT_STATE = #{proStat}
          WHERE PRODUCT_ID 	 = #{proId}
     </update>
     
+    <!-- 검색 조건별 리뷰 조회 -->
+    <select id="searchReviews" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
+        SELECT REVIEWS_ID				AS REVIEWS_ID
+        	 , MEMBER_ID				AS MEMBER_ID
+        	 , PRODUCT_ID				AS PRODUCT_ID
+        	 , REVIEWS_TITLE			AS REVIEWS_TITLE
+        	 , REVIEWS_CONTENT			AS REVIEWS_CONTENT
+        	 , REVIEWS_REGISTER_DATE	AS REVIEWS_REGISTER_DATE
+        	 , CASE
+        	  	  WHEN ADMIN_ACTION_YN = 'N' AND REPORTS_CNT > 0 THEN 'Y'
+	              ELSE 'N'
+	         END 						AS REPORT_YN
+          FROM REVIEWS
+         WHERE 1=1
+		<if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
+		   AND ${searchKey} LIKE '%${searchValue}%'
+		</if>
+	  ORDER BY REVIEWS_REGISTER_DATE DESC, REVIEWS_ID, MEMBER_ID, PRODUCT_ID
+    </select>
+    
+    <!-- 특정 리뷰 상세 조회 -->
+    <select id="searchReviewDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
+    	SELECT REVIEWS_ID
+    	  FROM REVIEWS
+    </select>
+    
+    <!-- 검색 조건별 주문 조회 -->
+    <select id="searchOrders" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
+    	<include refid="orderSQL" />
+	        SELECT ORDER_DETAIL_NUMBER
+	        	 , RECIPIENT_NAME
+	        	 , TOTAL_ORDER_CNT
+	        	 , TOTAL_PRODUCT_CNT
+	        	 , TOTAL_ORDER_PRICE
+	        	 , ORDER_STATE
+	        	 , ORDER_DATE
+	        	 , RECIPIENT_ADDRESS
+				 , RECIPIENT_TEL
+	          FROM ADMIN_ORDERS
+	         WHERE 1=1
+        <if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
+        	   AND ${searchKey} LIKE '%${searchValue}%'
+        </if>
+          ORDER BY ORDER_DATE DESC
+    </select>
+    
+    <select id="searchOrderProducts" parameterType="String" resultType="com.flower.vo.AdminVO">
+    	SELECT O.ORDER_ID  
+	 		 , O.MEMBER_ID 
+	 		 , O.RECIPIENT_TEL
+	 		 , O.ORDER_PRODUCT_QUANTITY
+	 		 , P.PRODUCT_ID 
+	 		 , P.PRODUCT_NAME 
+			 , P.PRODUCT_PRICE
+		  FROM ORDER_TABLE O 
+	LEFT OUTER JOIN PRODUCT P
+			ON O.PRODUCT_ID = P.PRODUCT_ID 
+		 WHERE O.ORDER_DETAIL_NUMBER = #{orderDetailNumber}
+	  ORDER BY O.ORDER_ID 
+    		
+    
+    </select>
+    
     <!-- ************************************************************* -->
     <!-- ************************** 설정 영역 ************************** -->
     <!-- ************************************************************* -->
-    <!-- policy 개수 조회 -->
-    <select id="selectPolicyColumnCnt" resultType="int">
-    	SELECT COUNT(*) 	AS COLUMN_COUNT
-		  FROM INFORMATION_SCHEMA.COLUMNS
-		 WHERE TABLE_SCHEMA = "FLOWER"
-		   AND TABLE_NAME 	= "COMPANY_POLICY"
-    </select>
-    
+    <!-- policy 테이블 정보 조회 -->
     <select id="selectPolicyColumn" resultType="com.flower.vo.AdminVO">
     	SELECT COLUMN_NAME
     	  	 , COLUMN_COMMENT
@@ -247,4 +377,16 @@
 		   AND TABLE_NAME 	= "COMPANY_POLICY"
     </select>
     
+    <!-- policy 컬럼 내용 조회 -->
+    <select id="selectPolicyValue" parameterType="String" resultType="hashmap">
+    	SELECT *
+    	  FROM COMPANY_POLICY
+    </select>
+    
+    <!-- policy 컬럼 내용 수정 -->
+    <update id="modifyPolicy" parameterType="hashmap">
+    	UPDATE COMPANY_POLICY
+    	   SET ${id} = #{value}
+    </update>
+	    
 </mapper>

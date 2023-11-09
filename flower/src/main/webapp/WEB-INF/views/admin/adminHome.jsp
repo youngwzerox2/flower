@@ -78,10 +78,13 @@
                                 </li>
                                 <li class = 'sub-nav-item collapse' id = "account-products_info" >
                                 	<a class="nav-link" id="account-product-info-tab" data-bs-toggle="tab" role="tab" aria-controls="account-productsControll" href="#account-products" aria-expanded="false" style="text-align: right;">상품 관리</a>
+                                	<a class="nav-link" id="account-inquiries-tab" data-bs-toggle="tab" role="tab" aria-controls="account-inquiriesControll" href="#account-inquiries" aria-expanded="false" style="text-align: right;">문의 관리</a>
+                                	<a class="nav-link" id="account-reviews-tab" data-bs-toggle="tab" role="tab" aria-controls="account-reviewsControll" href="#account-reviews" aria-expanded="false" style="text-align: right;">리뷰 관리</a>
+                                	<a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" role="tab" aria-controls="account-ordersControll" href="#account-orders" aria-expanded="false" style="text-align: right;">주문 관리</a>
+                                	<a class="nav-link" id="account-product-info-register-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-regiter" href="#account-product-register" aria-expanded="false" style="text-align: right; display: none;" >상품 등록</a>
                                 	<a class="nav-link" id="account-product-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-detail" href="#account-product-detail" aria-expanded="false" style="text-align: right; display: none;" >상품 관리 상세</a>
-                                	<a class="nav-link" id = account-inquiries-tab data-bs-toggle="tab" role="tab" aria-controls="account-inquiriesControll" href="#account-inquiries" aria-expanded="false" style="text-align: right;">문의 관리</a>
-                                	<a class="nav-link" id = account-reviews-tab data-bs-toggle="tab" role="tab" aria-controls="account-reviewsControll" href="#account-reviews" aria-expanded="false" style="text-align: right;">리뷰 관리</a>
-                                	<a class="nav-link" id = account-orders-tab data-bs-toggle="tab" role="tab" aria-controls="account-ordersControll" href="#account-orders" aria-expanded="false" style="text-align: right;">주문 관리</a>
+                                	<a class="nav-link" id="account-review-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-review-detail" href="#account-review-detail" aria-expanded="false" style="text-align: right; display: none;" >리뷰 관리 상세</a>
+                                	<a class="nav-link" id="account-order-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-order-detail" href="#account-order-detail" aria-expanded="false" style="text-align: right; display: none;" >주문 관리 상세</a>
                                 </li>
                                 <li class="nav-item">
                                     <a id="account-setting-tab" data-bs-toggle="collapse" href="#account-setting_info" role="tab" aria-hidden="true">설정</a>
@@ -93,7 +96,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-9">
-                            <div class="tab-content myaccount-tab-content" id="account-page-tab-content" style="width : 150%">
+                        	<div class="tab-content myaccount-tab-content" id="account-page-tab-content" style="width : 150%">
                                 <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
                                     <div class="myaccount-dashboard">
                                         <p>Hello <b>Pronia</b> (not Pronia? <a href="login-register.html">Sign
@@ -117,7 +120,7 @@
 			                                        </select>
 		                                    	</li>
 		                                    	<li>
-	                                        	<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+	                                        		<input class="input-field" id="memberSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
 		                                    	</li>
 		                                    	<li>
 		                                        <button id="memberSearchBtn" class="widgets-searchbox-btn" >
@@ -147,7 +150,7 @@
 				                                        </select>
 			                                    	</li>
 			                                    	<li>
-		                                        	<input class="input-field" id="productSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+		                                        		<input class="input-field" id="productSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
 			                                    	</li>
 			                                    	<li>
 			                                        <button id="productSearchBtn" class="widgets-searchbox-btn" >
@@ -168,6 +171,94 @@
 								        </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="account-product-register" aria-labelledby="account-product-tab">
+								    <div class="myaccount-products">
+								        <h4 class="small-title">상품 등록</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="productRegister">
+											                <tr>
+											                	<th>상품ID</th>
+											                	<td colspan='2'>
+											                		<input class="input-field" id="rProductID" type="text" placeholder="상품ID" style="width: 100%; font-weight: bold;" disabled>
+											                	</td>
+											                </tr>
+											                <tr>
+											                	<th>상품명</th>
+											                	<td colspan='2'>
+											                		<input class="input-field" id="rProductName" type="text" placeholder="상품명" style="width: 100%">
+											                	</td>
+											                </tr>
+											              	<tr>
+											              		<th>재고수량</th>
+											              		<td colspan='2'>
+											                		<input class="input-field numberWithCommas" id="rProductCnt" type="text" placeholder="재고수량" style="width: 100%">
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품가격</th>
+											              		<td colspan='2'>
+											                		<input class="input-field numberWithCommas" id="rProductPrice" type="text" placeholder="상품가격" style="width: 100%">
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품노출</th>
+											              		<td colspan='2'>
+											                		<input class="input-field" id="rProductState" type="text" placeholder="상품노출(Y / N)" maxlength="1" style="width: 100%">
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품이미지</th>
+											              		<td>
+												              		<form id="registerImgsForm" method="post" enctype="multipart/form-data" action="../admin/registerImgsForm">
+											              				<table>
+												              				<tr>
+												              					<td style='border: 1px solid #000000;'>가이드</td>
+												              					<td style='border: 1px solid #000000;'>
+												              						<input class="imgFile" type="file" name="guidefile" maxlength="60" size="40" multiple>
+												              						<button class="deleteImage" data-type="guide">삭제</button>
+												              					</td>
+												              				</tr>
+												              				<tr>
+												              					<td style='border: 1px solid #000000;'>리스트</td>
+												              					<td style='border: 1px solid #000000;'>
+												              						<input class="imgFile" type="file" name="listfile" maxlength="60" size="40" multiple>
+												              						<button class="deleteImage" data-type="list">삭제</button>
+												              					</td>
+												              				</tr>
+												              				<tr>
+												              					<td style='border: 1px solid #000000;'>메인</td>
+												              					<td style='border: 1px solid #000000;'>
+												              						<input class="imgFile" type="file" name="mainfile" maxlength="60" size="40" multiple>
+												              						<button class="deleteImage" data-type="main">삭제</button>
+												              					</td>
+												              				</tr>
+												              				<tr>
+												              					<td style='border: 1px solid #000000;'>서브</td>
+												              					<td style='border: 1px solid #000000;'>
+												              						<input class="imgFile" type="file" name="subfile" maxlength="60" size="40" multiple>
+												              						<button class="deleteImage" data-type="sub">삭제</button>
+												              					</td>
+												              				</tr>
+												              			</table>
+												              		</form>
+											              		</td>
+											              	</tr>
+							                            </tbody>
+							                        </table>
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 89%;">
+									                    <ul>
+										                    <li id="cancelProductRegister" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+										                    <li id="goProductRegister" class="mb-xs mt-xs mr-xs btn btn-danger"> 등록 </li>
+									                    </ul>
+							                     	</div>
+						                    	</div>
+									        </div>
+		                                </div>
+								    </div>
+								</div>
                                 <div class="tab-pane fade" id="account-product-detail" aria-labelledby="account-product-tab">
 								    <div class="myaccount-products">
 								        <h4 class="small-title">상품 관리 상세</h4><br/>
@@ -184,52 +275,12 @@
 									                    <li id="goProductHide" class="mb-xs mt-xs mr-xs btn btn-danger"></li>
 									                    </ul>
 							                     	</div>
-							                        
 						                    	</div>
 									            
 									        </div>
 		                                </div>
 								    </div>
 								</div>
-                                <div class="tab-pane fade" id="account-setting" role="tabpanel" aria-labelledby="account-setting-tab">
-                                    <div class="myaccount-setting">
-                                        <form action="#" class="myaccount-form">
-                                            <div class="myaccount-form-inner">
-                                                <div class="single-input single-input-half">
-                                                    <label>First Name*</label>
-                                                    <input type="text">
-                                                </div>
-                                                <div class="single-input single-input-half">
-                                                    <label>Last Name*</label>
-                                                    <input type="text">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label>Email*</label>
-                                                    <input type="email">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label>Current Password(leave blank to leave
-                                                        unchanged)</label>
-                                                    <input type="password">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label>New Password (leave blank to leave
-                                                        unchanged)</label>
-                                                    <input type="password">
-                                                </div>
-                                                <div class="single-input">
-                                                    <label>Confirm New Password</label>
-                                                    <input type="password">
-                                                </div>
-                                                <div class="single-input">
-                                                    <button class="btn btn-custom-size lg-size btn-pronia-primary" type="submit">
-                                                        <span>SAVE CHANGES</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                                 <div class="tab-pane fade" id="account-member-detail" aria-labelledby="account-member-tab">
 								    <div class="myaccount-members">
 								        <h4 class="small-title">회원 관리 상세</h4><br/>
@@ -245,7 +296,111 @@
 									                    <li id="goLimitation" class="mb-xs mt-xs mr-xs btn btn-danger"> 제한 </li>
 									                    </ul>
 							                     	</div>
-							                        
+						                    	</div>
+									        </div>
+		                                </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-reviews" aria-labelledby="account-reviews-tab">
+								    <div class="myaccount-reviews">
+								        <h4 class="small-title">리뷰 관리</h4><br/>
+										<div class="widgets-searchbox">
+											<ul>								        
+												<li class="short">
+			                                        <select class="nice-select" id="reviewSelectbox">
+			                                            <option value="">전체</option>
+			                                            <option value="reviews_id">리뷰ID</option>
+			                                            <option value="member_id">회원ID</option>
+			                                            <option value="product_id">상품ID</option>
+			                                            <option value="reviews_title">리뷰제목</option>
+			                                            <option value="reviews_content">리뷰내용</option>
+			                                            <option value="report_yn">신고여부</option>
+			                                        </select>
+		                                    	</li>
+		                                    	<li>
+	                                        		<input class="input-field" id="reviewSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+		                                    	</li>
+		                                    	<li>
+		                                        <button id="reviewSearchBtn" class="widgets-searchbox-btn" >
+		                                            <i class="fa fa-search"></i>
+		                                        </button>
+		                                    	</li>
+									        </ul>
+		                                </div>
+								        <div class="table-responsive">
+								            <table class="table table-bordered table-hover">
+								                <tbody id="reviewList"></tbody>
+								            </table>
+								        </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-review-detail" aria-labelledby="account-review-tab">
+								    <div class="myaccount-review">
+								        <h4 class="small-title">리뷰 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="reviewDetail"></tbody>
+							                        </table>
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
+									                    <ul>
+									                    <li id="goReviewList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goReviewHide" class="mb-xs mt-xs mr-xs btn btn-danger"></li>
+									                    </ul>
+							                     	</div>
+						                    	</div>
+									            
+									        </div>
+		                                </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-orders" aria-labelledby="account-orders-tab">
+								    <div class="myaccount-orders">
+								        <h4 class="small-title">주문 관리</h4><br/>
+										<div class="widgets-searchbox">
+											<ul>								        
+												<li class="short">
+			                                        <select class="nice-select" id="orderSelectbox">
+			                                            <option value="">전체</option>
+			                                            <option value="order_detail_number">주문번호</option>
+			                                            <option value="recipient_name">수취인</option>
+			                                            <option value="order_state">주문상태</option>
+			                                        </select>
+		                                    	</li>
+		                                    	<li>
+	                                        		<input class="input-field" id="orderSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+		                                    	</li>
+		                                    	<li>
+		                                        <button id="orderSearchBtn" class="widgets-searchbox-btn" >
+		                                            <i class="fa fa-search"></i>
+		                                        </button>
+		                                    	</li>
+									        </ul>
+		                                </div>
+								        <div class="table-responsive">
+								            <table class="table table-bordered table-hover">
+								                <tbody id="orderList"></tbody>
+								            </table>
+								        </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-order-detail" aria-labelledby="account-order-tab">
+								    <div class="myaccount-order">
+								        <h4 class="small-title">주문 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="orderDetail"></tbody>
+							                        </table>
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 77%;">
+									                    <ul>
+									                    <li id="goOrderList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goOrderSuccess" class="mb-xs mt-xs mr-xs btn btn-warning"> 주문확인 </li>
+									                    <li id="goOrderCancel" class="mb-xs mt-xs mr-xs btn btn-danger"> 주문취소 </li>
+									                    </ul>
+							                     	</div>
 						                    	</div>
 									            
 									        </div>
@@ -256,11 +411,24 @@
 								    <div class="myaccount-policies">
 								        <h4 class="small-title">정책 관리</h4><br/>
 								        <div class="table-responsive">
-									        <ul class="nav product-tab-nav tab-style-1" id="myTab" role="tablist"></ul>
+									        <ul class="nav product-tab-nav tab-style-1" id="myTab" role="tablist" style="padding-bottom: 0px;"></ul>
 								            <table class="table table-bordered table-hover">
-								                <tbody id="poliesList"></tbody>
+								                <tbody id="poliesTbody" style="height:200px;">
+								                	<tr>
+								                		<td style="height: 100%">
+								                			<input id="poliesId" type="text" style="display: none;">
+								                			<input id="poliesComment" type="text" style="display: none;">
+								                			<textarea id="poliesValue" placeholder="1000자 이내로 입력해주세요." cols="20" style="width: 100%; height: 200px"></textarea>
+								                		</td>
+								                	</tr>
+								                </tbody>
 								            </table>
 								        </div>
+							            <div class="policy-topbar" style="position:absoluted; padding-top: 20px; padding-left: 95%;">
+						                    <ul>
+						                    <li id="goModifyPolicy" class="mb-xs mt-xs mr-xs btn btn-danger"> 수정 </li>
+						                    </ul>
+										</div>
 								    </div>
 								</div>
                             </div>
@@ -273,6 +441,7 @@
             <i class="fa fa-angle-double-up"></i>
         </a>
     </div>
+    <!-- 팝업 영역  -->
 	<div id="popupLimitModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

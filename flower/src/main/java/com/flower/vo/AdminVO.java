@@ -1,10 +1,5 @@
 package com.flower.vo;
 
-import java.io.File;
-import java.util.UUID;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -56,29 +51,13 @@ public class AdminVO {
 	private String product_image_flower_name; 	// 상품이미지이름(꽃이름)
 	private String product_image_type; 			// 상품이미지타입
 	private String product_image_froute; 		// 상품이미지경로
-	private MultipartFile file;					// 파일
-	
-	public MultipartFile getFile() {
-		return file;
-	}
-	
-	public void setFile(MultipartFile file) {
-		this.file = file;
-		
-		// 업로드 파일이 있는 경우
-		if(! file.isEmpty()) {
-			
-			File f = new File("C:\\Users\\ict0314\\git\\flower\\flower\\src\\main\\webapp\\resources\\product\\imgs\\" + getProduct_image_file_name());
-			
-			try {
-				file.transferTo(f);
-			} catch (Exception e) {
-				System.out.println("파일 저장 중 에러 : " + e.getMessage());
-				e.printStackTrace();
-			}
-		}
-		
-	}
+	private String order_detail_number;			// 주문번호
+	private String recipient_name;				// 수취인명
+	private Integer total_order_cnt;			// 총 주문량 
+	private Integer total_product_cnt;			// 총 주문상품량
+	private Integer total_order_price;			// 총 주문액
+	private String order_state;					// 주문상태
+	private String order_date;					// 주문일
 	
 	/**
 	 *  *************************************************************
