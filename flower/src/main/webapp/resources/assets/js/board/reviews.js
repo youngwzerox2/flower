@@ -136,5 +136,28 @@ function reviews_modify(f){
 	f.submit();
 }
 
+function reviews_find(){
+	
+	var reviews_search      = $("#reviews_search").val();
+	var reviews_search_text = $("#reviews_search_text").val().trim();
+	
+	//전체검색이면 검색창 내용 지워라
+	if(reviews_search=='all'){
+		$("#reviews_search_text").val("");
+	}
+	
+	if(reviews_search!='reviews_all'&& reviews_search_text==''){
+		
+		alert('검색어를 입력하세요');
+		$("#reviews_search_text").val(""); //값지우기
+		$("#reviews_search_text").focus();
+		return;
+	}
+	
+	//location.href = "product?reviews_search=" + search + "&reviews_search_text=" + encodeURIComponent(reviews_search_text,"utf-8");
+}
+
+
+
 
 
