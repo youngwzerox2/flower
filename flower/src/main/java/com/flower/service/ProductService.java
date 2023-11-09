@@ -24,6 +24,11 @@ public interface ProductService {
 	
 	// 상품 삭제
 	
+	// 상품 찜 상태 조회
+	Integer isLove(LoveVO vo);
+	
 	// 상품 찜 update
 	Integer updateLove(LoveVO vo);
+	
+	
 }

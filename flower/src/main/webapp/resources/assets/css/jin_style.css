@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Grandiflora+One&family=Hahmlet:wght@100;500&family=Noto+Sans+KR:wght@400;600&family=Song+Myung&display=swap');
+/*------ header-logo(text) by Jin -------*/
+.header-logo-text {
+	text-align: center;
+	font-family: 'Gowun Batang', serif;
+	font-size: 25px;
+
+	
+}
+
+.header-logo-abbr {
+	position: absolute;
+	justify-content: center;
+	opacity: 0;
+	animation-name: inAndOut;
+}
+
+.header-logo-text:hover{
+	color: #F4BF96;
+	font-weight: 100;
+}
+
+#logo1, #logo2, #logo3, #logo4 {
+	font-weight: 900;
+	color: #363062;
+}
+
+#logo3 {
+	position: absolute;
+	animation-name: inAndOut;
+	animation-duration: 8s;
+	animation-iteration-count: infinite;
+}
+
+#logo4 {
+	position: relative;
+	opacity: 0;
+	left: 0;
+	top: 0;
+	animation-name: inAndOut;
+	animation-delay: 4s;
+	animation-duration: 8s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes appear{
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes inAndOut{
+	0% { opacity: 0; }
+	5% { opacity: 0; }
+	45% { opacity: 1; }
+	50% { opacity: 1; }
+	80% { opacity: 0; }
+	100% { opacity: 0; }
+}

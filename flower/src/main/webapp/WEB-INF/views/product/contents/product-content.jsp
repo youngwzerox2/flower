@@ -37,6 +37,8 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/product.css">
+    <!-- Jin's CSS for header logo-->
+	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
     
 
 </head>
@@ -218,10 +220,20 @@
                                     <li class="add-to-cart">
                                         <a class="btn btn-custom-size lg-size btn-pronia-primary" href="">바로구매</a>
                                     </li>
-                                    <!-- 좋아요/찜/love 버튼 -->
+                                    <!-- flower: 좋아요/찜/love 버튼 -->
                                     <li class="love-btn add-to-wishlist">
                                     	<div class="add-to-wishlist" id="love_content">
-                                            <i class="pe-7s-leaf"></i>
+                                    	  <c:choose>
+                                    		<c:when test="${empty love}">
+                                            	<i class="pe-7s-leaf"></i>
+                                            </c:when>
+                                            <c:when test="${not empty love}">
+                                            	<i class="pe-7f-leaf"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                            	<i class="pe-7s-leaf"></i>
+                                            </c:otherwise>
+                                          </c:choose> 
                                         </div>
                                     </li>
                                 </ul>

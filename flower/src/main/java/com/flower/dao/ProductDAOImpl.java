@@ -78,20 +78,32 @@ public class ProductDAOImpl implements ProductDAO{
 	// 상품 찜 update
 	@Override
 	public Integer updateLove(LoveVO vo) {
-		List<LoveVO> loveList = mybatis.selectList("chkLoveList", vo);
-		System.out.println("해당 멤버의 찜한 목록 조회 결과: " + loveList);
-		// contains를 제대로 정정하기 바람!
-		System.out.println("이미 찜한 상태인지 확인: " + loveList.contains(vo.getProduct_id()));
-		/*
-		 * if(loveList.contains(vo.getProduct_id())) { // 이미 찜한 상품이었다면 해제 Integer chk =
-		 * mybatis.delete("productDAO.prodUnLove", vo);
-		 * System.out.println("찜 해제 sql 결과"+ chk); return
-		 * mybatis.delete("productDAO.prodUnLove", vo); } else { // 찜하지 않은 상품이었다면 상품id,
-		 * 멤버 id 입력 Integer test = mybatis.insert("productDAO.prodLove", vo);
-		 * System.out.println("찜 입력sql 결과: " + test); return
-		 * mybatis.insert("productDAO.prodLove", vo); }
-		 */
-		return null;
+		// 해당 멤버의 찜한 목록 조회
+		Integer chk = mybatis.selectOne("chkLoveList", vo);
+		System.out.println("찜한 목록 조회: " + chk);
+		Integer ins = 0;
+		Integer del = 0;
+		if(chk != null) {
+			del = mybatis.delete("productDAO.prodUnLove", vo);
+			System.out.println("찜 해제 sql 결과"+ del); 
+			return del;
+		} else {
+			// 찜하지 않은 상품이었다면 상품id,멤버 id 입력
+			ins = mybatis.insert("productDAO.prodLove", vo);
+			System.out.println("찜 입력sql 결과: " + ins); 
+			return ins;
+		}
+	}
+
+	// 상품 찜 상태 조회
+	@Override
+	public Integer isLove(LoveVO vo) {
+		Integer result = mybatis.selectOne("chkLoveList", vo);
+		
+		// select product_id, member_id 했을 경우 
+		// 찜한 상품 조회SQL 결과: 2 (찜한 상품이 1개여도! 아마도 컬럼수가 integer result가 되는 듯?)
+		System.out.println("찜한 상품 조회SQL 결과: " + result);
+		return result;
 	}
 	
 	

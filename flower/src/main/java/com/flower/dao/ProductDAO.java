@@ -16,4 +16,7 @@ public interface ProductDAO {
 	// 상품 찜 update
 	Integer updateLove(LoveVO vo);
 	
+	// 상품 찜 상태 조회
+	Integer isLove(LoveVO vo);
+	
 } //interface ProductDAO

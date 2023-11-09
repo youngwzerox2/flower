@@ -36,7 +36,7 @@ public class ProductVO {
 	private boolean 	pet_friendly;
 	private boolean 	easy_care;
 	private String	 	product_light;
-	
+	private String		product_type;
 	
 	private Integer 	inventory_quantity;
 	private Integer 	product_price;
