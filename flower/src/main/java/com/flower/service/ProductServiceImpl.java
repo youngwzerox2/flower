@@ -36,6 +36,14 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getCateProdList(vo);
 	}
 
+	
+	// 선택한 카테고리의 상품개수 Read
+	@Override
+	public Integer getProdCateQuan(ProductVO vo) {
+		return productDao.getProdCateQuan(vo);
+	}
+		
+		
 	// 상품 상세 페이지
 	@Override
 	public ProductVO getProd(ProductVO vo) {
@@ -46,7 +54,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Integer updateLove(LoveVO vo) {
 		Integer result = productDao.updateLove(vo);
-		System.out.println("dao에서 넘어온 값: " + result);
+		// System.out.println("dao에서 넘어온 값: " + result);
 		return result;
 	}
 	
@@ -55,6 +63,8 @@ public class ProductServiceImpl implements ProductService{
 	public Integer isLove(LoveVO vo) {
 		return productDao.isLove(vo);
 	}
+
+	
 
 
 }

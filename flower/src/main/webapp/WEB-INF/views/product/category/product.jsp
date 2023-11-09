@@ -42,6 +42,8 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
+    <!-- Jin's CSS for header logo-->
+	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
 
 </head>
 
@@ -205,7 +207,7 @@
                                 </ul>
                             </div>
                              
-                            <!-- flower: product list 상품 사진 목록 (사진만 나열, 한 행에 사진 3개씩, 한 페이지당 총 4행)-->
+                            <!-- flower: product list 상품 사진 목록 (그리드형: 사진만 나열, 한 행에 사진 3개씩, 한 페이지당 총 4행)-->
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
                                     <div class="product-grid-view row g-y-20">
@@ -229,21 +231,14 @@
                                                     <!-- flower: 이미지 위에 좋아요, 카트버튼 -->
                                                     <div class="product-add-action">
                                                         <ul>
-                                                            <li>
+                                                            <li><!-- flower: 상품목록에서 찜 바로 담기 & 로그인한 회원이 이미 찜한 상태일 경우 표시 -->
                                                                 <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                     <i class="pe-7s-like"></i>
                                                                 </a>
                                                             </li>
-                                                            <!-- flower: 퀵뷰 → 숨긴다 -->
-                                                            <!-- 
-                                                            <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                                <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                    <i class="pe-7s-look"></i>
-                                                                </a>
-                                                            </li>
-                                                             -->
-                                                            <li>
-                                                                <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+
+                                                            <li><!-- flower: 상품목록에서 장바구니 바로 담기 -->
+                                                                <a href="" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                     <i class="pe-7s-cart"></i>
                                                                 </a>
                                                             </li>
@@ -279,7 +274,7 @@
                                     </div> <!-- <div class="product-grid-view row g-y-20"> end -->
                                 </div> <!-- <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab"> end -->
                                 
-                                <!-- flower: product list 상품 사진 목록(한 줄에 하나씩) → 추후 편집요망 -->
+                                <!-- flower: product list 상품 사진 목록(list형) → 추후 편집요망 -->
                                 <div class="tab-pane fade" id="list-view" role="tabpanel" aria-labelledby="list-view-tab">
                                     <div class="product-list-view row g-y-30">
                                         <div class="col-12">

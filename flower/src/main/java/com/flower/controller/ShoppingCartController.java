@@ -42,7 +42,7 @@ public class ShoppingCartController {
 	public Integer addCart(HttpSession sess, ShoppingCartVO scvo) {
 		System.out.println("장바구니 담기 접근");
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
-		if(mvo.getMember_id() == null){
+		if(mvo == null && mvo.getMember_id() == null){
 			return 0;
 		} else {
 			scvo.setMember_id(mvo.getMember_id());

@@ -69,6 +69,8 @@ public class ProductVO {
 	private String[]	prod_imgs_guide;
 	
 	
+	// 카테고리별 상품 개수
+	private Integer		prod_cate_quan;
 	
 	// group_concat으로 담겨온 이미지 파일명을 배열로 변환
 	public void setProduct_image_file_name(String product_image_file_name) {

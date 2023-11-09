@@ -13,6 +13,9 @@ public interface ProductService {
 	// 클릭한 카테고리 상품 목록 가져오기
 	List<ProductVO> getCateProdList(ProductVO vo);
 	
+	// 클릭한 카테고리별 상품개수 Read
+	Integer getProdCateQuan(ProductVO vo);
+	
 	// 상품 검색 결과 가져오기(목록)
 	
 	// 상품 상세 페이지 가져오기

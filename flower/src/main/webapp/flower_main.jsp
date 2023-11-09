@@ -141,7 +141,7 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="">
+                                        <a href="<%=pjName%>/product/category/product?product_type=spring">
                                             <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_spring.jpg" alt="Product Images">
                                             <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-10-270x300.jpg" alt="Product Images">
                                         </a>
@@ -166,26 +166,12 @@
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="">봄부터 피는 꽃</a>
-                                        <!-- 
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$23.45</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                         -->
+                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=spring">봄부터 피는 꽃</a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="">
+                                        <a href="<%=pjName%>/product/category/product?product_type=summer">
                                             <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_summer.jpg" alt="Product Images">
                                             <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-11-270x300.jpg" alt="Product Images">
                                         </a>
@@ -210,26 +196,12 @@
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="">여름부터 피는 꽃</a>
-                                        <!-- 
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$25.45</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                        -->
+                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=summer">여름부터 피는 꽃</a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="">
+                                        <a href="<%=pjName%>/product/category/product?product_type=fall">
                                             <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_autumn.jpg" alt="Product Images">
                                             <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
                                         </a>
@@ -254,26 +226,12 @@
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="">가을에 피는 꽃</a>
-                                        <!-- 
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$30.45</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                         -->
+                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=fall">가을에 피는 꽃</a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="">
+                                        <a href="<%=pjName%>/product/category/product?product_type=winter">
                                             <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_winter.jpg" alt="Product Images">
                                             <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
                                         </a>
@@ -298,21 +256,8 @@
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="">겨울에도 피어요</a>
-                                        <!-- 
-                                        <div class="price-box pb-1">
-                                            <span class="new-price">$45.00</span>
-                                        </div>
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                         -->
+                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=winter">겨울에도 피어요</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -335,21 +280,22 @@
                         <ul class="nav product-tab-nav tab-style-1" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="active" id="featured-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="true">
-                                    For Beginners
+                                    초보자용꽃
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="bestseller-tab" data-bs-toggle="tab" href="#bestseller" role="tab" aria-controls="bestseller" aria-selected="false">
-                                    Pet-Friendly
+                                    반려동물안심꽃
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a id="latest-tab" data-bs-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">
-                                    After Sunset
+                                    밤에피는꽃
                                 </a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
+                        	<!-- flower: 초보자용꽃 이미지로 경로 설정 요망-->
                             <div class="tab-pane fade show active" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                                 <div class="product-item-wrap row">
                                     <div class="col-xl-3 col-md-4 col-sm-6">
@@ -709,6 +655,7 @@
                                 	-->
                                 </div>
                             </div>
+                            <!-- flower: 반려동물안심꽃 이미지로 경로 설정 요망-->
                             <div class="tab-pane fade" id="bestseller" role="tabpanel" aria-labelledby="bestseller-tab">
                                 <div class="product-item-wrap row">
                                     <div class="col-xl-3 col-md-4 col-sm-6">
@@ -1065,6 +1012,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- flower: 밤에피는꽃 이미지로 경로 설정 요망-->
                             <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
                                 <div class="product-item-wrap row">
                                     <div class="col-xl-3 col-md-4 col-sm-6">

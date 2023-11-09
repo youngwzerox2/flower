@@ -119,82 +119,7 @@
                                         </li>
                                         <li class="megamenu-holder">
 											<!-- flower: 메뉴 이름 2/-->
-                                            <a href="shop.html">모든꽃보기</a>
-											<!-- flower nav: all의 드롭다운 → 숨긴다 -->
-											<!--
-                                            <ul class="drop-menu megamenu">
-                                                <li>
-                                                    <span class="title">Shop Layout</span>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="shop.html">Shop Default</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-grid-fullwidth.html">Shop Grid Fullwidth</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-right-sidebar.html">Shop Right Sidebar</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-list-fullwidth.html">Shop List Fullwidth</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <span class="title">Product Style</span>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="single-product-variable.html">Single Product Variable</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="single-product-group.html">Single Product Group</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="single-product.html">Single Product Default</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="single-product-affiliate.html">Single Product Affiliate</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="single-product-sale.html">Single Product Sale</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="single-product-sticky.html">Single Product Sticky</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <span class="title">Product Related</span>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="my-account.html">My Account</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="login-register.html">Login | Register</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="cart.html">Shopping Cart</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="wishlist.html">Wishlist</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="compare.html">Compare</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="checkout.html">Checkout</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul> -->
-
-                                        </li>
+                                            <a href="<%=pjName%>/product/category/product">모든꽃보기</a>
                                         <li class="drop-holder"> 
                                             <!-- seasons에서 a태그 빼고, css/js로 cursor만 주도록 한다. -->
                                             <!-- flower: 메뉴 이름 3/-->
@@ -202,69 +127,31 @@
                                             <ul class="drop-menu">
                                                 <li>
                                                 	<!-- href에 절대경로로 입력해야, 어느 페이지에서든 controller와 연결된다 -->
-                                                    <a href="<%=pjName%>/product/category/spring">봄</a>
+                                                    <a href="<%=pjName%>/product/category/product?product_type=spring">봄</a>
                                                 </li>
                                                 <li>
-                                                    <a href="">Summer</a>
+                                                    <a href="<%=pjName%>/product/category/product?product_type=summer">여름</a>
                                                 </li>
                                                 <li>
-                                                	<a href="">Autumn</a>
+                                                	<a href="<%=pjName%>/product/category/product?product_type=fall">가을</a>
                                                 </li>
                                                 <li>
-                                                	<a href="">Winter</a>
+                                                	<a href="<%=pjName%>/product/category/product?product_type=winter">겨울</a>
                                                 </li>
-                                                <!-- flower: dropdown의 dropdown 숨긴다 -->
-                                                <!-- 
-                                                <li class="drop-holder">
-                                                    <a href="#">Multi level dropdown</a>
-                                                    <ul class="drop-menu">
-                                                        <li class="drop-holder">
-                                                            <a href="#">Level 02</a>
-                                                            <ul class="drop-menu">
-                                                                <li class="drop-holder">
-                                                                    <a href="#">Level 03</a>
-                                                                    <ul class="drop-menu">
-                                                                        <li>
-                                                                            <a href="#">Level 04</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li> -->
-                                                <!-- flower: dropdown의 dropdown 숨긴다 end -->
                                             </ul>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 3/-->
-                                            <a href="">초보자용꽃</a>
+                                            <a href="<%=pjName%>/product/category/product?product_type=easyCare">초보자용꽃</a>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 4/-->
-                                            <a href="">반려동물안심꽃</a>
+                                            <a href="<%=pjName%>/product/category/product?product_type=petFriendly">반려동물안심꽃</a>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 5/-->
-                                            <a href="">밤에피는꽃</a>
+                                            <a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는꽃</a>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 6/-->
                                             <a href="">꽃이조화</a>
                                         </li>
-                                        <!-- flower: nav 중 안 쓰는 메뉴 pages(drop down), contact us 숨긴다 -->
-                                        <!-- 
-                                        <li class="drop-holder">
-                                            <a href="#">Pages</a>
-                                            <ul class="drop-menu">
-                                                <li>
-                                                    <a href="faq.html">FAQ</a>
-                                                </li>
-                                                <li>
-                                                    <a href="404.html">Error 404</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact Us</a>
-                                        </li> -->
-                                        <!-- flower: nav 중 안 쓰는 메뉴 pages(drop down), contact us 숨긴다 end-->
                                     </ul>
                                 </nav>
                             </div> <!-- <div class="main-menu position-relative"> end -->
@@ -281,8 +168,9 @@
                         <div class="row align-items-center">
                             <div class="col-lg-3 col-6">
 
-                                <a href="<%=pjName%>/flower_main" class="header-logo">
-                                    <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Header Logo">
+                                <a href="<%=pjName%>/flower_main" class="">
+                                   <div class="header-logo-text"><span id="logo1">꽃</span>을 <span id="logo2">사</span>랑하는 사람은<br/>꽃에 <span id="logo3">물</span><span id="logo4">水</span>을 줘요</div>						
+                                   <div class="header-logo-abbr">꽃사수</div>
                                 </a>
 
                             </div>
@@ -295,16 +183,16 @@
                                             <li class="drop-holder">
                                                 <a><span id="nav_cursor">Seasons</span></a>
                                                 <ul class="drop-menu">
-                                                    <li><a href="<%=pjName%>/product/category/spring">Spring</a></li>
-                                                    <li><a href="summer">summer</a></li>
-                                                    <li><a href="Autumn">Autumn</a></li>
-                                                    <li><a href="Winter">Winter</a></li>
+                                                    <li><a href="<%=pjName%>/product/category/product?product_type=spring">봄</a></li>
+                                                    <li><a href="<%=pjName%>/product/category/product?product_type=summer">여름</a></li>
+                                                    <li><a href="<%=pjName%>/product/category/product?product_type=fall">가을</a></li>
+                                                    <li><a href="<%=pjName%>/product/category/product?product_type=winter">겨울</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="">For Beginners</a></li>
-                                            <li><a href="">Pet-Friendly</a></li>
-                                            <li><a href="">After Sunset</a></li>
-                                            <li><a href="">Faux</a></li>
+                                            <li><a href="<%=pjName%>/product/category/product?product_type=easyCare">초보자용꽃</a></li>
+                                            <li><a href="<%=pjName%>/product/category/product?product_type=petFriendly">반려동물안심꽃</a></li>
+                                            <li><a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는꽃</a></li>
+                                            <li><a href="">꽃이조화</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -346,19 +234,19 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                         </li>
                                         <!-- flower: header(sticky) 연결요망 -->
                                              <c:choose>
-                                        	<c:when test="${not empty sessionScope.member}">
-                                        		<!-- toolbar-btn -->
-                                        	 	<a href="<%=pjName%>/cart/cart" class="minicart-btn">
-                                                 <i class="pe-7s-shopbag"></i>
-                                                 <span class="quantity">${cart.shopping_cart_product_quantity}</span>
-                                             	</a>
-                                            </c:when>
-                                            <c:otherwise>
-                                             	<a id="toCartwithoutLogin" class="minicart-btn">
-                                             		<i class="pe-7s-shopbag"></i>
-                                             	</a>                                             	
-                                            </c:otherwise>
-                                        </c:choose>
+                                        		<c:when test="${not empty sessionScope.member}">
+                                        			<!-- toolbar-btn -->
+                                        	 		<a href="<%=pjName%>/cart/cart" class="minicart-btn">
+                                                 	<i class="pe-7s-shopbag"></i>
+                                                 	<span class="quantity">${cart.shopping_cart_product_quantity}</span>
+                                             		</a>
+                                            	</c:when>
+                                            	<c:otherwise>
+                                             		<a id="toCartwithoutLogin" class="minicart-btn">
+                                             			<i class="pe-7s-shopbag"></i>
+                                             		</a>                                             	
+                                            	</c:otherwise>
+                                            </c:choose>
                                         
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">

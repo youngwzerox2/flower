@@ -10,6 +10,9 @@ public interface ProductDAO {
 	// 상품 카테고리별 Read (selectList)
 	List<ProductVO> getCateProdList(ProductVO vo);
 	
+	// 선택한 카테고리의 상품개수 Read
+	Integer getProdCateQuan(ProductVO vo);
+	
 	// 상품 상세 페이지 Read (selectOne)
 	ProductVO getProd(ProductVO vo);
 

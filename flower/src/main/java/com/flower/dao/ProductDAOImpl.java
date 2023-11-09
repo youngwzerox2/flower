@@ -17,7 +17,12 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	// 상품 목록 출력
 	public List<ProductVO> getCateProdList(ProductVO vo){
-		List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
+		if(vo != null) {
+			List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
+		} else {
+			List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList");
+		}
+		
 //		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
 //		System.out.println("SQL 결과(카테고리): " + result);
 		/***********
@@ -39,7 +44,19 @@ public class ProductDAOImpl implements ProductDAO{
 		// 
 		return mybatis.selectList("productDAO.getCateProdList", vo);
 	}
-
+	
+	// 상품 목록 출력 시, 페이징을 위한 상품개수 조회
+	@Override
+	public Integer getProdCateQuan(ProductVO vo) {
+		System.out.println("Dao에서 받은 vo: " + vo);
+		Integer test_result = mybatis.selectOne("productDAO.getProdCateQuan", vo);
+		System.out.println("카테고리 상품개수 SQL실행결과: " + test_result);
+		
+		return test_result;
+	}
+	
+	
+	
 	// 상품 상세 출력
 	@Override
 	public ProductVO getProd(ProductVO vo) {
@@ -105,6 +122,7 @@ public class ProductDAOImpl implements ProductDAO{
 		System.out.println("찜한 상품 조회SQL 결과: " + result);
 		return result;
 	}
-	
+
+
 	
 } //class ProductDAOImpl

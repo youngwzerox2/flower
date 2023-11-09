@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flower.service.ProductService;
 import com.flower.vo.LoveVO;
 import com.flower.vo.MemberVO;
+import com.flower.vo.PagingVO;
 import com.flower.vo.ProductVO;
 
 @Controller
@@ -35,51 +36,59 @@ public class ProductController {
 	}
 	
 	// 고민요망: 해당 카테고리에 들어갈 때마다 검색 필터에 카테고리가 적용된 상태로 진입하게 할 것인가
-	// 클릭한 카테고리 상품 목록 가져오기
-	// /{cate}, @PathVariable String cate, return "/product/category/"+cate;
-	@RequestMapping("/product/category/{cate}")
-	public String getCateProdList(@PathVariable String cate, Model m) {
+	// 상품 목록 가져오기
+	@RequestMapping("/product/category/product")
+	public void getCateProdList(ProductVO pvo, Model m) {
 		System.out.println("from main!" + System.currentTimeMillis());
 //		System.out.println("cate");
 		ProductVO vo = new ProductVO();
-		// System.out.println("카테고리가 입력 안됐나? " + pvo.getProduct_type());
-		// vo.setProduct_type(pvo.getProduct_type());
-		// String type = vo.getProduct_type();
-		switch(cate){
-		  case "spring":
-		    vo.setBlooming_season(cate);
-		  break;
-		  case "summer":
-		    vo.setBlooming_season(cate);
-		  break;
-		  case "fall":
-		    vo.setBlooming_season(cate);
-		  break;
-		  case "winter":
-		    vo.setBlooming_season(cate);
-		  break;
-		  case "petFriendly":
-		    vo.setPet_friendly(true);
-		  break;
-		  case "easyCare":
-		    vo.setEasy_care(true);
-		  break;
-		  case "afterSunset":
-		    vo.setBlooming_time(cate);
-		  break;
+		if(pvo !=null && pvo.getProduct_type() != null) {
+			String type = pvo.getProduct_type();
+			switch(type){
+			  case "spring":
+			    vo.setBlooming_season(type);
+			  break;
+			  case "summer":
+			    vo.setBlooming_season(type);
+			  break;
+			  case "fall":
+			    vo.setBlooming_season(type);
+			  break;
+			  case "winter":
+			    vo.setBlooming_season(type);
+			  break;
+			  case "petFriendly":
+			    vo.setPet_friendly(true);
+			  break;
+			  case "easyCare":
+			    vo.setEasy_care(true);
+			  break;
+			  case "afterSunset":
+			    vo.setBlooming_time(type);
+			  break;
+			}
 		}
-//		System.out.println("controller's vo: " + vo);
+
+
 		List<ProductVO> result = productService.getCateProdList(vo);
 		m.addAttribute("productList", result);
-		return "/product/category/" + cate;
-	}
-	
-	
-	// 전체 상품 목록 가져오기
-	public void getAllProdList() {
+		
+		paging(vo);
+
 		
 	}
-
+	
+	// 페이징 처리를 위한 함수..
+	public PagingVO paging(ProductVO pvo) {
+		PagingVO pgvo = new PagingVO();
+		pgvo.setTotalContents(productService.getProdCateQuan(pvo));
+		pgvo.setContentsPerPage(16.0);
+		pgvo.setTotalPages((int)Math.ceil(pgvo.getTotalContents()/pgvo.getContentsPerPage()));
+		pgvo.setBtnPerPage(3);
+		System.out.println("페이징 함수 호출: " + pgvo);
+		return null;
+	}
+	
 	
 	// 상품 검색 결과 가져오기(목록)
 	
@@ -144,4 +153,7 @@ public class ProductController {
 	
 	
 
+	// 목록의 페이지 제어(버튼) 처리
+	
+	
 } //class ProductController
