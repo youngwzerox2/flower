@@ -26,6 +26,6 @@
 	<!-- 리소스핸들링 -->
 	<!-- <resources mapping="/resources/**" location="/resources/product/imgs/" /> --> 
 	
-	
-	
-</beans:beans>
+	<beans:bean id="multipartResolver"  
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	</beans:beans>

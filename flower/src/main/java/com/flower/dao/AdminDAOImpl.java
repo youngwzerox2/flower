@@ -71,19 +71,59 @@ public class AdminDAOImpl implements AdminDAO{
 	public int modifyProductVisible(Map<String, String> map) {
 		return st.update("adminDAO.modifyProductVisible", map);
 	}
+	
+	@Override
+	public Integer selectNewProductId() {
+		return st.selectOne("adminDAO.selectNewProductId");
+	}
+
+	@Override
+	public int registerProduct(AdminVO adminVO) {
+		return st.insert("adminDAO.registerProduct", adminVO);
+	}
+
+	@Override
+	public int registerProductImg(AdminVO adminVO) {
+		return st.insert("adminDAO.registerProductImg", adminVO);
+	}
+	
+	@Override
+	public List<AdminVO> searchReviews(Map<String, String> map) {
+		return st.selectList("adminDAO.searchReviews", map);
+	}
+	
+	@Override
+	public AdminVO searchReviewDetail(String reviewId) {
+		return st.selectOne("adminDAO.searchReviewDetail", reviewId);
+	}
+	
+	@Override
+	public List<AdminVO> searchOrders(Map<String, String> map) {
+		return st.selectList("adminDAO.searchOrders", map);
+	}
+	
+	@Override
+	public List<AdminVO> searchOrderProducts(String orderDetailNumber) {
+		return st.selectList("adminDAO.searchOrderProducts", orderDetailNumber);
+	}
+
 
 	/**
 	 * 설정 관련
 	 * */
 	@Override
-	public int selectPolicyColumnCnt() {
-		return st.selectOne("adminDAO.selectPolicyColumnCnt");
-	}
-
-	@Override
 	public List<AdminVO> selectPolicyColumn() {
 		return st.selectList("adminDAO.selectPolicyColumn");
 	}
 
+	@Override
+	public Map<String, String> selectPolicyValue(String column) {
+		return st.selectOne("adminDAO.selectPolicyValue", column);
+	}
+
+	@Override
+	public int modifyPolicy(Map<String, String> map) {
+		return st.update("adminDAO.modifyPolicy", map);
+	}
 
 }

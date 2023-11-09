@@ -95,12 +95,92 @@ $(function(){
             searchProducts();
         }
     });
+    
+    // 상품관리 > 상품가격 &  입력 이벤트
+	$(".numberWithCommas").on("input", function() {
+	    let value = $(this).val();
+	
+	    value = value.replace(/[^0-9]/g, "");
+	
+	    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	
+	    $(this).val(value);
+	});
+	
+    // 상품관리 > 상품등록 버튼 클릭 이벤트
+	$(document).on("click", "#registerProduct", function() {
+		selectNewProductID();
+	    $("#account-product-info-register-tab").tab('show');
+	});
 	
 	// 상품관리 > 상세보기 버튼 클릭 이벤트
 	$(document).on("click", ".productId", function() {
 	    let productId = $(this).text();
 	    selectOneProduct(productId);
 	    $("#account-product-info-detail-tab").tab('show');
+	});
+	
+	// 상품등록 > 이미지 삭제 버튼 클릭 이벤트
+	$(document).on("click", ".deleteImage", function() {
+		event.preventDefault();
+		
+        const imageType = $(this).data("type");
+        const fileInput = $(`input[name=${imageType}file]`);
+        fileInput.val("");
+    });
+	
+	// 상품등록 > 등록 버튼 클릭 이벤트
+	$(document).on("click", "#goProductRegister", function(){
+	
+		// 상품명 체크
+		if($("#rProductName").val().trim() == ""){
+			alert("상품명을 입력하세요.");
+			return;
+		}
+		
+		// 상품재고 체크
+		if($("#rProductCnt").val().trim() == ""){
+			alert("상품재고를 입력하세요.");
+			return;
+		}
+		
+		// 상품재고 > 숫자 체크
+		if ($("#rProductCnt").val().trim() == "") {
+		    alert("상품재고는 숫자여야 합니다.");
+		    return;
+		}
+		
+		// 상품가격 체크
+		if($("#rProductPrice").val().trim() == ""){
+			alert("상품가격을 입력하세요.");
+			return;
+		}
+		
+		// 상품가격 > 숫자 체크
+		if ($("#rProductPrice").val() == "") {
+		    alert("상품가격은 숫자여야 합니다.");
+		    return;
+		}
+		
+		// 상품상태 체크
+		if($("#rProductState").val() === null){
+			alert("상품상태를 입력하세요.");
+			return;
+		}
+		
+		// 상품상태 Y/N 체크
+		if ($("#rProductState").val() !=="Y" && $("#rProductState").val() !== "N") {
+		    alert("상품상태는 'Y' 또는 'N'이어야 합니다.");
+		    return;
+		}
+		
+		registerProduct();
+	});
+	
+	// 상품 등록 > 목록 버튼 클릭 이벤트
+	$("#cancelProductRegister").on("click", function(){
+		searchProducts();
+		$("#account-product-info-tab").tab('show');
 	});
 	
 	// 상품 관리 상세 > 목록 버튼 클릭 이벤트
@@ -127,10 +207,73 @@ $(function(){
 		closeVisiblePopup();
 	});
 	
+	// 상품 > 리뷰관리 탭 클릭 이벤트
+	$("#account-reviews-tab").click(function(){
+		searchReviews();
+	});
+	
+	// 상품 관리 > 돋보기 버튼 클릭 이벤트
+	$("#reviewSearchBtn").click(function(){
+		searchReviews();
+	});
+		
+    // 상품관리 > 엔터키 이벤트
+    $("#reviewSearchValue").on('keypress', function(e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            searchReviews();
+        }
+    });
+    
+    // 리뷰관리 > 리뷰 클릭 이벤트
+	$(document).on("click", ".reviewId", function() {
+	    let reviewId = $(this).text();
+	    selectOneReview(reviewId);
+	    $("#account-review-info-detail-tab").tab('show');
+	});
+	
+	// 주문 > 주문관리 탭 클릭 이벤트
+	$("#account-orders-tab").click(function(){
+		searchOrders();
+	});
+	
+	// 주문 관리 > 돋보기 버튼 클릭 이벤트
+	$("#orderSearchBtn").click(function(){
+		searchOrders();
+	});
+		
+    // 주문 관리 > 엔터키 이벤트
+    $("#orderSearchValue").on('keypress', function(e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            searchOrders();
+        }
+    });
+    
+    // 주문 관리 > 주문 클릭 이벤트
+	$(document).on("click", ".orderDetailNumber", function() {
+	    let orderDetailNumber = $(this).text();
+	    selectOneOrder(orderDetailNumber);
+	    $("#account-order-info-detail-tab").tab('show');
+	});
+    
 	// 설정 > 정책관리 탭 클릭 이벤트
 	$("#account-policies-tab").click(function(){
 		searchPolicies();
 	});
+	
+	// 정책관리 > 탭 클릭 이벤트
+	$(document).on("click", "a[alt='poliesValue']", function(){
+		let id 	 = $(this).attr("id");
+		let text = $(this).text();
+		
+		serchPolicyValue(id, text);
+	});
+	
+	// 정책관리 > 수정 버튼 클릭 이벤트
+	$("#goModifyPolicy").click(function(){
+		modifyPolicy();
+	})
 	
 	// ******************************************************************************************
 	// ************************************function**********************************************
@@ -424,6 +567,29 @@ $(function(){
 		});
 	}
 	
+	// 신규 상품ID 조회
+	function selectNewProductID(){
+		$.ajax({
+	          type: "get"
+	        , url: "../admin/selectNewProductID"
+	        , dataType 	: "json"
+	        , success: function(result) {
+                $("#rProductID").val(result);
+                $("#rProductName").val("");
+                $("#rProductCnt").val("");
+                $("#rProductPrice").val("");
+                $("#rProductState").val("");
+                
+        		const fileInput = $(`input[class=imgFile]`);
+        		fileInput.val("");
+	        }
+	        , error: function(err) {
+	            alert("신규 상품ID 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+	        }
+	    });
+	}
+	
 	// 상품 상세 조회
 	function selectOneProduct(productId){
     	$.ajax({
@@ -480,7 +646,7 @@ $(function(){
 	                
 	            }
 	            
-	           	let imgRow = $("<tr rowspan='4'/>")
+	           	let imgRow = $("<tr/>")
 				  .append($("<th>상품 이미지</th>"))
 				  .append(
 				    $("<td>").append(
@@ -525,6 +691,38 @@ $(function(){
 		});
 	}
 	
+	// 상품등록 > 상품 이미지 리스트 및 상품 정보 등록
+	function registerProduct(){
+		let formData = new FormData($("#registerImgsForm")[0]);
+		formData.append("product_id", $("#rProductID").val());
+		formData.append("product_name", $("#rProductName").val());
+    	formData.append("inventory_quantity", $("#rProductCnt").val().replace(/,/g, ""));
+    	formData.append("product_price", $("#rProductPrice").val().replace(/,/g, ""));
+    	formData.append("product_state", $("#rProductState").val());
+		
+	    $.ajax({
+	          type: "POST"
+	        , url: "../admin/registerProduct"
+	        , data: formData
+	        , cache: false
+	        , contentType: false
+	        , processData: false
+	        , success: function(result) {
+	            if (result === "complete") {
+	                alert("상품등록이 완료 되었습니다.")
+	                selectNewProductID();
+	            } else {
+	                alert("상품등록이 실패 했습니다. 목록에서 재등록 부탁드립니다.")
+	                return;
+	            }
+	        }
+	        , error: function(err) {
+	            alert("상품 이미지 등록 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+	        }
+	    });
+	}
+	
 	// 상품 상세 > 팝업 오픈
 	function openVisible(proId, proStat) {
         $("#visibleProduct").text(proId);
@@ -565,7 +763,199 @@ $(function(){
 		$("#popupVisibleModal").modal("hide");
 		searchProducts();
 	}
+	
+	// 리뷰 조회
+	function searchReviews(){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchReviews"
+			, data: {
+			      searchKey: $("#reviewSelectbox").val()
+			    , searchValue: $("#reviewSearchValue").val()
+			}
+			, dataType 	: "json"
+			, success 	: function(result){
+				let reviewList = $("#reviewList");
+				reviewList.empty();
+				
+				reviewList.append("<tr style='background-color: #f6f7fb'><th style='text-align: center'>리뷰ID</th style='text-align: center'><th style='text-align: center'>회원ID</th style='text-align: center'><th style='text-align: center'>상품ID</th style='text-align: center'><th style='text-align: center'>리뷰제목</th><th style='text-align: center'>리뷰내용</th><th style='text-align: center'>리뷰등록일</th><th style='text-align: center'>신고여부</th></tr>");
+				
+				if (result && result.length > 0) {
+	                for (row of result) {
+	                    let tr 					= $("<tr/>");
+	                    let rReviewsId 			= $("<td/>").append($("<a class='reviewId' style='color:blue; text-decoration:underline; display: block; text-align: center;'/>").text(row["reviews_id"]).hover(function() { $(this).css("cursor", "pointer"); }));
+	                    let rMemberId 			= $("<td style='text-align: center'/>").html(row["member_id"]);
+	                    let rProductId 			= $("<td style='text-align: center'/>").html(row["product_id"]);
+	                    let rReviewsTitle 		= $("<td style='text-align: center'/>").html(row["reviews_title"]);
+	                    let rReviewsContent 	= $("<td style='text-align: center'/>").html(row["reviews_content"]);
+	                    let rReviewsRegDate 	= $("<td style='text-align: center'/>").html(row["reviews_register_date"]);
+	                    let reportYn 			= $("<td style='text-align: center'/>").html(row["report_yn"]);
+	
+	                    tr.append(rReviewsId);
+	                    tr.append(rMemberId);
+	                    tr.append(rProductId);
+	                    tr.append(rReviewsTitle);
+	                    tr.append(rReviewsContent);
+	                    tr.append(rReviewsRegDate);
+	                    tr.append(reportYn);
+	
+	                    reviewList.append(tr);
+	                }
+	            } else {
+	                reviewList.append("<tr><td colspan='7' style='text-align: center'>데이터가 존재하지 않습니다.</td></tr>");
+	            }
+				
+			}
+			, error 	: function(err){
+				alert("리뷰 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 리뷰 상세 조회
+	function selectOneReview(reviewId){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchReviewDetail"
+			, data: { reviewId : reviewId }
+			, dataType 	: "json"
+			, success 	: function(result){
+				let reviewDetail = $("#reviewDetail");
+				reviewDetail.empty();
+
+                let mId 		= $("<tr style='display: none;'/>").append($("<th>realID</th>")).append($("<td id='realId'/>").html(result.member_id));
+                let mEmail 		= $("<tr/>").append($("<th>ID</th>")).append($("<td id='detailId'/>").html(result.member_email));
+                let mName 		= $("<tr/>").append($("<th>고객명</th>")).append($("<td/>").html(result.member_name));
+                let mRegiDate 	= $("<tr/>").append($("<th>가입일</th>")).append($("<td/>").html(result.member_register_date));
+                let mOrderCnt	= $("<tr/>").append($("<th>구매횟수</th>")).append($("<td/>").html("120,000"));
+                let mOrderPrice	= $("<tr/>").append($("<th>총 구매액</th>")).append($("<td/>").html("23,000"));
+                let mAddress	= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html("거구장 3층, 한국ICT 3강의실"));
+                let mStatus		= $("<tr/>").append($("<th>회원상태</th>")).append($("<td/>").html(result.member_status));
+                let mReportYn	= $("<tr/>").append($("<th>신고여부</th>")).append($("<td/>").html(result.report_yn));
+                let mReportCnt	= $("<tr/>").append($("<th>신고횟수</th>")).append($("<td id='reportCnt'/>").html(result.reports_cnt));
+                let mReportDay	= $("<tr/>").append($("<th>신고일</th>")).append($("<td/>").html(result.reports_date));
+                let adminAction	= $("<tr/>").append($("<th>관리자조치</th>")).append($("<td id='adminActionYn'/>").html(result.admin_action_yn));
+                let mReportCont	= reportTag(result.report_contents);
+                
+                memberDetail.append(mId);
+                memberDetail.append(mEmail);
+                memberDetail.append(mName);
+                memberDetail.append(mRegiDate);
+                memberDetail.append(mOrderCnt);
+                memberDetail.append(mOrderPrice);
+                memberDetail.append(mAddress);
+                memberDetail.append(mStatus);
+                memberDetail.append(mReportYn);
+                memberDetail.append(mReportCnt);
+                memberDetail.append(mReportDay);
+                memberDetail.append(adminAction);
+                memberDetail.append(mReportCont);
+				
+			}
+			, error 	: function(err){
+				alert("회원 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 주문 조회
+	function searchOrders(){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchOrders"
+			, data: {
+			      searchKey: $("#orderSelectbox").val()
+			    , searchValue: $("#orderSearchValue").val()
+			}
+			, dataType 	: "json"
+			, success 	: function(result){
+				let orderList = $("#orderList");
+				orderList.empty();
+				
+				orderList.append("<tr style='background-color: #f6f7fb'><th style='text-align: center'>주문번호</th style='text-align: center'><th style='text-align: center'>수취인</th style='text-align: center'><th style='text-align: center'>주문량</th style='text-align: center'><th style='text-align: center'>주문상품량</th><th style='text-align: center'>결제금액</th><th style='text-align: center'>주문일</th><th style='text-align: center'>주문상태</th></tr>");
+				
+				if (result && result.length > 0) {
+	                for (row of result) {
+	                    let tr 					= $("<tr/>");
+	                    let oOrderNum 			= $("<td/>").append($("<a class='orderDetailNumber' style='color:blue; text-decoration:underline; display: block; text-align: center;'/>").text(row["order_detail_number"]).hover(function() { $(this).css("cursor", "pointer"); }));
+	                    let oRecipeName			= $("<td style='text-align: center'/>").html(row["recipient_name"]);
+	                    let oTotalCnt 			= $("<td style='text-align: center'/>").html(formatNumberWithCommas(row["total_order_cnt"]));
+	                    let oTotalProCnt 		= $("<td style='text-align: center'/>").html(formatNumberWithCommas(row["total_product_cnt"]));
+	                    let oTotalPrice		 	= $("<td style='text-align: center'/>").html(formatNumberWithCommas(row["total_order_price"]));
+	                    let oOrderDate 			= $("<td style='text-align: center'/>").html(row["order_date"]);
+	                    let oOrderState		 	= $("<td style='text-align: center'/>").html(row["order_state"]);
+	
+	                    tr.append(oOrderNum);
+	                    tr.append(oRecipeName);
+	                    tr.append(oTotalCnt);
+	                    tr.append(oTotalProCnt);
+	                    tr.append(oTotalPrice);
+	                    tr.append(oOrderDate);
+	                    tr.append(oOrderState);
+	
+	                    orderList.append(tr);
+	                }
+	            } else {
+	                orderList.append("<tr><td colspan='7' style='text-align: center'>데이터가 존재하지 않습니다.</td></tr>");
+	            }
+				
+			}
+			, error 	: function(err){
+				alert("주문 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
     
+    // 주문 상세 조회
+    function selectOneOrder(orderDetailNumber){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/selectOneOrder"
+			, data: { orderDetailNumber : orderDetailNumber }
+			, dataType 	: "json"
+			, success 	: function(result){
+				let orderMember 	= result.orderMember;
+				let orderProducts 	= result.orderProducts;
+				let orderDetail = $("#orderDetail");
+				
+				console.log(result);
+				console.log(orderMember);
+				console.log(orderProducts);
+				
+				orderDetail.empty();
+
+                let oOrderNum 		= $("<tr/>").append($("<th>주문번호</th>")).append($("<td id='order_detail_number'/>").html(orderMember.order_detail_number));
+                let oOrderMem 		= $("<tr/>").append($("<th>수취인</th>")).append($("<td/>").html(orderMember.recipient_name));
+                let oTotOrCnt		= $("<tr/>").append($("<th>주문량</th>")).append($("<td/>").html(orderMember.total_order_cnt));
+                let oTotOrProCnt	= $("<tr/>").append($("<th>주문상품량</th>")).append($("<td/>").html(orderMember.total_product_cnt));
+                let oTotOrPropri	= $("<tr/>").append($("<th>결제금액</th>")).append($("<td/>").html(orderMember.total_order_price));
+                let oOrderState		= $("<tr/>").append($("<th>주문상태</th>")).append($("<td/>").html(orderMember.order_state));
+                let oOrderList		= $("<tr/>").append($("<th>주문목록</th>")).append($("<td/>"));
+                let oOrderDate		= $("<tr/>").append($("<th>주문일</th>")).append($("<td/>").html(orderMember.order_date));
+                let oRecipAddr		= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html(orderMember.recipient_address));
+                let oRecipTel		= $("<tr/>").append($("<th>연락처</th>")).append($("<td/>").html(orderMember.recipient_tel));
+                
+	            orderDetail.append(oOrderNum);
+                orderDetail.append(oOrderMem);
+                orderDetail.append(oTotOrCnt);
+                orderDetail.append(oTotOrProCnt);
+                orderDetail.append(oTotOrPropri);
+                orderDetail.append(oOrderState);
+                orderDetail.append(oOrderDate);
+                orderDetail.append(oRecipAddr);
+                orderDetail.append(oRecipTel);
+                
+			}
+			, error 	: function(err){
+				alert("주문 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
     // 정책관리 조회
     function searchPolicies(){
     	$.ajax({
@@ -577,10 +967,24 @@ $(function(){
 				
 				$("#myTab").empty();
 				
-      			for (row of result) {
-                    let tabLi = $("<li class='nav-item'/>").append($("<a data-bs-toggle='tab' href='#featured' role='tab' aria-controls='featured' aria-selected='true' role='presentation' />").attr("id", row["column_name"]).text(row["column_comment"]));
-                    $("#myTab").append(tabLi);
-                }
+      			for (let i = 0; i < listLength; i++) {
+	                let row = result[i];
+	                let tabLi = $("<li class='nav-item' />").append(
+	                    $("<a data-bs-toggle='tab' role='tab' aria-controls='featured' aria-selected='true' role='presentation' alt='poliesValue' />")
+	                    .attr("id", row["column_name"])
+	                    .text(row["column_comment"])
+	                    .hover(function() { $(this).css("cursor", "pointer")})
+	                );
+					
+					// 첫번쨰 정책 검색
+	                if (i === 0) {
+	                    serchPolicyValue(tabLi.find("a").attr("id"), tabLi.find("a").text());
+	                    tabLi.find("a").addClass("active");
+	                }
+	
+	                $("#myTab").append(tabLi);
+	                
+	            }
 			}
 			, 
 			error 	: function(err){
@@ -589,5 +993,54 @@ $(function(){
 			}
 		});
     }
+    
+    // 정책관리 내용 조회
+    function serchPolicyValue(id, value){
+		$("#poliesId").val(id);
+		$("#poliesComment").val(value);
+		
+    	$.ajax({
+			  type 		: "get"
+			, url		: "../admin/selectPolicyValue"
+			, data		: { column : id }
+			, dataType 	: "json"
+			, success	: function(result){
+				if (result.hasOwnProperty(id)) {
+                	$("#poliesValue").val(result[id]);
+           		}
+			}
+			, 
+			error 	: function(err){
+				alert("정책관리 내용 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+    }
+    
+    // 정책관리 수정
+	function modifyPolicy(){
+		let id 		= $("#poliesId").val();
+		let value 	= $("#poliesValue").val();
+		let text 	= $("#poliesComment").val();
+		
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/modifyPolicy"
+			, data		: { 
+							id : id
+						  , value : value
+						  }
+			, dataType 	: "json"
+			, success	: function(result){
+				alert(text + " 수정이 완료 되었습니다.");
+				serchPolicyValue(id, text);
+			}
+			, 
+			error 	: function(err){
+				alert("정책관리 내용 수정 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
     
 });

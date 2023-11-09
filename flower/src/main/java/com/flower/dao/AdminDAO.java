@@ -43,12 +43,47 @@ public interface AdminDAO {
 	// 특정 상품 노출 설정
 	public int modifyProductVisible(Map<String, String> map);
 
+	// 신규 상품ID 조회
+	public Integer selectNewProductId();
+	
+	// 신규 상품 등록
+	public int registerProduct(AdminVO adminVO);
+	
+	// 신규 상품 이미지 등록
+	public int registerProductImg(AdminVO adminVO);
+	
+	// 검색 조건별 리뷰 조회
+	public List<AdminVO> searchReviews(Map<String, String> map);
+	
+	// 특정 리뷰 상세 조회
+	public AdminVO searchReviewDetail(String reviewId);
+	
+	// 검색 조건별 주문 조회
+	public List<AdminVO> searchOrders(Map<String, String> map);
+	
+	// 특정 주문 상품 목록 조회
+	public List<AdminVO> searchOrderProducts(String orderDetailNumber);
+	
 	/**
 	 * 설정 관련
 	 * */
-	// policy 개수 확인
-	public int selectPolicyColumnCnt();
-
+	// policy 테이블 정보 조회
 	public List<AdminVO> selectPolicyColumn();
+	
+	// policy 컬럼 내용 조회
+	public Map<String, String> selectPolicyValue(String column);
+
+	// policy 컬럼 내용 수정
+	public int modifyPolicy(Map<String, String> map);
+
+
+
+
+
+
+	
+
+
+	
 
 }

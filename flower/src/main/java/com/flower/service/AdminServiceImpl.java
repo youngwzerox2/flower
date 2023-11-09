@@ -72,18 +72,61 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.modifyProductVisible(map);
 	}
 
+	@Override
+	public Integer selectNewProductId() {
+		return adminDAO.selectNewProductId();
+	}
+	
+	@Override
+	public int registerProduct(AdminVO adminVO) {
+		return adminDAO.registerProduct(adminVO);
+	}
+
+	@Override
+	public int registerProductImg(AdminVO adminVO) {
+		return adminDAO.registerProductImg(adminVO);
+	}
+	
+	@Override
+	public List<AdminVO> searchReviews(Map<String, String> map) {
+		return adminDAO.searchReviews(map);
+	}
+	
+	@Override
+	public AdminVO searchReviewDetail(String reviewId) {
+		return adminDAO.searchReviewDetail(reviewId);
+	}
+
+	@Override
+	public List<AdminVO> searchOrders(Map<String, String> map) {
+		return adminDAO.searchOrders(map);
+	}
+
+	@Override
+	public List<AdminVO> searchOrderProducts(String orderDetailNumber) {
+		return adminDAO.searchOrderProducts(orderDetailNumber);
+	}
+	
 	/**
 	 * 설정 관련
 	 * */
-	// policy 개수 확인
-	@Override
-	public int selectPolicyColumnCnt() {
-		return adminDAO.selectPolicyColumnCnt();
-	}
-
 	@Override
 	public List<AdminVO> selectPolicyColumn() {
 		return adminDAO.selectPolicyColumn();
 	}
+	
+	@Override
+	public Map<String, String> selectPolicyValue(String column) {
+		return adminDAO.selectPolicyValue(column);
+	}
+
+	@Override
+	public int modifyPolicy(Map<String, String> map) {
+		return adminDAO.modifyPolicy(map);
+	}
+
+
+
+
 
 }
