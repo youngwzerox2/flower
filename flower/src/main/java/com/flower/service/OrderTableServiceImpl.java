@@ -21,4 +21,14 @@ public class OrderTableServiceImpl implements OrderTableService{
 		return dao.selectOrderList(vo);
 	}
 
+	@Override
+	public void insertOrder(List<OrderTableVO> orderList) {
+		dao.insertOrder(orderList);
+	}
+
+	@Override
+	public List<OrderTableVO> selectOrderListbydetailnumber(OrderTableVO OTvo) {
+		return dao.selectOrderListbydetailnumber(OTvo);
+	}
+
 }
