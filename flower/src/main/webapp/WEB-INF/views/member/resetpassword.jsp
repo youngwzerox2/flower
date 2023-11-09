@@ -97,6 +97,13 @@
 									<br/>
 									<br/>
 								</div>
+									<!-- 팝업창 -->
+										<div id="myModal" class="mymodal modal">
+										  <div class="modal-content">
+										    <span class="close">&times;</span>
+										    <p id="modalMessage"></p>
+										  </div>
+										</div>
 								<br/>
 								<br/>
 								<div class="col-lg-12" id="resultMessage">

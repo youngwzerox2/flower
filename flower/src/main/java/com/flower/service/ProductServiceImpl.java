@@ -1,6 +1,7 @@
 package com.flower.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,12 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductVO getProd(ProductVO vo) {
 		return productDao.getProd(vo);
+	}
+
+	// 상품 필터링
+	@Override
+	public List<ProductVO> filterProducts(Map<String, String> filterParams) {
+		return productDao.filterProducts(filterParams);
 	}
 
 

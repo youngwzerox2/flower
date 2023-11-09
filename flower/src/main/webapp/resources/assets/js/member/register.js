@@ -108,9 +108,17 @@ $("#join").click(function(e) {
         }
 		    
         	
-        // 모든 조건이 충족되면 폼을 제출
-         $("form").submit();
-         openModal("회원가입이 완료되었습니다!")
+         // 여기에서 비밀번호 변경 처리 로직을 수행합니다.
+        $("#resetpassword").submit();
+        openModal("회원가입이 완료되었습니다. 3초후 자동으로 로그인 페이지로 이동합니다");
+        setTimeout(function() {
+				    location.href = "/flower/member/login"; 
+				}, 3000);
+              
+     
+         
+         
+         
 });
 
 

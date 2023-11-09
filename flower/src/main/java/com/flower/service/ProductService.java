@@ -1,6 +1,7 @@
 package com.flower.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.flower.vo.ProductVO;
 
@@ -23,5 +24,9 @@ public interface ProductService {
 	// 상품 수정
 	
 	// 상품 삭제
+	
+	// 상품 필터링
+	List<ProductVO> filterProducts(Map<String, String> filterParams); 
+	    
 	
 }

@@ -65,4 +65,22 @@
 		GROUP BY img.product_id
 	</select>
 	
+	<!-- 상품필터링 -->
+	<select id="filterProducts" resultType="com.flower.vo.ProductVO" parameterType="java.util.Map">
+        SELECT * FROM product
+        <where>
+            <if test="pet_friendly != null">
+                AND pet_friendly = #{pet_friendly}
+            </if>
+            <if test="easy_care != null">
+                AND easy_care = #{easy_care}
+            </if>
+            <!-- 라디오 버튼의 경우도 추가 가능 -->
+           
+        
+        </where>
+    </select>
+	
+	
+	
 </mapper>

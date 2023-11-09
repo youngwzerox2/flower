@@ -1,6 +1,7 @@
 package com.flower.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +72,16 @@ public class ProductDAOImpl implements ProductDAO{
 		 * **/
 		return result;
 	}
+
+	// 상품필터링
+	@Override
+	public List<ProductVO> filterProducts(Map<String, String> filterParams) {
+		return mybatis.selectList("productDAO.filterProducts",filterParams);
+	}
+	
+	
+	
+	
+	
 	
 } //class ProductDAOImpl

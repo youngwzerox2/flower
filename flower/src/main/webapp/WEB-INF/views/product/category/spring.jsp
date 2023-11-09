@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/ion.rangeSlider.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/product/css/_offcanvas_edit.css" />
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
 
@@ -115,18 +117,18 @@
                                         </ul>
                                     </div> <!-- flower: 좌측 카테고리 메뉴end <div class="widgets-item pt-0"> end -->
                                     
+                                    <form action="" method="post">
                                     <div class="widgets-item widgets-filter">
                                         <h2 class="widgets-title mb-4">Price Filter</h2>
                                         <div class="price-filter">
-                                            <input type="text" class="pronia-range-slider" name="pronia-range-slider" value="" data-type="double" data-min="16" data-from="16" data-to="300" data-max="350" data-grid="false" />
+                                            <input type="text" class="pronia-range-slider" name="pronia-range-slider" value="" data-type="double" data-min="0" data-from="0" data-to="100000" data-max="100000" data-grid="false" />
                                         </div>
-                                        
                                     </div>
                                     <!-- flower: filter 추가 - checkbox(pet, easy) -->
                                     <div class="widgets-item widgets-filter">
                                         <h2 class="widgets-title mb-4">Detail Filter</h2>
                                         <div class="detail-filter">
-                                            <label for="pet_friendly"><input type="checkbox" class="detail-filter" name="pet_friendly" value="pet_friendly" id="pet_friendly"/>Pet Friendly</label><br/>
+                                            <label for="pet_friendly"><input type="checkbox" class="detail-filter" name="pet_friendly" value="pet_friendly" id="pet_friendly" />Pet Friendly</label><br/>
                                             <label for="easy_care"><input type="checkbox" class="detail-filter" name="easy_care" value="easy_care" id="easy_care" />Easy Care</label><br/>
                                         </div>
                                     </div>
@@ -135,12 +137,15 @@
                                     <div class="widgets-item widgets-filter">
                                     	<h2 class="widgets-title mb-4">Light</h2>
                                     	<div class="detail-filter light">
-                                            <label for="dl"><input type="radio" id="dl" name="light"  class="detail-filter" value="dl">Direct light</lable><br/>
-                                            <label for="idl"><input type="radio" id="idl" name="light" class="detail-filter" value="idl">Indirect Light</lable><br/>
-                                            <label for="sh"><input type="radio" id="sh" name="light"  class="detail-filter" value="sh">Shade</lable><br/>
-                                            <label for="nm"><input type="radio" id="nm" name="light"  class="detail-filter" value="nm">No matter</lable><br/>
+                                            <label for="dl"><input type="radio" id="dl" name="light"  class="detail-filter" value="dl" >Direct light</lable><br/>
+                                            <label for="idl"><input type="radio" id="idl" name="light" class="detail-filter" value="idl" >Indirect Light</lable><br/>
+                                            <label for="sh"><input type="radio" id="sh" name="light"  class="detail-filter" value="sh" >Shade</lable><br/>
+                                            <label for="nm"><input type="radio" id="nm" name="light"  class="detail-filter" value="nm" >No matter</lable><br/>
                                     	</div>
                                     </div>
+                                    <!-- 버튼생성 -->
+                                    <button type="button">Apply Filter</button>
+                                    </form>
                                     
                                     <!-- flower: filter - 꽃말키워드 -->
                                     <div class="widgets-item">
@@ -1047,6 +1052,7 @@
         </a>
         <!-- Scroll To Top End Here -->
 
+
     </div>
-<script src="<%=pjName %>/resources/assets/js/product/product.js"></script>
+<script src="<%=pjName %>/resources/assets/js/product/catefilter.js"></script>
 <%@ include file="/flower_footer.jsp" %>

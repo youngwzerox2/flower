@@ -102,6 +102,14 @@
 											<button type='button' id="cancel"
 												class="btn btn-custom-size lg-size btn-pronia-primary">취소</button>
 										</div>
+										
+										<!-- 팝업창 -->
+										<div id="myModal" class="mymodal modal">
+										  <div class="modal-content">
+										    <span class="close">&times;</span>
+										    <p id="modalMessage"></p>
+										  </div>
+										</div>
 							</form>
 						</div>
 					</div>

@@ -1,3 +1,24 @@
+  // 팝업 창 열기
+function openModal(message) {
+  document.getElementById('modalMessage').innerText = message;
+  document.getElementById('myModal').style.display = 'block';
+}
+
+// 팝업 창 닫기
+function closeModal() {
+  document.getElementById('myModal').style.display = 'none';
+}
+
+// 모달 닫기 버튼 클릭 시 닫기
+document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
+
+// 모달 영역 외 클릭 시 닫기
+window.addEventListener('click', function(event) {
+  if (event.target == document.getElementById('myModal')) {
+    closeModal();
+  }
+});
+
 $(function(){
 
 $("#findEmailChk").click(function(evt) {
@@ -8,7 +29,7 @@ $("#findEmailChk").click(function(evt) {
     var email = $("#member_email").val();
 
     if (email === "") {
-        alert("이메일을 입력해주세요.");
+        openModal("이메일을 입력해주세요.");
         $("#member_email").focus();
     } else {
         $.ajax({

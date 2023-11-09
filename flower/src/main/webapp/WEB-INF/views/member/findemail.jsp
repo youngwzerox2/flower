@@ -93,6 +93,13 @@
 								</div>
 								<br/>
 								<br/>
+									<!-- 팝업창 -->
+										<div id="myModal" class="mymodal modal">
+										  <div class="modal-content">
+										    <span class="close">&times;</span>
+										    <p id="modalMessage"></p>
+										  </div>
+										</div>
 							</div>
 						</div>
 					</form>

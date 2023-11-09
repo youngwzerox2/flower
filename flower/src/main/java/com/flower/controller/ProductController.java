@@ -1,6 +1,7 @@
 package com.flower.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flower.service.ProductService;
 import com.flower.vo.ProductVO;
@@ -90,6 +92,21 @@ public class ProductController {
 	// 상품 등록 → 관리자 화면에서 다룬다.
 	// 상품 수정 → 관리자 화면에서 다룬다.
 	// 상품 삭제 → 관리자 화면에서 다룬다.
+	
+	
+	// 상품 필터링
+	@GetMapping("filterProducts")
+	public List<ProductVO> filterProducts(@RequestParam Map<String, String> filterParams) {
+		return productService.filterProducts(filterParams); 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

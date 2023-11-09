@@ -2742,8 +2742,8 @@ blockquote p {
 }
 
 /* ---Offcanvas Search Area--- */
-/* 팝업 창 스타일 (원하는 스타일로 수정 가능) */
-.modal {
+/* 영우의 팝업 창 스타일 */
+ .mymodal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -2754,17 +2754,18 @@ blockquote p {
   background-color: rgba(0,0,0,0.7);
 }
 
-.modal-content {
+.mymodal .modal-content {
   background-color: #fefefe;
   margin: 10% auto;
+  margin-top: 300px;
   padding: 20px;
   border: 1px solid #888;
   width: 70%;
   max-width: 400px;
   position: relative;
-}
+} 
 
-.close {
+.mymodal .close{
   position: absolute;
   top: 0;
   right: 0;
@@ -2773,6 +2774,11 @@ blockquote p {
   cursor: pointer;
 }
 
+.close:hover {
+  color: black;
+}
+
+/* 여기까지 영우 스타일*/
 
 .modal-bg-dark {
   background-color: rgba(0, 0, 0, 0.6);
