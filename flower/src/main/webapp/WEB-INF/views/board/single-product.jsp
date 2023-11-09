@@ -1141,6 +1141,17 @@
                                     <div class="inquiries_writing">
 	                                    <input class="i_btn_writing" type="button" value="리뷰쓰기" onclick="insert_reviews_form();">
                                     </div>
+                                    
+                                    <div class="i_select_box">
+                                		<div class="i_select">
+                                			<select id="reviews_search">
+                                				<option value="reviews_all">전체</option>
+                                				<option value="reviews_title">제목</option>
+                                			</select>
+                                				<input id="reviews_search_text" value="${ param.reviews_search_text }" placeholder="검색어를 입력하세요">
+                                				<input class="btn btn-primary btn-sm" type="button" value="검색" onclick="reviews_find();">
+                                		</div>
+                                 	</div>
 
                                     
                                     <!-- Data없는경우 -->
@@ -1200,10 +1211,8 @@
                                     					<option value="all">전체</option>
                                     					<option value="title">제목</option>
                                     				</select>
-                                    				 
-                                    					<input id="search_text" value="" placeholder="검색어를 입력하세요">
+                                    					<input id="search_text" value="${ param.search_text }" placeholder="검색어를 입력하세요">
                                     					<input class="btn btn-primary btn-sm" type="button" value="검색" onclick="find();">
-                                    			
                                     			</div>
                                     		</div>
                                     		 

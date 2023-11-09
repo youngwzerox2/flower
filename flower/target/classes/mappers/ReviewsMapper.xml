@@ -3,8 +3,8 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviews">
 
-	 <select id="orderSelect" parameterType="com.flower.vo.OrderTableVO" resultType="com.flower.vo.ReviewsVO">
-	 	SELECT IF(COUNT(*) > 0, 1, 0) as review_permission
+	 <select id="orderSelect" parameterType="com.flower.vo.OrderTableVO" resultType="int">
+	 	SELECT IF(COUNT(*) > 0, 1, 0) as flag
 			FROM order_table 
 		WHERE member_id = #{member_id} 
 		  AND product_id = #{product_id}
@@ -12,24 +12,16 @@
 	 
 	  <!-- 조건별 조회 -->
 	 <select id="reviewsListCondition" parameterType="Map" resultType="com.flower.vo.ReviewsVO">
-	 	SELECT * 
-			FROM
-				(
-					SELECT
-						@row_number:=@row_number+1 AS no,
-						b.*
-					FROM 
-						(
-							SELECT * FROM reviews
-							<trim prefix="where">
-								<if test="title!=null">
-									reviews_title LIKE CONCAT('%', #{title}, '%')
-								</if>
-							</trim>
-						) b,
-						(SELECT @row_number:=0) as r
-				) ranked
-			WHERE no BETWEEN ${ revi_start } AND ${ revi_end }
+	 	SELECT * FROM (
+					    SELECT
+					        ROW_NUMBER() OVER (ORDER BY reviews_id DESC) AS no,
+					        r.*,
+					        (SELECT IFNULL(COUNT(*), 0) FROM reviews) AS reviews_count
+					    FROM (select * FROM reviews
+					    	 where reviews_title LIKE '%${ reviews_title }%'	
+					    ) r
+					   ) ranked
+		WHERE no BETWEEN ${ revi_start } AND ${ revi_end }
 	 </select>
 	
 	<!-- 검색 조건별 -->
@@ -37,7 +29,7 @@
 		SELECT IFNULL(COUNT(*), 0) FROM reviews;
 		<trim prefix="where" prefixOverrides="or">
 			<if test="title!=null">
-				reviews_title LIKE CONCAT('%', #{title}, '%')
+				reviews_title LIKE '%${reviews_title}%'
 			</if>
 		</trim>
 	</select>

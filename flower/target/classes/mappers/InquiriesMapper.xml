@@ -8,23 +8,25 @@
 	 </select>
 
 	 <!-- 조건별 조회 -->
-	 <select id="inquiriesListCondition" parameterType="Map" resultType="com.flower.vo.InquiriesVO">
+	 <select id="inquiriesListCondition" parameterType="hashmap" resultType="com.flower.vo.InquiriesVO">
 	 	SELECT * FROM (
 					    SELECT
 					        ROW_NUMBER() OVER (ORDER BY inquiries_id DESC) AS no,
 					        i.*,
 					        (SELECT IFNULL(COUNT(*), 0) FROM inquiries) AS inquiries_count
-					    FROM (select * FROM inquiries) i
+					    FROM (select * FROM inquiries
+					    	 where inquiries_title LIKE '%${ title }%'	
+					    ) i
 					   ) ranked
 		WHERE no BETWEEN ${ start } AND ${ end }
 	 </select>
 	
 	<!-- 검색 조건별 -->
 	<select id="inquiriesConditionRowTotal" parameterType="Map" resultType="int">
-		SELECT IFNULL(COUNT(*), 0) FROM inquiries;
+		SELECT IFNULL(COUNT(*), 0) FROM inquiries
 		<trim prefix="where" prefixOverrides="or">
 			<if test="title!=null">
-				inquiries_title LIKE CONCAT('%', #{title}, '%')
+				inquiries_title LIKE '%${title}%'
 			</if>
 		</trim>
 	</select>

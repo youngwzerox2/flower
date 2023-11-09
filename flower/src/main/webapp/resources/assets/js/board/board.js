@@ -73,7 +73,7 @@ function find(){
 		return;
 	}
 	
-	location.href = "product?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8");
+	//location.href = "product?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8");
 		
 }
 

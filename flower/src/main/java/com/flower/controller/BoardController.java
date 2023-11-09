@@ -51,10 +51,12 @@ public class BoardController {
 	
 	//목록출력
 	@RequestMapping("product")
-	public String product(@RequestParam(value = "page",      required = false, defaultValue = "1")     int nowPage, 
-						  @RequestParam(value = "revipage",  required = false, defaultValue = "1")	int revi_nowPage,			              
-						  @RequestParam(value = "search",    required = false, defaultValue = "all") String search,
-						  @RequestParam(value="search_text", required=false,defaultValue="")       String search_text, 
+	public String product(@RequestParam(value = "page",      		   required = false, defaultValue = "1")   int nowPage, 
+						  @RequestParam(value = "revipage",  		   required = false, defaultValue = "1")   int revi_nowPage,			              
+						  @RequestParam(value = "search",              required = false, defaultValue = "all") String search,
+						  @RequestParam(value = "search_text",         required=  false, defaultValue="")      String search_text,
+						  @RequestParam(value = "reviews_search",      required = false, defaultValue = "reviews_all") String reviews_search,
+						  @RequestParam(value = "reviews_search_text", required=  false, defaultValue="")              String reviews_search_text,
 						  Model model, OrderTableVO vo) {
 		
 		int start = (nowPage-1) * MyConstant.inquiries.BLOCK_LIST + 1;
@@ -67,22 +69,24 @@ public class BoardController {
 		map.put("start", start);
 		map.put("end", end);
 		
+		if(search.equals("title")) {
+			map.put("title", search_text);
+		}
+		
 		
 		Map revi_map = new HashMap();
 		revi_map.put("revi_start", revi_start);
 		revi_map.put("revi_end", revi_end);
 		
-		
-		if(search.equals("title")) {
-			map.put("title", search_text);
-		}else if(search.equals("regdate")) {
-			map.put("regdate", search_text);
+		if(reviews_search.equals("reviews_title")) {
+			revi_map.put("reviews_title", reviews_search_text);
 		}
 
 		List<InquiriesVO> list = inquiriesService.selectList(map);
 		
 		List<ReviewsVO> reviews_list = reviewsService.selectList(revi_map);
 		
+		//orderTable
 		List<OrderTableVO> order_list = reviewsService.selectList();
 		
 		System.out.println(order_list);
@@ -93,13 +97,9 @@ public class BoardController {
 		int revi_rowTotal = reviewsService.selectRowTotal(revi_map);
 		
 		//Paging만들기
-		
-		String search_filter = String.format("&search=%s&search_text=%s", search,search_text);
-		
 		String pageMenu = Paging.getPaging("product", 
 							                nowPage, 
 							                rowTotal,
-							                search_filter,
 							                MyConstant.inquiries.BLOCK_LIST, 
 							                MyConstant.inquiries.BLOCK_PAGE);
 		
