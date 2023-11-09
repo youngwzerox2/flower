@@ -83,7 +83,7 @@
                                                 <th class="cart-product-name">상품명</th>
                                                 <th class="product-price">상품가격[A]</th>
                                                 <th class="product-quantity">상품수량[B]</th>
-                                                <th class="product-subtotal">상품총액[A×B]</th>
+                                                <th class="product-subtotal">상품합계[A×B]</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -99,7 +99,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="product-name">
-                                                	<input type="hidden" value="${cart.shopping_cart_id}" id="cartId">
+                                                	<input type="hidden" value="${cart.shopping_cart_id}" class="cartId">
                                                 	<a href="">${cart.product_name}</a>
                                                     <a class="remove_item">
                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"
@@ -145,12 +145,13 @@
                                             	<table>
                                                 	<tr>
                                                 		<td><span>선택 항목 합계</span></td>
-                                                		<td><span id="sum_subset"></span></td>
-                                                		<td><a href=""><input class="button" type="button" name="" id="" value="선택 항목 결제하기"></a></td>
+                                                		<td><span id="sum_subset">0</span></td>
+                                                		<!--  href="/flower/order/orderSelected" -->
+                                                		<td><a><input class="button" type="button" name="" id="check_out_selected" value="선택 항목 결제하기"></a></td>
                                                 	</tr>
                                                 	<tr>
                                                 		<td><span>전체 항목 합계</span></td>
-                                                		<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${cartTotal}" /></td>
+                                                		<td><div id="re"><span id="sum_total"><fmt:formatNumber type="number" maxFractionDigits="3" value="${cartTotal}" /></span></div></td>
                                                 		<td><a href="/flower/order/orderInfo"><input class="button" type="button" name="" id="" value="전체 항목 결제하기"></a></td>
                                             	</table>
                                             </div><!-- <div class="cart-total right"> end -->

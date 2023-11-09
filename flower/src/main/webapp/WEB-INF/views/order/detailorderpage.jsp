@@ -57,12 +57,12 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">Checkout Page</h2>
+                                <h2 class="breadcrumb-heading">주문 상세 내역</h2>
                                 <ul>
                                     <li>
                                         <a href="index.html">Home</a>
                                     </li>
-                                    <li>Checkout</li>
+                                    <li>주문 상세 내역</li>
                                 </ul>
                             </div>
                         </div>
@@ -82,72 +82,44 @@
                                 		<li>금액</li>
                                 		<li>상태</li>
                                 	</ul>
+                                	<c:forEach items = '${orderList}' var = 'orderproduct'>
                                 	<ul class = 'order_list_body'>
                                 		<li>
                                 			<ul class = 'board_goods_list'>
                                 				<li class = 'pic'>
                                 					<a>
                                 						<div class = 'wrphover'>
-                                							<img src = '/flower/resources/product/imgs/list/1_list_1.jpg'>
+                                							<img src = '/flower/resources/product/imgs/list/${orderproduct.product_image_file_name}'>
                                 						</div>
                                 					</a>
                                 				</li>
                                 				<li class = 'info'>
                                 					<div>
-                                						<a>꽃이름 블라블라블라</a>
+                                						<a>${orderproduct.product_name}</a>
                                 					</div>
                                 				</li>
                                 			</ul>
                                 		</li>
                                 		<li>
-                                			<span>1개</span>
+                                			<span>${orderproduct.order_product_quantity}개</span>
                                 		</li>
                                 		<li>
-                                			<span>19000원</span>
+                                			<span class = 'price'>${orderproduct.order_product_price}원</span>
                                 		</li>
                                 		<li>
-                                			<span>결제완료</span>
+                                			<span>${orderproduct.order_state}</span>
                                 		</li>
                                 	</ul>
-                                	<ul class = 'order_list_body'>
-                                		<li>
-                                			<ul class = 'board_goods_list'>
-                                				<li class = 'pic'>
-                                					<a>
-                                						<div class = 'wrphover'>
-                                							<img src = '/flower/resources/product/imgs/list/1_list_1.jpg'>
-                                						</div>
-                                					</a>
-                                				</li>
-                                				<li class = 'info'>
-                                					<div>
-                                						<a>꽃이름 블라블라블라</a>
-                                					</div>
-                                				</li>
-                                			</ul>
-                                		</li>
-                                		<li>
-                                			<span>1개</span>
-                                		</li>
-                                		<li>
-                                			<span>19000원</span>
-                                		</li>
-                                		<li>
-                                			<span>결제완료</span>
-                                		</li>
-                                	</ul>
+                                	</c:forEach>
                                 </div>
                                 <h3>주문자</h3>
+                                
                                  <ul class = 'botmargin40'>
                                  	<li>
                                       	 <ul class = 'list_02'>
                                       	 	<li>
                                       	 		<span class = 'label'><span>주문자명</span></span>
-                                      	 		<label>박종건</label>
-                                      	 	</li>
-                                      	 	<li>
-                                      	 		<span class = 'label'><span>휴대폰번호</span></span>
-                                      	 		<label>010-4396-4561</label>
+                                      	 		<label>${member.member_name }</label>
                                       	 	</li>
                                       	 	<li>
                                       	 		<span class = 'label'><span>이메일</span></span>
@@ -157,39 +129,42 @@
                                   	</li>
                                 </ul>
                                 <h3>배송지</h3>
+                    <c:forEach items = '${orderList}' var = 'orderproduct' end = '0'>
                                  <ul>
                                       <li>
                                       	 <ul class = 'list_02'>
                                       	 	<li>
                                       	 		<span class = 'label'><span>이름</span></span>
-                                      	 		<label>박종건</label>
+                                      	 		<label>${orderproduct.recipient_name}</label>
                                       	 	</li>
                                       	 	<li>
                                       	 		<span class = 'label'><span>주소</span></span>
-                                      	 		<label><span>(22352)</span> <span>경기도 고양시 덕양구</span> <span>얄리얄리 얄랴성가리</span></label>
+                                      	 		<label><span>(${orderproduct.postal_code})</span> ${orderproduct.recipient_address}</label>
                                       	 		</li>
                                       	 	<li>
                                       	 		<span class = 'label'><span>휴대폰번호</span></span>
-                                      	 		<label>01043937941</label>
+                                      	 		<label>${orderproduct.recipient_tel}</label>
                                       	 	</li>
                                       </ul>
                                       </li>
                                  </ul>
+                                 </c:forEach>
                            </div>
                        </div>
                     	<div class="col-lg-6 col-12">
 							<div class="checkbox-form">
                         		<h3>주문결제정보</h3>
+                        		<c:forEach items = '${orderList}' var = 'orderproduct' end = '0'>
                                  <ul class = botborder>
                                       <li>
                                       	 <ul class = 'list_02'>
                                       	 	<li>
                                       	 		<span class = 'label'><span>주문번호</span></span>
-                                      	 		<label>202311070205</label>
+                                      	 		<label>${orderproduct.order_detail_number}</label>
                                       	 	</li>
                                       	 	<li>
                                       	 		<span class = 'label'><span>결제일시</span></span>
-                                      	 		<label>2023-11-07 18:00:00</label>
+                                      	 		<label>${orderproduct.order_date}</label>
                                       	 		</li>
                                       	 	<li>
                                       	 		<span class = 'label'><span>결제방식</span></span>
@@ -197,11 +172,12 @@
                                       	 	</li>
                                       	 	<li>
                                       	 		<span class = 'label'><span>결제금액</span></span>
-                                      	 		<label>5,000원</label>
+                                      	 		<label class = 'totalprice'>원</label>
                                       	 	</li>
                                       </ul>
                                    </li>
                                 </ul>
+                                </c:forEach>
                         	</div>
                         </div>
                     </div>
@@ -219,6 +195,6 @@
     </div>
     
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="/flower/resources/assets/js/order/order.js"></script>
+    <script src="/flower/resources/assets/js/order/detailorder.js"></script>
     
     <%@include file="/flower_footer.jsp" %>

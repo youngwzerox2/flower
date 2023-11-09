@@ -54,7 +54,6 @@
 		WHERE SHOPPING_CART_ID = #{shopping_cart_id}
 	</select>
 
-		
 	<!-- 장바구니에 담긴 상품 일부 선택 -->
 	<update id="selectCartProd" parameterType="com.flower.vo.ShoppingCartVO">
 		UPDATE shopping_cart
@@ -68,5 +67,10 @@
 		SET selected = 0
 		WHERE shopping_cart_id = #{shopping_cart_id}
 	</update>
+	
+	<delete id="deleteAllCart" parameterType="com.flower.vo.MemberVO">
+		DELETE FROM shooping_cart
+		WHERE MEMBER_ID = #{member_id}
+	</delete>
 	
 </mapper>

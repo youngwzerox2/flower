@@ -17,8 +17,20 @@ public class OrderTableDAOImpl implements OrderTableDAO{
 	
 	@Override
 	//Mypage select orderlist
-	public List<OrderTableVO> selectOrderList(MemberVO vo) {
-		return mybatis.selectList("OrderTableDAO.selectOrder",vo);
+	public List<OrderTableVO> selectOrderList(MemberVO mvo) {
+		return mybatis.selectList("OrderTableDAO.selectOrder",mvo);
+	}
+
+	@Override
+	public void insertOrder(List<OrderTableVO> orderList) {
+		for(int i = 0; i < orderList.size(); ++i) {
+			mybatis.insert("OrderTableDAO.insertOrder",orderList.get(i));
+		}
+	}
+
+	@Override
+	public List<OrderTableVO> selectOrderListbydetailnumber(OrderTableVO OTvo) {
+		return mybatis.selectList("OrderTableDAO.selectOrderByDetailNumber",OTvo);
 	}
 
 	

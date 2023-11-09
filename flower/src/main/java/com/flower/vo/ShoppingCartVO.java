@@ -13,6 +13,7 @@ public class ShoppingCartVO {
 	private Integer member_id;
 	private Integer product_id;
 	private Integer shopping_cart_product_quantity;
+	private Integer selected;
 	
 	/** ProductVO, ProductImageVO 합침
 	 * **/

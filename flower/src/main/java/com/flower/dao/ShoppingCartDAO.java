@@ -26,4 +26,7 @@ public interface ShoppingCartDAO {
 	// 장바구니에 담긴 상품 삭제
 	Integer deleteCartProd(ShoppingCartVO scvo);
 	
+	// 장바구니 전체 삭제
+	void deleteAllCart(MemberVO mvo);
+	
 }// interface ShoppingCartDAO

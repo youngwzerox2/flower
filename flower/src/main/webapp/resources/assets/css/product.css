@@ -1,0 +1,105 @@
+/*-----------------------------------------------------------------------------------
+    Template Name: Jinhwa
+    Version: 1.0
+-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+   
+    26. Wishlist
+   
+
+-----------------------------------------------------------------------------------*/
+
+.love-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 479px) {
+ .love-btn {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+.love-btn{
+  width: 100%;
+  display: inline-block;
+}
+@media (max-width: 479px) {
+  .love-btn{
+    width: 100%;
+    display: inline-block;
+  }
+}
+.love-btn .add-to-wishlist {
+	display: inline-block;
+  	border-radius: 5px;
+}
+
+.lovd-btn .add-to-wishlist div{
+  padding: 0;
+}
+
+
+.love-btn div.add-to-wishlist i{
+  background-color: #665f47;
+  text-align: center;
+  color: #ffd625;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 35px;
+  display: block;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.love-btn div.add-to-wishlist:hover i {
+  background-color: #665f47;
+  color: #8bc852;
+}
+
+
+i.pe-7f-leaf:before {
+  content: "\e633";
+  display: inline-block;
+  font-family: "Pe-icon-7-filled";
+}
+
+.love-btn div.add-to-wishlist i.like{
+  
+  background-color: #665f47,
+  font-weight: 800;
+  text-align: center;
+  color: #70a843;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 35px;
+  display: block;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+
+.love-btn:not(:last-child) {
+  padding-right: 10px;
+}
+@media (max-width: 479px) {
+  .love-btn:not(:last-child) {
+    padding-bottom: 10px;
+  }
+}
