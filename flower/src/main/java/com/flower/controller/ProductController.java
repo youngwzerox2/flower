@@ -71,7 +71,7 @@ public class ProductController {
 //		System.out.println("controller's vo: " + vo);
 		List<ProductVO> result = productService.getCateProdList(vo);
 		m.addAttribute("productList", result);
-		return "/product/category/"+cate;
+		return "/product/category/" + cate;
 	}
 	
 	
@@ -123,17 +123,22 @@ public class ProductController {
 	public Integer updateLove(HttpSession sess, ProductVO pvo, Model m) {
 		
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
+		Integer result = 0;
+		
 		if(mvo != null && mvo.getMember_id() != null) {
 			LoveVO lvo = new LoveVO();
 			lvo.setMember_id(mvo.getMember_id());
 			lvo.setProduct_id(Integer.valueOf(pvo.getProduct_id()));
 			System.out.println("love controller 접근 성공! love vo: " + lvo);
-			Integer result = productService.updateLove(lvo);
+			result = productService.updateLove(lvo);
 			System.out.println("결과값 확인: " + result);
 			return result;
-		} else {
+		} else if (sess == null) {
+			System.out.println("love controller 접근은 성공");
 			return 0;
 		}
+		
+		return (result == 1) ? result: 0;
 	}
 	
 	

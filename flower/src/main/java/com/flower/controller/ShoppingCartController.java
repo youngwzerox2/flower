@@ -40,6 +40,7 @@ public class ShoppingCartController {
 	@GetMapping("/cart")
 	@ResponseBody
 	public Integer addCart(HttpSession sess, ShoppingCartVO scvo) {
+		System.out.println("장바구니 담기 접근");
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		if(mvo.getMember_id() == null){
 			return 0;
