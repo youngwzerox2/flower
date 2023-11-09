@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.flower.dao.ReviewsDAOImpl;
 import com.flower.vo.InquiriesVO;
+import com.flower.vo.MemberProductImageVO;
+import com.flower.vo.OrderTableVO;
 import com.flower.vo.ReviewsVO;
 
 @Service
@@ -17,8 +19,9 @@ public class ReviewsServiceImpl implements ReviewsService {
 	ReviewsDAOImpl reviewsDao;
 	
 	@Override
-	public List<ReviewsVO> selectList() {
+	public List<OrderTableVO> selectList() {
 		// TODO Auto-generated method stub
+		System.out.println("List<OrderTableVO> selectList()");
 		return reviewsDao.selectList();
 	}
 
@@ -47,21 +50,22 @@ public class ReviewsServiceImpl implements ReviewsService {
 	}
 
 	@Override
-	public int insert(ReviewsVO vo) {
+	public void insert(ReviewsVO vo, MemberProductImageVO file_vo) {
 		// TODO Auto-generated method stub
-		return reviewsDao.insert(vo);
+		reviewsDao.insert(vo, file_vo);
+		 
 	}
 
 	@Override
 	public int update(ReviewsVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return reviewsDao.update(vo);
 	}
 
 	@Override
 	public int delete(String reviews_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return reviewsDao.delete(reviews_id);
 	}
 
 }

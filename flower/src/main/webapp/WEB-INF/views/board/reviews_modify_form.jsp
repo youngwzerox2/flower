@@ -32,13 +32,17 @@
    <div class="feedback-area" id="box">
     <h2 class="heading">리뷰</h2>
        <form class="feedback-form">
-           <!-- <div class="group-input"></div> -->
+           <input name="reviews_id" type="hidden" value="${vo.reviews_id}" />
            <div class="form-field">
-               <input type="text" name="reviews_title" id="reviews_title" placeholder="reviews_title" class="input-field">
+               <input value="${ vo.reviews_title }" type="text" name="reviews_title" id="reviews_title" placeholder="reviews_title" class="input-field">
            </div>
            
            <div class="form-field mt-30">
-           	   <textarea name="reviews_content" id="reviews_content" placeholder="reviews_content" class="textarea-field"></textarea>
+           	   <textarea name="reviews_content" id="reviews_content" placeholder="reviews_content" class="textarea-field">${ vo.reviews_content }</textarea>
+           </div>
+           
+           <div>
+           	<input type="file" name="photo">
            </div>
            
            <div class="button-wrap pt-5" style="margin-top: 10px;">

@@ -3,12 +3,13 @@ package com.flower.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.flower.vo.InquiriesVO;
+import com.flower.vo.MemberProductImageVO;
+import com.flower.vo.OrderTableVO;
 import com.flower.vo.ReviewsVO;
 
 public interface ReviewsDAO {
 	
-	List<ReviewsVO> selectList();
+	List<OrderTableVO> selectList();
 	List<ReviewsVO> selectList(Map map);
 	ReviewsVO selectOne(String reviews_id);
 	
@@ -19,7 +20,7 @@ public interface ReviewsDAO {
 	int selectRowTotal(Map map);
 	
 	//추가
-	int insert(ReviewsVO vo);
+	void insert(ReviewsVO vo, MemberProductImageVO file_vo);
 	
 	//수정
 	int update(ReviewsVO vo);

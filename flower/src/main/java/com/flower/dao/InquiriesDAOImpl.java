@@ -50,7 +50,7 @@ public class InquiriesDAOImpl implements InquiriesDAO {
 	@Override
 	public int delete(String inquiries_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("inquiries.inquiriesDelete", inquiries_id);
 	}
 
 	@Override

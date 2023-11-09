@@ -12,6 +12,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<!-- sweetalert2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style_main.css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style_menu.css">
+ 	
+
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/inquiries.css">
 <script src="${ pageContext.request.contextPath }/resources/assets/js/board/reviews.js"></script>
 
@@ -24,8 +30,12 @@
       margin: auto;
       margin-top: 50px;   
    }
+   
+   
 
 </style>
+
+
 
 </head>
 <body>
@@ -43,7 +53,6 @@
    
     <h2 class="heading">리뷰</h2>
        <form class="feedback-form" id="send_form">
-           <!-- <div class="group-input"></div> -->
                <div class="form-field me-md-30 mb-30 mb-md-0">
 			   	   제목 : ${ vo.reviews_title }
                </div>
@@ -53,13 +62,13 @@
                </div>
                
                <div class="form-field me-md-30 mb-30 mb-md-0">
-                   답변내용 : ${ vo.reports_contents }
+                   답변내용 : ${ vo.reports_contents }                   
                </div>
 
 	           <div class="button-wrap pt-5" style="margin-top: 10px;">
 		           <c:if test="${ (vo.member_id eq member.member_id) }">
 		              <input type="button" value="수정" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_form('${ vo.reviews_id }');">
-		              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="del('${vo.reviews_id}');">
+		              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_del('${vo.reviews_id}');">
 		           </c:if>
 		           
 	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">

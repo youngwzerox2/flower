@@ -7,7 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.flower.vo.InquiriesVO;
+import com.flower.vo.MemberProductImageVO;
+import com.flower.vo.OrderTableVO;
 import com.flower.vo.ReviewsVO;
 
 @Repository
@@ -17,9 +18,10 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public List<ReviewsVO> selectList() {
+	public List<OrderTableVO> selectList() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("reviews.reviewsSelect");
+		System.out.println("List<OrderTableVO> selectList()");
+		return sqlSession.selectList("reviews.orderSelect");
 	}
 
 	@Override
@@ -47,9 +49,15 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 	}
 
 	@Override
-	public int insert(ReviewsVO vo) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("reviews.reviewsInsert",vo);
+	public void insert(ReviewsVO vo, MemberProductImageVO file_vo) {
+		
+		System.out.println("ReviewDAOImpl >> insert");
+		sqlSession.insert("reviews.reviewsInsert",vo);
+		
+		System.out.println(vo.toString());
+		System.out.println(file_vo.toString());
+		sqlSession.insert("reviews.reviewsFilename", file_vo);
+		
 	}
 
 	@Override
@@ -61,7 +69,8 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 	@Override
 	public int delete(String reviews_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("reviews.reviewsDelete", reviews_id);
 	}
+
 
 }

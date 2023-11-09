@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviews">
 
-	 <select id="reviewsSelect" resultType="com.flower.vo.ReviewsVO">
+	 <select id="orderSelect" parameterType="com.flower.vo.OrderTableVO" resultType="com.flower.vo.ReviewsVO">
 	 	SELECT IF(COUNT(*) > 0, 1, 0) as review_permission
 			FROM order_table 
 		WHERE member_id = #{member_id} 
@@ -54,18 +54,35 @@
 	 <!-- 추가 -->
 	<insert id="reviewsInsert" parameterType="com.flower.vo.ReviewsVO">
 	
-		insert into reviews values( #{ reviews_id },
-									#{ member_id },
-								    #{ product_id },
-								    #{ reviews_title },
-								    now(),
-								    #{ reviews_content },
-								    #{ reviews_score },
-								    #{ reports_cnt },
-								    #{ reports_contents },
-								  	now()
-									);
+		insert into reviews(reviews_id,
+		                    member_id,
+		                    product_id,
+		                    reviews_title,
+		                    reviews_register_date,
+		                    reviews_content,
+		                    reviews_score,
+		                    reports_cnt
+		                    )
+                    values( #{ reviews_id },
+							#{ member_id },
+						    #{ product_id },
+						    #{ reviews_title },
+						    now(),
+						    #{ reviews_content },
+						    #{ reviews_score },
+						    #{ reports_cnt }
+							)
 			
+	 </insert>
+	 
+	 <insert id="reviewsFilename" parameterType="com.flower.vo.MemberProductImageVO">
+	 	insert into member_product_image (member_product_image_uuid, 
+								  		  member_product_image_file_name,
+								          member_product_image_froute)
+						           values( #{ member_product_image_uuid }, 
+										   #{ member_product_image_file_name },
+										   #{ member_product_image_froute }
+										   )
 	 </insert>
 	 
 	 <update id="reviewsUpdate" parameterType="com.flower.vo.ReviewsVO">
@@ -74,5 +91,9 @@
 						   reviews_register_date   = now()
 		where reviews_id = #{ reviews_id };
 	 </update>
+	 
+	 <delete id="reviewsDelete" parameterType="string">
+	 	delete from reviews where reviews_id = #{ reviews_id }
+	 </delete>
 	 
 </mapper>
