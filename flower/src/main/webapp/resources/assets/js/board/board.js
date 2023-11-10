@@ -55,35 +55,12 @@ function del(inquiries_id){
 		
 	}//end_del
 
-function find(){
-		
-	var search      = $("#search").val();
-	var search_text = $("#search_text").val().trim();
-	
-	//전체검색이면 검색창 내용 지워라
-	if(search=='all'){
-		$("#search_text").val("");
-	}
-	
-	if(search!='all'&& search_text==''){
-		
-		alert('검색어를 입력하세요');
-		$("#search_text").val(""); //값지우기
-		$("#search_text").focus();
-		return;
-	}
-	
-	location.href = "product?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8");
-		
-}
-
 
 $(document).ready(function(){
 
 
 	$('#send').click(function(){
 		
-		alert('ddd');
 		var inquiries_title = $('#inquiries_title').val().trim();
 		var inquiries_cotent = $('#inquiries_cotent').val().trim();
 		
@@ -101,7 +78,7 @@ $(document).ready(function(){
 			return;
 		}
 		
-		$('#send_form').attr('action', 'insert');
+		$('#send_form').attr('action', 'inquiries_insert_form');
 		
 		$('#send_form').submit();
 
@@ -109,48 +86,10 @@ $(document).ready(function(){
 	
 });
 
-function add_comment(){
-
-	var c_content = $("#c_content").val().trim();
-			
-		if(c_content==''){
-			alert('내용을 입력하세요');
-			$("#c_content").val();
-			$("#c_content").focus();
-			return;
-		}
-
-}
 
 function modify_form(inquiries_id){
 	
-	location.href="modify_form?inquiries_id=" + inquiries_id
+	location.href="inquiries_modify_form?inquiries_id=" + inquiries_id
 	
 }
-
-
-function send(f){
-		
-		var inquiries_title  = f.inquiries_title.value.trim();
-		var inquiries_cotent = f.inquiries_cotent.value.trim();
-		
-		if(inquiries_title==''){
-			
-			alert('제목을 입력하세요')
-			f.inquiries_title.value='';
-			f.inquiries_title.focus();
-			return;
-		}
-		
-		if(inquiries_cotent==''){
-			
-			alert('내용을 입력하세요')
-			f.inquiries_cotent.value='';
-			f.inquiries_cotent.focus();
-			return;
-		}
-		
-		f.action = "modify";
-		f.submit();
-	}
 

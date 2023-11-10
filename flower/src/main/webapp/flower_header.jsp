@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- Jin's CSS for header logo-->
-<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
+<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css"> 
     
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
@@ -49,12 +49,12 @@
 														page</a></li>
 												<c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
 														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
 											</ul>
@@ -214,12 +214,12 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                                 <!-- flower: header(sticky) 로그인, 회원가입 연결요망! -->
                                           		 <c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
 														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
                                             </ul>
@@ -275,12 +275,12 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                         <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">Mypage</a></li>
                                        			<c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
 														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
                                     </ul>
