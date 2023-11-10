@@ -59,25 +59,13 @@
 					, P.PRODUCT_KEYWORD			AS PRODUCT_KEYWORD
 					, P.BLOOMING_SEASON			AS BLOOMING_SEASON
 					, P.BLOOMING_TIME			AS BLOOMING_TIME
-					, CASE
-						WHEN P.PET_FRIENDLY = 1 THEN "O"
-				    	ELSE "X"
-				  	END 						AS PET_FRIENDLY
-					, CASE
-						WHEN P.EASY_CARE = 1 THEN "O"
-				    	ELSE "X"
-				  	END 						AS EASY_CARE
+					, P.PET_FRIENDLY			AS PET_FRIENDLY
+					, P.EASY_CARE				AS EASY_CARE
 					, P.INVENTORY_QUANTITY		AS INVENTORY_QUANTITY
 					, P.PRODUCT_PRICE			AS PRODUCT_PRICE
 					, P.PRODUCT_REGISTER_DATE	AS PRODUCT_REGISTER_DATE
 					, P.PRODUCT_STATE			AS PRODUCT_STATE
-					, CASE 
-    					WHEN P.PRODUCT_LIGHT = "DL" THEN "직광"  
-    					WHEN P.PRODUCT_LIGHT = "IDL" THEN "간접광"  
-    					WHEN P.PRODUCT_LIGHT = "SH" THEN "그늘"  
-    					WHEN P.PRODUCT_LIGHT = "NM" THEN "일조량영향적음"  
-    					ELSE "알 수 없음"
-  					END AS PRODUCT_LIGHT
+					, P.PRODUCT_LIGHT			AS PRODUCT_LIGHT
 					, L.LIKES					AS LIKES
 				FROM PRODUCT P
 		  LEFT OUTER JOIN (SELECT 
@@ -226,12 +214,12 @@
 				 , BLOOMING_SEASON
 				 , BLOOMING_TIME
 				 , PET_FRIENDLY
-				 , EASY_CARE
+			  	 , EASY_CARE
+			  	 , PRODUCT_LIGHT
 				 , INVENTORY_QUANTITY
 				 , PRODUCT_PRICE
 				 , PRODUCT_REGISTER_DATE
 				 , PRODUCT_STATE
-				 , PRODUCT_LIGHT
 				 , LIKES
 	        FROM ADMIN_PRODUCTS
 	       WHERE PRODUCT_ID = #{productId}
@@ -249,20 +237,32 @@
     	INSERT INTO PRODUCT
 	    (
 	          PRODUCT_ID
-	        , PRODUCT_NAME
-	        , INVENTORY_QUANTITY
-	        , PRODUCT_PRICE
-	        , PRODUCT_REGISTER_DATE
-	        , PRODUCT_STATE
+			, PRODUCT_NAME
+			, PRODUCT_KEYWORD
+			, BLOOMING_SEASON
+			, BLOOMING_TIME
+			, PET_FRIENDLY
+			, EASY_CARE
+			, INVENTORY_QUANTITY
+			, PRODUCT_PRICE
+			, PRODUCT_STATE
+			, PRODUCT_LIGHT
+			, PRODUCT_REGISTER_DATE
 	    )
 	    VALUES
 	    (
 	          #{product_id}
-	        , #{product_name}
-	        , #{inventory_quantity}
-	        , #{product_price}
-	        , NOW()
-	        , #{product_state}
+			, #{product_name}
+			, #{product_keyword}
+			, #{blooming_season}
+			, #{blooming_time}
+			, #{pet_friendly}
+			, #{easy_care}
+			, #{inventory_quantity}
+			, #{product_price}
+			, #{product_state}
+			, #{product_light}
+			, NOW()
 	    )
     </insert>
     

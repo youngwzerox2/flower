@@ -82,6 +82,7 @@
                                 	<a class="nav-link" id="account-reviews-tab" data-bs-toggle="tab" role="tab" aria-controls="account-reviewsControll" href="#account-reviews" aria-expanded="false" style="text-align: right;">리뷰 관리</a>
                                 	<a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" role="tab" aria-controls="account-ordersControll" href="#account-orders" aria-expanded="false" style="text-align: right;">주문 관리</a>
                                 	<a class="nav-link" id="account-product-info-register-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-regiter" href="#account-product-register" aria-expanded="false" style="text-align: right; display: none;" >상품 등록</a>
+                                	<a class="nav-link" id="account-product-info-modify-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-modify" href="#account-product-modify" aria-expanded="false" style="text-align: right; display: none;" >상품 수정</a>
                                 	<a class="nav-link" id="account-product-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-detail" href="#account-product-detail" aria-expanded="false" style="text-align: right; display: none;" >상품 관리 상세</a>
                                 	<a class="nav-link" id="account-review-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-review-detail" href="#account-review-detail" aria-expanded="false" style="text-align: right; display: none;" >리뷰 관리 상세</a>
                                 	<a class="nav-link" id="account-order-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-order-detail" href="#account-order-detail" aria-expanded="false" style="text-align: right; display: none;" >주문 관리 상세</a>
@@ -180,78 +181,327 @@
 							                        <table class="table table-bordered table-hover mb-0">
 							                            <tbody id="productRegister">
 											                <tr>
-											                	<th>상품ID</th>
+											                	<th>상품ID*</th>
 											                	<td colspan='2'>
 											                		<input class="input-field" id="rProductID" type="text" placeholder="상품ID" style="width: 100%; font-weight: bold;" disabled>
 											                	</td>
 											                </tr>
 											                <tr>
-											                	<th>상품명</th>
+											                	<th>상품명*</th>
 											                	<td colspan='2'>
 											                		<input class="input-field" id="rProductName" type="text" placeholder="상품명" style="width: 100%">
 											                	</td>
 											                </tr>
+											                <tr>
+											                	<th>상품키워드*</th>
+											                	<td colspan='2'>
+											                		<input class="input-field" id="rProductKeyword" type="text" placeholder="상품키워드 ex) 사랑, 우정, ..." style="width: 100%">
+											                	</td>
+											                </tr>
 											              	<tr>
-											              		<th>재고수량</th>
+											              		<th>개화시기*</th>
 											              		<td colspan='2'>
-											                		<input class="input-field numberWithCommas" id="rProductCnt" type="text" placeholder="재고수량" style="width: 100%">
+												              		<ul>
+												                		<li class="short">
+									                                        <select class="nice-select" id="rbloomingSeasonSelectbox">
+									                                            <option value="">선택</option>
+									                                            <option value="all">사계졀</option>
+									                                            <option value="spring">봄</option>
+									                                            <option value="summer">여름</option>
+									                                            <option value="fall">가을</option>
+									                                            <option value="winter">겨울</option>
+									                                        </select>
+								                                    	</li>
+												              		</ul>
 											              		</td>
 											              	</tr>
 											              	<tr>
-											              		<th>상품가격</th>
+											              		<th>개화시간*</th>
+											              		<td colspan='2'>
+												              		<ul>
+												                		<li class="short">
+									                                        <select class="nice-select" id="rbloomingTimeSelectbox">
+									                                            <option value="">선택</option>
+									                                            <option value="D">낮</option>
+									                                            <option value="N">밤</option>
+									                                        </select>
+								                                    	</li>
+												              		</ul>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>펫 친화여부*</th>
+											              		<td colspan='2'>
+											              			<label>
+															            <input type="radio" name="rPetFriendly" value="1" checked> 예 (Yes)
+															        </label>
+															        <label>
+															            <input type="radio" name="rPetFriendly" value="0"> 아니오 (No)
+															        </label>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>채광*</th>
+											              		<td colspan='2'>
+												              		<ul>
+												                		<li class="short">
+									                                        <select class="nice-select" id="rlightSelectbox">
+									                                            <option value="">선택</option>
+									                                            <option value="DL">직광</option>
+									                                            <option value="IDL">간접광</option>
+									                                            <option value="SH">그늘</option>
+									                                            <option value="NM">일조량영향적음</option>
+									                                        </select>
+								                                    	</li>
+												              		</ul>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>초보자여부*</th>
+											              		<td colspan='2'>
+																	<label>
+																		<input type="radio" name="rBeginnerStatus" value="1" checked> 예 (Yes)
+																	</label>
+																	<label>
+																		<input type="radio" name="rBeginnerStatus" value="0"> 아니오 (No)
+																	</label>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품가격*</th>
 											              		<td colspan='2'>
 											                		<input class="input-field numberWithCommas" id="rProductPrice" type="text" placeholder="상품가격" style="width: 100%">
 											              		</td>
 											              	</tr>
 											              	<tr>
-											              		<th>상품노출</th>
+											              		<th>재고수량*</th>
 											              		<td colspan='2'>
-											                		<input class="input-field" id="rProductState" type="text" placeholder="상품노출(Y / N)" maxlength="1" style="width: 100%">
+											                		<input class="input-field numberWithCommas" id="rProductCnt" type="text" placeholder="재고수량" style="width: 100%">
 											              		</td>
 											              	</tr>
 											              	<tr>
-											              		<th>상품이미지</th>
-											              		<td>
-												              		<form id="registerImgsForm" method="post" enctype="multipart/form-data" action="../admin/registerImgsForm">
-											              				<table>
-												              				<tr>
-												              					<td style='border: 1px solid #000000;'>가이드</td>
-												              					<td style='border: 1px solid #000000;'>
-												              						<input class="imgFile" type="file" name="guidefile" maxlength="60" size="40" multiple>
-												              						<button class="deleteImage" data-type="guide">삭제</button>
-												              					</td>
-												              				</tr>
-												              				<tr>
-												              					<td style='border: 1px solid #000000;'>리스트</td>
-												              					<td style='border: 1px solid #000000;'>
-												              						<input class="imgFile" type="file" name="listfile" maxlength="60" size="40" multiple>
-												              						<button class="deleteImage" data-type="list">삭제</button>
-												              					</td>
-												              				</tr>
-												              				<tr>
-												              					<td style='border: 1px solid #000000;'>메인</td>
-												              					<td style='border: 1px solid #000000;'>
-												              						<input class="imgFile" type="file" name="mainfile" maxlength="60" size="40" multiple>
-												              						<button class="deleteImage" data-type="main">삭제</button>
-												              					</td>
-												              				</tr>
-												              				<tr>
-												              					<td style='border: 1px solid #000000;'>서브</td>
-												              					<td style='border: 1px solid #000000;'>
-												              						<input class="imgFile" type="file" name="subfile" maxlength="60" size="40" multiple>
-												              						<button class="deleteImage" data-type="sub">삭제</button>
-												              					</td>
-												              				</tr>
-												              			</table>
-												              		</form>
+											              		<th>상품노출*</th>
+											              		<td colspan='2'>
+											              			<label>
+															            <input type="radio" name="rProductState" value="Y" checked> 예 (Yes)
+															        </label>
+															        <label>
+															            <input type="radio" name="rProductState" value="N"> 아니오 (No)
+															        </label>
 											              		</td>
 											              	</tr>
+											              	<tr>
+															    <th>상품이미지*</th>
+															    <td>
+															        <form id="registerImgsForm" method="post" enctype="multipart/form-data" action="../admin/registerImgsForm">
+															            <table>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>가이드</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile guide" type="file" name="guidefile" maxlength="60" size="40" multiple alt="registerImg">
+															                        <div id="guide-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>리스트</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile list" type="file" name="listfile" maxlength="60" size="40" multiple alt="registerImg">
+															                        <div id="list-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>메인</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile main" type="file" name="mainfile" maxlength="60" size="40" multiple alt="registerImg">
+															                        <div id="main-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>서브</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile sub" type="file" name="subfile" maxlength="60" size="40" multiple alt="registerImg">
+															                        <div id="sub-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															            </table>
+															        </form>
+															    </td>
+															</tr>
 							                            </tbody>
 							                        </table>
 							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 89%;">
 									                    <ul>
 										                    <li id="cancelProductRegister" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
 										                    <li id="goProductRegister" class="mb-xs mt-xs mr-xs btn btn-danger"> 등록 </li>
+									                    </ul>
+							                     	</div>
+						                    	</div>
+									        </div>
+		                                </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-product-modify" aria-labelledby="account-product-tab">
+								    <div class="myaccount-products">
+								        <h4 class="small-title">상품 수정</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="productModify">
+											                <tr>
+											                	<th>상품ID*</th>
+											                	<td colspan='2'>
+											                		<input class="input-field" id="mProductID" type="text" placeholder="상품ID" style="width: 100%; font-weight: bold;" disabled>
+											                	</td>
+											                </tr>
+											                <tr>
+											                	<th>상품명*</th>
+											                	<td colspan='2'>
+											                		<input class="input-field" id="mProductName" type="text" placeholder="상품명" style="width: 100%">
+											                	</td>
+											                </tr>
+											                <tr>
+											                	<th>상품키워드*</th>
+											                	<td colspan='2'>
+											                		<input class="input-field" id="mProductKeyword" type="text" placeholder="상품키워드 ex) 사랑, 우정, ..." style="width: 100%">
+											                	</td>
+											                </tr>
+											              	<tr>
+											              		<th>개화시기*</th>
+											              		<td colspan='2'>
+												              		<ul>
+												                		<li class="short">
+									                                        <select class="nice-select" id="mbloomingSeasonSelectbox">
+									                                            <option value="">선택</option>
+									                                            <option value="all">사계졀</option>
+									                                            <option value="spring">봄</option>
+									                                            <option value="summer">여름</option>
+									                                            <option value="fall">가을</option>
+									                                            <option value="winter">겨울</option>
+									                                        </select>
+								                                    	</li>
+												              		</ul>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>개화시간*</th>
+											              		<td colspan='2'>
+												              		<ul>
+												                		<li class="short">
+									                                        <select class="nice-select" id="mbloomingTimeSelectbox">
+									                                            <option value="">선택</option>
+									                                            <option value="D">낮</option>
+									                                            <option value="N">밤</option>
+									                                        </select>
+								                                    	</li>
+												              		</ul>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>펫 친화여부*</th>
+											              		<td colspan='2'>
+											              			<label>
+															            <input type="radio" name="mPetFriendly" value="1" checked> 예 (Yes)
+															        </label>
+															        <label>
+															            <input type="radio" name="mPetFriendly" value="0"> 아니오 (No)
+															        </label>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>채광*</th>
+											              		<td colspan='2'>
+												              		<ul>
+												                		<li class="short">
+									                                        <select class="nice-select" id="mlightSelectbox">
+									                                            <option value="">선택</option>
+									                                            <option value="DL">직광</option>
+									                                            <option value="IDL">간접광</option>
+									                                            <option value="SH">그늘</option>
+									                                            <option value="NM">일조량영향적음</option>
+									                                        </select>
+								                                    	</li>
+												              		</ul>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>초보자여부*</th>
+											              		<td colspan='2'>
+																	<label>
+																		<input type="radio" name="mBeginnerStatus" value="1" checked> 예 (Yes)
+																	</label>
+																	<label>
+																		<input type="radio" name="mBeginnerStatus" value="0"> 아니오 (No)
+																	</label>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품가격*</th>
+											              		<td colspan='2'>
+											                		<input class="input-field numberWithCommas" id="mProductPrice" type="text" placeholder="상품가격" style="width: 100%">
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>재고수량*</th>
+											              		<td colspan='2'>
+											                		<input class="input-field numberWithCommas" id="mProductCnt" type="text" placeholder="재고수량" style="width: 100%">
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품노출*</th>
+											              		<td colspan='2'>
+											              			<label>
+															            <input type="radio" name="mProductState" value="Y" checked> 예 (Yes)
+															        </label>
+															        <label>
+															            <input type="radio" name="mProductState" value="N"> 아니오 (No)
+															        </label>
+											              		</td>
+											              	</tr>
+											              	<tr>
+											              		<th>상품이미지*</th>
+											              		<td>
+												              		<form id="modifyImgsForm" method="post" enctype="multipart/form-data" action="../admin/modifyImgsForm">
+															            <table>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>가이드</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile guide" type="file" name="guidefile" maxlength="60" size="40" multiple alt="modifyImg">
+															                        <div id="guide-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>리스트</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile list" type="file" name="listfile" maxlength="60" size="40" multiple alt="modifyImg">
+															                        <div id="list-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>메인</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile main" type="file" name="mainfile" maxlength="60" size="40" multiple alt="modifyImg">
+															                        <div id="main-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															                <tr>
+															                    <td style='border: 1px solid #000000;'>서브</td>
+															                    <td style='border: 1px solid #000000;'>
+															                        <input class="imgFile sub" type="file" name="subfile" maxlength="60" size="40" multiple alt="modifyImg">
+															                        <div id="sub-file-list" class="file-list-container"></div>
+															                    </td>
+															                </tr>
+															            </table>
+															        </form>
+											              		</td>
+											              	</tr>
+							                            </tbody>
+							                        </table>
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 81%;">
+									                    <ul>
+										                    <li id="cancelProductModify" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+										                    <li id="goModifyCancel" class="mb-xs mt-xs mr-xs btn btn-warning"> 돌아가기 </li>
+										                    <li id="goProductModify" class="mb-xs mt-xs mr-xs btn btn-danger"> 수정 </li>
 									                    </ul>
 							                     	</div>
 						                    	</div>
