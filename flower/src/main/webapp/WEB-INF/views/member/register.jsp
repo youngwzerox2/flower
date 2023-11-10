@@ -11,7 +11,6 @@
 <title>꽃물주</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>꽃물주 - 회원가입</title>
 <meta name="robots" content="index, follow" />
 <meta name="description"
 	content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">

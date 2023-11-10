@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,9 @@ public class MemberController {
 	@Autowired
 	private CompanyService companyService;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	// 로그인 페이지 부르기
 	@RequestMapping("login")
 	public String login() {
@@ -50,21 +55,25 @@ public class MemberController {
 	// 회원가입 post 하기
 	@PostMapping("register")
 	public String postRegister(MemberVO vo) throws Exception {
-		System.out.println("회원가입입력 : " +vo);
-		logger.info("post register");
-		int result = memberService.idChk(vo);
-		try {
-			if(result == 1) {
-				return "member/register";
-			}else if(result == 0) {
-				memberService.register(vo);
-			}
-			
-		}catch (Exception e) {
-			throw new RuntimeException();
-		}
-		
-		return "redirect:/member/login";
+	    logger.info("회원가입 입력: {}", vo);
+
+	    vo.encodePassword(passwordEncoder);
+
+	    try {
+	        int result = memberService.idChk(vo);
+	        if (result == 1) {
+	            logger.warn("중복된 아이디입니다: {}", vo.getMember_id());
+	            return "member/register";
+	        } else if (result == 0) {
+	            memberService.register(vo);
+	            logger.info("회원가입이 완료되었습니다: {}", vo.getMember_id());
+	        }
+	    } catch (Exception e) {
+	        logger.error("회원가입 중 오류 발생", e);
+	        throw new RuntimeException("회원가입 중 오류 발생", e);
+	    }
+
+	    return "redirect:/member/login";
 	}
 	
 	// 로그인 post
@@ -91,6 +100,8 @@ public class MemberController {
 		}
 	  }
 	}
+
+	
 	
 	// 로그아웃 get
 	@GetMapping("logout")

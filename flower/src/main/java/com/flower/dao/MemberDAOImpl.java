@@ -28,7 +28,6 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberVO result = mybatis.selectOne("memberDAO.login", vo);
 		
 		// 로그인한 회원의 장바구니 상품목록 개수 by Jin
-
 		Integer member_cart_quan = mybatis.selectOne("memberDAO.getCartQuan", result.getMember_id());
 		if(member_cart_quan == null) {
 			member_cart_quan = 0;

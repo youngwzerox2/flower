@@ -4,7 +4,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <% String pjName 	= "/flower"; %>
-<% String imgRoute  = "/resources/product/imgs/"; %>
+<% String imgRoute  = "/resources/product/imgs"; %>
 <fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" var="commaPrice" />
 <!DOCTYPE html>
 <html lang="ko">

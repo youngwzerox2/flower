@@ -42,10 +42,11 @@ window.addEventListener('click', function(event) {
 
 // 회원가입하기
 $("#join").click(function(e) { 
+//alert('회원가입');
     e.preventDefault(); // 기본 폼 제출 방지
 
 		    if ($("#member_name").val() == "") {
-		        openModal("회원명을 입력해주세요.");
+		        openModal("회원명을 입력해주세요.222");
 		        $("#member_name").focus();
 		        return;
 		    } 
@@ -109,12 +110,14 @@ $("#join").click(function(e) {
 		    
         	
          // 여기에서 비밀번호 변경 처리 로직을 수행합니다.
-        $("#resetpassword").submit();
+        $("#regForm").submit();
+        
+        /*
         openModal("회원가입이 완료되었습니다. 3초후 자동으로 로그인 페이지로 이동합니다");
         setTimeout(function() {
 				    location.href = "/flower/member/login"; 
 				}, 3000);
-              
+         */     
      
          
          

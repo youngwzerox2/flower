@@ -2,6 +2,7 @@ package com.flower.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.flower.dao.CompanyDAO;
 import com.flower.vo.CompanyVO;
@@ -13,6 +14,7 @@ public class CompanyServiceImpl implements CompanyService{
 	private CompanyDAO companyDAO;
 
 	@Override
+	@Transactional
 	public CompanyVO getCompanyPolicy() throws Exception {
 		return companyDAO.getCompanyPolicy();
 	}

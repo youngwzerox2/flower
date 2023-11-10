@@ -31,6 +31,11 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
+	<!-- logback.xml 또는 log4j.xml에서 설정 변경 -->
+	<logger name="org.springframework" level="DEBUG"/>
+	<logger name="org.mybatis" level="TRACE"/>
+	
 
 	<!-- Root Logger -->
 	<root>

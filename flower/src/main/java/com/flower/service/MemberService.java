@@ -25,6 +25,7 @@ public interface MemberService {
 	// 비밀번호 초기화(찾기)
 	public void changePassword(MemberVO vo) throws Exception;
 
+	MemberVO loginWithEncryptedPassword(MemberVO vo) throws Exception;
 	
 
 }
