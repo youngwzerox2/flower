@@ -42,14 +42,14 @@
  		const iCon = $(this).find('i');
  		
  		if(iCon.hasClass('pe-7s-leaf')) {
- 			iCon.removeClass('pe-7s-leaf');
- 			iCon.addClass('pe-7f-leaf');
- 			iCon.css({'font-weight': '200', 'color': '#8bc852'});
  			$.ajax({
  				type: 'GET',
  				url: '/flower/love?product_id=' + prod_id,
  				success: function(result){
  					console.log("love 입력 success");
+ 					iCon.removeClass('pe-7s-leaf');
+ 					iCon.addClass('pe-7f-leaf');
+ 					iCon.css({'font-weight': '200', 'color': '#8bc852'});
  				},
  				error: function(err){
  					console.log("love 입력 failed");
