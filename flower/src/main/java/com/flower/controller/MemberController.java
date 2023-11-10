@@ -93,7 +93,7 @@ public class MemberController {
 			if("L".equals(memberStatus) || "O".equals(memberStatus)) {
 				// "L" 또는 "O" 상태의 사용자가 로그인을 시도한 경우
 				return 2;
-		}else {
+			}else {
 			// 로그인이 성공한 경우
 			session.setAttribute("member", login);
 			return 0;

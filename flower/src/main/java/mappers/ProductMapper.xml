@@ -25,7 +25,6 @@
 			AND p.PRODUCT_LIGHT = #{product_light}
 		</if>
 		GROUP BY p.PRODUCT_ID
-		LIMIT 0, 12
 	</select>
 	
 	<!-- 선택한 카테고리에 해당하는 상품의 개수 조회(출력) by 최진화 -->
