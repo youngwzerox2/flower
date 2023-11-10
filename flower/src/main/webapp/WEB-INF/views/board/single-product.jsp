@@ -49,7 +49,6 @@
         </div>
     </div>
     <div class="main-wrapper">
-
  
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
@@ -1070,7 +1069,7 @@
                         
                             <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
+                                    <a class="active tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
                                         상품정보
                                     </a>
                                 </li>
@@ -1082,14 +1081,14 @@
                                 </li>
 
                                 <li class="nav-item" role="presentation">
-                                    <a class="active tab-btn" id="inquiries-tab" data-bs-toggle="tab" href="#inquiries" role="tab" aria-controls="inquiries" aria-selected="false">
+                                    <a class="tab-btn" id="inquiries-tab" data-bs-toggle="tab" href="#inquiries" role="tab" aria-controls="inquiries" aria-selected="false">
                                         문의
                                     </a>
                                 </li>
                                 
                                 <li class="nav-item" role="presentation">
                                     <a class="tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
-                                        배송/교환/환불/판매자정보
+                                        QnA
                                     </a>
                                 </li>
 
@@ -1097,7 +1096,7 @@
                             
                             <!-- 상품정보 -->
                             <div class="tab-content product-tab-content">
-                                <div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
+                                <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
                                     <div class="product-information-body">
                                         <h4 class="title">Shipping</h4>
                                         <p class="short-desc mb-4">The item will be shipped from China. So it need 15-20 days to
@@ -1116,7 +1115,7 @@
                                     </div>
                                 </div>
                                 
-                                <!-- 배송/교환/환불/판매자정보 -->
+                                <!-- QnA -->
                                 <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="product-description-body">
                                     	<h3>배송/교환/환불/판매자정보</h3>
@@ -1142,17 +1141,6 @@
 	                                    <input class="i_btn_writing" type="button" value="리뷰쓰기" onclick="insert_reviews_form();">
                                     </div>
                                     
-                                    <div class="i_select_box">
-                                		<div class="i_select">
-                                			<select id="reviews_search">
-                                				<option value="reviews_all">전체</option>
-                                				<option value="reviews_title">제목</option>
-                                			</select>
-                                				<input id="reviews_search_text" value="${ param.reviews_search_text }" placeholder="검색어를 입력하세요">
-                                				<input class="btn btn-primary btn-sm" type="button" value="검색" onclick="reviews_find();">
-                                		</div>
-                                 	</div>
-
                                     
                                     <!-- Data없는경우 -->
                                 	<c:if test="${ empty reviews_list }">
@@ -1191,7 +1179,7 @@
                                 	</div>
                                 </div>
   
-                                <div class="tab-pane fade show active" id="inquiries" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="tab-pane fade" id="inquiries" role="tabpanel" aria-labelledby="reviews-tab">
                                     <div class="product-review-body">
                                     
                                     <!-- 문의게시판 -->	
@@ -1203,17 +1191,6 @@
                                     		<!-- 문의하기 -->
                                     		<div class="inquiries_writing">
 	                                    		<input class="i_btn_writing" type="button" value="문의하기" onclick="insert_form();">
-                                    		</div>
-                                  	
-                                    		<div class="i_select_box">
-                                    			<div class="i_select">
-                                    				<select id="search">
-                                    					<option value="all">전체</option>
-                                    					<option value="title">제목</option>
-                                    				</select>
-                                    					<input id="search_text" value="${ param.search_text }" placeholder="검색어를 입력하세요">
-                                    					<input class="btn btn-primary btn-sm" type="button" value="검색" onclick="find();">
-                                    			</div>
                                     		</div>
                                     		 
                                     		<div class="inquiries_info">

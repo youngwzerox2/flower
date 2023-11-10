@@ -50,6 +50,7 @@ public class BoardController {
 	ServletContext application; 
 	
 	//목록출력
+	/*
 	@RequestMapping("product")
 	public String product(@RequestParam(value = "page",      		   required = false, defaultValue = "1")   int nowPage, 
 						  @RequestParam(value = "revipage",  		   required = false, defaultValue = "1")   int revi_nowPage,			              
@@ -119,7 +120,8 @@ public class BoardController {
 		
 		return "board/single-product";
 	}
-	
+	*/
+	/*
 	//문의하기 폼띄우기
 	@RequestMapping("insert_form")
 	public String insert_form() {
@@ -150,6 +152,7 @@ public class BoardController {
 		
 		return "redirect:product";
 	}
+	
 	
 	//문의하기 수정폼
 	@RequestMapping("modify_form")
@@ -285,5 +288,5 @@ public class BoardController {
 		
 		return "redirect:product";
 	}
-	
+	*/
 }

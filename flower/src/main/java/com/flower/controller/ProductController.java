@@ -1,8 +1,10 @@
 package com.flower.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +16,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flower.mycommon.MyConstant;
+import com.flower.service.InquiriesService;
 import com.flower.service.ProductService;
+import com.flower.service.ReviewsService;
+import com.flower.util.Paging;
+import com.flower.util.Paging2;
+import com.flower.vo.InquiriesVO;
 import com.flower.vo.LoveVO;
+import com.flower.vo.MemberProductImageVO;
 import com.flower.vo.MemberVO;
 import com.flower.vo.PagingVO;
 import com.flower.vo.ProductVO;
+import com.flower.vo.ReviewsVO;
 
 @Controller
 public class ProductController {
+	
+	@Autowired
+	InquiriesService inquiriesService;
+	
+	@Autowired
+	ReviewsService reviewsService;
+	
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	ServletContext application; 
 	
 	private ProductService productService;
 	
@@ -95,9 +117,9 @@ public class ProductController {
 	
 	// 상품 검색 결과 가져오기(목록)
 	
-	
+	/*
 	// 상품 상세 페이지 가져오기
-	@RequestMapping("/product/contents/product-content")
+	@RequestMapping("/product/contents/product-content2")
 	public void getProdContent(HttpSession sess, ProductVO pvo, Model m) {
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		
@@ -121,6 +143,233 @@ public class ProductController {
 		
 		//return "/product/contents/product-content?product_id=" + vo.getProduct_id();
 	}
+	*/
+	
+	@RequestMapping("/product/contents/product-content")
+	public String getProdContent(HttpSession sess, 
+			                   ProductVO pvo, 
+			                   Model m, 
+			                   @RequestParam(value = "page",   required = false, defaultValue = "1") int nowPage,
+			                   @RequestParam(value = "r_page", required = false, defaultValue = "1") int nowPage2
+			                   
+								) {
+		
+		MemberVO mvo = (MemberVO)sess.getAttribute("member");
+		
+		// 로그인한 멤버인지 확인 한 후, 찜상태까지 조회하여 add
+		if(mvo != null && mvo.getMember_id() != null) {
+			LoveVO lvo = new LoveVO();
+			lvo.setMember_id(mvo.getMember_id());
+			lvo.setProduct_id(Integer.valueOf(pvo.getProduct_id()));
+			Integer love_result = productService.isLove(lvo);
+			System.out.println("찜한 상태인지 조회결과: " + love_result);
+			
+			ProductVO member_result = productService.getProd(pvo);
+			m.addAttribute("prod", member_result);
+			m.addAttribute("love", love_result);
+		} else {
+			ProductVO result = productService.getProd(pvo);
+			m.addAttribute("prod", result);
+		}
+		
+		//페이지 가져올 범위 계산
+		int start = (nowPage-1) * MyConstant.inquiries.BLOCK_LIST + 1;
+		int end   = start + MyConstant.inquiries.BLOCK_LIST - 1;
+		
+		int r_start = (nowPage2-1) * MyConstant.reviews.BLOCK_LIST + 1;
+		int r_end   = r_start + MyConstant.reviews.BLOCK_LIST - 1;
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		
+		Map map2 = new HashMap();
+		map2.put("r_start", r_start);
+		map2.put("r_end"  , r_end);
+		
+		//문의목록출력
+		List<InquiriesVO> list = inquiriesService.selectList(map);
+		System.out.println("문의리스트" +  list.size());
+		
+		//리뷰목록출력
+		List<ReviewsVO> r_list = reviewsService.selectList(map2);
+		System.out.println("리뷰리스트" +  r_list.size());
+		
+		//문의 게시물 갯수 구하기
+		int rowTotal = inquiriesService.selectRowTotal(map);
+		System.out.println("문의:" +  rowTotal);
+		
+		//리뷰 게시물 갯수 구하기
+		int r_rowTotal = reviewsService.selectRowTotal(map2);
+		System.out.println("리뷰:" +  r_rowTotal);
+		
+		//PagingMenu만들기
+		String pageMenu = Paging.getPaging("/flower/product/contents/product-content?product_id=" + pvo.getProduct_id() + "&", 
+							                nowPage, 
+							                rowTotal,
+							                MyConstant.inquiries.BLOCK_LIST, 
+							                MyConstant.inquiries.BLOCK_PAGE);
+		
+		String r_pageMenu = Paging2.getPaging("/flower/product/contents/product-content?product_id=" + pvo.getProduct_id() + "&", 
+												nowPage2, 
+												r_rowTotal,
+								                MyConstant.reviews.BLOCK_LIST, 
+								                MyConstant.reviews.BLOCK_PAGE);
+		
+		//문의게시판 request binding
+		m.addAttribute("list", list);
+		m.addAttribute("pageMenu", pageMenu);
+		
+		m.addAttribute("r_list", r_list);
+		m.addAttribute("r_pageMenu", r_pageMenu);
+		
+//		System.out.println("controller연결은 됨!: " + vo.getProduct_id());
+//		productService.getProd(vo);
+		
+		//return "/product/contents/product-content?product_id=" + vo.getProduct_id();
+		
+		return "product/contents/product-content2";
+		
+	}
+	
+	//문의하기 폼띄우기
+	@RequestMapping("product/contents/insert_form")
+	public String insert_form() {
+		
+		return "product/contents/inquiries_insert_form";
+	}
+	
+	//문의하기추가
+	@RequestMapping("product/contents/inquiries_insert_form")
+	public String inquiries_insert_form(InquiriesVO vo, ProductVO pvo, Model m) {
+		
+		
+		System.out.println("추가추가" + vo);
+		
+		inquiriesService.insert(vo);
+		
+		return "redirect:product-content?product_id=" + pvo.getProduct_id();
+	}
+	
+	//문의하기 뷰
+	@RequestMapping("product/contents/view")
+	public String view(String inquiries_id, Model model) {
+		
+		InquiriesVO vo = inquiriesService.selectOne(inquiries_id);
+		
+		model.addAttribute("vo", vo);
+		
+		return "product/contents/inquiries_view";
+	}
+	
+	@RequestMapping("product/contents/inquiries_modify_form")
+	public String modify_form(String inquiries_id,Model model) {
+		
+		//1.수정 데이터 정보 1건 얻어오기
+		InquiriesVO vo = inquiriesService.selectOne(inquiries_id);
+		
+		System.out.println(vo);
+		
+		//2.결과적으로 request binding
+		model.addAttribute("vo", vo);
+		
+		return "product/contents/inquiries_modify_form";
+	}
+	/*
+	//수정하기
+	@RequestMapping("product/contents/inquiries_modify_form")
+	public String modify(InquiriesVO vo, Model model) {
+		
+		inquiriesService.update(vo);
+		
+		System.out.println(vo);
+		
+		model.addAttribute("inquiries_id", vo.getInquiries_id());
+		
+		return "redirect:view";
+	}
+	*/
+	
+	//삭제
+	@RequestMapping("product/contents/inquiries_delete")
+	public String inquiries_delete(String inquiries_id, ProductVO pvo, Model model) {
+		
+		inquiriesService.delete(inquiries_id);
+		
+		return "redirect:product-content?product_id=" + pvo.getProduct_id();
+	}
+	
+	//리뷰쓰기 폼띄우기
+	@RequestMapping("product/contents/insert_reviews_form")
+	public String insert_reviews_form() {
+		
+		return "product/contents/reviews_insert_form";
+	}
+	
+	//리뷰쓰기 추가
+	@RequestMapping("product/contents/reviews_insert")
+	public String reviews_insert(ReviewsVO vo, Model model ) {
+		
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		vo.setMember_id(member.getMember_id());
+		
+		System.out.println(vo);
+		
+		
+		reviewsService.insert(vo);
+		
+		return "redirect:product";
+	}
+	
+	//리뷰쓰기 뷰
+	@RequestMapping("product/contents/reviews_view")
+	public String reviews(String reviews_id, Model model) {
+		
+		ReviewsVO vo = reviewsService.selectOne(reviews_id);
+		
+		System.out.println("reviews:"+vo);
+		model.addAttribute("vo", vo);
+		
+		return "product/contents/reviews_view";
+	}
+	
+	//리뷰폼
+	@RequestMapping("product/contents/reviews_modify_form")
+	public String reviews_modify_form(String reviews_id,Model model) {
+		
+		//1.수정 데이터 정보 1건 얻어오기
+		ReviewsVO vo = reviewsService.selectOne(reviews_id);
+		System.out.println(vo);
+		
+		//2.결과적으로 request binding
+		model.addAttribute("vo", vo);
+		
+		return "product/contents/reviews_modify_form";
+	}
+	
+	//수정하기
+	@RequestMapping("product/contents/reviews_modify")
+	public String reviews_modify(ReviewsVO vo, Model model) {
+		
+		reviewsService.update(vo);
+		
+		System.out.println("reviews_modify"+vo);
+		
+		model.addAttribute("reviews_id", vo.getReviews_id());
+		
+		return "redirect:reviews";
+	}
+	
+	//삭제
+	@RequestMapping("product/contents/reviews_delete")
+	public String reviews_delete(String reviews_id, Model model) {
+		
+		reviewsService.delete(reviews_id);
+		
+		return "redirect:product";
+	}
+	
 	
 	
 	// 상품 등록 → 관리자 화면에서 다룬다.

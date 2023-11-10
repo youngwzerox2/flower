@@ -48,12 +48,12 @@
 														page</a></li>
 												<c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
 														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
 											</ul>
