@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<!-- Jin's CSS for header logo-->
+<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
     
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
