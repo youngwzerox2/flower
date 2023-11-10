@@ -11,12 +11,13 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FlowerOwner(꽃물주)</title>
+    <title>꽃을 내 곁에, 꽃사수</title>
+    
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<%=pjName %>/resources/assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="<%=pjName %>/resources/assets/images/logo/tulips.png" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
@@ -76,7 +77,7 @@
                                 <h2 class="title">그대 모습은 <br> 보랏빛처럼</h2>
                                 <p class="short-desc">살며시 다가왔지</p>
                                 <div class="btn-wrap">
-                                    <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
+                                    <a class="btn btn-custom-size xl-size btn-pronia-primary" href="">Discover Now</a>
                                 </div>
                             </div>
                             <div class="slide-img">
@@ -96,7 +97,7 @@
                                 <h2 class="title">가을엔 <br> 역시</h2>
                                 <p class="short-desc">별헤는 밤이면 들려오는 그대의 음성</p>
                                 <div class="btn-wrap">
-                                    <a class="btn btn-custom-size xl-size btn-pronia-primary" href="shop.html">Discover Now</a>
+                                    <a class="btn btn-custom-size xl-size btn-pronia-primary" href="">Discover Now</a>
                                 </div>
                             </div>
                             <div class="slide-img">

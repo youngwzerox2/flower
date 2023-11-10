@@ -49,14 +49,13 @@ public class ReviewsDAOImpl implements ReviewsDAO {
 	}
 
 	@Override
-	public void insert(ReviewsVO vo, MemberProductImageVO file_vo) {
+	public int insert(ReviewsVO vo) {
 		
 		System.out.println("ReviewDAOImpl >> insert");
 		sqlSession.insert("reviews.reviewsInsert",vo);
 		
 		System.out.println(vo.toString());
-		System.out.println(file_vo.toString());
-		sqlSession.insert("reviews.reviewsFilename", file_vo);
+		return sqlSession.insert("reviews.reviewsInsert", vo);
 		
 	}
 

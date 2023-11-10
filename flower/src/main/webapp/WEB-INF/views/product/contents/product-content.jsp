@@ -4,7 +4,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <% String pjName 	= "/flower"; %>
-<% String imgRoute  = "/resources/product/imgs/"; %>
+<% String imgRoute  = "/resources/product/imgs"; %>
 <fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" var="commaPrice" />
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>꽃물주-상품상세</title>
+    <title>사랑하는 꽃에게 물을 줘요</title>
     <meta name="robots" content="index, follow" />
     <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -778,5 +778,5 @@
 
     </div>
     <!--page-content JS (flower: 추후 footer에 담아야 할..듯?)-->
-    <script src="<%=pjName %>/resources/assets/js/product/product-content.js"></script>
+<script src="<%=pjName %>/resources/assets/js/product/product-content.js"></script>
 <%@include file="/flower_footer.jsp" %>

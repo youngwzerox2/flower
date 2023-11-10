@@ -61,6 +61,7 @@ $(function() {
                     member_password: password
                 },
                 success: function(response) {
+                    //alert(response);
                     if (response == 0) {
                         //openModal("로그인에 성공하였습니다! 메인페이지로 이동합니다"); // 로그인 성공 알림
                        window.location.href = "/flower/flower_main.jsp"; // 메인 페이지로 리다이렉트

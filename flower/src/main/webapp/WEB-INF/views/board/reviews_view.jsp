@@ -71,7 +71,7 @@
 		              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_del('${vo.reviews_id}');">
 		           </c:if>
 		           
-	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='/product/contents/product-content'">
 	           </div>
        </form>
    </div>

@@ -24,11 +24,6 @@ public class ProductServiceImpl implements ProductService{
 	} // constructor
 	
 	
-	@Override
-	public List<ProductVO> getAllProdList() {
-		
-		return null;
-	}
 
 	// 선택된 카테고리 상품 목록
 	@Override
@@ -38,7 +33,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	
-	// 선택한 카테고리의 상품개수 Read
+	// 선택한 카테고리의 상품개수
 	@Override
 	public Integer getProdCateQuan(ProductVO vo) {
 		return productDao.getProdCateQuan(vo);
@@ -69,6 +64,12 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Integer isLove(LoveVO vo) {
 		return productDao.isLove(vo);
+	}
+
+	@Override
+	public List<ProductVO> getAllProdList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

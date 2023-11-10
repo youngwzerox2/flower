@@ -21,7 +21,7 @@
 					    	 where reviews_title LIKE '%${ reviews_title }%'	
 					    ) r
 					   ) ranked
-		WHERE no BETWEEN ${ revi_start } AND ${ revi_end }
+		WHERE no BETWEEN ${ r_start } AND ${ r_end }
 	 </select>
 	
 	<!-- 검색 조건별 -->

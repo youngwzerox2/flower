@@ -56,3 +56,32 @@
 	80% { opacity: 0; }
 	100% { opacity: 0; }
 }
+
+
+
+/*---- 상품 목록 정렬/검색 조건 바-------*/
+
+#product-filter-form li{
+	display: inline-block;
+	
+	margin-left: 5px;
+}
+
+#filter-title {
+	font-size: 30px;
+	font-weight: 300;
+	
+}
+
+#product-filter-apply {
+	margin-right: 20px; 
+}
+
+.product-filter-bar-jin {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-weight: 200;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border: 1px solid #ddd;
+	
+}

@@ -49,7 +49,7 @@ public class Paging {
 		sb = new StringBuffer();
 //-----그룹페이지처리 이전 --------------------------------------------------------------------------------------------		
 		if(isPrevPage){
-			sb.append("<a href ='"+pageURL+"?page=");
+			sb.append("<a href ='"+pageURL+"page=");
 			sb.append(startPage-1);
 			sb.append("'><</a>");
 		}else
@@ -66,7 +66,7 @@ public class Paging {
 				sb.append(i);
 				sb.append("</font></b>");
 			}else{//현재 페이지가 아니면
-				sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<a href='"+pageURL+"?page=");
+				sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<a href='"+pageURL+"page=");
 				sb.append(i);
 				sb.append("'>");
 				sb.append(i);
@@ -78,7 +78,7 @@ public class Paging {
 		
 //-----그룹페이지처리 다음 ----------------------------------------------------------------------------------------------
 		if(isNextPage){
-			sb.append("<a href='"+pageURL+"?page=");
+			sb.append("<a href='"+pageURL+"page=");
 			sb.append(endPage+1);
 			sb.append("'>></a>");
 		}else
@@ -131,7 +131,7 @@ public class Paging {
 		sb = new StringBuffer();
 		//-----그룹페이지처리 이전 --------------------------------------------------------------------------------------------		
 		if(isPrevPage){
-		sb.append("<a href ='"+pageURL+"?page=");
+		sb.append("<a href ='"+pageURL+"page=");
 		sb.append(startPage-1);
 		sb.append(searchFilter);
 		sb.append("'><</a>");
@@ -149,7 +149,7 @@ public class Paging {
 		sb.append(i);
 		sb.append("</font></b>");
 		}else{//현재 페이지가 아니면
-		sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<a href='"+pageURL+"?page=");
+		sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<a href='"+pageURL+"page=");
 		sb.append(i);
 		sb.append(searchFilter);
 		sb.append("'>");
@@ -162,7 +162,7 @@ public class Paging {
 		
 		//-----그룹페이지처리 다음 ----------------------------------------------------------------------------------------------
 		if(isNextPage){
-		sb.append("<a href='"+pageURL+"?page=");
+		sb.append("<a href='"+pageURL+"page=");
 		sb.append(endPage+1);
 		sb.append(searchFilter);
 		sb.append("'>></a>");

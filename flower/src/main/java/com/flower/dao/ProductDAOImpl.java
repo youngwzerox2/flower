@@ -16,14 +16,18 @@ public class ProductDAOImpl implements ProductDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	// 상품 목록 출력
+	// 상품 목록 출력 by 최진화
 	public List<ProductVO> getCateProdList(ProductVO vo){
+		// System.out.println("Dao로 넘어온 vo: " + vo);
+		List<ProductVO> result = null;
+		// 페이징 테스트를 위해 vo가 혹시 null값일 때를 구별 
 		if(vo != null) {
-			List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList", vo);
+			result = mybatis.selectList("productDAO.getCateProdList", vo);
 		} else {
-			List<ProductVO> result = mybatis.selectList("productDAO.getCateProdList");
+			result = mybatis.selectList("productDAO.getCateProdList");
 		}
-		
+		System.out.println("--------------------");
+		System.out.println("SQL 결과: " + result);
 //		System.out.println("봄이 넘어왔니: " + vo.getBlooming_season());
 //		System.out.println("SQL 결과(카테고리): " + result);
 		/***********
@@ -43,10 +47,10 @@ public class ProductDAOImpl implements ProductDAO{
 		 * 
 		 * */
 		// 
-		return mybatis.selectList("productDAO.getCateProdList", vo);
+		return result;
 	}
 	
-	// 상품 목록 출력 시, 페이징을 위한 상품개수 조회
+	// 상품 목록 출력 시, 페이징을 위한 상품개수 조회 by 최진화
 	@Override
 	public Integer getProdCateQuan(ProductVO vo) {
 		System.out.println("Dao에서 받은 vo: " + vo);
@@ -64,11 +68,11 @@ public class ProductDAOImpl implements ProductDAO{
 		ProductVO result = mybatis.selectOne("productDAO.getProd", vo);
 		ProductVO main = mybatis.selectOne("productDAO.getImgMain", vo);
 		ProductVO sub = mybatis.selectOne("productDAO.getImgSub", vo);
-		ProductVO guide = mybatis.selectOne("productDAO.getImgGuide", vo);
+//		ProductVO guide = mybatis.selectOne("productDAO.getImgGuide", vo);
 		ProductVO list = mybatis.selectOne("productDAO.getList", vo);
 		result.setProd_img_main(main.getProduct_image_file_name());
 		result.setProd_imgs_sub(sub.getProduct_image_file_name());
-		result.setProd_imgs_guide(guide.getProduct_image_file_name());
+//		result.setProd_imgs_guide(guide.getProduct_image_file_name());
 		result.setProd_img_list(list.getProduct_image_file_name());
 		
 		

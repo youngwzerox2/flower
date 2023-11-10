@@ -1,11 +1,7 @@
 package com.flower.service;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.flower.dao.MemberDAO;
@@ -17,8 +13,21 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	public MemberServiceImpl(MemberDAO memberDAO, PasswordEncoder passwordEncoder) {
+		this.memberDAO = memberDAO;
+		this.passwordEncoder = passwordEncoder;
+	}
+	
 	@Override
 	public void register(MemberVO vo) throws Exception{
+		
+		String encodePassword = passwordEncoder.encode(vo.getMember_password());
+		vo.setMember_password(encodePassword);
+		
 		 memberDAO.register(vo);
 	}
 
@@ -56,6 +65,17 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void changePassword(MemberVO vo) throws Exception {
 		memberDAO.changePassword(vo);
+	}
+
+	@Override
+	public MemberVO loginWithEncryptedPassword(MemberVO vo) throws Exception {
+		// 사용자가 입력한 비밀번호를 암호화
+        String encryptedPassword = passwordEncoder.encode(vo.getMember_password());
+        vo.setMember_password(encryptedPassword);
+		
+     // 암호화된 비밀번호로 로그인
+        return memberDAO.login(vo);
+		
 	}
 
 

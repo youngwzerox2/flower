@@ -36,7 +36,7 @@
 	</select>
 	
 	<!-- 이메일 찾기 -->
-	<select id="findEmailChk" parameterType="String" resultType="string">
+	<select id="findEmailChk" parameterType="String" resultType="String">
 		select member_email from member
 		where member_email = #{member_email}
 	</select>
