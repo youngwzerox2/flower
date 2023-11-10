@@ -73,6 +73,12 @@ public class ProductVO {
 	// 카테고리별 상품 개수
 	private Integer		prod_cate_quan;
 	
+	// 클릭한 페이지 넘버
+	private Integer		pageNumber;
+	
+	public void setPageNumber() {
+		this.pageNumber -= 1;
+	}
 	// group_concat으로 담겨온 이미지 파일명을 배열로 변환
 	public void setProduct_image_file_name(String product_image_file_name) {
 		this.product_image_file_name = product_image_file_name;

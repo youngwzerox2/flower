@@ -149,9 +149,7 @@
                                         <li><!-- flower: 메뉴 이름 5/-->
                                             <a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는꽃</a>
                                         </li>
-                                        <li><!-- flower: 메뉴 이름 6/-->
-                                            <a href="">꽃이조화</a>
-                                        </li>
+
                                     </ul>
                                 </nav>
                             </div> <!-- <div class="main-menu position-relative"> end -->
@@ -189,10 +187,9 @@
                                                     <li><a href="<%=pjName%>/product/category/product?product_type=winter">겨울</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="<%=pjName%>/product/category/product?product_type=easyCare">초보자용꽃</a></li>
-                                            <li><a href="<%=pjName%>/product/category/product?product_type=petFriendly">반려동물안심꽃</a></li>
-                                            <li><a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는꽃</a></li>
-                                            <li><a href="">꽃이조화</a></li>
+                                            <li><a href="<%=pjName%>/product/category/product?product_type=easyCare">초보자용</a></li>
+                                            <li><a href="<%=pjName%>/product/category/product?product_type=petFriendly">반려동물안심</a></li>
+                                            <li><a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -260,6 +257,7 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                     </div>
                 </div>
             </div>
+            <!-- flower: 모바일 버전 -->
             <div class="mobile-menu_wrapper" id="mobileMenu">
                 <div class="offcanvas-body">
                     <div class="inner-body">
@@ -298,22 +296,8 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                 <ul class="mobile-menu">
                                     <li class="menu-item-has-children">
                                         <a href="#">
-                                            <span class="mm-text">Home
-                                        <i class="pe-7s-angle-down"></i>
-                                    </span>
+                                            <span class="mm-text">홈스윗홈<i class="pe-7s-angle-down"></i></span>
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="index.html">
-                                                    <span class="mm-text">Home One</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="index-2.html">
-                                                    <span class="mm-text">Home Two</span>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="#">
@@ -321,165 +305,10 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                         <i class="pe-7s-angle-down"></i>
                                     </span>
                                         </a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="#">
-                                                    <span class="mm-text">Shop Layout
-                                                <i class="pe-7s-angle-down"></i>
-                                            </span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="shop.html">
-                                                            <span class="mm-text">Shop Default</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-grid-fullwidth.html">
-                                                            <span class="mm-text">Shop Grid Fullwidth</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-right-sidebar.html">
-                                                            <span class="mm-text">Shop Right Sidebar</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-list-fullwidth.html">
-                                                            <span class="mm-text">Shop List Fullwidth</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-list-left-sidebar.html">
-                                                            <span class="mm-text">Shop List Left Sidebar</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-list-right-sidebar.html">
-                                                            <span class="mm-text">Shop List Right Sidebar</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#">
-                                                    <span class="mm-text">Product Style
-                                                <i class="pe-7s-angle-down"></i>
-                                            </span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="single-product.html">
-                                                            <span class="mm-text">Single Product Default</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product-group.html">
-                                                            <span class="mm-text">Single Product Group</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product-variable.html">
-                                                            <span class="mm-text">Single Product Variable</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product-sale.html">
-                                                            <span class="mm-text">Single Product Sale</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product-sticky.html">
-                                                            <span class="mm-text">Single Product Sticky</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product-affiliate.html">
-                                                            <span class="mm-text">Single Product Affiliate</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#">
-                                                    <span class="mm-text">Product Related
-                                                <i class="pe-7s-angle-down"></i>
-                                            </span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="<%=pjName %>/mypage/mypage1">
-                                                            <span class="mm-text">Mypage</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="<%=pjName %>/member/login">
-                                                            <span class="mm-text">로그인</span>
-                                                        </a>
-                                                    </li>
-                                                      <li>
-                                                        <a href="<%=pjName %>/member/logout">
-                                                            <span class="mm-text">로그아웃</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="<%=pjName %>/member/register">
-                                                            <span class="mm-text">회원가입</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <span class="mm-text">Shopping Cart</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">
-                                                            <span class="mm-text">Wishlist</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <span class="mm-text">Compare</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="checkout.html">
-                                                            <span class="mm-text">Checkout</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                         
+                                                
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">
-                                            <span class="mm-text">Blog
-                                        <i class="pe-7s-angle-down"></i>
-                                    </span>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="#">
-                                                    <span class="mm-text">Blog Holder
-                                                <i class="pe-7s-angle-down"></i>
-                                            </span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="blog.html">
-                                                            <span class="mm-text">Blog Default</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="blog-listview.html">Blog List View</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="blog-detail.html">Blog Detail</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    
                                     <li>
                                         <a href="about.html">
                                             <span class="mm-text">About Us</span>
