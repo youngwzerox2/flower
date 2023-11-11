@@ -51,19 +51,20 @@ public class ProductController {
 	
 	public ProductController() {} // constructor
 	
-	@Autowired
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	} // constructor(ProductService productService)
-	
 	
 	@RequestMapping("/flower_main")
 	public String toMain() {
 		return "redirect:http://localhost:8080/flower/flower_main.jsp";
 	}
 	
+	@Autowired
+	public ProductController(ProductService productService) {
+		this.productService = productService;
+	} // constructor(ProductService productService)
+	
+
 	// 상품 목록 가져오기
-	@RequestMapping("/product/category/product")
+	@RequestMapping("/product/product")
 	//HttpServletRequest req,
 	public void getCateProdList(ProductVO pvo, HttpServletRequest req, Model m) {
 		
@@ -104,50 +105,7 @@ public class ProductController {
 			
 			
 		}
-		
-		// 상품 목록에서 검색 조건을 적용했을 때
-		// 상품목록 화면에서만 검색 필터가 적용되기 때문에, 조건이 2개 이상이다.
-		if (req.getParameterValues("filterCondition") != null) {
-			List<String> condition = Arrays.asList(req.getParameterValues("filterCondition"));
-			
-			for(String type2 : condition) {
-				switch(type2){
-				  case "spring":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "summer":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "fall":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "winter":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "pet_friendly":
-				      vo.setPet_friendly(true);
-				  break;
-				  case "easy_care":
-				    vo.setEasy_care(true);
-				  break;
-				  case "dl":
-				    vo.setProduct_light(type2);
-				  break;
-				  case "idl":
-					vo.setProduct_light(type2);
-				  break;
-				  case "sh":
-					vo.setProduct_light(type2);
-				  break;
-				  case "nm":
-					vo.setProduct_light(type2);
-				  break;
-					  
-				} // 검색 필터 switch end
-			} // for end
-		}// request if end
-		
-		System.out.println("vo가 완성되었나@controller: " + vo);
+//		System.out.println("vo가 완성되었나@controller: " + vo);
 		
 		List<ProductVO> result = productService.getCateProdList(vo);
 		m.addAttribute("productList", result);
@@ -157,23 +115,42 @@ public class ProductController {
 	}
 	
 
-	// 상품 검색 결과 가져오기(목록): 검색어 직접 입력..?
-	
 	// 상품 필터링 결과 가져오기
-	 @RequestMapping("/product/category/filtered")
-	 @ResponseBody public Integer getFilteredProdList(HttpServletRequest req) {
-		 String[] arr = req.getParameterValues("filterCondition");
-		 int cnt = arr.length;
-		 for(int i = 0; i < cnt; i++) {
-			 System.out.println("필터링 controller 접근: " + arr[i]);
-		 }
-		 return null;
+	 @RequestMapping("/product/filtered") 
+	 public String getFilteredProdList(ProductVO pvo, Model m) {
+		 System.out.println("---------------------------");
+		 System.out.println("Accessing filtering controller success!");
+		 System.out.println("pvo has values?: " + pvo);
+		 
+		 /************
+		  * ProductVO(product_id=null, cate_id=null, product_name=null, product_content=null, 
+		  * product_keyword=null, blooming_season=null, blooming_time=null, 
+		  * pet_friendly=true, easy_care=true, product_light=dl, product_type=spring, product_display_order=4, 
+		  * inventory_quantity=null, product_price=null, product_register_date=null, 
+		  * product_image_file_name=null, product_image_type=null, product_image_froute=null, 
+		  * prod_imgs_lists=null, prod_img_list=null, prod_imgs_froutes=null, 
+		  * prod_img_main=null, prod_imgs_sub=null, prod_imgs_guide=null, 
+		  * prod_cate_quan=null, pageNumber=null) */
+		 
+		 /**** 필터링 종류 *****
+		  * 초보자용(체크박스)		: easy_care - true
+		  * 반려동물안심꽃(체크박스)	: pet_friendly - true
+		  * 일조량(라디오)			: dl(양지/직광), idl(반음지/간접광), sh(음지/그늘), nm(영향적음)
+		  * 정렬기준				: 1)기본정렬, 2)판매량순, 3)리뷰많은순, 4)찜많은순, 5)가격높은순, 6)가격낮은순
+		  * 
+		  * 분기 요망1: product_type >> season, pet_friendly, easy_care, blooming_time(M: morning, N:night)
+		  * 분기 요망2@SQL: 정렬2-order_table조인, 정렬3)리뷰많은순-reviews조인, 정렬4) 찜많은순-love조인, 정렬5, 6)product order by
+		  * ****/
+		 
+		 List<ProductVO> result = productService.getFilteredProdList(pvo);
+		 m.addAttribute("productList", result);
+		 return "/product/product";
 	 }
 	 
 	
 	
 	// 상품 상세 페이지 가져오기
-	@RequestMapping("/product/contents/product-content")
+	@RequestMapping("/product/product-content")
 	public void getProdContent(HttpSession sess, ProductVO pvo, Model m, @RequestParam(value = "page",   required = false, defaultValue = "1") int nowPage,
             @RequestParam(value = "r_page", required = false, defaultValue = "1") int nowPage2) {
 		MemberVO mvo = (MemberVO)sess.getAttribute("member");
@@ -278,7 +255,7 @@ public class ProductController {
     @RequestMapping("product/contents/inquiries_modify_form")
 	public String modify_form(String inquiries_id,Model model) {
 		
-		//1.수정 데이터 정보 1건 얻어오기
+    	//1.수정 데이터 정보 1건 얻어오기
 		InquiriesVO vo = inquiriesService.selectOne(inquiries_id);
 			
 		// System.out.println(vo);
@@ -311,7 +288,7 @@ public class ProductController {
 		return "redirect:product-content?product_id=" + pvo.getProduct_id();
 	}
 		
-		//리뷰쓰기 폼띄우기
+	//리뷰쓰기 폼띄우기
 	@RequestMapping("product/contents/insert_reviews_form")
 	public String insert_reviews_form() {
 			return "product/contents/reviews_insert_form";
@@ -339,7 +316,7 @@ public class ProductController {
 			return "product/contents/reviews_view";
 	}
 		
-		//리뷰폼
+	//리뷰폼
 	@RequestMapping("product/contents/reviews_modify_form")
 	public String reviews_modify_form(String reviews_id,Model model) {
 			
@@ -353,7 +330,7 @@ public class ProductController {
 			return "product/contents/reviews_modify_form";
 	}
 		
-		//수정하기
+	//수정하기
 	@RequestMapping("product/contents/reviews_modify")
 	public String reviews_modify(ReviewsVO vo, Model model) {
 			
@@ -366,7 +343,7 @@ public class ProductController {
 			return "redirect:reviews";
 	}
 		
-		//삭제
+	//삭제
 	@RequestMapping("product/contents/reviews_delete")
 	public String reviews_delete(String reviews_id, Model model) {
 			
@@ -380,12 +357,6 @@ public class ProductController {
 	// 상품 삭제 → 관리자 화면에서 다룬다.
 	
 	
-	// 상품 필터링
-	@GetMapping("filterProducts")
-	public List<ProductVO> filterProducts(@RequestParam Map<String, String> filterParams) {
-		return productService.filterProducts(filterParams);  
-	}
-	
 	// 찜(마음에든꽃 혹은 love 혹은 wishlist) update
 	@RequestMapping("/love")
 	@ResponseBody
@@ -398,12 +369,12 @@ public class ProductController {
 			LoveVO lvo = new LoveVO();
 			lvo.setMember_id(mvo.getMember_id());
 			lvo.setProduct_id(Integer.valueOf(pvo.getProduct_id()));
-			System.out.println("love controller 접근 성공! love vo: " + lvo);
+			System.out.println("love controller �젒洹� �꽦怨�! love vo: " + lvo);
 			result = productService.updateLove(lvo);
-			System.out.println("결과값 확인: " + result);
+			System.out.println("寃곌낵媛� �솗�씤: " + result);
 			return result;
 		} else if (mvo == null && mvo.getMember_id() == null) {
-			System.out.println("love controller 접근은 성공");
+			System.out.println("love controller �젒洹쇱� �꽦怨�");
 			return 0;
 		}
 		

@@ -8,10 +8,8 @@ import com.flower.vo.ProductVO;
 
 public interface ProductService {
 	
-	// 전체 상품 목록 가져오기
-	List<ProductVO> getAllProdList();
 
-	// 클릭한 카테고리 상품 목록 가져오기
+	// (클릭한 카테고리)상품 목록 가져오기 (전체 상품 목록 보기 포함)
 	List<ProductVO> getCateProdList(ProductVO vo);
 	
 	// 클릭한 카테고리별 상품개수 Read
@@ -28,8 +26,8 @@ public interface ProductService {
 	
 	// 상품 삭제
 	
-	// 상품 필터링
-	List<ProductVO> filterProducts(Map<String, String> filterParams); 
+	// 상품 목록 필터링(초보자용, 반려동물안심, 일조량 + 정렬기준)
+	List<ProductVO> getFilteredProdList(ProductVO vo);
 	    
 	
 	// 상품 찜 상태 조회

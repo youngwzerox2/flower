@@ -17,8 +17,8 @@ public interface ProductDAO {
 	// 상품 상세 페이지 Read (selectOne)
 	ProductVO getProd(ProductVO vo);
 
-	// 상품 필터링
-	List<ProductVO> filterProducts(Map<String, String> filterParams);
+	// 상품 목록 필터링(초보자용, 반려동물안심, 일조량 + 정렬기준)
+	List<ProductVO> getFilteredProdList(ProductVO vo);
 
 	// 상품 찜 update
 	Integer updateLove(LoveVO vo);

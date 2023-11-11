@@ -1201,7 +1201,8 @@ blockquote p {
   font-size: 20px;
 }
 .price-box span.new-price {
-  color: #abd373;
+  color: #331a00;
+  font-weight: 500;
 }
 .price-box span.old-price {
   margin-left: 5px;
@@ -1672,8 +1673,10 @@ blockquote p {
 }
 
 /* ---Main Header--- */
+/* ---flower: font-family, font-weight 수정 by 최진화--- */
 .main-nav > ul {
   font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3145,6 +3148,7 @@ blockquote p {
 .product-item {
   padding: 5px;
   overflow: hidden;
+  font-family: 'Gowun Dodum', sans-serif;
 }
 .product-item:hover .product-img img.secondary-img {
   opacity: 1;
@@ -3170,15 +3174,17 @@ blockquote p {
 }
 .product-content {
   padding-top: 10px;
+  text-align: right;
+  font-weight: 400;
 }
 .product-content .product-name {
   margin-bottom: 5px;
   color: #303030;
-  font-size: 18px;
+  font-size: 20px;
   display: block;
 }
 .product-content .product-name:hover {
-  color: #abd373;
+  color: #004d00;
 }
 .product-add-action {
   -webkit-transition: all 0.3s ease 0s;
@@ -3437,7 +3443,8 @@ blockquote p {
   font-size: 30px;
 }
 .single-product-content .price-box span.new-price {
-  color: #abd373;
+  color: #331a00;
+  font-weight: 450;
 }
 .single-product-content .rating-box-wrap {
   display: -webkit-box;

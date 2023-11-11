@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Grandiflora+One&family=Hahmlet:wght@100;500&family=Noto+Sans+KR:wght@400;600&family=Song+Myung&display=swap');
+
+
 /*------ header-logo(text) by Jin -------*/
 .header-logo-text {
 	text-align: center;
@@ -58,12 +60,39 @@
 }
 
 
+/*--------- 메인 페이지: 사진 리스트 -----------*/
+/*---'Noto Sans KR', sans-serif ---*/
+
+.main-product-title-jin {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	text-align: right;
+		
+}
+
+.main-product-season-jin {
+	font-family: 'Gowun Dodum', sans-serif;
+	font-weight: 500;
+	font-size: 30px;
+	text-align: center;
+		
+}
+
+.main-product-price-jin {
+	font-size: 20px;
+	text-align: right;
+	color: #330033;
+}
+
+.product-img-jin {
+	border-radius: 5px;
+}
 
 /*---- 상품 목록 정렬/검색 조건 바-------*/
 
 #product-filter-form li{
 	display: inline-block;
-	
 	margin-left: 5px;
 }
 
@@ -84,4 +113,8 @@
 	padding-top: 10px;
 	border: 1px solid #ddd;
 	
+}
+
+#filter-submit {
+	width: 100px;
 }

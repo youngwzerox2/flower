@@ -48,21 +48,27 @@ public class ShoppingCartDAOImpl implements ShoppingCartDAO {
 	public Integer selectCartProd(ShoppingCartVO scvo) {
 		// Integer chk = mybatis.selectOne("ShoppingCartDAO.isSelected", scvo);
 		// System.out.println("selected: " + chk);
+		
+		// JavaScript(ajax)에서 check박스 클릭(선택)하면 scvo.setSeleted에 값(1)이 담긴다.
+		// JavaScript(ajax)에서 check박스 선택해제하면 scvo.setSeleted에 값(0)이 담긴다.
 		Integer chk = scvo.getSelected();
 		
-		Integer sel = 1;
-		Integer unsel = 0;
+		Integer sel 	= 0;
+		Integer unsel 	= 0;
+		 
+		// 선택된 상품에 대해 DB selected 컬럼에 true(1)값 입력
 		if(chk == 1) {
-			sel = mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
 			// System.out.println("sql 결과(선택): " + sel);
-			return mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
+			sel = mybatis.update("ShoppingCartDAO.selectCartProd", scvo);
+			return sel;
 		} else if (chk == 0) {
-			unsel = mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
 			// System.out.println("sql 결과(선택해제): " + unsel);
-			return mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
+			unsel = mybatis.update("ShoppingCartDAO.unselectCartProd", scvo);
+			return unsel;
 		}
 		
-		return (sel == 1) ? sel: unsel;
+		return (sel == 1) ? sel : unsel;
+		
 	}
 	
 	// 장바구니에 담긴 상품 삭제

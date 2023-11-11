@@ -92,22 +92,61 @@
 		AND PRODUCT_IMAGE_FROUTE = 'guide'
 		GROUP BY img.product_id
 	</select>
-	
-	<!-- 상품필터링 -->
-	<select id="filterProducts" resultType="com.flower.vo.ProductVO" parameterType="java.util.Map">
-        SELECT * FROM product
-        <where>
-            <if test="pet_friendly != null">
-                AND pet_friendly = #{pet_friendly}
-            </if>
-            <if test="easy_care != null">
-                AND easy_care = #{easy_care}
-            </if>
-            <!-- 라디오 버튼의 경우도 추가 가능 -->
-           
-        
-        </where>
-    </select>
+
+	<!-- 상품 목록 필터링(초보자용, 반려동물안심, 일조량 + 정렬기준) by 최진화 -->
+	<!-- 정렬기준: 1) 기본정렬, 2) 판매량순, 3)리뷰많은순, 4)찜많은순, 5)가격높은순, 6)가격낮은순 -->
+	<select id="getFilteredProdList" parameterType="com.flower.vo.ProductVO" resultType="com.flower.vo.ProductVO">
+		SELECT p.PRODUCT_ID, p.PRODUCT_NAME, p.PRODUCT_PRICE, group_concat(img.PRODUCT_IMAGE_FILE_NAME) product_image_file_name
+		FROM product p
+		INNER JOIN product_image img
+		ON p.product_id = img.product_id
+		<choose>
+			<when test="product_display_order == 2">
+				LEFT JOIN 
+				(SELECT ot.PRODUCT_ID, sum(ot.ORDER_PRODUCT_PRICE) sumO
+				FROM order_table ot
+				GROUP BY ot.PRODUCT_ID
+				ORDER BY sumO DESC) oHigh
+				ON p.PRODUCT_ID = oHigh.product_id
+			</when>
+			<when test="product_display_order == 3">
+				LEFT JOIN 
+				(SELECT r.PRODUCT_ID, count(r.PRODUCT_ID) cntR
+				FROM reviews r
+				WHERE r.REVIEWS_ID LIKE 'R%'
+				GROUP BY r.PRODUCT_ID
+				ORDER BY sumR DESC) rMany
+				ON p.PRODUCT_ID = rMany.product_id
+			</when>
+			<when test="product_display_order == 4">
+				LEFT JOIN
+				(SELECT l.PRODUCT_ID, count(l.PRODUCT_ID) cntL
+				FROM love l
+				GROUP BY l.PRODUCT_ID
+				ORDER BY cntL DESC) lHigh
+				ON p.PRODUCT_ID = lHigh.product_id
+			</when>
+		</choose>
+		WHERE img.PRODUCT_IMAGE_froute = 'list'
+		<if test="easy_care != null">
+			AND p.EASY_CARE = #{easy_care}
+		</if>
+		<if test="pet_friendly != null">
+			AND p.PET_FRIENDLY = #{pet_friendly}
+		</if>
+		<if test="product_light != null">
+			AND p.PRODUCT_LIGHT = #{product_light}
+		</if>
+		GROUP BY p.PRODUCT_ID
+		<choose>
+			<when test="product_display_order == 2">ORDER BY oHigh.sumO DESC</when>
+			<when test="product_display_order == 3">ORDER BY rMany.cntR DESC</when>
+			<when test="product_display_order == 4">ORDER BY lHigh.cntL DESC</when>
+			<when test="product_display_order == 5">ORDER BY p.PRODUCT_PRICE DESC</when>
+			<when test="product_display_order == 6">ORDER BY p.PRODUCT_PRICE ASC</when>
+			<otherwise>ORDER BY p.PRODUCT_ID ASC</otherwise>
+		</choose>
+	</select>
 	
 	
 	
