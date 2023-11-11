@@ -64,6 +64,9 @@ public interface AdminService {
 	// 특정 주문 상품 목록 조회
 	public List<AdminVO> searchOrderProducts(String orderDetailNumber);
 	
+	// 관리자 주문 확인 상태 수정
+	public int adminOrderConfirmation(AdminVO vo);
+	
 	/**
 	 * 설정 관련
 	 * */
@@ -75,6 +78,7 @@ public interface AdminService {
 
 	// policy 컬럼 내용 수정
 	public int modifyPolicy(Map<String, String> map);
+
 
 
 

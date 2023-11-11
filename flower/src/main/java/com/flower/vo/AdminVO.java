@@ -51,13 +51,6 @@ public class AdminVO {
 	private String product_image_flower_name; 	// 상품이미지이름(꽃이름)
 	private String product_image_type; 			// 상품이미지타입
 	private String product_image_froute; 		// 상품이미지경로
-	private String order_detail_number;			// 주문번호
-	private String recipient_name;				// 수취인명
-	private Integer total_order_cnt;			// 총 주문량 
-	private Integer total_product_cnt;			// 총 주문상품량
-	private Integer total_order_price;			// 총 주문액
-	private String order_state;					// 주문상태
-	private String order_date;					// 주문일
 	
 	/**
 	 *  *************************************************************
@@ -68,6 +61,25 @@ public class AdminVO {
 	private String reviews_title;
 	private String reviews_content;
 	private String reviews_register_date;
+	
+	/**
+	 *  *************************************************************
+     *  ************************** 주문 정보 ************************** 
+     *  ************************************************************* 
+     *  */
+	private String order_detail_number;			// 주문번호
+	private String recipient_name;				// 수취인명
+	private Integer total_order_cnt;			// 총 주문량 
+	private Integer total_product_cnt;			// 총 주문상품량
+	private Integer total_order_price;			// 총 주문액
+	private String order_state;					// 주문상태
+	private String order_date;					// 주문일	
+	private String recipient_address;			// 주소
+	private String recipient_tel;				// 연락처
+	private Integer order_product_quantity;		// 주문상품수량
+	private String order_cancel_reason;			// 주문취소사유
+	private String admin_confirmation_yn;		// 관리자확인여부
+	private String admin_confirmation_date;		// 관리자확인일자
 	
 	/**
 	 *  *************************************************************

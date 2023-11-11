@@ -80,7 +80,7 @@
                                 	<a class="nav-link" id="account-product-info-tab" data-bs-toggle="tab" role="tab" aria-controls="account-productsControll" href="#account-products" aria-expanded="false" style="text-align: right;">상품 관리</a>
                                 	<a class="nav-link" id="account-inquiries-tab" data-bs-toggle="tab" role="tab" aria-controls="account-inquiriesControll" href="#account-inquiries" aria-expanded="false" style="text-align: right;">문의 관리</a>
                                 	<a class="nav-link" id="account-reviews-tab" data-bs-toggle="tab" role="tab" aria-controls="account-reviewsControll" href="#account-reviews" aria-expanded="false" style="text-align: right;">리뷰 관리</a>
-                                	<a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" role="tab" aria-controls="account-ordersControll" href="#account-orders" aria-expanded="false" style="text-align: right;">주문 관리</a>
+                                	<a class="nav-link" id="account-orders-info-tab" data-bs-toggle="tab" role="tab" aria-controls="account-ordersControll" href="#account-orders" aria-expanded="false" style="text-align: right;">주문 관리</a>
                                 	<a class="nav-link" id="account-product-info-register-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-regiter" href="#account-product-register" aria-expanded="false" style="text-align: right; display: none;" >상품 등록</a>
                                 	<a class="nav-link" id="account-product-info-modify-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-modify" href="#account-product-modify" aria-expanded="false" style="text-align: right; display: none;" >상품 수정</a>
                                 	<a class="nav-link" id="account-product-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-detail" href="#account-product-detail" aria-expanded="false" style="text-align: right; display: none;" >상품 관리 상세</a>
@@ -135,6 +135,26 @@
 								                <tbody id="memberList"></tbody>
 								            </table>
 								        </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-member-detail" aria-labelledby="account-member-tab">
+								    <div class="myaccount-members">
+								        <h4 class="small-title">회원 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="memberDetail"></tbody>
+							                        </table>
+							                        <div class="member-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
+									                    <ul>
+									                    <li id="goMemberList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
+									                    <li id="goLimitation" class="mb-xs mt-xs mr-xs btn btn-danger"> 제한 </li>
+									                    </ul>
+							                     	</div>
+						                    	</div>
+									        </div>
+		                                </div>
 								    </div>
 								</div>
                                 <div class="tab-pane fade" id="account-products" role="tabpanel" aria-labelledby="account-products-tab">
@@ -497,10 +517,9 @@
 											              	</tr>
 							                            </tbody>
 							                        </table>
-							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 81%;">
+							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
 									                    <ul>
 										                    <li id="cancelProductModify" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
-										                    <li id="goModifyCancel" class="mb-xs mt-xs mr-xs btn btn-warning"> 돌아가기 </li>
 										                    <li id="goProductModify" class="mb-xs mt-xs mr-xs btn btn-danger"> 수정 </li>
 									                    </ul>
 							                     	</div>
@@ -531,24 +550,35 @@
 		                                </div>
 								    </div>
 								</div>
-                                <div class="tab-pane fade" id="account-member-detail" aria-labelledby="account-member-tab">
+								<div class="tab-pane fade" id="account-inquiries" aria-labelledby="account-inquiries-tab">
 								    <div class="myaccount-members">
-								        <h4 class="small-title">회원 관리 상세</h4><br/>
+								        <h4 class="small-title">문의 관리</h4><br/>
 										<div class="widgets-searchbox">
-											<div class="table-responsive">
-									            <div class="compare-table table-responsive">
-							                        <table class="table table-bordered table-hover mb-0">
-							                            <tbody id="memberDetail"></tbody>
-							                        </table>
-							                        <div class="member-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
-									                    <ul>
-									                    <li id="goMemberList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
-									                    <li id="goLimitation" class="mb-xs mt-xs mr-xs btn btn-danger"> 제한 </li>
-									                    </ul>
-							                     	</div>
-						                    	</div>
-									        </div>
+											<ul>								        
+												<li class="short">
+			                                        <select class="nice-select" id="inquirieSelectbox">
+			                                            <option value="">전체</option>
+			                                            <option value="member_email">ID</option>
+			                                            <option value="member_name">고객명</option>
+			                                            <option value="member_status">회원상태</option>
+			                                            <option value="report_yn">신고여부</option>
+			                                        </select>
+		                                    	</li>
+		                                    	<li>
+	                                        		<input class="input-field" id="inquirieSearchValue" type="text" placeholder="검색어를 입력해주세요." style="width: 88%">
+		                                    	</li>
+		                                    	<li>
+		                                        <button id="inquiriesSearchBtn" class="widgets-searchbox-btn" >
+		                                            <i class="fa fa-search"></i>
+		                                        </button>
+		                                    	</li>
+									        </ul>
 		                                </div>
+								        <div class="table-responsive">
+								            <table class="table table-bordered table-hover">
+								                <tbody id="inquirieList"></tbody>
+								            </table>
+								        </div>
 								    </div>
 								</div>
 								<div class="tab-pane fade" id="account-reviews" aria-labelledby="account-reviews-tab">
@@ -644,12 +674,10 @@
 							                        <table class="table table-bordered table-hover mb-0">
 							                            <tbody id="orderDetail"></tbody>
 							                        </table>
-							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 77%;">
-									                    <ul>
-									                    <li id="goOrderList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
-									                    <li id="goOrderSuccess" class="mb-xs mt-xs mr-xs btn btn-warning"> 주문확인 </li>
-									                    <li id="goOrderCancel" class="mb-xs mt-xs mr-xs btn btn-danger"> 주문취소 </li>
-									                    </ul>
+							                        <div style="position:absoluted; padding-top: 20px; padding-left: 77%;">
+									                    <button id="goOrderList" class="btn btn-primary" style="margin-left: 10px;"> 목록 </button>
+                    									<button id="goOrderSuccess" class="btn btn-warning" style="margin-left: 10px;"> 주문확인 </button>
+                    									<button id="goOrderCancel" class="btn btn-danger" style="margin-left: 10px;"> 주문취소 </button>
 							                     	</div>
 						                    	</div>
 									            
@@ -798,6 +826,33 @@
                 <div class="modal-footer">
                     <button id="btn-visibleProduct" type="button" class="btn btn-danger" data-dismiss="modal"></button>
                     <button id="btn-closeVisiblePopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="orderCancelModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">상품 취소</h4>
+                </div>
+                <div class="widgets-searchbox">
+                    <table class="table table-bordered table-hover">
+					  <tr>
+					    <th> 주문번호 </th>
+					    <td id="orderCancelNum"></td>
+					  </tr>
+					  <tr>
+					    <th> 취소 사유 </th>
+					    <td>
+					    	<textarea id="orderCancelReason" placeholder="취소 사유를 입력하세요." cols="20" style="width: 100%; height: 100px"></textarea>
+					    </td>
+					  </tr>
+					</table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-orderCancel" type="button" class="btn btn-danger" data-dismiss="modal">주문취소</button>
+                    <button id="btn-closeOrderCancelPopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
                 </div>
             </div>
         </div>

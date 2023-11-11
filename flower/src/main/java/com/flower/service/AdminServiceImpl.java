@@ -48,6 +48,10 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.deleteReportTarget(reviewId);
 	}
 	
+	@Override
+	public int adminOrderConfirmation(AdminVO vo) {
+		return adminDAO.adminOrderConfirmation(vo);
+	}
 	
 	/**
 	 * 상품 관련
@@ -124,8 +128,6 @@ public class AdminServiceImpl implements AdminService{
 	public int modifyPolicy(Map<String, String> map) {
 		return adminDAO.modifyPolicy(map);
 	}
-
-
 
 
 
