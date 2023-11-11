@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,15 +92,13 @@ public class MemberController {
 			if("L".equals(memberStatus) || "O".equals(memberStatus)) {
 				// "L" 또는 "O" 상태의 사용자가 로그인을 시도한 경우
 				return 2;
-			}else {
+			} else {
 			// 로그인이 성공한 경우
 			session.setAttribute("member", login);
 			return 0;
 		}
 	  }
 	}
-
-	
 	
 	// 로그아웃 get
 	@GetMapping("logout")

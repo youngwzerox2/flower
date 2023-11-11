@@ -79,7 +79,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 pt-5 pt-lg-0">
-							<form action="register" method="post" id="regForm">
+							<form action="register" method="post" id="regForm" name="regForm">
 								<div class="login-form">
 								<!-- 팝업 창 -->
 
@@ -189,7 +189,7 @@
 	<!-- Main Content Area End Here -->
 
 	<!-- Begin Footer Area -->
-	<div class="footer-area"
+	<!-- <div class="footer-area"
 		data-bg-image="../resources/assets/images/footer/bg/1-1920x465.jpg">
 		<div class="footer-top section-space-top-100 pb-60">
 			<div class="container">
@@ -301,7 +301,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<%@include file="/flower_footer.jsp" %>
 	<!-- Footer Area End Here -->
 
 	<!-- Begin Scroll To Top -->
