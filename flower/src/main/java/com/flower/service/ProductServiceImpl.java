@@ -46,11 +46,6 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getProd(vo);
 	}
 
-	// 상품 필터링
-	@Override
-	public List<ProductVO> filterProducts(Map<String, String> filterParams) {
-		return productDao.filterProducts(filterParams);
-	}
 
 	// 상품 찜 update
 	@Override
@@ -66,10 +61,11 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.isLove(vo);
 	}
 
+	
+	// 상품 목록 필터링(초보자용, 반려동물안심, 일조량 + 정렬기준)
 	@Override
-	public List<ProductVO> getAllProdList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductVO> getFilteredProdList(ProductVO vo) {
+		return productDao.getFilteredProdList(vo);
 	}
 
 	

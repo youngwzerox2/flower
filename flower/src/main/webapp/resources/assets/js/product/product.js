@@ -20,23 +20,33 @@ $(function(){
 		console.log("다 담겼..나?: " + condition); // 담김!! 
 		
 		$.ajax({
-			type: 'POST',
-			url: '/flower/product/category/product',
+			type: 'post',
+			url: '/flower/product/product',
 			traditional: true,
 			data: {
 				filterCondition: condition
 			},
 			success: function(result){
 				console.log("필터 적용 success");
-				let prodTable = $('#prodTable');
-				console.log(prodTable);
-				let tes = $('#testRemove');
-				tes.empty();
-				// prodTable.html("");
-				// let divC = $('.product-grid-view row g-y-20');
-				// console.log(divC);
-				// divC.empty();
-				// divC.html("");
+				let afterFilter = $('#afterFilterRemove');
+				afterFilter.empty();
+				
+				let divTabPane = $('#grid-view');
+				let divAfterFilterS = $("<div class='product-grid-view row g-y-20' id='afterFilterRemove'>");
+				let divAfterFilterE = $("</div>");
+				let table = $("<table>");
+				let tr = $("<c:forEach items='${productList}' var='prod' varStatus='st'><c:if test='${st.index%3 == 0}'><tr></c:if>");
+				let divColLg3Md4Sm6 = $("<div class='col-lg-3 col-md-4 col-sm-6'>");
+				let divProductItem = $("<div class='product-item'>");
+				let divProductImg = $("<div class='produce-img'>");
+				let aHref = $("<a href='<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}'>");
+				let inputHidden = "";
+				divTabPane.append(divAfterFilterS);
+				divAfterFilterS.append("does it work?");
+				divTabPane.append(divAfterFilterE);
+				
+				
+				
 				
 			},
 			error: function(err){
