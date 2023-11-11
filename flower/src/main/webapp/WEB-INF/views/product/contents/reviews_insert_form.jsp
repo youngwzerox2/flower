@@ -58,6 +58,16 @@
 	               <input type="text" name="reviews_score" id="reviews_score" placeholder="reviews_score" class="input-field">
 	           </div>
 	           
+	           <div class="form-field mt-30">
+	               <input type="text" name="member_product_image_uuid" id="member_product_image_uuid" placeholder="member_product_image_uuid" class="input-field">
+	           </div>
+	           
+	           <div class="form-field mt-30">
+	               <input type="text" name="member_product_image_froute" id="member_product_image_froute" placeholder="member_product_image_froute" class="input-field">
+	           </div>
+
+	           		<input type="file" name="photo">
+	           
 	           <div class="button-wrap pt-5" style="margin-top: 10px;">
 	              <input type="button" value="글쓰기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="send(this.form)">
 	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">

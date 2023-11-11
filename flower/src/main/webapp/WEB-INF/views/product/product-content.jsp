@@ -39,6 +39,10 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/product.css">
     <!-- Jin's CSS for header logo-->
 	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
+	
+	<!-- board -->
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/inquiries.css">
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/reviews.css">
     
 
 </head>
@@ -797,4 +801,8 @@
     </div>
     <!--page-content JS (flower: 추후 footer에 담아야 할..듯?)-->
 <script src="<%=pjName %>/resources/assets/js/product/product-content.js"></script>
+
+ 	<script src="${ pageContext.request.contextPath }/resources/assets/js/board/board.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/board/reviews.js"></script>
+    
 <%@include file="/flower_footer.jsp" %>

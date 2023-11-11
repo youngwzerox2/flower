@@ -235,7 +235,7 @@ public class ProductController {
 	//문의하기 폼띄우기
 	@RequestMapping("product/insert_form")
 	public String insert_form() {
-			return "product/inquiries_insert_form";
+			return "product/contents/inquiries_insert_form";
 	}
 		
 	//문의하기 추가
@@ -252,7 +252,7 @@ public class ProductController {
 	public String view(String inquiries_id, Model model) {
 			InquiriesVO vo = inquiriesService.selectOne(inquiries_id);
 			model.addAttribute("vo", vo);
-			return "product/inquiries_view";
+			return "product/contents/inquiries_view";
 	}
 	
 	//문의하기 수정폼
@@ -267,7 +267,7 @@ public class ProductController {
 		//2.결과적으로 request binding
 		model.addAttribute("vo", vo);
 			
-		return "product/inquiries_modify_form";
+		return "product/contents/inquiries_modify_form";
 	}
 
 	//문의하기 수정
@@ -300,7 +300,7 @@ public class ProductController {
 	//리뷰쓰기 폼
 	@RequestMapping("product/insert_reviews_form")
 	public String insert_reviews_form() {
-			return "product/reviews_insert_form";
+			return "product/contents/reviews_insert_form";
 	}
 		
 	//리뷰쓰기 추가
@@ -349,7 +349,7 @@ public class ProductController {
 			// System.out.println("reviews:"+vo);
 			model.addAttribute("vo", vo);
 			
-			return "product/reviews_view";
+			return "product/contents/reviews_view";
 	}
 		
 	//리뷰쓰기 수정폼
@@ -363,7 +363,7 @@ public class ProductController {
 			//2.결과적으로 request binding
 			model.addAttribute("vo", vo);
 			
-			return "product/reviews_modify_form";
+			return "product/contents/reviews_modify_form";
 	}
 		
 	//리뷰쓰기 수정
