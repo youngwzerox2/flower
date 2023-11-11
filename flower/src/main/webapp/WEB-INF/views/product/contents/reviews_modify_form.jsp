@@ -41,13 +41,9 @@
            	   <textarea name="reviews_content" id="reviews_content" placeholder="reviews_content" class="textarea-field">${ vo.reviews_content }</textarea>
            </div>
            
-           <div>
-           	<input type="file" name="photo">
-           </div>
-           
            <div class="button-wrap pt-5" style="margin-top: 10px;">
               <input type="button" value="수정하기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_modify(this.form)">
-              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="modify_viewlist();">
            </div>
            
        </form>

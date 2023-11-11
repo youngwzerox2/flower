@@ -21,7 +21,7 @@ public interface ReviewsService {
 	int selectRowTotal(Map map);
 	
 	//추가
-	void insert(ReviewsVO vo);
+	void insert(ReviewsVO vo, MemberProductImageVO file_vo);
 	
 	//수정
 	int update(ReviewsVO vo);

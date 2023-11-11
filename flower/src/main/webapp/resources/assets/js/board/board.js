@@ -31,6 +31,7 @@ function insert_form(){
 	
 }
 
+
 function del(inquiries_id){
 		
 		Swal.fire({
@@ -57,7 +58,6 @@ function del(inquiries_id){
 
 
 $(document).ready(function(){
-
 
 	$('#send').click(function(){
 		
@@ -88,8 +88,61 @@ $(document).ready(function(){
 
 
 function modify_form(inquiries_id){
-	
-	location.href="inquiries_modify_form?inquiries_id=" + inquiries_id
-	
+
+	Swal.fire({
+		  title: "문의",
+		  html: '<h3>수정하시겠습니까??<h3>',
+		  icon: 'question',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '예',
+		  cancelButtonText: '아니오'
+		}).then((result) => {
+		  
+			//예 버튼클릭
+			if (result.isConfirmed) {
+			
+				location.href="inquiries_modify_form?inquiries_id=" + inquiries_id
+		  }
+
+		});
 }
+function inquiries_modify(f){
+
+	var inquiries_title  = f.inquiries_title.value.trim();
+	var inquiries_cotent = f.inquiries_cotent.value.trim();
+	
+	if(inquiries_title==''){
+		
+		alert('제목을 입력하세요')
+		f.inquiries_title.value='';
+		f.inquiries_title.focus();
+		return;
+	}
+	
+	if(inquiries_cotent==''){
+		
+		alert('내용을 입력하세요')
+		f.inquiries_cotent.value='';
+		f.inquiries_cotent.focus();
+		return;
+	}
+	
+	f.action = "inquiries_modify";
+	f.submit();
+}
+
+function inq_viewlist(){
+	location.href = 'product-content?product_id=' + 1;
+}
+
+function inq_modify_viewlist(){
+	location.href = 'product-content?product_id=' + 1;
+}
+
+
+
+
+
 

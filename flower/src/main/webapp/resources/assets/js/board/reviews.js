@@ -135,3 +135,13 @@ function reviews_modify(f){
 	f.action = "reviews_modify";
 	f.submit();
 }
+
+function viewlist(product_id){
+	
+	location.href = 'product-content?product_id=' + 1;
+}
+
+function modify_viewlist(product_id){
+
+	location.href = 'product-content?product_id=' + 1;
+}

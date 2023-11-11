@@ -19,7 +19,7 @@ public interface InquiriesService {
 	int selectRowTotal(Map map);
 	
 	//추가
-	int insert(InquiriesVO vo);
+	void insert(InquiriesVO vo);
 	
 	//수정
 	int update(InquiriesVO vo);
