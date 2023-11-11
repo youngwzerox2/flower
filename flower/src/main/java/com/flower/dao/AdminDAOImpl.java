@@ -107,6 +107,10 @@ public class AdminDAOImpl implements AdminDAO{
 		return st.selectList("adminDAO.searchOrderProducts", orderDetailNumber);
 	}
 
+	@Override
+	public int adminOrderConfirmation(AdminVO vo) {
+		return st.update("adminDAO.adminOrderConfirmation", vo);
+	}
 
 	/**
 	 * 설정 관련

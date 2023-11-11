@@ -92,6 +92,9 @@
 					 , MAX(ORDER_DATE)									 AS ORDER_DATE
 					 , MAX(RECIPIENT_ADDRESS)							 AS RECIPIENT_ADDRESS
 					 , MAX(RECIPIENT_TEL) 								 AS RECIPIENT_TEL
+					 , MAX(ADMIN_CONFIRMATION_YN)						 AS ADMIN_CONFIRMATION_YN
+	 		 		 , MAX(ADMIN_CONFIRMATION_DATE)						 AS ADMIN_CONFIRMATION_DATE
+	 		 		 , MAX(ORDER_CANCEL_REASON)							 AS ORDER_CANCEL_REASON
 				  FROM ORDER_TABLE
 			  GROUP BY ORDER_DETAIL_NUMBER
 	        )
@@ -340,6 +343,9 @@
 	        	 , ORDER_DATE
 	        	 , RECIPIENT_ADDRESS
 				 , RECIPIENT_TEL
+				 , ADMIN_CONFIRMATION_YN
+				 , ADMIN_CONFIRMATION_DATE
+				 , ORDER_CANCEL_REASON
 	          FROM ADMIN_ORDERS
 	         WHERE 1=1
         <if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
@@ -361,9 +367,16 @@
 			ON O.PRODUCT_ID = P.PRODUCT_ID 
 		 WHERE O.ORDER_DETAIL_NUMBER = #{orderDetailNumber}
 	  ORDER BY O.ORDER_ID 
-    		
-    
     </select>
+    
+    <update id="adminOrderConfirmation" parameterType="com.flower.vo.AdminVO">
+    	UPDATE ORDER_TABLE
+    	   SET ADMIN_CONFIRMATION_YN 	= "Y"
+    	     , ADMIN_CONFIRMATION_DATE 	= NOW()
+    	     , ORDER_STATE				= #{order_state}
+        	 , ORDER_CANCEL_REASON		= #{order_cancel_reason}
+         WHERE ORDER_DETAIL_NUMBER		= #{order_detail_number}
+    </update>
     
     <!-- ************************************************************* -->
     <!-- ************************** 설정 영역 ************************** -->

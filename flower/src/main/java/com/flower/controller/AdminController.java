@@ -373,6 +373,19 @@ public class AdminController {
 	
 	/*
 	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-11
+	 * 메서드	: adminOrderConfirmation
+	 * 인자	: AdminVO
+	 * 반환	: Integer
+	 * 설명	: 관리자 주문 확인 상태 수정
+	 * */
+	@PostMapping("admin/adminOrderConfirmation")
+	public int adminOrderConfirmation(AdminVO vo) {
+		return adminService.adminOrderConfirmation(vo);
+	}
+	
+	/*
+	 * 작성자	: 백두산
 	 * 작성일	: 2023-11-09
 	 * 메서드	: selectOneOrder
 	 * 인자	: email
