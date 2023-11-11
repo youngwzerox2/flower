@@ -31,6 +31,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="/flower/resources/assets/css/style.css">
+        <!-- Jin's CSS for header logo-->
+	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
     
      <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
      <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
@@ -160,7 +162,7 @@
                                     <c:if test = '${address.default_delivery_address eq 1}'>
                                     <ul id = 'defaultaddress'>
                                     </c:if>
-                                     <c:if test = '${address.default_delivery_address ne 1}'>
+                                     <c:if test = '${address.default_delivery_address ne 1 || empty address}'>
                                     <ul id = 'defaultaddress' style = "display : none;">
                                     </c:if>
                                       	<li>
@@ -182,24 +184,30 @@
                                       	 	</ul>
                                       	</li>
                                     </ul>
-                                    </c:forEach>
-                                    <c:forEach items = '${addressList}' var = 'address' end = '0'>
-                                   	 <c:if test = '${address.default_delivery_address ne 1}'>
-                                    	<ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab'>
-                                  	  </c:if>
-                                  	  <c:if test = '${address.default_delivery_address eq 1}'>
-                                    	<ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab' style = "display : none;">
+                                  </c:forEach>
+                                  <c:if test="${empty addressList}">
+                                   <ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab'>
+                                  </c:if>
+                                  <c:forEach items = '${addressList}' var = 'address' end = '0'>
+                                  <c:if test = '${address.default_delivery_address ne 1}'>
+                                    <ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab'>
+                                  </c:if>
+                                  <c:if test = '${address.default_delivery_address eq 1}'>
+                                    <ul class = 'nav nav-tabs' role = 'tablist' id = 'myaddressTab' style = "display : none;">
                                   	  </c:if>
                                     </c:forEach>
                                   	  <li>
                                    		<button id = 'selectaddress-tab' type = 'button' class = 'btn btn-primary nav-link ' data-bs-toggle="tab" data-bs-target="#selectaddress"  role="tab" aria-controls="selectaddress" aria-selected="false">주소 선택하기</button>
                                    	 </li>
-                                   	 <li>
+                                   	  <li>
                                    	 	<button id = 'newaddress-tab' type = 'button' class = 'btn btn-secondary nav-link active' data-bs-toggle="tab" data-bs-target="#newaddress" role="tab" aria-controls="newaddress" aria-selected="ture">신규/수정</button>
                                    	 </li>
                                     </ul>
+                                     <c:if test="${empty addressList}">
+                                    	<div class = "tab-content" id = 'myaddressTabContent'>
+                                     </c:if>
                                      <c:forEach items = '${addressList}' var = 'address' end = '0'>
-                                   	 <c:if test = '${address.default_delivery_address ne 1}'>
+                                   	 <c:if test = '${address.default_delivery_address ne 1 }'>
                                     	<div class = "tab-content" id = 'myaddressTabContent'>
                                   	  </c:if>
                                   	  <c:if test = '${address.default_delivery_address eq 1}'>
@@ -207,7 +215,7 @@
                                   	  </c:if>
                                     </c:forEach>
                                    		<div class="row tab-pane fade" id = 'selectaddress' role = 'tabpanel' aria-labelledby ='selectaddress-tab'>
-                                      	 	<c:if test="${not empty member}">
+                                      	 	<c:if test="${not empty addressList}">
                                       	 	<c:forEach items = '${addressList}' var = 'address'>
                                       	 	<ul class = 'ul_delivery real'>
                                       	 		<li>
@@ -228,6 +236,9 @@
                                       	 		</li>
                                       	 	</ul>
                                       	 	</c:forEach>
+                                      	 	</c:if>
+                                      	 	<c:if test="${empty addressList}">
+                                      	 		<div>등록된 배송지가 없습니다.</div>
                                       	 	</c:if>
                                     	</div>
                                     	<div class="row tab-pane fade  show active" id = 'newaddress' role = 'tabpanel' aria-labelledby ='newaddress-tab'>

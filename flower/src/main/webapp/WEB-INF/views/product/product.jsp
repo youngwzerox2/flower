@@ -81,25 +81,7 @@
                             <div class="product-topbar product-filter-bar-jin">
                                 <ul class="nav">
                                 	<li class=""><span id="filter-title">상품정렬조건</span></li>
-                                    <form method="get" action="<%=pjName %>/product/category/product" id="product-filter-form">
-                                     <input type="hidden" class="product-filter-condition checked" name="${prodType.product_type}" value="${prodType.product_type}" >
-                                     <li class="">
-                                    	<label for="petFriendly"><input class="product-filter-condition chk" type="checkbox" name="pet_friendly" id="petFriendly" value="pet_friendly">반려동물안심</label>
-                                     </li>
-                                    <li class="">
-                                    	<label for="easyCare"><input  class="product-filter-condition chk" type="checkbox" name="easy_care" id="easyCare" value="easy_care">초보자용</label>
-                                    </li>
-                                    <li class="light-condition">
-                                    	<span id="filter-type">일조량</span>
-                                    	<label for="dl"><input type="radio" class="product-filter-condition light" name="product_light" id="dl" value="dl">양지</label>
-                                    	<label for="idl"><input type="radio" class="product-filter-condition light" name="product_light" id="idl" value="idl">반음지</label>
-                                    	<label for="sh"><input type="radio" class="product-filter-condition light" name="product_light" id="sh" value="sh">음지</label>
-                                    	<label for="nm"><input type="radio" class="product-filter-condition light" name="product_light" id="nm" value="nm">영향적음</label>
-                                    </li>
-                                    <!-- id="product-filter-apply" -->
-                                    <li><input type="submit" value="적용하기" id="product-filter-apply"></li>
-                                    </form>
-                                    <li class="product-view-wrap">
+                                	<li class="product-view-wrap">
                                         <ul class="nav" role="tablist">
                                             <li class="grid-view" role="presentation">
                                                 <a class="active" id="grid-view-tab" data-bs-toggle="tab" href="#grid-view" role="tab" aria-selected="true">
@@ -113,15 +95,36 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <form method="post" action="<%=pjName%>/product/filtered" id="product-filter-form">
+                                     <input type="hidden" class="product-filter-condition checked" name="product_type" value="${prodType.product_type}" >
+                                     <li class="">
+                                    	<label for="petFriendly"><input class="product-filter-condition chk" type="checkbox" name="pet_friendly" id="petFriendly" value="true">반려동물안심</label>
+                                     </li>
+                                    <li class="">
+                                    	<label for="easyCare"><input  class="product-filter-condition chk" type="checkbox" name="easy_care" id="easyCare" value="true">초보자용</label>
+                                    </li>
+                                    <li class="light-condition">
+                                    	<span id="filter-type">일조량</span>
+                                    	<label for="dl"><input type="radio" class="product-filter-condition light" name="product_light" id="dl" value="dl">양지</label>
+                                    	<label for="idl"><input type="radio" class="product-filter-condition light" name="product_light" id="idl" value="idl">반음지</label>
+                                    	<label for="sh"><input type="radio" class="product-filter-condition light" name="product_light" id="sh" value="sh">음지</label>
+                                    	<label for="nm"><input type="radio" class="product-filter-condition light" name="product_light" id="nm" value="nm">영향적음</label>
+                                    </li>
+                                    <!-- id="product-filter-apply" -->
                                     <li class="short">
-                                        <select class="nice-select">
+                                        <select class="nice-select" name="product_display_order">
                                             <option value="1">기본정렬</option>
                                             <option value="2">판매량순</option>
                                             <option value="3">리뷰많은순</option>
-                                            <option value="4">가격높은순</option>
-                                            <option value="5">가격낮은순</option>                                            
+                                            <option value="4">찜많은순</option>
+                                            <option value="5">가격높은순</option>
+                                            <option value="6">가격낮은순</option>                                           
                                         </select>
                                     </li>
+                                    <li><input type="submit" value="적용하기" id="filter-submit"></li>
+                                    </form>
+                                    
+                                    
                                 </ul>
                                
                             </div> <!-- <div class="product-topbar"> end -->
@@ -130,10 +133,10 @@
                             <div class="tab-content">
                             	<!-- flower: product list 상품 사진 목록 (그리드형: 사진만 나열, 한 행에 사진 3개씩, 한 페이지당 총 4행)-->
                                 <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
-                                    <div class="product-grid-view row g-y-20" id="testRemove">
-                                    	<!-- flower: 리턴값 이름 -<%-- ${productList} --%> -->
+                                   <div class="product-grid-view row g-y-20" id="afterFilterRemove">
+                                    <!-- flower: 리턴값 이름 -<%-- ${productList} --%> -->
                                     	<table>
-                                    	 <tbody id="prodTable">
+                                    	 <tbody>
                                     	 <c:forEach items="${productList}" var="prod" varStatus="st">
                                     	 	<c:if test="${st.index % 3 == 0}">
                                     			<tr>
@@ -142,7 +145,7 @@
                                         	<div class="col-lg-3 col-md-4 col-sm-6">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
+                                                    <a href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">
                                                     	<input type="hidden" name="${prod.product_id}"/>
                                                         <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
                                                         <c:if test="${not empty prod.prod_imgs_lists[1]}">
@@ -166,7 +169,7 @@
                                                     </div><!-- <div class="product-add-action"> end -->
                                                 </div><!-- <div class="product-img"> end -->
                                                 <div class="product-content">
-                                                    <a class="product-name" href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
+                                                    <a class="product-name" href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
                                                     <div class="price-box pb-1">
                                                         <span class="new-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" /></span>
                                                     </div>
@@ -190,8 +193,7 @@
                                       </c:if>
                                       </tbody>  
                                      </table>
-
-                                    </div> <!-- <div class="product-grid-view row g-y-20"> end -->
+                                   </div> <!-- <div class="product-grid-view row g-y-20"> end -->
                                 </div> <!-- <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab"> end -->
                                
                                 <!-- flower: 상품목록 list 정렬형 -->
@@ -201,7 +203,7 @@
                                         <div class="col-12">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
+                                                    <a href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">
                                                         <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
                                                         <c:if test="${not empty prod.prod_imgs_lists[1]}">
                                                         	<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[1]}" alt="${prod.product_name}2">
@@ -209,7 +211,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <a class="product-name" href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
+                                                    <a class="product-name" href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
                                                     <div class="price-box pb-1">
                                                         <span class="new-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" /></span>
                                                     </div>

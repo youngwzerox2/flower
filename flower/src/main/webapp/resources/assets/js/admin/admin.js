@@ -244,6 +244,15 @@ $(function(){
         }
     });
     
+    // 상품 수정 > 목록 버튼 클릭 이벤트
+    $("#cancelProductRegister").click(function(){
+    
+    	// 상품 조회
+		searchProducts();
+		
+    	$("#account-product-info-tab").tab('show');
+    });
+    
     // 리뷰관리 > 리뷰 클릭 이벤트
 	$(document).on("click", ".reviewId", function() {
 	    let reviewId = $(this).text();
@@ -255,7 +264,7 @@ $(function(){
 	});
 	
 	// 주문 > 주문관리 탭 클릭 이벤트
-	$("#account-orders-tab").click(function(){
+	$("#account-orders-info-tab").click(function(){
 	
 		// 주문 조회
 		searchOrders();
@@ -287,7 +296,55 @@ $(function(){
 	    
 	    $("#account-order-info-detail-tab").tab('show');
 	});
-    
+	
+	// 주문 상세 > 상품번호 클릭 이벤트
+	$(document).on("click", ".orderProductId", function(){
+		let productId = $(this).text();
+	
+		// 상품 상세 조회
+		selectOneProduct(productId, "detail"); 
+		$("#account-product-info-detail-tab").tab('show');
+	});
+	
+	// 주문 상세 > 목록 버튼 클릭 이벤트
+	$("#goOrderList").click(function(){
+		
+		// 주문 조회
+        searchOrders();
+		$("#account-orders-info-tab").tab('show');
+	});
+	
+	// 주문 상세 > 주문 확인 버튼 클릭 이벤트
+	$("#goOrderSuccess").click(function(){
+		
+		// 관리자 주문 확인
+		adminOrderConfirmation("confirm");
+	});
+	
+	// 주문 상세 > 주문 취소 버튼 클릭 이벤트
+	$("#goOrderCancel").click(function(){
+		let orderDetailNum = $("#orderDetailNumber").text();
+		
+		// 주문 취소 팝업 오픈
+		openOrderCancelPopup(orderDetailNum);
+	});
+	
+	// 주문 취소 팝업 > 주문 취소 버튼 클릭 이벤트
+	$(document).on("click", "#btn-orderCancel", function(){
+	
+		// 관리자 주문 확인
+		adminOrderConfirmation("cancel");
+	});
+	
+	// 주문 취소 팝업 > 닫기 버튼 클릭 이벤트
+	$(document).on("click", "#btn-closeOrderCancelPopup", function(){
+		let cancelOrderNum = $("#orderCancelNum").text();
+		
+		// 주문 취소 팝업 닫기
+		closeOrderCancelPopup(cancelOrderNum);
+	});
+	
+	    
 	// 설정 > 정책관리 탭 클릭 이벤트
 	$("#account-policies-tab").click(function(){
 	
@@ -1201,39 +1258,138 @@ $(function(){
 				let orderProducts 	= result.orderProducts;
 				let orderDetail = $("#orderDetail");
 				
-				console.log(result);
-				console.log(orderMember);
-				console.log(orderProducts);
-				
 				orderDetail.empty();
-
-                let oOrderNum 		= $("<tr/>").append($("<th>주문번호</th>")).append($("<td id='order_detail_number'/>").html(orderMember.order_detail_number));
-                let oOrderMem 		= $("<tr/>").append($("<th>수취인</th>")).append($("<td/>").html(orderMember.recipient_name));
-                let oTotOrCnt		= $("<tr/>").append($("<th>주문량</th>")).append($("<td/>").html(orderMember.total_order_cnt));
-                let oTotOrProCnt	= $("<tr/>").append($("<th>주문상품량</th>")).append($("<td/>").html(orderMember.total_product_cnt));
-                let oTotOrPropri	= $("<tr/>").append($("<th>결제금액</th>")).append($("<td/>").html(orderMember.total_order_price));
-                let oOrderState		= $("<tr/>").append($("<th>주문상태</th>")).append($("<td/>").html(orderMember.order_state));
-                let oOrderList		= $("<tr/>").append($("<th>주문목록</th>")).append($("<td/>"));
-                let oOrderDate		= $("<tr/>").append($("<th>주문일</th>")).append($("<td/>").html(orderMember.order_date));
-                let oRecipAddr		= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html(orderMember.recipient_address));
-                let oRecipTel		= $("<tr/>").append($("<th>연락처</th>")).append($("<td/>").html(orderMember.recipient_tel));
+				
+				for(row of orderMember){
+					let oOrderNum 		= $("<tr/>").append($("<th>주문번호</th>")).append($("<td id='orderDetailNumber'/>").html(row["order_detail_number"]));
+	                let oOrderMem 		= $("<tr/>").append($("<th>수취인</th>")).append($("<td/>").html(row["recipient_name"]));
+	                let oTotOrCnt		= $("<tr/>").append($("<th>주문량</th>")).append($("<td/>").html(formatNumberWithCommas(row["total_order_cnt"])));
+	                let oTotOrProCnt	= $("<tr/>").append($("<th>주문상품량</th>")).append($("<td/>").html(formatNumberWithCommas(row["total_product_cnt"])));
+	                let oTotOrPropri	= $("<tr/>").append($("<th>결제금액</th>")).append($("<td/>").html(formatNumberWithCommas(row["total_order_price"])));
+	                let oOrderList		= $("<tr/>").append($("<th>주문목록</th>")).append($("<td id='orderProductList'/>"));
+	                let oOrderDate		= $("<tr/>").append($("<th>주문일</th>")).append($("<td/>").html(row["order_date"]));
+	                let oRecipAddr		= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html(row["recipient_address"]));
+	                let oRecipTel		= $("<tr/>").append($("<th>연락처</th>")).append($("<td/>").html(row["recipient_tel"]));
+	                let oOrderState		= $("<tr/>").append($("<th>주문상태</th>")).append($("<td id='orderState'/>").html(row["order_state"]));
+	                let oOrderReason	= $("<tr id='oCancelReason' style='display: none;'/>").append($("<th>주문취소사유</th>")).append($("<td/>").html(row["order_cancel_reason"]));
+	                let oAdminYn		= $("<tr/>").append($("<th>관리자확인여부</th>")).append($("<td id='adminConfirmYn'/>").html(row["admin_confirmation_yn"]));
+	                let oAdminYnDate	= $("<tr id='orderAdminYnDate' style='display: none;'/>").append($("<th>관리자확인일</th>")).append($("<td/>").html(row["admin_confirmation_date"]));
+	            
+		            orderDetail.append(oOrderNum);
+	                orderDetail.append(oOrderMem);
+	                orderDetail.append(oTotOrCnt);
+	                orderDetail.append(oTotOrProCnt);
+	                orderDetail.append(oTotOrPropri);
+	                orderDetail.append(oOrderList);
+	                orderDetail.append(oOrderDate);
+	                orderDetail.append(oRecipAddr);
+	                orderDetail.append(oRecipTel);
+	                orderDetail.append(oOrderState);
+	                orderDetail.append(oOrderReason);
+	                orderDetail.append(oAdminYn);
+	                orderDetail.append(oAdminYnDate);
+	                
+				}
                 
-	            orderDetail.append(oOrderNum);
-                orderDetail.append(oOrderMem);
-                orderDetail.append(oTotOrCnt);
-                orderDetail.append(oTotOrProCnt);
-                orderDetail.append(oTotOrPropri);
-                orderDetail.append(oOrderState);
-                orderDetail.append(oOrderDate);
-                orderDetail.append(oRecipAddr);
-                orderDetail.append(oRecipTel);
-                
+	            if (orderProducts && orderProducts.length > 0) {
+	                for (i of orderProducts) {
+	                
+						let divArea = $("<div style='white-space: nowrap;'/>");
+						let linkArea = $("<a class='orderProductId' style='color:blue; text-decoration:underline; display: inline-block; text-align: center;'/>").text(i["product_id"]).hover(function() { $(this).css("cursor", "pointer"); });
+						let textArea = $("<span/>").text("(" + i["product_name"] + ")" +" x " + i["order_product_quantity"] + "개");
+						
+						divArea.append(linkArea, textArea);
+						
+	                	$("#orderProductList").append(divArea);
+	                }
+            	}
+            	
+            	
+            	// 주문확인 및 주문취소 버튼 컨트롤
+            	isOrderCompleted();
+            	
 			}
 			, error 	: function(err){
 				alert("주문 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
 				console.log(err);
 			}
 		});
+	}
+	
+	// 주문확인 및 주문취소 버튼 컨트롤
+	function isOrderCompleted(){
+		let checkValue 		= $("#adminConfirmYn").text() === "Y";
+		let checkOrderState = $("#orderState").text() === "주문취소";
+		
+		if (checkValue) {
+			$("#goOrderSuccess, #goOrderCancel").prop("disabled", true);
+			$("#orderAdminYnDate").show();
+			
+			// 취소 일 시 사유 노출
+			if(checkOrderState){
+				$("#oCancelReason").show();
+			}
+		} else {
+			$("#orderAdminYnDate").hide();
+			$("#oCancelReason").hide();
+			$("#goOrderSuccess, #goOrderCancel").prop("disabled", false);
+		}
+	}
+	
+	            
+	// 관리자 주문 확인
+	function adminOrderConfirmation(status){
+		let orderDetailNum 		= $("#orderDetailNumber").text();
+		let orderStatus	 		= status == "confirm" ? "배송완료" :  "주문취소";
+		let orderCancelReason 	= status == "confirm" ? null : $("#orderCancelReason").val().trim();
+
+		// 주문 취소 시 취소 사유 체크		
+		if(status == "cancel" && orderCancelReason == ""){
+			alert("주문 취소 사유를 입력하세요.");
+			return;
+		}
+		
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/adminOrderConfirmation"
+			, data		: { 
+							order_detail_number	: orderDetailNum
+						  , order_state 		: orderStatus
+						  , order_cancel_reason : orderCancelReason
+						  }
+			, dataType 	: "json"
+			, success	: function(result){
+				let successText = status == "confirm" ? "주문수락" :  "주문취소";
+				alert(successText + "이 완료 되었습니다.");
+				
+				// 상태 별 분개 조치
+				if(status == "confirm"){
+					// 주문 상세 조회
+					selectOneOrder(orderDetailNum);
+				}else{
+					closeOrderCancelPopup(orderDetailNum);
+				}
+			}
+			, 
+			error 	: function(err){
+				alert("관리자 주문 확인 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 주문 취소 팝업 오픈
+	function openOrderCancelPopup(orderDetailNum){
+		$("#orderCancelModal").modal("show");
+		$("#orderCancelNum").text(orderDetailNum);
+	}
+		
+	// 주문 취소 팝업 닫기
+	function closeOrderCancelPopup(cancelOrderNum){
+		$("#orderCancelModal").modal("hide");
+		
+		// 주문 상세 조회
+		selectOneOrder(cancelOrderNum);
 	}
 	
     // 정책관리 조회

@@ -64,14 +64,14 @@
                <div class="form-field me-md-30 mb-30 mb-md-0">
                    답변내용 : ${ vo.reports_contents }                   
                </div>
-
+ 
 	           <div class="button-wrap pt-5" style="margin-top: 10px;">
 		           <c:if test="${ (vo.member_id eq member.member_id) }">
 		              <input type="button" value="수정" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_form('${ vo.reviews_id }');">
 		              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="reviews_del('${vo.reviews_id}');">
 		           </c:if>
 		           
-	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+	              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="viewlist();">
 	           </div>
        </form>
    </div>

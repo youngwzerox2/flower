@@ -76,8 +76,6 @@ $(function() {
                 }
             });
         
-        $('#loginForm').sumbit();
-        //alert("ok");
     });
     
     $("#cancel").click(function(e) {

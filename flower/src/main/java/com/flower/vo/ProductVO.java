@@ -36,7 +36,14 @@ public class ProductVO {
 	private boolean 	pet_friendly;
 	private boolean 	easy_care;
 	private String	 	product_light;
+	
+	/**** 검색 필터 적용시 사용할 변수
+	 * product_type				: 검색 필터를 적용한 페이지의 카테고리(검색 필터는 상품 목록에서만 나타남)
+	 * product_display_order	: 1)기본정렬, 2)판매량순, 3)리뷰많은순, 4)가격높은순, 5)가격낮은순
+	 * ******/
 	private String		product_type;
+	private Integer		product_display_order;
+	
 	
 	private Integer 	inventory_quantity;
 	private Integer 	product_price;

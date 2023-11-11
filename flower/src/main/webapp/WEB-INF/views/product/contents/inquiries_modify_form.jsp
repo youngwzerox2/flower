@@ -41,8 +41,8 @@
            </div>
            
            <div class="button-wrap pt-5" style="margin-top: 10px;">
-              <input type="button" value="수정하기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="send(this.form);">
-              <input type="button" value="목록보기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+              <input type="button" value="수정하기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="inquiries_modify(this.form);">
+              <input type="button" value="목록보기" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="inq_modify_viewlist()">
            </div>
        </form>
    </div>

@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- Jin's CSS for header logo-->
-<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css"> 
-    
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+        
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
 			
@@ -120,7 +121,7 @@
                                         </li>
                                         <li class="megamenu-holder">
 											<!-- flower: 메뉴 이름 2/-->
-                                            <a href="<%=pjName%>/product/category/product">모든꽃보기</a>
+                                            <a href="<%=pjName%>/product/product">모든꽃보기</a>
                                         <li class="drop-holder"> 
                                             <!-- seasons에서 a태그 빼고, css/js로 cursor만 주도록 한다. -->
                                             <!-- flower: 메뉴 이름 3/-->
@@ -128,27 +129,27 @@
                                             <ul class="drop-menu">
                                                 <li>
                                                 	<!-- href에 절대경로로 입력해야, 어느 페이지에서든 controller와 연결된다 -->
-                                                    <a href="<%=pjName%>/product/category/product?product_type=spring">봄</a>
+                                                    <a href="<%=pjName%>/product/product?product_type=spring">봄</a>
                                                 </li>
                                                 <li>
-                                                    <a href="<%=pjName%>/product/category/product?product_type=summer">여름</a>
+                                                    <a href="<%=pjName%>/product/product?product_type=summer">여름</a>
                                                 </li>
                                                 <li>
-                                                	<a href="<%=pjName%>/product/category/product?product_type=fall">가을</a>
+                                                	<a href="<%=pjName%>/product/product?product_type=fall">가을</a>
                                                 </li>
                                                 <li>
-                                                	<a href="<%=pjName%>/product/category/product?product_type=winter">겨울</a>
+                                                	<a href="<%=pjName%>/product/product?product_type=winter">겨울</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 3/-->
-                                            <a href="<%=pjName%>/product/category/product?product_type=easyCare">초보자용꽃</a>
+                                            <a href="<%=pjName%>/product/product?product_type=easyCare">초보자용꽃</a>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 4/-->
-                                            <a href="<%=pjName%>/product/category/product?product_type=petFriendly">반려동물안심꽃</a>
+                                            <a href="<%=pjName%>/product/product?product_type=petFriendly">반려동물안심꽃</a>
                                         </li>
                                         <li><!-- flower: 메뉴 이름 5/-->
-                                            <a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는꽃</a>
+                                            <a href="<%=pjName%>/product/product?product_type=afterSunset">밤에피는꽃</a>
                                         </li>
 
                                     </ul>
@@ -182,15 +183,15 @@
                                             <li class="drop-holder">
                                                 <a><span id="nav_cursor">Seasons</span></a>
                                                 <ul class="drop-menu">
-                                                    <li><a href="<%=pjName%>/product/category/product?product_type=spring">봄</a></li>
-                                                    <li><a href="<%=pjName%>/product/category/product?product_type=summer">여름</a></li>
-                                                    <li><a href="<%=pjName%>/product/category/product?product_type=fall">가을</a></li>
-                                                    <li><a href="<%=pjName%>/product/category/product?product_type=winter">겨울</a></li>
+                                                    <li><a href="<%=pjName%>/product/product?product_type=spring">봄</a></li>
+                                                    <li><a href="<%=pjName%>/product/product?product_type=summer">여름</a></li>
+                                                    <li><a href="<%=pjName%>/product/product?product_type=fall">가을</a></li>
+                                                    <li><a href="<%=pjName%>/product/product?product_type=winter">겨울</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="<%=pjName%>/product/category/product?product_type=easyCare">초보자용</a></li>
-                                            <li><a href="<%=pjName%>/product/category/product?product_type=petFriendly">반려동물안심</a></li>
-                                            <li><a href="<%=pjName%>/product/category/product?product_type=afterSunset">밤에피는</a></li>
+                                            <li><a href="<%=pjName%>/product/product?product_type=easyCare">초보자용</a></li>
+                                            <li><a href="<%=pjName%>/product/product?product_type=petFriendly">반려동물안심</a></li>
+                                            <li><a href="<%=pjName%>/product/product?product_type=afterSunset">밤에피는</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -214,12 +215,12 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                                 <!-- flower: header(sticky) 로그인, 회원가입 연결요망! -->
                                           		 <c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/login">로그인</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
 														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
                                             </ul>
@@ -275,12 +276,12 @@ settingButton" data-bs-toggle="dropdown" aria-label="setting" aria-expanded="fal
                                         <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">Mypage</a></li>
                                        			<c:choose>
 													<c:when test="${empty sessionScope.member}">
-														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/login">로그인</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/login">로그인</a></li>
 														<!-- 회원가입 -->
 														<li><a class="dropdown-item" href="<%=pjName %>/member/register">회원가입</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="dropdown-item loginCheck" href="<%=pjName %>/member/logout">로그아웃</a></li>
+														<li><a class="dropdown-item" href="<%=pjName %>/member/logout">로그아웃</a></li>
 													</c:otherwise>
 												</c:choose>
                                     </ul>

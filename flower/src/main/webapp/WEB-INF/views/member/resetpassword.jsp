@@ -118,7 +118,7 @@
 	<!-- Main Content Area End Here -->
 
 	<!-- Begin Footer Area -->
-	<div class="footer-area"
+	<!-- <div class="footer-area"
 		data-bg-image="../resources/assets/images/footer/bg/1-1920x465.jpg">
 		<div class="footer-top section-space-top-100 pb-60">
 			<div class="container">
@@ -230,7 +230,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<%@include file="/flower_footer.jsp" %>
 	<!-- Footer Area End Here -->
 
 	<!-- Begin Scroll To Top -->

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<% String pjName = "/flower"; %>
 
+<% String pjName = "/flower"; %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -40,7 +41,6 @@
 	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
 
 </head>
-
 <body>
     <div class="main-wrapper">
     <%@ include file="flower_header.jsp" %>
@@ -143,122 +143,46 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="<%=pjName%>/product/category/product?product_type=spring">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_spring.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-10-270x300.jpg" alt="Product Images">
+                                        <a href="<%=pjName%>/product/product?product_type=spring">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_spring.jpg" alt="Blooming in Spring">
+                                            <!-- <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-10-270x300.jpg" alt="Product Images">  -->
                                         </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=spring">봄부터 피는 꽃</a>
+                                        <a class="product-name main-product-season-jin" href="<%=pjName%>/product/product?product_type=spring">봄부터 피는 꽃</a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="<%=pjName%>/product/category/product?product_type=summer">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_summer.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-11-270x300.jpg" alt="Product Images">
+                                        <a href="<%=pjName%>/product/product?product_type=summer">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_summer.jpg" alt="Blooming in Summer">
+                                            <!--  <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-11-270x300.jpg" alt="Product Images"> -->
                                         </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=summer">여름부터 피는 꽃</a>
+                                        <a class="product-name main-product-season-jin" href="<%=pjName%>/product/product?product_type=summer">여름부터 피는 꽃</a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="<%=pjName%>/product/category/product?product_type=fall">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_autumn.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                        <a href="<%=pjName%>/product/product?product_type=fall">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_autumn.jpg" alt="Blooming in Autumn">
+                                            <!--  <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images"> -->
                                         </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=fall">가을에 피는 꽃</a>
+                                        <a class="product-name main-product-season-jin" href="<%=pjName%>/product/product?product_type=fall">가을에 피는 꽃</a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="<%=pjName%>/product/category/product?product_type=winter">
-                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_winter.jpg" alt="Product Images">
-                                            <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                        <a href="<%=pjName%>/product/product?product_type=winter">
+                                            <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/flower_winter.jpg" alt="Blooming in Winter">
+                                            <!-- <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images"> -->
                                         </a>
-                                        <div class="product-add-action">
-                                            <ul>
-                                                <li>
-                                                    <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-like"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-look"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                        <i class="pe-7s-cart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                     <div class="product-content">
-                                        <a class="product-name" href="<%=pjName%>/product/category/product?product_type=winter">겨울에도 피어요</a>
+                                        <a class="product-name main-product-season-jin" href="<%=pjName%>/product/product?product_type=winter">겨울에도 피어요</a>
                                         
                                     </div>
                                 </div>
@@ -303,9 +227,9 @@
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=3">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -314,11 +238,13 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <!-- flower: 퀵뷰 숨긴다 -->
+                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li>-->
+                                                        
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -328,11 +254,12 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="board/product">장미</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$23.45</span>
+                                                    <span class="new-price">4,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
+                                                <!-- <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -340,17 +267,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                </div>-->
+                                            </div> <!-- <div class="product-content"> end -->
+                                        </div> <!--  <div class="product-item"> end -->
+                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                            	<!-- flower: 상품 상세 페이지 진입 버튼 -->
-                                                <a href="">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=3">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -359,11 +285,13 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <!-- flower: 퀵뷰 숨긴다 -->
+                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li>-->
+                                                        
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -373,11 +301,12 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">수국</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$25.45</span>
+                                                    <span class="new-price">4,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
+                                                <!-- <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -385,16 +314,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                </div>-->
+                                            </div> <!-- <div class="product-content"> end -->
+                                        </div> <!--  <div class="product-item"> end -->
+                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=3">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -403,11 +332,13 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <!-- flower: 퀵뷰 숨긴다 -->
+                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li>-->
+                                                        
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -417,11 +348,12 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">해바라기</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$30.45</span>
+                                                    <span class="new-price">4,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
+                                                <!-- <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -429,16 +361,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                </div>-->
+                                            </div> <!-- <div class="product-content"> end -->
+                                        </div> <!--  <div class="product-item"> end -->
+                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=3">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -447,11 +379,13 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <!-- flower: 퀵뷰 숨긴다 -->
+                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li>-->
+                                                        
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -461,11 +395,12 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">데이지</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$45.00</span>
+                                                    <span class="new-price">4,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
+                                                <!-- <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -473,17 +408,17 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                </div>-->
+                                            </div> <!-- <div class="product-content"> end -->
+                                        </div> <!--  <div class="product-item"> end -->
+                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
 
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -506,7 +441,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Butterfly Weed</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Butterfly Weed</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$50.45</span>
                                                 </div>
@@ -526,8 +461,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -550,7 +485,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Common Yarrow</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Common Yarrow</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$65.00</span>
                                                 </div>
@@ -570,8 +505,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -594,7 +529,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Doublefile Viburnum</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Doublefile Viburnum</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$67.45</span>
                                                 </div>
@@ -614,8 +549,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -638,7 +573,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Feather Reed Grass</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Feather Reed Grass</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$20.00</span>
                                                 </div>
@@ -654,7 +589,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                	-->
+                                	
                                 </div>
                             </div>
                             <!-- flower: 반려동물안심꽃 이미지로 경로 설정 요망-->
@@ -664,8 +599,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -688,7 +623,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Butterfly Weed</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Butterfly Weed</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$50.45</span>
                                                 </div>
@@ -708,8 +643,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -732,7 +667,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Common Yarrow</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Common Yarrow</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$65.00</span>
                                                 </div>
@@ -752,8 +687,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -776,7 +711,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Doublefile Viburnum</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Doublefile Viburnum</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$67.45</span>
                                                 </div>
@@ -796,8 +731,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -820,7 +755,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Feather Reed Grass</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Feather Reed Grass</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$20.00</span>
                                                 </div>
@@ -840,8 +775,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -864,7 +799,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">American Marigold</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">American Marigold</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$23.45</span>
                                                 </div>
@@ -884,8 +819,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -908,7 +843,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Black Eyed Susan</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Black Eyed Susan</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$25.45</span>
                                                 </div>
@@ -928,8 +863,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -952,7 +887,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Bleeding Heart</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Bleeding Heart</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$30.45</span>
                                                 </div>
@@ -972,8 +907,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -996,7 +931,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Bloody Cranesbill</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Bloody Cranesbill</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$45.00</span>
                                                 </div>
@@ -1021,8 +956,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1045,7 +980,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Doublefile Viburnum</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Doublefile Viburnum</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$67.45</span>
                                                 </div>
@@ -1065,8 +1000,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1089,7 +1024,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Feather Reed Grass</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Feather Reed Grass</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$20.00</span>
                                                 </div>
@@ -1109,8 +1044,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1133,7 +1068,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">American Marigold</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">American Marigold</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$23.45</span>
                                                 </div>
@@ -1153,8 +1088,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1177,7 +1112,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Black Eyed Susan</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Black Eyed Susan</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$25.45</span>
                                                 </div>
@@ -1197,8 +1132,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1221,7 +1156,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Butterfly Weed</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Butterfly Weed</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$50.45</span>
                                                 </div>
@@ -1241,8 +1176,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1265,7 +1200,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Common Yarrow</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Common Yarrow</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$65.00</span>
                                                 </div>
@@ -1285,8 +1220,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1309,7 +1244,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Bleeding Heart</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Bleeding Heart</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$30.45</span>
                                                 </div>
@@ -1329,8 +1264,8 @@
                                         <div class="product-item">
                                             <div class="product-img">
                                                 <a href="shop.html">
-                                                    <img class="primary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1353,7 +1288,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name" href="shop.html">Bloody Cranesbill</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">Bloody Cranesbill</a>
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">$45.00</span>
                                                 </div>
@@ -1373,7 +1308,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <!-- <div class="tab-content" id="myTabContent"> end -->
             </div>
         </div>
         <!-- Product Area End Here -->
@@ -1383,74 +1318,22 @@
 
 
         <!-- Begin Testimonial Area -->
-        <div class="testimonial-area section-space-top-100 section-space-bottom-95">
-            <div class="container-fluid px-10">
-                <div class="section-title-wrap">
-                    <h2 class="section-title mb-7">What Say Client</h2>
-                    <p class="section-desc mb-10">Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-                        roots in a piece of classical Latin literature
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="swiper-container testimonial-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide testimonial-item">
-                            <div class="user-info mb-3">
-                                <div class="user-shape-wrap">
-                                    <div class="user-img">
-                                        <img src="<%=pjName %>/resources/assets/images/testimonial/user/1.png" alt="User Image">
-                                    </div>
-                                </div>
-                                <div class="user-content text-charcoal">
-                                    <h4 class="user-name mb-1">Phoenix Baker</h4>
-                                    <span class="user-occupation">Client</span>
-                                </div>
-                            </div>
-                            <p class="user-comment mb-6">Lorem ipsum dolor sit amet, conse adipisic elit, sed do eiusmod
-                                tempo
-                                incididunt ut labore et dolore. magna
-                            </p>
-                        </div>
-                        <div class="swiper-slide testimonial-item">
-                            <div class="user-info mb-3">
-                                <div class="user-shape-wrap">
-                                    <div class="user-img">
-                                        <img src="<%=pjName %>/resources/assets/images/testimonial/user/2.png" alt="User Image">
-                                    </div>
-                                </div>
-                                <div class="user-content text-charcoal">
-                                    <h4 class="user-name mb-1">Phoenix Baker</h4>
-                                    <span class="user-occupation">Client</span>
-                                </div>
-                            </div>
-                            <p class="user-comment mb-6">Lorem ipsum dolor sit amet, conse adipisic elit, sed do eiusmod
-                                tempo
-                                incididunt ut labore et dolore. magna
-                            </p>
-                        </div>
-                        <div class="swiper-slide testimonial-item">
-                            <div class="user-info mb-3">
-                                <div class="user-shape-wrap">
-                                    <div class="user-img">
-                                        <img src="<%=pjName %>/resources/assets/images/testimonial/user/3.png" alt="User Image">
-                                    </div>
-                                </div>
-                                <div class="user-content text-charcoal">
-                                    <h4 class="user-name mb-1">Phoenix Baker</h4>
-                                    <span class="user-occupation">Client</span>
-                                </div>
-                            </div>
-                            <p class="user-comment mb-6">Lorem ipsum dolor sit amet, conse adipisic elit, sed do eiusmod
-                                tempo
-                                incididunt ut labore et dolore. magna
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination without-absolute"></div>
-                </div>
-            </div>
+        <div class="testimonial-area container">
+        	<div class = 'row keyword' style = 'position : relative;'>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
+        </div>
         </div>
         <!-- Testimonial Area End Here -->
 

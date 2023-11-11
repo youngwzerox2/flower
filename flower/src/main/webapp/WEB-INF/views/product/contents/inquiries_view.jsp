@@ -57,7 +57,7 @@
 	              <input type="button" value="삭제" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="del('${vo.inquiries_id}');">
 	           </c:if>
 	           
-              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="location.href='product'">
+              <input type="button" value="목록" class="btn btn-custom-size xl-size btn-pronia-primary" onclick="inq_viewlist();">
            </div>
        </form>
    </div>
