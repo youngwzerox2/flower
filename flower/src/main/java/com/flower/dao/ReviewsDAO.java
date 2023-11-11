@@ -20,7 +20,7 @@ public interface ReviewsDAO {
 	int selectRowTotal(Map map);
 	
 	//추가
-	int insert(ReviewsVO vo);
+	int insert(ReviewsVO vo, MemberProductImageVO file_vo);
 	
 	//수정
 	int update(ReviewsVO vo);

@@ -52,8 +52,7 @@
 		                    reviews_title,
 		                    reviews_register_date,
 		                    reviews_content,
-		                    reviews_score,
-		                    reports_cnt
+		                    reviews_score
 		                    )
                     values( #{ reviews_id },
 							#{ member_id },
@@ -61,8 +60,7 @@
 						    #{ reviews_title },
 						    now(),
 						    #{ reviews_content },
-						    #{ reviews_score },
-						    #{ reports_cnt }
+						    #{ reviews_score }
 							)
 			
 	 </insert>

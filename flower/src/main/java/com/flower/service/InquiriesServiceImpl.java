@@ -36,9 +36,9 @@ public class InquiriesServiceImpl implements InquiriesService {
 	}
 
 	@Override
-	public int insert(InquiriesVO vo) {
+	public void insert(InquiriesVO vo) {
 		// TODO Auto-generated method stub
-		return inquiriesDao.insert(vo);
+		inquiriesDao.insert(vo);
 	}
 
 	@Override

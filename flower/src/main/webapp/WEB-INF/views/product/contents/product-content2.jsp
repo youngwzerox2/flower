@@ -337,37 +337,23 @@
                             <div class="tab-content product-tab-content">
                                 <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
                                     <div class="product-information-body">
-                                        <h4 class="title">Shipping</h4>
-                                        <p class="short-desc mb-4">The item will be shipped from China. So it need 15-20 days to
-                                            deliver. Our product is good with reasonable price and we believe you will worth it.
-                                            So please wait for it patiently! Thanks.Any question please kindly to contact us and
-                                            we promise to work hard to help you to solve the problem</p>
-                                        <h4 class="title">About return request</h4>
-                                        <p class="short-desc mb-4">If you don't need the item with worry, you can contact us
-                                            then we will help you to solve the problem, so please close the return request!
-                                            Thanks</p>
-                                        <h4 class="title">Guarantee</h4>
-                                        <p class="short-desc mb-0">If it is the quality question, we will resend or refund to
-                                            you; If you receive damaged or wrong items, please contact us and attach some
-                                            pictures about product, we will exchange a new correct item to you after the
-                                            confirmation.</p>
+                                    	<p class="short-desc mb-0">상품 상세 설명<br/>
+                                        (이미지로 불러올 것. product_id_description_number)<br/>
+                                        보일듯 말듯 가물거리는 안개 속에 싸인 길 잡힐 듯 말듯 멀어져가는 무지개와 같은 길<br/>
+                                        그 어디에서 날 기다리는지 둘러보아도 찾을 수 없네 <br/> 그대여 힘이 돼주오 나에게 주어진 길 찾을 수 있도록
+                                        </p>
                                     </div>
                                 </div>
                                 
                                 <!-- QnA -->
                                 <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="product-description-body">
-                                    	<h3>배송/교환/환불/판매자정보</h3>
-                                    	Notice<br>
-                                    	[구매 전 확인 부탁드립니다]
-                                    	<hr>
-                                    	상품정보<br>
-                                    	배송정보<br>
-                                    	교환/반품<br>
-                                    	
-                                    	<hr>
-                                    	<h3>판매자 정보</h3>
-                                        <p class="short-desc mb-0"></p>                                   
+                                    	<h4 class="title">배송정보</h4>
+                                        	<p class="short-desc mb-4">별헤는 밤이면 들려오는 그대 음성<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">상품청약철회</h4>
+                                        	<p class="short-desc mb-4">하얗게 부서지는 꽃가루 되어<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">판매자정보</h4>
+                                        	<p class="short-desc mb-0">그대 품안에 잠들고 싶어라<br/>(이미지 파일로 대체할 것인지 결정요망)</p>                      
                                     </div>
                                 </div>
                                 

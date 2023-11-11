@@ -50,9 +50,9 @@ public class ReviewsServiceImpl implements ReviewsService {
 	}
 
 	@Override
-	public void insert(ReviewsVO vo) {
+	public void insert(ReviewsVO vo, MemberProductImageVO file_vo) {
 		// TODO Auto-generated method stub
-		reviewsDao.insert(vo);
+		reviewsDao.insert(vo, file_vo);
 		 
 	}
 
