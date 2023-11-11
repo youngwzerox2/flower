@@ -369,7 +369,7 @@
                                 	<c:if test="${ empty r_list }">
                                 		<tr>
                                 			<td colspan="5">
-                                				<div id="i_empty_message">게시물이 없습니다</div>
+                                				<div id="i_empty_message">게시물이 없습니다.....</div>
                                 			</td>
                                 		</tr>
                                 	</c:if>
