@@ -1,21 +1,18 @@
 package com.flower.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -108,55 +105,14 @@ public class ProductController {
 		}
 //		System.out.println("vo가 완성되었나@controller: " + vo);
 		
-		// 상품 목록에서 검색 조건을 적용했을 때
-		// 상품목록 화면에서만 검색 필터가 적용되기 때문에, 조건이 2개 이상이다.
-		if (req.getParameterValues("filterCondition") != null) {
-			List<String> condition = Arrays.asList(req.getParameterValues("filterCondition"));
-			
-			for(String type2 : condition) {
-				switch(type2){
-				  case "spring":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "summer":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "fall":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "winter":
-					  vo.setBlooming_season(type2);
-				  break;
-				  case "pet_friendly":
-				      vo.setPet_friendly(true);
-				  break;
-				  case "easy_care":
-				    vo.setEasy_care(true);
-				  break;
-				  case "dl":
-				    vo.setProduct_light(type2);
-				  break;
-				  case "idl":
-					vo.setProduct_light(type2);
-				  break;
-				  case "sh":
-					vo.setProduct_light(type2);
-				  break;
-				  case "nm":
-					vo.setProduct_light(type2);
-				  break;
-					  
-				} // 검색 필터 switch end
-			} // for end
-		}// request if end
+		
 		
 		System.out.println("vo가 완성되었나@controller: " + vo);
 		
 		List<ProductVO> result = productService.getCateProdList(vo);
 		m.addAttribute("productList", result);
 		m.addAttribute("prodType", vo);
-		
-//		return  "product/category/product22222";
+
 	}
 	
 

@@ -145,7 +145,7 @@
                                         	<div class="col-lg-3 col-md-4 col-sm-6">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
+                                                    <a href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">
                                                     	<input type="hidden" name="${prod.product_id}"/>
                                                         <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
                                                         <c:if test="${not empty prod.prod_imgs_lists[1]}">
@@ -169,7 +169,7 @@
                                                     </div><!-- <div class="product-add-action"> end -->
                                                 </div><!-- <div class="product-img"> end -->
                                                 <div class="product-content">
-                                                    <a class="product-name" href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
+                                                    <a class="product-name" href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
                                                     <div class="price-box pb-1">
                                                         <span class="new-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" /></span>
                                                     </div>
@@ -203,7 +203,7 @@
                                         <div class="col-12">
                                             <div class="product-item">
                                                 <div class="product-img">
-                                                    <a href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">
+                                                    <a href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">
                                                         <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
                                                         <c:if test="${not empty prod.prod_imgs_lists[1]}">
                                                         	<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[1]}" alt="${prod.product_name}2">
@@ -211,7 +211,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <a class="product-name" href="<%=pjName%>/product/contents/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
+                                                    <a class="product-name" href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
                                                     <div class="price-box pb-1">
                                                         <span class="new-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" /></span>
                                                     </div>

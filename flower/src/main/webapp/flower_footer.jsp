@@ -11,7 +11,7 @@
                         <div class="col-lg-3">
                             <div class="footer-widget-item">
                                 <div class="footer-widget-logo">
-                                    <a href="admin/login">
+                                    <a href="<%=pjName %>/admin/login">
                                         <img src="<%=pjName %>/resources/assets/images/logo/dark.png" alt="Logo">
                                     </a>
 									<!-- flower: 관리자 로그인버튼(추후 위치 이동 요망. h3 옆으로?) -->

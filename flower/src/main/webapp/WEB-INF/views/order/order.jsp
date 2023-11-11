@@ -31,6 +31,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="/flower/resources/assets/css/style.css">
+        <!-- Jin's CSS for header logo-->
+	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
     
      <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
      <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
