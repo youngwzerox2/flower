@@ -299,137 +299,155 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                        	<!-- flower: 상품상세하단- 탭메뉴(①information: 배송정보, 판매자정보, 상품청약철회 ②Description: 상품상세정보(키우는방법) ③Review ④QnA) -->
                             <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
-                                        Information
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="active tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
-                                        Description
+                                    <a class="active tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
+                                        상품정보
                                     </a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="tab-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
-                                        Reviews(3)
+                                        리뷰
                                     </a>
                                 </li>
-                                <!-- flower: 상품상세하단 추가(QnA) → review 템플릿에서 일부분 사용요망! -->
                                 <li class="nav-item" role="presentation">
-                                    <a class="tab-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
-                                        QnA(3)
+                                    <a class="tab-btn" id="inquiries-tab" data-bs-toggle="tab" href="#inquiries" role="tab" aria-controls="inquiries" aria-selected="false">
+                                        문의
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
+                                        QnA
                                     </a>
                                 </li>
                             </ul>
-                            <!-- flower: 상품상세하단- 탭메뉴의 내용(①information: 배송정보, 판매자정보, 상품청약철회 ②Description: 상품상세정보(키우는방법) ③Review ④QnA) -->
+                            <!-- 상품정보 -->
                             <div class="tab-content product-tab-content">
-                                <div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
+                                <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
                                     <div class="product-information-body">
-                                        <h4 class="title">배송정보</h4>
-                                        <p class="short-desc mb-4">별헤는 밤이면 들려오는 그대 음성<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
-                                        <h4 class="title">상품청약철회</h4>
-                                        <p class="short-desc mb-4">하얗게 부서지는 꽃가루 되어<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
-                                        <h4 class="title">판매자정보</h4>
-                                        <p class="short-desc mb-0">그대 품안에 잠들고 싶어라<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                                    <div class="product-description-body">
-                                        <p class="short-desc mb-0">상품 상세 설명<br/>
+                                    	<p class="short-desc mb-0">상품 상세 설명<br/>
                                         (이미지로 불러올 것. product_id_description_number)<br/>
                                         보일듯 말듯 가물거리는 안개 속에 싸인 길 잡힐 듯 말듯 멀어져가는 무지개와 같은 길<br/>
                                         그 어디에서 날 기다리는지 둘러보아도 찾을 수 없네 <br/> 그대여 힘이 돼주오 나에게 주어진 길 찾을 수 있도록
                                         </p>
                                     </div>
                                 </div>
+                                <!-- QnA -->
+                                <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                    <div class="product-description-body">
+                                    	<h4 class="title">배송정보</h4>
+                                        	<p class="short-desc mb-4">별헤는 밤이면 들려오는 그대 음성<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">상품청약철회</h4>
+                                        	<p class="short-desc mb-4">하얗게 부서지는 꽃가루 되어<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                        <h4 class="title">판매자정보</h4>
+                                        	<p class="short-desc mb-0">그대 품안에 잠들고 싶어라<br/>(이미지 파일로 대체할 것인지 결정요망)</p>
+                                    </div>
+                                </div>
+                                 <!-- 리뷰게시판 -->
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                     <div class="product-review-body">
-                                        <div class="blog-comment mt-0">
-                                            <h4 class="heading">Comments (03)</h4>
-                                            <div class="blog-comment-item">
-                                                <div class="blog-comment-img">
-                                                    <img src="<%=pjName %>/resources/assets/images/blog/avatar/1-1-120x120.png" alt="User Image">
-                                                </div>
-                                                <div class="blog-comment-content">
-                                                    <div class="user-meta">
-                                                        <h2 class="user-name">Donald Chavez</h2>
-                                                        <span class="date">21 July 2021</span>
-                                                    </div>
-                                                    <p class="user-comment">Lorem ipsum dolor sit amet, consectetur adipisi
-                                                        elit, sed
-                                                        do eiusmod tempor incidid ut labore etl dolore magna aliqua. Ut enim ad
-                                                        minim
-                                                        veniam, quis nostrud exercitati ullamco laboris nisi ut aliquiex ea
-                                                        commodo
-                                                        consequat.
-                                                    </p>
-                                                    <a class="btn btn-custom-size comment-btn" href="javascript:void(0);">Reply</a>
-                                                </div>
-                                            </div>
-                                            <div class="blog-comment-item relpy-item">
-                                                <div class="blog-comment-img">
-                                                    <img src="<%=pjName %>/resources/assets/images/blog/avatar/1-2-120x120.png" alt="User Image">
-                                                </div>
-                                                <div class="blog-comment-content">
-                                                    <div class="user-meta">
-                                                        <h2 class="user-name">Marissa Swan</h2>
-                                                        <span class="date">21 July 2021</span>
-                                                    </div>
-                                                    <p class="user-comment">Lorem ipsum dolor sit amet, consectetur adipisi
-                                                        elit, sed do
-                                                        eiusmod tempr incidid ut labore etl dolore magna aliqua. Ut enim ad
-                                                        minim veniam,
-                                                        quisnos exercitati ullamco laboris nisi ut aliquiex.
-                                                    </p>
-                                                    <a class="btn btn-custom-size comment-btn style-2" href="javascript:void(0);">Reply</a>
-                                                </div>
-                                            </div>
-                                            <div class="blog-comment-item">
-                                                <div class="blog-comment-img">
-                                                    <img src="<%=pjName %>/resources/assets/images/blog/avatar/1-3-120x120.png" alt="User Image">
-                                                </div>
-                                                <div class="blog-comment-content">
-                                                    <div class="user-meta">
-                                                        <h2 class="user-name">Donald Chavez</h2>
-                                                        <span class="date">21 July 2021</span>
-                                                    </div>
-                                                    <p class="user-comment">Lorem ipsum dolor sit amet, consectetur adipisi
-                                                        elit, sed
-                                                        do eiusmod tempor incidid ut labore etl dolore magna aliqua. Ut enim ad
-                                                        minim
-                                                        veniam, quis nostrud exercitati ullamco laboris nisi ut aliquiex ea
-                                                        commodo
-                                                        consequat.
-                                                    </p>
-                                                    <a class="btn btn-custom-size comment-btn" href="javascript:void(0);">Reply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="feedback-area">
-                                            <h2 class="heading">Leave a comment</h2>
-                                            <form class="feedback-form" action="#">
-                                                <div class="group-input">
-                                                    <div class="form-field me-md-30 mb-30 mb-md-0">
-                                                        <input type="text" name="name" placeholder="Your Name*" class="input-field">
-                                                    </div>
-                                                    <div class="form-field">
-                                                        <input type="text" name="email" placeholder="Your Email*" class="input-field">
-                                                    </div>
-                                                </div>
-                                                <div class="form-field mt-30">
-                                                    <input type="text" name="subject" placeholder="Subject (Optinal)" class="input-field">
-                                                </div>
-                                                <div class="form-field mt-30">
-                                                    <textarea name="message" placeholder="Message" class="textarea-field"></textarea>
-                                                </div>
-                                                <div class="button-wrap pt-5">
-                                                    <button type="submit" value="submit" class="btn btn-custom-size xl-size btn-pronia-primary" name="submit">Post
-                                                        Comment</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                    <!-- 리뷰쓰기 -->
+                                    <div class="inquiries_writing">
+	                                    <input class="i_btn_writing" type="button" value="리뷰쓰기" onclick="insert_reviews_form();">
+                                    </div>
+                                    <!-- Data없는경우 -->
+                                	<c:if test="${ empty r_list }">
+                                		<tr>
+                                			<td colspan="5">
+                                				<div id="i_empty_message">게시물이 없습니다.....</div>
+                                			</td>
+                                		</tr>
+                                	</c:if>
+									
+									
+									<!-- Data있는 경우 -->
+                                    <c:forEach var="vo" items="${ r_list }">
+										<div class="blog-comment mt-0">
+		                                    <h4 class="heading">리뷰</h4>
+			                                    <div class="blog-comment-item relpy-item">
+				                                    <div class="blog-comment-img">
+				                                    	<img src="${ pageContext.request.contextPath }/resources/assets/images/blog/avatar/1-1-120x120.png" alt="User Image">
+				                                    </div>
+				                                    <div class="blog-comment-content">
+					                                    <div class="user-meta">
+					                                   			<h2 class="user-name"><a href="reviews_view?reviews_id=${ vo.reviews_id }">${ vo.reviews_title }</a></h2>
+					                                    	<span class="date">${ vo.reviews_register_date }</span>
+					                                    </div>
+				                                    		<p class="user-comment">${ vo.reviews_content }</p>
+				                                    </div>
+			                                    </div>
+	                                    </div>
+	                                    <hr>
+									</c:forEach>
+										
+										<div class="r_page_menu">
+											${ r_pageMenu }	
+										</div>
+									
+                                	</div>
+                                </div>
+                                <div class="tab-pane fade" id="inquiries" role="tabpanel" aria-labelledby="reviews-tab">
+                                    <div class="product-review-body">
+                                    <!-- 문의게시판 -->	
+                                    <div id="inquiries_content">
+                                    	
+                                    	<div id="i_dox">
+                                    		<h2 id="inquiries">문의게시판</h2>
+                                    		
+                                    		<!-- 문의하기 -->
+                                    		<div class="inquiries_writing">
+	                                    		<input class="i_btn_writing" type="button" value="문의하기" onclick="insert_form();">
+                                    		</div>
+                                    		
+                                    		<div class="inquiries_info">
+                                    			<table class="table">
+                                    				<tr class="inquiries_table">
+                                    					<th class="i_list">번호</th>
+                                    					<th class="i_title">제목</th>
+                                    					<th class="i_list">답변여부</th>
+                                    					<th class="i_list">작성일자</th>
+                                    				</tr>
+                                    				
+                                    				<!-- Data없는경우 -->
+                                    				<c:if test="${ empty list }">
+                                    					<tr>
+                                    						<td colspan="5">
+                                    							<div id="i_empty_message">게시물이 없습니다</div>
+                                    						</td>
+                                    					</tr>
+                                    				</c:if>
+                                    				
+                                    				<!-- Data있는 경우 -->
+                                    				<c:forEach var="vo" items="${ list }" varStatus="i">
+                                    					<tr>
+                                    						<td class="i_list_on">${ i.count }</td>
+                                    						<td class="i_list_on"><a href="view?inquiries_id=${ vo.inquiries_id }">${ vo.inquiries_title }</a></td>
+                                    						
+                                    						<c:choose>
+                                    							<c:when test="${ vo.inquiries_answer_yn == 1 }">
+                                    								<td class="i_list_on">Y</td>
+                                    							</c:when>
+                                    							<c:otherwise>
+                                    								<td class="i_list_on">N</td>
+                                    							</c:otherwise>
+                                    						</c:choose>
+                                    						<td class="i_list_on">${ vo.inquiries_register_date }</td>
+                                    					</tr>
+                                    					
+                                    					
+                                    					
+                                    				</c:forEach>
+                                    			</table>
+                                    			
+                             					
+                                    			
+                                    		</div>
+                                    		
+                                    			<div class="r_page_menu">
+													${ pageMenu }
+												</div>
+                                    	</div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
