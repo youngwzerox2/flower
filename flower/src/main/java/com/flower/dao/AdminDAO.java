@@ -54,6 +54,15 @@ public interface AdminDAO {
 	
 	// 검색 조건별 리뷰 조회
 	public List<AdminVO> searchReviews(Map<String, String> map);
+
+	// 검색 조건별 문의 조회 
+	public List<AdminVO> searchInquiries(Map<String, String> map);
+	
+	// 특정 문의 상세 조회
+	public AdminVO searchInquiryDetail(String inquiryId);
+	
+	// 문의 답변 등록 
+	public int inquiryAdminAnswer(AdminVO vo);
 	
 	// 특정 리뷰 상세 조회
 	public AdminVO searchReviewDetail(String reviewId);
@@ -80,14 +89,6 @@ public interface AdminDAO {
 	public int modifyPolicy(Map<String, String> map);
 
 	
-
-
-
-
-
-
-	
-
 
 	
 

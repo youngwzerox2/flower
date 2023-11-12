@@ -14,18 +14,19 @@ public class AdminVO {
      *  ************************** 회원 정보 ************************** 
      *  ************************************************************* 
      *  */
-	private Integer member_id;				// 회원 ID
-	private boolean admin_status;			// 관리자여부
-	private String member_email;			// 회원 email
-	private String member_name;				// 회원 이름
-	private String member_register_date;	// 회원 가입일
-	private String member_leave_date;		// 회원 탈퇴일
-	private String member_status;			// 회원 상태
-	private String reports_cnt;				// 신고횟수
-	private String report_yn;				// 신고여부
-	private String report_contents;			// 신고내용
-	private String reports_date;			// 신고일
-	private String admin_action_yn;			// 관리자조치여부
+	private Integer member_id;					// 회원 ID
+	private boolean admin_status;				// 관리자여부
+	private String member_email;				// 회원 email
+	private String member_name;					// 회원 이름
+	private String member_register_date;		// 회원 가입일
+	private String member_leave_date;			// 회원 탈퇴일
+	private String member_status;				// 회원 상태
+	private String reports_cnt;					// 신고횟수
+	private String report_yn;					// 신고여부
+	private String report_contents;				// 신고내용
+	private String reports_date;				// 신고일
+	private String admin_action_yn;				// 관리자조치여부
+	private String current_recipient_address;	// 최근주소
 	
 	/**
 	 *  *************************************************************
@@ -54,13 +55,25 @@ public class AdminVO {
 	
 	/**
 	 *  *************************************************************
+     *  ************************** 문의 정보 ************************** 
+     *  ************************************************************* 
+     *  */
+	private String inquiries_id;				// 문의번호
+	private String inquiries_title;				// 문의제목
+	private String inquiries_cotent;			// 문의내용
+	private String inquiries_register_date;		// 문의등록일
+	private String inquiries_answer_yn;			// 문의답변여부
+	private String inquiries_answer_content;	// 문의답변내용
+	
+	/**
+	 *  *************************************************************
      *  ************************** 리뷰 정보 ************************** 
      *  ************************************************************* 
      *  */
-	private String reviews_id;
-	private String reviews_title;
-	private String reviews_content;
-	private String reviews_register_date;
+	private String reviews_id;					// 리뷰ID
+	private String reviews_title;				// 리뷰제목
+	private String reviews_content;				// 리뷰내용
+	private String reviews_register_date;		// 리뷰등록일
 	
 	/**
 	 *  *************************************************************
@@ -86,7 +99,7 @@ public class AdminVO {
      *  ************************** 설정 정보 ************************** 
      *  ************************************************************* 
      *  */
-	private String column_name;
-	private String column_comment;
+	private String column_name;					// 설정이름
+	private String column_comment;				// 설정내용
 	
 }

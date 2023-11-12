@@ -9,41 +9,57 @@
     	<![CDATA[
 	        WITH ADMIN_MEMBERS AS (
 	            SELECT
-	                  M.MEMBER_ID 	AS MEMBER_ID
-	                , M.ADMIN_STATUS AS ADMIN_STATUS
-	                , M.MEMBER_NAME AS MEMBER_NAME
-	                , M.MEMBER_EMAIL 			AS MEMBER_EMAIL
-	                , M.MEMBER_REGISTER_DATE 	AS MEMBER_REGISTER_DATE
-	                , M.MEMBER_LEAVE_DATE 		AS MEMBER_LEAVE_DATE
+	                  M.MEMBER_ID 							AS MEMBER_ID
+	                , M.ADMIN_STATUS 						AS ADMIN_STATUS
+	                , M.MEMBER_NAME 						AS MEMBER_NAME
+	                , M.MEMBER_EMAIL 						AS MEMBER_EMAIL
+	                , M.MEMBER_REGISTER_DATE 				AS MEMBER_REGISTER_DATE
+	                , M.MEMBER_LEAVE_DATE 					AS MEMBER_LEAVE_DATE
 	                , CASE
 	                	WHEN M.MEMBER_STATUS = 'N' THEN '일반'
 	                    WHEN M.MEMBER_STATUS = 'O' THEN '영구제한'
 	                    WHEN M.MEMBER_STATUS = 'L' THEN '탈퇴'
 	                    ELSE ''
-	                END 						AS MEMBER_STATUS
+	                END 									AS MEMBER_STATUS
 	                , CASE
 	                    WHEN R.ADMIN_ACTION_YN = 'N' AND R.REPORTS_CNT > 0 THEN 'Y'
 	                    ELSE 'N'
-	                END 						AS REPORT_YN
+	                END 									AS REPORT_YN
 	                , CASE 
 	                	WHEN R.REPORTS_DATE IS NOT NULL THEN R.REPORTS_DATE
 						ELSE "없음"
-					END 						AS REPORTS_DATE
+					END 									AS REPORTS_DATE
 					, CASE 
 						WHEN R.REPORT_CONTENTS IS NOT NULL THEN R.REPORT_CONTENTS
 						ELSE "없음"
-					END 						AS REPORT_CONTENTS
+					END 									AS REPORT_CONTENTS
 					, CASE
 						WHEN R.ADMIN_ACTION_YN ='Y' THEN 'Y'
 						ELSE 'N'
-					END							AS ADMIN_ACTION_YN 
+					END										AS ADMIN_ACTION_YN 
 					, CASE
 						WHEN R.REPORTS_CNT > 0 THEN R.REPORTS_CNT
 						ELSE '0'
-					END							AS REPORTS_CNT
-	            FROM MEMBER  M
-	      LEFT OUTER JOIN REVIEWS R 
+					END										AS REPORTS_CNT
+					, IFNULL(O.TOTAL_ORDER_PRICE, 0)		AS TOTAL_ORDER_PRICE
+					, IFNULL(O.TOTAL_ORDER_CNT, 0)			AS TOTAL_ORDER_CNT
+					, IFNULL((SELECT RECIPIENT_ADDRESS 
+					     	    FROM ORDER_TABLE 
+					    	   WHERE MEMBER_ID = M.MEMBER_ID
+					        ORDER BY ORDER_ID DESC
+					    	   LIMIT 1
+					  		 ), "없음")						AS CURRENT_RECIPIENT_ADDRESS
+	            FROM MEMBER  		M
+	      LEFT OUTER JOIN REVIEWS 	R 
 	              ON M.MEMBER_ID = R.MEMBER_ID
+	      LEFT OUTER JOIN (
+	      					SELECT MEMBER_ID										 AS MEMBER_ID
+	 							 , SUM(ORDER_PRODUCT_PRICE * ORDER_PRODUCT_QUANTITY) AS TOTAL_ORDER_PRICE
+	 							 , COUNT(DISTINCT ORDER_DETAIL_NUMBER) 				 AS TOTAL_ORDER_CNT
+							  FROM ORDER_TABLE
+						  GROUP BY MEMBER_ID
+	      				  ) 	  	O
+	              ON M.MEMBER_ID = O.MEMBER_ID
 	        )
     	]]>
     </sql>
@@ -115,6 +131,8 @@
 	        	 , MEMBER_LEAVE_DATE
 	        	 , MEMBER_STATUS
 	        	 , REPORT_YN
+	        	 , TOTAL_ORDER_PRICE
+				 , TOTAL_ORDER_CNT
 	          FROM ADMIN_MEMBERS
 	         WHERE 1=1
         <if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
@@ -139,6 +157,9 @@
 	        	 , REPORT_CONTENTS
 	        	 , REPORTS_CNT
 	        	 , ADMIN_ACTION_YN
+	        	 , TOTAL_ORDER_PRICE
+				 , TOTAL_ORDER_CNT
+				 , CURRENT_RECIPIENT_ADDRESS
 	        FROM ADMIN_MEMBERS
 	       WHERE MEMBER_EMAIL = #{email}
 	       LIMIT 1
@@ -305,10 +326,66 @@
          WHERE PRODUCT_ID 	 = #{proId}
     </update>
     
+    <!-- 검색 조건별 문의 조회 -->
+    <select id="searchInquiries" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
+    	SELECT INQUIRIES_ID				AS INQUIRIES_ID		
+    	     , MEMBER_ID				AS MEMBER_ID
+    	     , (SELECT M.MEMBER_EMAIL 
+				  FROM MEMBER M  	   
+				 WHERE M.MEMBER_ID = INQUIRIES.MEMBER_ID
+				 LIMIT 1)				AS MEMBER_EMAIL
+    	     , PRODUCT_ID				AS PRODUCT_ID
+    	     , INQUIRIES_TITLE			AS INQUIRIES_TITLE
+    	     , INQUIRIES_COTENT			AS INQUIRIES_COTENT
+    	     , INQUIRIES_REGISTER_DATE	AS INQUIRIES_REGISTER_DATE
+    	     , CASE
+    	     	WHEN INQUIRIES_ANSWER_YN = 1 THEN "Y"
+    	     	ELSE "N"
+    	     END						AS INQUIRIES_ANSWER_YN
+    	  FROM INQUIRIES
+    	 WHERE 1=1
+    	<if test="searchKey != null and searchKey != '' and searchValue != null and searchValue != ''">
+		   AND ${searchKey} LIKE '%${searchValue}%'
+		</if>
+	  ORDER BY INQUIRIES_REGISTER_DATE DESC, INQUIRIES_ID, MEMBER_ID, PRODUCT_ID
+    </select>
+    
+    <!-- 특정 문의 상세 조회 -->
+    <select id="searchInquiryDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
+    	SELECT INQUIRIES_ID				AS INQUIRIES_ID
+	    	 , (SELECT M.MEMBER_EMAIL 
+				  FROM MEMBER M  	   
+				 WHERE M.MEMBER_ID = INQUIRIES.MEMBER_ID
+				 LIMIT 1)				AS MEMBER_EMAIL
+    		 , PRODUCT_ID				AS PRODUCT_ID
+    		 , INQUIRIES_TITLE			AS INQUIRIES_TITLE
+    		 , INQUIRIES_COTENT			AS INQUIRIES_COTENT
+    		 , INQUIRIES_REGISTER_DATE	AS INQUIRIES_REGISTER_DATE
+    		 , CASE
+    	     	WHEN INQUIRIES_ANSWER_YN = 1 THEN "Y"
+    	     	ELSE "N"
+    	     END						AS INQUIRIES_ANSWER_YN
+    		 , INQUIRIES_ANSWER_CONTENT	AS INQUIRIES_ANSWER_CONTENT
+    	  FROM INQUIRIES
+    	 WHERE INQUIRIES_ID = #{inquiryId}
+    </select>
+    
+    <update id="inquiryAdminAnswer" parameterType="com.flower.vo.AdminVO">
+    	UPDATE INQUIRIES
+    	   SET INQUIRIES_ANSWER_CONTENT = #{inquiries_answer_content}
+    	     , INQUIRIES_ANSWER_YN = 1
+    	 WHERE INQUIRIES_ID = #{inquiries_id}
+    </update>
+    
     <!-- 검색 조건별 리뷰 조회 -->
     <select id="searchReviews" parameterType="hashmap" resultType="com.flower.vo.AdminVO">
         SELECT REVIEWS_ID				AS REVIEWS_ID
         	 , MEMBER_ID				AS MEMBER_ID
+        	 , (SELECT M.MEMBER_EMAIL 
+				  FROM MEMBER M  	   
+				 WHERE M.MEMBER_ID = REVIEWS.MEMBER_ID
+				 LIMIT 1
+        	 )							AS MEMBER_EMAIL
         	 , PRODUCT_ID				AS PRODUCT_ID
         	 , REVIEWS_TITLE			AS REVIEWS_TITLE
         	 , REVIEWS_CONTENT			AS REVIEWS_CONTENT
@@ -327,8 +404,26 @@
     
     <!-- 특정 리뷰 상세 조회 -->
     <select id="searchReviewDetail" parameterType="String" resultType="com.flower.vo.AdminVO">
-    	SELECT REVIEWS_ID
-    	  FROM REVIEWS
+    	SELECT R.REVIEWS_ID				AS REVIEWS_ID
+        	 , R.MEMBER_ID				AS MEMBER_ID
+        	 , (SELECT M.MEMBER_EMAIL 
+				  FROM MEMBER M  	   
+				 WHERE M.MEMBER_ID = R.MEMBER_ID
+				 LIMIT 1
+        	 )							AS MEMBER_EMAIL
+        	 , R.PRODUCT_ID				AS PRODUCT_ID
+        	 , R.REVIEWS_TITLE			AS REVIEWS_TITLE
+        	 , R.REVIEWS_CONTENT		AS REVIEWS_CONTENT
+        	 , R.REVIEWS_REGISTER_DATE	AS REVIEWS_REGISTER_DATE
+        	 , CASE
+        	  	  WHEN R.ADMIN_ACTION_YN = 'N' AND R.REPORTS_CNT > 0 THEN 'Y'
+	              ELSE 'N'
+	         END 						AS REPORT_YN
+	         , REPORTS_CNT				AS REPORTS_CNT
+	         , REPORTS_DATE				AS REPORTS_DATE
+	         , ADMIN_ACTION_YN			AS ADMIN_ACTION_YN
+          FROM REVIEWS R
+         WHERE R.REVIEWS_ID = #{reviewId}
     </select>
     
     <!-- 검색 조건별 주문 조회 -->

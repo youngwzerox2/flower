@@ -90,6 +90,21 @@ public class AdminServiceImpl implements AdminService{
 	public int registerProductImg(AdminVO adminVO) {
 		return adminDAO.registerProductImg(adminVO);
 	}
+
+	@Override
+	public List<AdminVO> searchInquiries(Map<String, String> map) {
+		return adminDAO.searchInquiries(map);
+	}
+	
+	@Override
+	public AdminVO searchInquiryDetail(String inquiryId) {
+		return adminDAO.searchInquiryDetail(inquiryId);
+	}
+	
+	@Override
+	public int inquiryAdminAnswer(AdminVO vo) {
+		return adminDAO.inquiryAdminAnswer(vo);
+	}
 	
 	@Override
 	public List<AdminVO> searchReviews(Map<String, String> map) {
@@ -128,7 +143,6 @@ public class AdminServiceImpl implements AdminService{
 	public int modifyPolicy(Map<String, String> map) {
 		return adminDAO.modifyPolicy(map);
 	}
-
 
 
 }

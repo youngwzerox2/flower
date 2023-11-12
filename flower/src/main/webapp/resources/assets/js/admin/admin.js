@@ -220,21 +220,97 @@ $(function(){
 		closeVisiblePopup();
 	});
 	
-	// 상품 > 리뷰관리 탭 클릭 이벤트
+	// 상품 > 문의관리 탭 클릭 이벤트
+	$("#account-inquiries-tab").click(function(){
+	
+		// 문의 검색
+		searchInquiries();
+	});
+	
+	// 문의 관리 > 돋보기 버튼 클릭 이벤트
+	$("#inquiriesSearchBtn").click(function(){
+	
+		// 문의 검색
+		searchInquiries();
+	});
+	
+	// 문의관리 > 엔터키 이벤트
+    $("#inquirieSearchValue").on('keypress', function(e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            
+            // 문의 검색
+			searchInquiries();
+        }
+    });
+	
+	// 문의관리 > 상세보기 버튼 클릭 이벤트
+	$(document).on("click", ".inquiriesId", function() {
+	    let inquiryId = $(this).text();
+	    
+	    // 문의 상세 조회
+	    selectOneInquiry(inquiryId);
+	    $("#account-inquiry-info-detail-tab").tab('show');
+	});
+	
+	// 문의관리 > 답변 버튼 클릭 이벤트
+	$("#goInquiryAnswer").on("click", function(){
+		let inquiryDetailID = $("#inquiryDetailID").text();
+		let inquiryDetailMemberID = $("#inquiryDetailMemberID").text();
+		let inquiryDetailProductID = $("#inquiryDetailProductID").text();
+		let inquiryDetailTitle = $("#inquiryDetailTitle").text();
+		let inquiryDetailContent = $("#rDetailCon").val();
+		let inquiryDetailadminAnswerContent = $("#inquiryDetailadminAnswerContent").text();
+		
+		// 문의 답변 팝업 오픈
+		openInquiryAnswerPopup(inquiryDetailID, inquiryDetailMemberID, inquiryDetailProductID, inquiryDetailContent, inquiryDetailadminAnswerContent);
+	});
+	
+	// 문의 답변 > 답변 등록 클릭 이벤트
+	$(document).on("click", "#btn-adminAnswer", function(){
+		let aReviewId = $("#inquiryAnswerId").text();
+		let aReviewCo = $("#inquiryAdminAnswerContent").val();
+		
+		// 답변 등록 validation
+		if($("#inquiryAdminAnswerContent").val().trim() == ""){
+			alert("등록할 답변을 입력해주세요.");
+			return;
+		}
+		
+		// 답변 등록
+		inquiryAdminAnswer(aReviewId, aReviewCo);
+	});
+	
+	// 문의 답변 > 닫기 버튼 클릭 이벤트
+	$(document).on("click", "#btn-closeInquiryPopup", function(){
+	
+		// 문의 답변 팝업 닫기
+		closeInquiryAnswerPopup();
+	});
+	
+	// 문의 관리 상세 > 목록 버튼 클릭 이벤트
+	$("#goInquiryList").click(function(){
+	
+		// 문의 조회
+		searchInquiries();
+		$("#account-inquiries-tab").tab('show');
+	});
+	
+	// 리뷰 > 리뷰관리 탭 클릭 이벤트
 	$("#account-reviews-tab").click(function(){
 	
 		// 리뷰 조회
 		searchReviews();
 	});
 	
-	// 상품 관리 > 돋보기 버튼 클릭 이벤트
+	// 리뷰 관리 > 돋보기 버튼 클릭 이벤트
 	$("#reviewSearchBtn").click(function(){
 	
 		// 리뷰 조회
 		searchReviews();
 	});
-		
-    // 상품관리 > 엔터키 이벤트
+	
+    // 리뷰 관리 > 엔터키 이벤트
     $("#reviewSearchValue").on('keypress', function(e) {
         if (e.which === 13) {
             e.preventDefault();
@@ -242,15 +318,6 @@ $(function(){
             // 리뷰 조회
             searchReviews();
         }
-    });
-    
-    // 상품 수정 > 목록 버튼 클릭 이벤트
-    $("#cancelProductRegister").click(function(){
-    
-    	// 상품 조회
-		searchProducts();
-		
-    	$("#account-product-info-tab").tab('show');
     });
     
     // 리뷰관리 > 리뷰 클릭 이벤트
@@ -262,6 +329,31 @@ $(function(){
 	    
 	    $("#account-review-info-detail-tab").tab('show');
 	});
+	
+	// 리뷰 상세 > 목록 버튼 클릭 이벤트
+	$("#goReviewList").click(function(){
+	
+		// 리뷰 조회
+        searchReviews();
+		$("#account-reviews-tab").tab('show');
+	});	
+	
+	// 리뷰 상세 > 삭제 버튼 클릭 이벤트
+	$("#goReviewHide").click(function(){
+		let deleteReviewId = $("#reviewDetailId").text();
+		
+		// 리뷰 삭제
+		deleteReview(deleteReviewId);
+	});
+	
+    // 상품 수정 > 목록 버튼 클릭 이벤트
+    $("#cancelProductRegister").click(function(){
+    
+    	// 상품 조회
+		searchProducts();
+		
+    	$("#account-product-info-tab").tab('show');
+    });
 	
 	// 주문 > 주문관리 탭 클릭 이벤트
 	$("#account-orders-info-tab").click(function(){
@@ -381,6 +473,14 @@ $(function(){
 	  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 	
+	// 최대 길이 형식화
+	function truncatedContent(param){
+		// 최대 길이 20으로 설정
+		let maxTextLength = 20;
+		
+		return param.length > maxTextLength ? param.substring(0, maxTextLength) + "..." : param;
+	}
+	
 	// 회원 검색
 	function searchMembers(){
 		$.ajax({
@@ -403,8 +503,8 @@ $(function(){
 	                    let memberId 		= $("<td/>").append($("<a class='memberId' style='color:blue; text-decoration:underline; display: block; text-align: center;'/>").text(row["member_email"]).hover(function() { $(this).css("cursor", "pointer"); }));
 	                    let memberName 		= $("<td style='text-align: center'/>").html(row["member_name"]);
 	                    let memberRegiDate 	= $("<td style='text-align: center'/>").html(row["member_register_date"]);
-	                    let totalOrderCnt 	= $("<td style='text-align: right'/>").html("120,000");
-	                    let totalOrderPrice = $("<td style='text-align: right'/>").html("23,000");
+	                    let totalOrderCnt 	= $("<td style='text-align: right'/>").html(formatNumberWithCommas(row["total_order_cnt"]));
+	                    let totalOrderPrice = $("<td style='text-align: right'/>").html(formatNumberWithCommas(row["total_order_price"]));
 	                    let memberStatus 	= $("<td style='text-align: center'/>").html(row["member_status"]);
 	                    let reportYn 		= $("<td style='text-align: center'/>").html(row["report_yn"]);
 	
@@ -445,9 +545,9 @@ $(function(){
                 let mEmail 		= $("<tr/>").append($("<th>ID</th>")).append($("<td id='detailId'/>").html(result.member_email));
                 let mName 		= $("<tr/>").append($("<th>고객명</th>")).append($("<td/>").html(result.member_name));
                 let mRegiDate 	= $("<tr/>").append($("<th>가입일</th>")).append($("<td/>").html(result.member_register_date));
-                let mOrderCnt	= $("<tr/>").append($("<th>구매횟수</th>")).append($("<td/>").html("120,000"));
-                let mOrderPrice	= $("<tr/>").append($("<th>총 구매액</th>")).append($("<td/>").html("23,000"));
-                let mAddress	= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html("거구장 3층, 한국ICT 3강의실"));
+                let mOrderCnt	= $("<tr/>").append($("<th>구매횟수</th>")).append($("<td/>").html(formatNumberWithCommas(result.total_order_cnt)));
+                let mOrderPrice	= $("<tr/>").append($("<th>총 구매액</th>")).append($("<td/>").html(formatNumberWithCommas(result.total_order_price)));
+                let mAddress	= $("<tr/>").append($("<th>최근수령주소</th>")).append($("<td/>").html(result.current_recipient_address));
                 let mStatus		= $("<tr/>").append($("<th>회원상태</th>")).append($("<td/>").html(result.member_status));
                 let mReportYn	= $("<tr/>").append($("<th>신고여부</th>")).append($("<td/>").html(result.report_yn));
                 let mReportCnt	= $("<tr/>").append($("<th>신고횟수</th>")).append($("<td id='reportCnt'/>").html(result.reports_cnt));
@@ -853,25 +953,32 @@ $(function(){
 		                }
 		            }
 		            
+		            let guideImageContainer = $("#guidefileList");
+					let listImageContainer = $("#listFileList");
+					let mainImageContainer = $("#mainFileList");
+					let subImageContainer = $("subFileList");
+
 		            if (imgs && imgs.length > 0) {
 		                for (row of imgs) {
-		                    let img = $("<img>").attr("src", "../resources/product/imgs/" + row["product_image_froute"] + "/" + row["product_image_file_name"]);
-		                    switch (row["product_image_froute"]) {
-		                        case "guide":
-		                        	// 수정 요청 부분
-		                            break;
-		                        case "list":
-		                            // 수정 요청 부분
-		                            break;
-		                        case "main":
-		                            // 수정 요청 부분
-		                            break;
-		                        case "sub":
-		                            // 수정 요청 부분
-		                            break;
-		                        default:
-		                            break;
-		                    }
+		                    let imgSrc = "../resources/product/imgs/" + row["product_image_froute"] + "/" + row["product_image_file_name"];
+        					let imgElement = $("<img>").attr("src", imgSrc);
+		                    
+							switch (row["product_image_froute"]) {
+					            case "guide":
+					                guideImageContainer.append(imgElement);
+					                break;
+					            case "list":
+					                listImageContainer.append(imgElement);
+					                break;
+					            case "main":
+					                mainImageContainer.append(imgElement);
+					                break;
+					            case "sub":
+					                subImageContainer.append(imgElement);
+					                break;
+					            default:
+					                break;
+					        }
 		                }
 	            	}
 		            console.log(imgs);
@@ -887,7 +994,7 @@ $(function(){
 		});
 	}
 	
-	// 상품 코드 변환
+	// 상품코드 변경
 	function changeProductCode(param){
 		switch(param){
 			case "D" 		: return "낮";
@@ -1101,6 +1208,149 @@ $(function(){
 		$("#popupVisibleModal").modal("hide");
 	}
 	
+	// 문의 조회
+	function searchInquiries(){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchInquiries"
+			, data: {
+			      searchKey: $("#inquirieSelectbox").val()
+			    , searchValue: $("#inquirieSearchValue").val()
+			}
+			, dataType 	: "json"
+			, success 	: function(result){
+				let inquirieList = $("#inquirieList");
+				inquirieList.empty();
+				
+				inquirieList.append("<tr style='background-color: #f6f7fb'><th style='text-align: center'>문의ID</th style='text-align: center'><th style='text-align: center'>회원ID</th style='text-align: center'><th style='text-align: center'>상품ID</th style='text-align: center'><th style='text-align: center'>문의제목</th><th style='text-align: center'>문의내용</th><th style='text-align: center'>문의등록일</th><th style='text-align: center'>답변여부</th></tr>");
+				
+				if (result && result.length > 0) {
+	                for (row of result) {
+	                    let tr 					= $("<tr/>");
+	                    let iInquiriesId 		= $("<td/>").append($("<a class='inquiriesId' style='color:blue; text-decoration:underline; display: block; text-align: center;'/>").text(row["inquiries_id"]).hover(function() { $(this).css("cursor", "pointer"); }));
+	                    let iMemberEmail 		= $("<td style='text-align: center'/>").html(row["member_email"]);
+	                    let iProductId 			= $("<td style='text-align: center'/>").html(row["product_id"]);
+	                    let iInquiriesTitle		= $("<td style='text-align: center'/>").html(row["inquiries_title"]);
+	                    let iInquiriesCotent 	= $("<td style='text-align: center'/>").html(truncatedContent(row["inquiries_cotent"]));
+	                    let iRegisterDate	 	= $("<td style='text-align: center'/>").html(row["inquiries_register_date"]);
+	                    let iAnswerYn			= $("<td style='text-align: center'/>").html(row["inquiries_answer_yn"]);
+	
+	                    tr.append(iInquiriesId);
+	                    tr.append(iMemberEmail);
+	                    tr.append(iProductId);
+	                    tr.append(iInquiriesTitle);
+	                    tr.append(iInquiriesCotent);
+	                    tr.append(iRegisterDate);
+	                    tr.append(iAnswerYn);
+	
+	                    inquirieList.append(tr);
+	                }
+	            } else {
+	                inquirieList.append("<tr><td colspan='7' style='text-align: center'>데이터가 존재하지 않습니다.</td></tr>");
+	            }
+				
+			}
+			, error 	: function(err){
+				alert("문의 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 문의 상세 조회
+	function selectOneInquiry(inquiryId){
+		$.ajax({
+			  type		: "get"
+			, url		: "../admin/searchInquiryDetail"
+			, data: { inquiryId : inquiryId }
+			, dataType 	: "json"
+			, success 	: function(result){
+				
+				let inquiryDetail = $("#inquiryDetail");
+				inquiryDetail.empty();
+
+                let iDetailId 	= $("<tr/>").append($("<th>문의ID</th>")).append($("<td id='inquiryDetailID'/>").html(result.inquiries_id));
+                let iDetailEma 	= $("<tr/>").append($("<th>회원ID</th>")).append($("<td id='inquiryDetailMemberID'/>").html(result.member_email));
+                let iDetailPro 	= $("<tr/>").append($("<th>상품ID</th>")).append($("<td id='inquiryDetailProductID'/>").html(result.product_id));
+                let iDetailTit 	= $("<tr/>").append($("<th>문의제목</th>")).append($("<td id='inquiryDetailTitle'/>").html(result.inquiries_title));
+                let iDetailCon 	= $("<tr/>").append($("<th>문의내용</th>")).append($("<td/>").append($("<textarea id='rDetailCon' disabled='disabled' cols='20' style='width: 100%; height: 200px'></textarea>").val(result.inquiries_cotent)));
+                let iDetailReg 	= $("<tr/>").append($("<th>문의등록일</th>")).append($("<td/>").html(result.inquiries_register_date));
+                let iAnswerYn 	= $("<tr/>").append($("<th>문의답변여부</th>")).append($("<td/>").html(result.inquiries_answer_yn));
+                let iAnswerCon 	= $("<tr id='inquiryAnswerContent' style='display: none;'/>").append($("<th>문의답변내용</th>")).append($("<td id='inquiryDetailadminAnswerContent'/>").html(result.inquiries_answer_content));
+                
+                inquiryDetail.append(iDetailId);
+                inquiryDetail.append(iDetailEma);
+                inquiryDetail.append(iDetailPro);
+                inquiryDetail.append(iDetailTit);
+                inquiryDetail.append(iDetailCon);
+                inquiryDetail.append(iDetailReg);
+                inquiryDetail.append(iAnswerYn);
+                inquiryDetail.append(iAnswerCon);
+				
+				// 문의답변내용 컨트롤
+				inquiryValidation(result.inquiries_answer_yn === "Y");
+			}
+			, error 	: function(err){
+				alert("문의 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 문의답변내용 컨트롤
+	function inquiryValidation(val){
+	
+		if(val){
+			$("#inquiryAnswerContent").show();
+		}else{
+			$("#inquiryAnswerContent").hide();
+		}
+	}
+	
+	// 문의 답변 팝업 오픈
+	function openInquiryAnswerPopup(inquiryDetailID, inquiryDetailMemberID, inquiryDetailProductID, inquiryDetailContent, inquiryDetailadminAnswerContent){
+		$("#inquiryAnswerId").text(inquiryDetailID);
+		$("#inquiryMemberId").text(inquiryDetailMemberID);
+		$("#inquiryProductId").text(inquiryDetailProductID);
+		$("#inquiryAContent").val(inquiryDetailContent);
+		$("#inquiryAdminAnswerContent").val(inquiryDetailadminAnswerContent);
+		
+        $("#popupInquiryModal").modal("show");
+	}
+			
+	// 문의 답변 팝업 닫기
+	function closeInquiryAnswerPopup() {
+		$("#popupInquiryModal").modal("hide");
+		
+		// 문의 조회
+		searchInquiries();
+	}
+	
+	// 답변 등록
+	function inquiryAdminAnswer(aReviewId, aReviewCo){
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/inquiryAdminAnswer"
+			, data		: { aReviewId : aReviewId 
+						  , aReviewCo : aReviewCo
+			}
+			, success	: function(result){
+				alert("답변 등록이 완료 되었습니다.");
+				
+				// 문의 상세 조회
+				selectOneInquiry(aReviewId);
+				
+				// 문의 답변 팝업 닫기
+				closeInquiryAnswerPopup();
+			}
+			, 
+			error 	: function(err){
+				alert("답변 등록 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
 	// 리뷰 조회
 	function searchReviews(){
 		$.ajax({
@@ -1121,10 +1371,10 @@ $(function(){
 	                for (row of result) {
 	                    let tr 					= $("<tr/>");
 	                    let rReviewsId 			= $("<td/>").append($("<a class='reviewId' style='color:blue; text-decoration:underline; display: block; text-align: center;'/>").text(row["reviews_id"]).hover(function() { $(this).css("cursor", "pointer"); }));
-	                    let rMemberId 			= $("<td style='text-align: center'/>").html(row["member_id"]);
+	                    let rMemberId 			= $("<td style='text-align: center'/>").html(row["member_email"]);
 	                    let rProductId 			= $("<td style='text-align: center'/>").html(row["product_id"]);
 	                    let rReviewsTitle 		= $("<td style='text-align: center'/>").html(row["reviews_title"]);
-	                    let rReviewsContent 	= $("<td style='text-align: center'/>").html(row["reviews_content"]);
+	                    let rReviewsContent 	= $("<td style='text-align: center'/>").html(truncatedContent(row["reviews_content"]));
 	                    let rReviewsRegDate 	= $("<td style='text-align: center'/>").html(row["reviews_register_date"]);
 	                    let reportYn 			= $("<td style='text-align: center'/>").html(row["report_yn"]);
 	
@@ -1158,40 +1408,70 @@ $(function(){
 			, data: { reviewId : reviewId }
 			, dataType 	: "json"
 			, success 	: function(result){
+				
 				let reviewDetail = $("#reviewDetail");
 				reviewDetail.empty();
 
-                let mId 		= $("<tr style='display: none;'/>").append($("<th>realID</th>")).append($("<td id='realId'/>").html(result.member_id));
-                let mEmail 		= $("<tr/>").append($("<th>ID</th>")).append($("<td id='detailId'/>").html(result.member_email));
-                let mName 		= $("<tr/>").append($("<th>고객명</th>")).append($("<td/>").html(result.member_name));
-                let mRegiDate 	= $("<tr/>").append($("<th>가입일</th>")).append($("<td/>").html(result.member_register_date));
-                let mOrderCnt	= $("<tr/>").append($("<th>구매횟수</th>")).append($("<td/>").html("120,000"));
-                let mOrderPrice	= $("<tr/>").append($("<th>총 구매액</th>")).append($("<td/>").html("23,000"));
-                let mAddress	= $("<tr/>").append($("<th>주소</th>")).append($("<td/>").html("거구장 3층, 한국ICT 3강의실"));
-                let mStatus		= $("<tr/>").append($("<th>회원상태</th>")).append($("<td/>").html(result.member_status));
-                let mReportYn	= $("<tr/>").append($("<th>신고여부</th>")).append($("<td/>").html(result.report_yn));
-                let mReportCnt	= $("<tr/>").append($("<th>신고횟수</th>")).append($("<td id='reportCnt'/>").html(result.reports_cnt));
-                let mReportDay	= $("<tr/>").append($("<th>신고일</th>")).append($("<td/>").html(result.reports_date));
-                let adminAction	= $("<tr/>").append($("<th>관리자조치</th>")).append($("<td id='adminActionYn'/>").html(result.admin_action_yn));
-                let mReportCont	= reportTag(result.report_contents);
+                let rDetailId 	= $("<tr/>").append($("<th>리뷰ID</th>")).append($("<td id='reviewDetailId'/>").html(result.reviews_id));
+                let rDetailMem 	= $("<tr style='display: none;'/>").append($("<th>멤버ID</th>")).append($("<td id='reviewDetailMemberId'/>").html(result.reviews_id));
+                let rDetailEma 	= $("<tr/>").append($("<th>회원ID</th>")).append($("<td/>").html(result.member_email));
+                let rDetailPro 	= $("<tr/>").append($("<th>상품ID</th>")).append($("<td/>").html(result.product_id));
+                let rDetailTit 	= $("<tr/>").append($("<th>리뷰제목</th>")).append($("<td/>").html(result.reviews_title));
+                let rDetailCon 	= $("<tr/>").append($("<th>리뷰내용</th>")).append($("<td/>").append($("<textarea id='rDetailContent' disabled='disabled' cols='20' style='width: 100%; height: 200px'></textarea>").val(result.reviews_content)));
+                let rDetailReg 	= $("<tr/>").append($("<th>리뷰등록일</th>")).append($("<td/>").html(result.reviews_register_date));
+                let rDetailRep 	= $("<tr/>").append($("<th>신고여부</th>")).append($("<td/>").html(result.report_yn));
+                let rDetailRcn 	= $("<tr/>").append($("<th>신고횟수</th>")).append($("<td/>").html(result.reports_cnt));
+                let rDetailRda 	= $("<tr/>").append($("<th>최근신고일</th>")).append($("<td/>").html(result.reports_date));
+                let rDetailadm 	= $("<tr/>").append($("<th>관리자조치여부</th>")).append($("<td/>").html(result.admin_action_yn));
                 
-                memberDetail.append(mId);
-                memberDetail.append(mEmail);
-                memberDetail.append(mName);
-                memberDetail.append(mRegiDate);
-                memberDetail.append(mOrderCnt);
-                memberDetail.append(mOrderPrice);
-                memberDetail.append(mAddress);
-                memberDetail.append(mStatus);
-                memberDetail.append(mReportYn);
-                memberDetail.append(mReportCnt);
-                memberDetail.append(mReportDay);
-                memberDetail.append(adminAction);
-                memberDetail.append(mReportCont);
+                reviewDetail.append(rDetailId);
+                reviewDetail.append(rDetailMem);
+                reviewDetail.append(rDetailEma);
+                reviewDetail.append(rDetailPro);
+                reviewDetail.append(rDetailTit);
+                reviewDetail.append(rDetailCon);
+                reviewDetail.append(rDetailReg);
+                reviewDetail.append(rDetailRep);
+                reviewDetail.append(rDetailRcn);
+                reviewDetail.append(rDetailRda);
+                reviewDetail.append(rDetailadm);
 				
+				
+				// 리뷰 삭제 버튼 컨트롤
+				reviewDeleteValidation(result.admin_action_yn === "Y");
 			}
 			, error 	: function(err){
-				alert("회원 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				alert("리뷰 상세 조회 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
+				console.log(err);
+			}
+		});
+	}
+	
+	// 리뷰 삭제 버튼 컨트롤
+	function reviewDeleteValidation(val){
+	
+		if(val){
+			$("#goReviewHide").prop("disabled", true);
+		}else{
+			$("#goReviewHide").prop("disabled", false);
+		}
+	}
+				
+	// 리뷰 삭제
+	function deleteReview(deleteReviewId){
+		$.ajax({
+			  type 		: "post"
+			, url		: "../admin/deleteReportTarget"
+			, data		: { reviewId : deleteReviewId }
+			, success	: function(result){
+				alert("해당 리뷰가 삭제 처리 되었습니다.");
+				
+				// 리뷰 상세 조회
+				selectOneReview(deleteReviewId);
+			}
+			, 
+			error 	: function(err){
+				alert("해당 글 삭제 처리 중 에러가 발생했습니다. 관리자에게 문의 바랍니다.");
 				console.log(err);
 			}
 		});

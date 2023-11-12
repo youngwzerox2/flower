@@ -52,6 +52,15 @@ public interface AdminService {
 	// 신규 상품 이미지 등록
 	public int registerProductImg(AdminVO adminVO);
 	
+	// 검색 조건별 문의 조회
+	public List<AdminVO> searchInquiries(Map<String, String> map);
+	
+	// 특정 문의 상세 조회
+	public AdminVO searchInquiryDetail(String inquiryId);
+	
+	// 문의 답변 등록
+	public int inquiryAdminAnswer(AdminVO vo);
+	
 	// 검색 조건별 리뷰 조회
 	public List<AdminVO> searchReviews(Map<String, String> map);
 	
@@ -79,13 +88,7 @@ public interface AdminService {
 	// policy 컬럼 내용 수정
 	public int modifyPolicy(Map<String, String> map);
 
-
-
-
-
-
 	
-
 
 
 
