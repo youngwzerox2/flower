@@ -68,6 +68,12 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getFilteredProdList(vo);
 	}
 
+	// 상품목록: 로그인한 멤버의 찜한 상태 반영(찜한 목록)
+	@Override
+	public List<LoveVO> getLoveList(Integer memberId) {
+		return productDao.getLoveList(memberId);
+	}
+
 	
 
 

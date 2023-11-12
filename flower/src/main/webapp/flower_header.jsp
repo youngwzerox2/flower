@@ -3,7 +3,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-        
+    <!-- Jin's CSS for main, header, footer, product-content -->
+	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
 			
@@ -179,7 +180,7 @@
                                     <nav class="main-nav">
                                         <ul>
                                             <li><a href="<%=pjName%>/flower_main.html">Home</a></li>
-                                            <li><a href="">All</span></a></li>
+                                            <li><a href="">모든꽃보기</span></a></li>
                                             <li class="drop-holder">
                                                 <a><span id="nav_cursor">Seasons</span></a>
                                                 <ul class="drop-menu">

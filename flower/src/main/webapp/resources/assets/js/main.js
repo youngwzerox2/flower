@@ -898,7 +898,7 @@
     /*--------------------------------
     MailChimp
 -------------------------------- */
-    $('#mc-form').ajaxChimp({
+  /*  $('#mc-form').ajaxChimp({
         language: 'en',
         callback: mailChimpResponse,
         url: 'https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef',
@@ -916,7 +916,7 @@
                 .fadeIn(900);
         }
     }
-    /*
+    
     const field = document.querySelector('.keyword');
 	const fieldRect = field.getBoundingClientRect();  
     // 랜덤 위치에 태그
@@ -989,10 +989,10 @@ function aabb (element){
     	return false;
    		 }
     }	// function end of aabb    
-			
+			*/
+			/*
   		}
-}
-*/
+}*/
 
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;

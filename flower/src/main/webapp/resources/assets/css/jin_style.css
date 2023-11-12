@@ -1,5 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Grandiflora+One&family=Hahmlet:wght@100;500&family=Noto+Sans+KR:wght@400;600&family=Song+Myung&display=swap');
 
+/*------ admin-dashboard by Jin -------*/
+
+.flower-dashboard{
+	width: 80%;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.flower-to-do {
+	background-color: #abd373;
+	color: #444444;
+	font-size: 35px;
+	text-align: center;
+	border-radius: 5px;
+	position: relative;
+	width: 200px;
+	height: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: inline-block;
+	
+}
+.flower-to-do a:hover{
+	color: #fff;
+}
+
+#flower-dashboard-report {
+	background-color: #ffc107;
+}
+
+
+.flower-stats{
+	display: inline-block;
+	text-align: center;
+} 
+
+.flower-dashboard-bottom {
+	
+}
+
+.flower-dashboard-bottom-left{
+	width: 50%;	
+}
+
+
+.flower-dashboard-bottom-right{
+	width: 50%;
+}
+
+.chart-title {
+	
+}
 
 /*------ header-logo(text) by Jin -------*/
 .header-logo-text {
@@ -120,6 +171,45 @@
 	
 }
 
-#filter-submit {
+.filter-submit {
 	width: 100px;
+}
+
+
+/*--------------- 상품 목록 사진(td안에 사진) -----------------*/
+
+.product-list-jin img{
+	border-radius: 5px;
+}
+
+/*--------------- 상품 상세 하단 -----------------*/
+.product-info-jin {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 400;
+}
+
+
+
+/*----------- footer -------------*/
+
+.footer-jin {
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.footer-info-jin {
+	font-weight: 400;
+}
+
+#footer-owner-info-jin {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 100;
+	font-size: 15px;
+	padding-top: 15px;
+}
+
+.footer-policy-jin {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 100;
+	padding-top: 25px;
 }
