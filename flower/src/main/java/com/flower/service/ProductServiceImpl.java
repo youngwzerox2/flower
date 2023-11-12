@@ -74,6 +74,11 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getLoveList(memberId);
 	}
 
+	@Override
+	public List<ProductVO> flowerkeyword() {
+		return productDao.flowerkeyword();
+	}
+
 	
 
 

@@ -30,4 +30,7 @@ public interface ProductDAO {
 	// 상품상세: (로그인한 멤버의)찜 상태 조회
 	Integer isLove(LoveVO vo);
 	
+	//메인페이지 꽃말 키워드 가져오기
+	List<ProductVO> flowerkeyword();
+	
 } //interface ProductDAO

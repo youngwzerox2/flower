@@ -101,13 +101,10 @@
                                 			</ul>
                                 		</li>
                                 		<li>
-                                			<c:if test="${st.index ne 0}">
-                                			<c:if test="${orderList[st.index-1].product_name eq orderList[st.index].product_name}">aaaaaaaaaaaaaa</c:if>
-                                			</c:if>
                                 			<span>${orderproduct.order_product_quantity}개</span>
                                 		</li>
                                 		<li>
-                                			<span class = 'price'>${orderproduct.order_product_price}원</span>
+                                			<span class = 'price'>${orderproduct.order_product_price * orderproduct.order_product_quantity}원</span>
                                 		</li>
                                 		<li>
                                 			<span>${orderproduct.order_state}</span>

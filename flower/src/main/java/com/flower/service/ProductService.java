@@ -32,5 +32,7 @@ public interface ProductService {
 	// 상품 찜 update
 	Integer updateLove(LoveVO vo);
 	
+	//메인페이지 꽃말 키워드 가져오기
+	List<ProductVO> flowerkeyword();
 	
 }

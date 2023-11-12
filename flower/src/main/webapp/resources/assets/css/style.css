@@ -6155,7 +6155,7 @@ textarea {
   font-size: 20px;
 }
 .table-content table td.product-thumbnail img {
-  width: auto;
+  width: 100px;
   height: 100%;
 }
 .table-content table td.product-name {
@@ -6899,7 +6899,6 @@ li.pic {
 .botborder{
 	border-top: 1px #333 solid;
 }
-
 
 
 /*----------------------------------------*/
