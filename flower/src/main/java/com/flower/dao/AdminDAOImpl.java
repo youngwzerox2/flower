@@ -88,6 +88,21 @@ public class AdminDAOImpl implements AdminDAO{
 	}
 	
 	@Override
+	public List<AdminVO> searchInquiries(Map<String, String> map) {
+		return st.selectList("adminDAO.searchInquiries", map);
+	}
+	
+	@Override
+	public AdminVO searchInquiryDetail(String inquiryId) {
+		return st.selectOne("adminDAO.searchInquiryDetail", inquiryId);
+	}
+
+	@Override
+	public int inquiryAdminAnswer(AdminVO vo) {
+		return st.update("adminDAO.inquiryAdminAnswer", vo);
+	}
+	
+	@Override
 	public List<AdminVO> searchReviews(Map<String, String> map) {
 		return st.selectList("adminDAO.searchReviews", map);
 	}

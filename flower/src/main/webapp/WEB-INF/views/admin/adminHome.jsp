@@ -44,14 +44,13 @@
 	            	 <div style="color: red;">
 	            	 	<img src="../resources/assets/images/logo/dark.png" alt="Header Logo"></img>Admin Page
 	            	 </div>
-	            	 <div class="product-topbar" style="position:absoluted;padding-top : 50px;padding-left: 50%; padding-bottom: 10px;">
+	            	 <div class="product-topbar" style="position:absoluted;padding-top : 50px;padding-left: 67%; padding-bottom: 10px;">
 	                     <ul>
 	                         <li class="page-count">
 	                             <span>CEO</span> 관리자님, 환영합니다 !
 	                         </li>
 	                         <li class="mb-xs mt-xs mr-xs btn btn-primary" onclick="location.href='/flower/flower_main.jsp'"> 이용자 화면 이동 </li>
-	                         <li class="mb-xs mt-xs mr-xs btn btn-warning"> 내정보 </li>
-	                         <li class="mb-xs mt-xs mr-xs btn btn-danger"> 로그아웃 </li>
+	                         <li class="mb-xs mt-xs mr-xs btn btn-danger" onclick="location.href='/flower/flower_main.jsp'"> 로그아웃 </li>
 	                     </ul>
                      </div>
 	            </form>
@@ -84,6 +83,7 @@
                                 	<a class="nav-link" id="account-product-info-register-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-regiter" href="#account-product-register" aria-expanded="false" style="text-align: right; display: none;" >상품 등록</a>
                                 	<a class="nav-link" id="account-product-info-modify-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-modify" href="#account-product-modify" aria-expanded="false" style="text-align: right; display: none;" >상품 수정</a>
                                 	<a class="nav-link" id="account-product-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-product-detail" href="#account-product-detail" aria-expanded="false" style="text-align: right; display: none;" >상품 관리 상세</a>
+                                	<a class="nav-link" id="account-inquiry-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-inquiry-detail" href="#account-inquiry-detail" aria-expanded="false" style="text-align: right; display: none;" >문의 관리 상세</a>
                                 	<a class="nav-link" id="account-review-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-review-detail" href="#account-review-detail" aria-expanded="false" style="text-align: right; display: none;" >리뷰 관리 상세</a>
                                 	<a class="nav-link" id="account-order-info-detail-tab" data-bs-toggle="tab" role="tab" aria-controls="account-order-detail" href="#account-order-detail" aria-expanded="false" style="text-align: right; display: none;" >주문 관리 상세</a>
                                 </li>
@@ -91,7 +91,7 @@
                                     <a id="account-setting-tab" data-bs-toggle="collapse" href="#account-setting_info" role="tab" aria-hidden="true">설정</a>
                                 </li>
                                 <li class = 'sub-nav-item collapse' id = "account-setting_info" >
-                                	<a class="nav-link" id = account-screens-tab data-bs-toggle="tab" role="tab" aria-controls="account-screensControll" href="#account-screens" aria-expanded="false" style="text-align: right;">메인화면 관리</a>
+                                	<a class="nav-link" id = account-screens-tab data-bs-toggle="tab" role="tab" aria-controls="account-screensControll" href="#account-screens" aria-expanded="false" style="text-align: right; display: none;">메인화면 관리</a>
                                 	<a class="nav-link" id = account-policies-tab data-bs-toggle="tab" role="tab" aria-controls="account-policiesControll" href="#account-policies" aria-expanded="false" style="text-align: right;">정책 관리</a>
                                 </li>
                             </ul>
@@ -558,10 +558,10 @@
 												<li class="short">
 			                                        <select class="nice-select" id="inquirieSelectbox">
 			                                            <option value="">전체</option>
-			                                            <option value="member_email">ID</option>
-			                                            <option value="member_name">고객명</option>
-			                                            <option value="member_status">회원상태</option>
-			                                            <option value="report_yn">신고여부</option>
+			                                            <option value="inquiries_id">리뷰ID</option>
+			                                            <option value="inquiries_title">문의제목</option>
+			                                            <option value="inquiries_cotent">문의내용</option>
+			                                            <option value="inquiries_answer_yn">답변여부</option>
 			                                        </select>
 		                                    	</li>
 		                                    	<li>
@@ -579,6 +579,25 @@
 								                <tbody id="inquirieList"></tbody>
 								            </table>
 								        </div>
+								    </div>
+								</div>
+								<div class="tab-pane fade" id="account-inquiry-detail" aria-labelledby="account-inquiry-tab">
+								    <div class="myaccount-inquiry">
+								        <h4 class="small-title">문의 관리 상세</h4><br/>
+										<div class="widgets-searchbox">
+											<div class="table-responsive">
+									            <div class="compare-table table-responsive">
+							                        <table class="table table-bordered table-hover mb-0">
+							                            <tbody id="inquiryDetail"></tbody>
+							                        </table>
+							                        <div style="position:absoluted; padding-top: 20px; padding-left: 88%;">
+							                        	<button id="goInquiryList" class="btn btn-primary" style="margin-left: 10px;"> 목록 </button>
+                    									<button id="goInquiryAnswer" class="btn btn-warning" style="margin-left: 10px;"> 답변 </button>
+							                     	</div>
+						                    	</div>
+									            
+									        </div>
+		                                </div>
 								    </div>
 								</div>
 								<div class="tab-pane fade" id="account-reviews" aria-labelledby="account-reviews-tab">
@@ -623,11 +642,9 @@
 							                        <table class="table table-bordered table-hover mb-0">
 							                            <tbody id="reviewDetail"></tbody>
 							                        </table>
-							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
-									                    <ul>
-									                    <li id="goReviewList" class="mb-xs mt-xs mr-xs btn btn-primary"> 목록 </li>
-									                    <li id="goReviewHide" class="mb-xs mt-xs mr-xs btn btn-danger"></li>
-									                    </ul>
+							                        <div style="position:absoluted; padding-top: 20px; padding-left: 88%;">
+							                        	<button id="goReviewList" class="btn btn-primary" style="margin-left: 10px;"> 목록 </button>
+                    									<button id="goReviewHide" class="btn btn-danger" style="margin-left: 10px;"> 삭제 </button>
 							                     	</div>
 						                    	</div>
 									            
@@ -744,6 +761,47 @@
             </div>
         </div>
     </div>
+    <div id="popupInquiryModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">문의 답변</h4>
+                </div>
+                <div class="widgets-searchbox">
+                    <table class="table table-bordered table-hover">
+					  <tr>
+					    <th> 리뷰ID </th>
+					    <td id="inquiryAnswerId"></td>
+					  </tr>
+					  <tr>
+					    <th> 회원ID </th>
+					    <td id="inquiryMemberId"></td>
+					  </tr>
+					  <tr>
+					    <th> 상품ID </th>
+					    <td id="inquiryProductId"></td>
+					  </tr>
+					  <tr>
+					    <th> 문의내용 </th>
+					    <td>
+					    	<textarea id='inquiryAContent' disabled='disabled' cols='20' style='width: 100%; height: 200px'></textarea>
+					    </td>
+					  </tr>
+					  <tr>
+					    <th> 답변내용 </th>
+					    <td>
+					    	<textarea id='inquiryAdminAnswerContent' placeholder="답변 내용을 입력하세요." cols='20' style='width: 100%; height: 200px'></textarea>
+					    </td>
+					  </tr>
+					</table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-adminAnswer" type="button" class="btn btn-warning" data-dismiss="modal"> 답변등록 </button>
+                    <button id="btn-closeInquiryPopup" type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+                </div>
+           	</div>
+       	</div>
+   	</div>
     <div id="popupReportModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

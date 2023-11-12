@@ -122,6 +122,35 @@ public class AdminController {
 	
 	/*
 	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-12
+	 * 메서드	: searchInquiries
+	 * 인자	: searchKey, searchValue
+	 * 반환	: List<AdminVO>
+	 * 설명	: 검색조건에 맞는 모든 상품 조회
+	 * */
+	@GetMapping("admin/searchInquiries")
+	public List<AdminVO> searchInquiries(String searchKey, String searchValue) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchKey", searchKey);
+		map.put("searchValue", searchValue);
+		return adminService.searchInquiries(map);
+	}
+	
+	/*
+	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-12
+	 * 메서드	: searchInquiryDetail
+	 * 인자	: inquiryId
+	 * 반환	: AdminVO
+	 * 설명	: 특정 문의 상세 조회
+	 * */
+	@GetMapping("admin/searchInquiryDetail")
+	public AdminVO searchInquiryDetail(String inquiryId) {
+		return adminService.searchInquiryDetail(inquiryId);
+	}
+	
+	/*
+	 * 작성자	: 백두산
 	 * 작성일	: 2023-11-06
 	 * 메서드	: modifyProductVisible
 	 * 인자	: email
@@ -393,7 +422,7 @@ public class AdminController {
 	 * 메서드	: selectOneOrder
 	 * 인자	: email
 	 * 반환	: AdminVO
-	 * 설명	: 특정 리뷰 상세 조회
+	 * 설명	: 특정 주문 상세 조회
 	 * */
 	@GetMapping("admin/selectOneOrder")
 	public Map<String, List<?>> selectOneOrder(String orderDetailNumber) {
@@ -411,5 +440,20 @@ public class AdminController {
 		return result;
 	}
 	
+	/*
+	 * 작성자	: 백두산
+	 * 작성일	: 2023-11-12
+	 * 메서드	: inquiryAdminAnswer
+	 * 인자	: aReviewId, aReviewCo
+	 * 반환	: Integer
+	 * 설명	: 특정 리뷰 삭제 (관리자)
+	 * */
+	@PostMapping("admin/inquiryAdminAnswer")
+	public int inquiryAdminAnswer(String aReviewId, String aReviewCo) {
+		AdminVO vo = new AdminVO();
+		vo.setInquiries_id(aReviewId);
+		vo.setInquiries_answer_content(aReviewCo);
+		return adminService.inquiryAdminAnswer(vo);
+	}
 		
 }

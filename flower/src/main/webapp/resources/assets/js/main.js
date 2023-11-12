@@ -916,7 +916,7 @@
                 .fadeIn(900);
         }
     }
-    
+    /*
     const field = document.querySelector('.keyword');
 	const fieldRect = field.getBoundingClientRect();  
     // 랜덤 위치에 태그
@@ -989,16 +989,15 @@ function aabb (element){
     	return false;
    		 }
     }	// function end of aabb    
-			*/
 			
   		}
 }
-
+*/
 
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-createDiv(10);
+// createDiv(10);
 
 })(jQuery);
