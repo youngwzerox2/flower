@@ -127,7 +127,7 @@
                                             </c:if>
                                             <c:if test="${not empty prod.prod_imgs_sub[2]}">
                                             <a href="javascript:void(0);" class="swiper-slide">
-                                                <img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" alt="Product Thumnail">
+                                          	  	<img class="img-full" src="<%=pjName %><%=imgRoute%>/sub/${prod.prod_imgs_sub[2]}" alt="Product Thumnail">
                                             </a>
                                             </c:if>
                                         </div>

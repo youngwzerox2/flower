@@ -30,9 +30,6 @@ public class MemberVO {
 	
 	//비밀번호 암호화
 	public void encodePassword(PasswordEncoder passwordEncoder) {
-		System.out.println(">"+member_password);
-		//PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		this.member_password = passwordEncoder.encode(this.member_password);
-		System.out.println(">>"+member_password);
 	}
 }

@@ -37,17 +37,14 @@ public class MemberController {
 	// 로그인 페이지 부르기
 	@RequestMapping("login")
 	public String login() {
-		System.out.println("login 진입");
 		 return "member/login";
 	}
 	
 	// 회원가입 페이지 부르기
 	@RequestMapping("register")
 	public String register(MemberVO vo, Model model) throws Exception {
-		System.out.println("register 진입");
 		CompanyVO companyPolicy = companyService.getCompanyPolicy();
 		model.addAttribute("companyPolicy", companyPolicy);
-		System.out.println("companyPolicy값 얻어오기:" + companyPolicy );
 		return "member/register";
 	}
 	
@@ -121,15 +118,12 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping("findEmailChk")
 	public String findEmailChk(String member_email, HttpSession session) throws Exception{
-		System.out.println("[MemberController] member/findemail" + member_email);
 		String result = memberService.findEmailChk(member_email);
-		System.out.println("result:" + result );
 		if ( result == null) {
 			return "0";
 		}else {
 			// 
 			session.setAttribute("memberEmail", member_email);
-			System.out.println("세션보냄");
 			return "1";
 		}
 			
@@ -159,18 +153,14 @@ public class MemberController {
 		
 		// 이메일 주소를 세션에서 가져옴
 		String memberEmail = (String) session.getAttribute("memberEmail");
-		System.out.println("세션에서 가져온 이메일:" + memberEmail);
-		System.out.println(member_password +"새로운비밀번호");
 		
 		if (memberEmail != null && member_password != null) {
 		MemberVO vo = new MemberVO();
 		vo.setMember_email(memberEmail);
 		vo.setMember_password(member_password);
-		System.out.println(vo + "이메일과 비밀번호");
 		
 		// memberService를 사용하여 비밀번호 변경을 수행
 		memberService.changePassword(vo);
-		System.out.println(vo +"비밀번호 변경");
 		// 비밀번호 변경 후 세션을 무효화시켜 로그인 페이지로 이동
 		session.invalidate();
 		return "member/login";

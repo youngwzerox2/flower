@@ -17,7 +17,6 @@ public class CompanyController {
 	
 	@RequestMapping("companyPolicy")
 	public String getCompanyPolicy(Model model) throws Exception {
-		System.out.println("getCompanyPolicy 진입");
 		CompanyVO companyPolicy = companyService.getCompanyPolicy();
 		model.addAttribute("companyPolicy", companyPolicy);
 	

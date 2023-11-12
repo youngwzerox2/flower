@@ -214,11 +214,11 @@
                                     반려동물안심꽃
                                 </a>
                             </li>
-                            <li class="nav-item" role="presentation">
+                           <!--  <li class="nav-item" role="presentation">
                                 <a id="latest-tab" data-bs-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">
                                     밤에피는꽃
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                         <div class="tab-content" id="myTabContent">
                         	<!-- flower: 초보자용꽃 이미지로 경로 설정 요망-->
@@ -227,9 +227,103 @@
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
+                                                <a href="<%=pjName%>/product/product-content?product_id=1">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/1_list_1.jpg" alt="유카">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/1_list_2.jpg" alt="유카(화분)">
+                                                </a>
+                                                <div class="product-add-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                                <i class="pe-7s-like"></i>
+                                                            </a>
+                                                        </li>
+                                                        <!-- flower: 퀵뷰 숨긴다 -->
+                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                            <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                                <i class="pe-7s-look"></i>
+                                                            </a>
+                                                        </li>-->
+                                                        
+                                                        <li>
+                                                            <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                                <i class="pe-7s-cart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=1">유카</a>
+                                                <div class="price-box pb-1">
+                                                    <span class="new-price">19,000원</span>
+                                                </div>
+                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
+                                                <!-- <div class="rating-box">
+                                                    <ul>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                    </ul>
+                                                </div>-->
+                                            </div> <!-- <div class="product-content"> end -->
+                                        </div> <!--  <div class="product-item"> end -->
+                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="product-item">
+                                            <div class="product-img">
+                                                <a href="<%=pjName%>/product/product-content?product_id=2">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/2_list_1.jpg" alt="호스타">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/2_list_2.jpg" alt="호스타(화분)">
+                                                </a>
+                                                <div class="product-add-action">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                                <i class="pe-7s-like"></i>
+                                                            </a>
+                                                        </li>
+                                                        <!-- flower: 퀵뷰 숨긴다 -->
+                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                            <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                                <i class="pe-7s-look"></i>
+                                                            </a>
+                                                        </li>-->
+                                                        
+                                                        <li>
+                                                            <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                                <i class="pe-7s-cart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=2">호스타</a>
+                                                <div class="price-box pb-1">
+                                                    <span class="new-price">13,000원</span>
+                                                </div>
+                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
+                                                <!-- <div class="rating-box">
+                                                    <ul>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                    </ul>
+                                                </div>-->
+                                            </div> <!-- <div class="product-content"> end -->
+                                        </div> <!--  <div class="product-item"> end -->
+                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                        <div class="product-item">
+                                            <div class="product-img">
                                                 <a href="<%=pjName%>/product/product-content?product_id=3">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -274,9 +368,9 @@
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="<%=pjName%>/product/product-content?product_id=3">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
+                                                <a href="<%=pjName%>/product/product-content?product_id=34">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/34_list_1.jpg" alt="안투리움(코랄)">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/34_list_2.jpg" alt="안투리움(코랄)(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -301,103 +395,9 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=34">안투리움(코랄)</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">4,800원</span>
-                                                </div>
-                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
-                                                <!-- <div class="rating-box">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>-->
-                                            </div> <!-- <div class="product-content"> end -->
-                                        </div> <!--  <div class="product-item"> end -->
-                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
-                                    <div class="col-xl-3 col-md-4 col-sm-6">
-                                        <div class="product-item">
-                                            <div class="product-img">
-                                                <a href="<%=pjName%>/product/product-content?product_id=3">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
-                                                </a>
-                                                <div class="product-add-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                <i class="pe-7s-like"></i>
-                                                            </a>
-                                                        </li>
-                                                        <!-- flower: 퀵뷰 숨긴다 -->
-                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                            <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                <i class="pe-7s-look"></i>
-                                                            </a>
-                                                        </li>-->
-                                                        
-                                                        <li>
-                                                            <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                <i class="pe-7s-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
-                                                <div class="price-box pb-1">
-                                                    <span class="new-price">4,800원</span>
-                                                </div>
-                                                <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
-                                                <!-- <div class="rating-box">
-                                                    <ul>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>-->
-                                            </div> <!-- <div class="product-content"> end -->
-                                        </div> <!--  <div class="product-item"> end -->
-                                    </div> <!--  <div class="col-xl-3 col-md-4 col-sm-6"> end -->
-                                    <div class="col-xl-3 col-md-4 col-sm-6">
-                                        <div class="product-item">
-                                            <div class="product-img">
-                                                <a href="<%=pjName%>/product/product-content?product_id=3">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화(화분)">
-                                                </a>
-                                                <div class="product-add-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="wishlist.html" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                <i class="pe-7s-like"></i>
-                                                            </a>
-                                                        </li>
-                                                        <!-- flower: 퀵뷰 숨긴다 -->
-                                                        <!-- <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                            <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                <i class="pe-7s-look"></i>
-                                                            </a>
-                                                        </li>-->
-                                                        
-                                                        <li>
-                                                            <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                <i class="pe-7s-cart"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
-                                                <div class="price-box pb-1">
-                                                    <span class="new-price">4,800원</span>
+                                                    <span class="new-price">14,000원</span>
                                                 </div>
                                                 <!-- flower: 리뷰(리뷰 완성 후 사용요망) -->
                                                 <!-- <div class="rating-box">
@@ -416,9 +416,9 @@
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=35">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/35_list_1.jpg" alt="안투리움(레드)">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/35_list_2.jpg" alt="안투리움(레드)(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -427,11 +427,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                       <!--  <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -441,11 +441,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Butterfly Weed</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=35">안투리움(레드)</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$50.45</span>
+                                                    <span class="new-price">14,000원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                                <!-- <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -453,16 +453,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=36">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/36_list_1.jpg" alt="안투리움(핑크)">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/36_list_2.jpg" alt="안투리움(핑크)(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -471,11 +471,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                       <!--  <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -485,11 +485,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Common Yarrow</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=36">안투리움(핑크)</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$65.00</span>
+                                                    <span class="new-price">14,000원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                               <!--  <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -497,16 +497,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=37">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/37_list_1.jpg" alt="필로덴드론(맥콜리)">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/37_list_2.jpg" alt="필로덴드론(맥콜리)(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -515,11 +515,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                      <!--   <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -529,11 +529,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Doublefile Viburnum</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=37">필로덴드론(맥콜리)</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$67.45</span>
+                                                    <span class="new-price">45,900원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                              <!--   <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -541,16 +541,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=38">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/38_list_1.jpg" alt="스네이크플랜트(사유리)">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/38_list_2.jpg" alt="스네이크플랜트(사유리)(화분)">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -559,11 +559,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                       <!--  <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -573,11 +573,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Feather Reed Grass</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=38">스네이크플랜트(사유리)</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$20.00</span>
+                                                    <span class="new-price">64,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                              <!--   <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -585,7 +585,7 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -598,9 +598,9 @@
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=1">
+                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/1_list_1.jpg" alt="유카">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/1_list_2.jpg" alt="유카">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -609,11 +609,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                     <!--    <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -623,11 +623,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Butterfly Weed</a>
+                                                <a class="product-name main-product-title-jin" href="shop.html">유카</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$50.45</span>
+                                                    <span class="new-price">19,000원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                             <!--    <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -635,16 +635,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-6-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=2">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/2_list_1.jpg" alt="호스타">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/2_list_2.jpg" alt="호스타">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -653,11 +653,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                  <!--       <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -667,11 +667,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Common Yarrow</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=2">호스타</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$65.00</span>
+                                                    <span class="new-price">13,000원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                           <!--      <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -679,16 +679,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=3">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_1.jpg" alt="설유화">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/3_list_2.jpg" alt="설유화">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -697,11 +697,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                      <!--   <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -711,11 +711,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Doublefile Viburnum</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=3">설유화</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$67.45</span>
+                                                    <span class="new-price">4,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                              <!--   <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -723,16 +723,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=50">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/50_list_1.jpg" alt="올리브 트리">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/50_list_2.jpg" alt="올리브 트리">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -741,11 +741,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                      <!--   <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -755,11 +755,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Feather Reed Grass</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=50">올리브 트리</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$20.00</span>
+                                                    <span class="new-price">51,300원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                              <!--   <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -767,16 +767,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-1-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=51">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/51_list_1.jpg" alt="라지 컬래디어 웨이브스타아">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/51_list_2.jpg" alt="라지 컬래디어 웨이브스타아">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -785,11 +785,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                      <!--   <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -799,11 +799,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">American Marigold</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=51">라지 컬래디어 웨이브스타아</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$23.45</span>
+                                                    <span class="new-price">132,300원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                            <!--     <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -811,16 +811,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-2-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=52">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/52_list_1.jpg" alt="라지 컬래디어 올리브 트리">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/52_list_2.jpg" alt="라지 컬래디어 올리브 트리">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -829,11 +829,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                     <!--    <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -843,11 +843,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Black Eyed Susan</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=52">라지 컬래디어 올리브 트리</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$25.45</span>
+                                                    <span class="new-price">189,000원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                            <!--     <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -855,16 +855,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-3-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
+                                            	<a href="<%=pjName%>/product/product-content?product_id=53">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/53_list_1.jpg" alt="페퍼로우미어 레인드랍">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/53_list_2.jpg" alt="페퍼로우미어 레인드랍">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -873,11 +873,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                     <!--    <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -887,11 +887,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Bleeding Heart</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=53">페퍼로우미어 레인드랍</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$30.45</span>
+                                                    <span class="new-price">91,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                               <!--  <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -899,16 +899,16 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-md-4 col-sm-6 pt-4">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-4-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-5-270x300.jpg" alt="Product Images">
+												<a href="<%=pjName%>/product/product-content?product_id=54">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_1.jpg" alt="버즈 네스트 펀">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_2.jpg" alt="버즈 네스트 펀">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -917,11 +917,11 @@
                                                                 <i class="pe-7s-like"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                  <!--       <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
                                                             <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-look"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <a href="cart.html" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
                                                                 <i class="pe-7s-cart"></i>
@@ -931,11 +931,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <a class="product-name main-product-title-jin" href="shop.html">Bloody Cranesbill</a>
+                                                <a class="product-name main-product-title-jin" href="<%=pjName%>/product/product-content?product_id=54">버즈 네스트 펀</a>
                                                 <div class="price-box pb-1">
-                                                    <span class="new-price">$45.00</span>
+                                                    <span class="new-price">64,800원</span>
                                                 </div>
-                                                <div class="rating-box">
+                                               <!--  <div class="rating-box">
                                                     <ul>
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
@@ -943,21 +943,21 @@
                                                         <li><i class="fa fa-star"></i></li>
                                                         <li><i class="fa fa-star"></i></li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- flower: 밤에피는꽃 이미지로 경로 설정 요망-->
-                            <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
+                            <%-- <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
                                 <div class="product-item-wrap row">
                                     <div class="col-xl-3 col-md-4 col-sm-6">
                                         <div class="product-item">
                                             <div class="product-img">
-                                                <a href="shop.html">
-                                                    <img class="primary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-7-270x300.jpg" alt="Product Images">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/assets/images/product/medium-size/1-8-270x300.jpg" alt="Product Images">
+                                                <a href="<%=pjName%>/product/product-content?product_id=54">
+                                                	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_1.jpg" alt="버즈 네스트 펀">
+                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_2.jpg" alt="버즈 네스트 펀">
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1305,7 +1305,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --%>
                         </div>
                     </div>
                 </div> <!-- <div class="tab-content" id="myTabContent"> end -->

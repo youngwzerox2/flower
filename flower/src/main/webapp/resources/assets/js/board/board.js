@@ -4,7 +4,7 @@
 function insert_form(){
 
 	var loginCheck = $('.loginCheck').text();
-	//alert(loginCheck);
+	alert(loginCheck);
 
 	if(loginCheck == '로그인'){
 		

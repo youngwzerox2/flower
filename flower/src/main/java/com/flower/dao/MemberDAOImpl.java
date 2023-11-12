@@ -15,15 +15,11 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Override
 	public void register(MemberVO vo) throws Exception{
-		System.out.println("===> Mybatis register() 호출");
-		System.out.println(vo.toString());
 		mybatis.insert("memberDAO.register", vo);
 	}
 
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
-		System.out.println("===> Mybatis login() 호출");
-		//System.out.println(vo.toString());
 		
 		MemberVO result = mybatis.selectOne("memberDAO.login", vo);
 		
@@ -36,8 +32,6 @@ public class MemberDAOImpl implements MemberDAO{
 			result.setMember_cart_quan(member_cart_quan);
 			
 		}
-		
-		System.out.println(result);
 		
 		return result;
 		

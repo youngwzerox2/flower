@@ -15,7 +15,6 @@ public class CompanyDAOImpl implements CompanyDAO{
 	@Override
 	public CompanyVO getCompanyPolicy() throws Exception {
 		CompanyVO companyPolicy = mybatis.selectOne("companyDAO.getCompanyPolicy");
-		System.out.println("mybatis호출:" + companyPolicy);
 		return companyPolicy;
 	}
 	
