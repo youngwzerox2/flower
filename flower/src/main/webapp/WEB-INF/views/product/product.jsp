@@ -169,14 +169,7 @@
 																		<li>
 																		<!-- flower: 상품목록에서 찜 바로 담기 & 로그인한 회원이 이미 찜한 상태일 경우 표시 -->
 																		<a id="love_content" data-tippy="Add to wishlist" data-tippy-inertia="true"	data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"	data-tippy-theme="sharpborder">
-																		  
-																		  	<c:forEach items="${loveList}" var="love">
-																		  		<c:choose>
-																		    		<c:when test="${love.product_id eq prod.product_id}"><i class="pe-7f-leaf"></i></c:when>
-																		   	 		<c:when test="${love.product_id ne prod.product_id}"><i class="pe-7s-leaf"></c:when>
-																		   	 	</c:choose>
-																		  	</c:forEach>
-																		  
+																			<i class="pe-7s-leaf"></i>
 																		</a>
 																		</li>
 																		<li>
@@ -184,7 +177,8 @@
 																				data-tippy="Add to cart" data-tippy-inertia="true"
 																				data-tippy-animation="shift-away"
 																				data-tippy-delay="50" data-tippy-arrow="true"
-																				data-tippy-theme="sharpborder"> <i
+																				data-tippy-theme="sharpborder">
+<i
 																					class="pe-7s-cart"></i>
 																			</a>
 																			</li>

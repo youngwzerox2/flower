@@ -506,43 +506,6 @@
 															        </label>
 											              		</td>
 											              	</tr>
-											              	<tr>
-											              		<th>상품이미지*</th>
-											              		<td>
-												              		<form id="modifyImgsForm" method="post" enctype="multipart/form-data" action="../admin/modifyImgsForm">
-															            <table>
-															                <tr>
-															                    <td style='border: 1px solid #000000;'>가이드</td>
-															                    <td style='border: 1px solid #000000;'>
-															                        <input class="imgFile guide" type="file" name="guidefile" maxlength="60" size="40" multiple alt="modifyImg">
-															                        <div id="guide-file-list" class="file-list-container"></div>
-															                    </td>
-															                </tr>
-															                <tr>
-															                    <td style='border: 1px solid #000000;'>리스트</td>
-															                    <td style='border: 1px solid #000000;'>
-															                        <input class="imgFile list" type="file" name="listfile" maxlength="60" size="40" multiple alt="modifyImg">
-															                        <div id="list-file-list" class="file-list-container"></div>
-															                    </td>
-															                </tr>
-															                <tr>
-															                    <td style='border: 1px solid #000000;'>메인</td>
-															                    <td style='border: 1px solid #000000;'>
-															                        <input class="imgFile main" type="file" name="mainfile" maxlength="60" size="40" multiple alt="modifyImg">
-															                        <div id="main-file-list" class="file-list-container"></div>
-															                    </td>
-															                </tr>
-															                <tr>
-															                    <td style='border: 1px solid #000000;'>서브</td>
-															                    <td style='border: 1px solid #000000;'>
-															                        <input class="imgFile sub" type="file" name="subfile" maxlength="60" size="40" multiple alt="modifyImg">
-															                        <div id="sub-file-list" class="file-list-container"></div>
-															                    </td>
-															                </tr>
-															            </table>
-															        </form>
-											              		</td>
-											              	</tr>
 							                            </tbody>
 							                        </table>
 							                        <div class="product-topbar" style="position:absoluted; padding-top: 20px; padding-left: 90%;">
