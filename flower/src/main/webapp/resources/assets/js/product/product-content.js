@@ -37,7 +37,7 @@
 	
 	// 상세 페이지에서 찜btn 클릭 이벤트
 	$('#love_content').click(function(){
-		console.log("You find me!");
+		// console.log("You find me!");
 		prod_id = $('#product_id').val();
  		const iCon = $(this).find('i');
  		
@@ -46,13 +46,13 @@
  				type: 'GET',
  				url: '/flower/love?product_id=' + prod_id,
  				success: function(result){
- 					console.log("love 입력 success");
+ 					// console.log("love 입력 success");
  					iCon.removeClass('pe-7s-leaf');
  					iCon.addClass('pe-7f-leaf');
  					iCon.css({'font-weight': '200', 'color': '#8bc852'});
  				},
  				error: function(err){
- 					console.log("love 입력 failed");
+ 					// console.log("love 입력 failed");
  					if(confirm('로그인이 필요한 서비스입니다. 로그인 하시겠습니까?')){
  						location.href='/flower/member/login';
  					} else {

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-filled.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/animate.min.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/nice-select.css">
@@ -64,7 +65,17 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">${prodType.product_type}</h2>
+                               <c:choose>
+                            	<c:when test="${not empty prodType.product_type}">
+                            		<a href="<%=pjName%>/product/product?product_type=${prodType.product_type}">
+                                	<h2 class="breadcrumb-heading">${prodType.product_type}</h2>
+                                </a>
+                                </c:when>
+                               	<c:when test="${empty prodType.product_type}">
+                               		<a href="<%=pjName%>/product/product?product_type=${prodType.product_type}">
+                                	<h2 class="breadcrumb-heading">모든 꽃 보기</h2>
+                               	</c:when>
+                               </c:choose>
                             </div>
                         </div>
                     </div>
@@ -94,14 +105,14 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <form method="post" action="<%=pjName%>/product/filtered" id="product-filter-form">
+                                    </li> <!-- method="post" action="/product/filtered" --> <%-- <%=pjName%> --%>
+                                    <form id="product-filter-form">
                                      <input type="hidden" class="product-filter-condition checked" name="product_type" value="${prodType.product_type}" >
                                      <li class="">
-                                    	<label for="petFriendly"><input class="product-filter-condition chk" type="checkbox" name="pet_friendly" id="petFriendly" value="true">반려동물안심</label>
+                                    	<label for="petFriendly"><input class="product-filter-condition chk" type="checkbox" name="pet_friendly" id="petFriendly" value="pet_friendly">반려동물안심</label>
                                      </li>
                                     <li class="">
-                                    	<label for="easyCare"><input  class="product-filter-condition chk" type="checkbox" name="easy_care" id="easyCare" value="true">초보자용</label>
+                                    	<label for="easyCare"><input  class="product-filter-condition chk" type="checkbox" name="easy_care" id="easyCare" value="easy_care">초보자용</label>
                                     </li>
                                     <li class="light-condition">
                                     	<span id="filter-type">일조량</span>
@@ -112,7 +123,7 @@
                                     </li>
                                     <!-- id="product-filter-apply" -->
                                     <li class="short">
-                                        <select class="nice-select" name="product_display_order">
+                                        <select class="nice-select" name="product_display_order" id="filter-sort-type">
                                             <option value="1">기본정렬</option>
                                             <option value="2">판매량순</option>
                                             <option value="3">리뷰많은순</option>
@@ -120,8 +131,8 @@
                                             <option value="5">가격높은순</option>
                                             <option value="6">가격낮은순</option>                                           
                                         </select>
-                                    </li>
-                                    <li><input type="submit" value="적용하기" id="filter-submit"></li>
+                                    </li><!--  id="product-filter-apply" -->
+                                    <li><input type="submit" value="적용하기" class="filter-submit" id="product-filter-apply"></li>
                                     </form>
                                     
                                     
@@ -133,67 +144,86 @@
                             <div class="tab-content">
                             	<!-- flower: product list 상품 사진 목록 (그리드형: 사진만 나열, 한 행에 사진 3개씩, 한 페이지당 총 4행)-->
                                 <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
-                                   <div class="product-grid-view row g-y-20" id="afterFilterRemove">
-                                    <!-- flower: 리턴값 이름 -<%-- ${productList} --%> -->
-                                    	<table>
-                                    	 <tbody>
-                                    	 <c:forEach items="${productList}" var="prod" varStatus="st">
-                                    	 	<c:if test="${st.index % 3 == 0}">
-                                    			<tr>
-                                       		</c:if>
-                                       		<!-- flower: original div class="col-lg-3 col-md-4 col-sm-6" -->
-                                        	<div class="col-lg-3 col-md-4 col-sm-6">
-                                            <div class="product-item">
-                                                <div class="product-img">
-                                                    <a href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">
-                                                    	<input type="hidden" name="${prod.product_id}"/>
-                                                        <img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
-                                                        <c:if test="${not empty prod.prod_imgs_lists[1]}">
-                                                        	<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[1]}" alt="${prod.product_name}2">
-                                                        </c:if>
-                                                    </a>
-                                                    <!-- flower: 이미지 위에 좋아요, 카트버튼 -->
-                                                    <div class="product-add-action">
-                                                        <ul>
-                                                            <li><!-- flower: 상품목록에서 찜 바로 담기 & 로그인한 회원이 이미 찜한 상태일 경우 표시 -->
-                                                                <a href="" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                    <i class="pe-7s-like"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li><!-- flower: 상품목록에서 장바구니 바로 담기 -->
-                                                                <a href="" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                                                    <i class="pe-7s-cart"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div><!-- <div class="product-add-action"> end -->
-                                                </div><!-- <div class="product-img"> end -->
-                                                <div class="product-content">
-                                                    <a class="product-name" href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
-                                                    <div class="price-box pb-1">
-                                                        <span class="new-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${prod.product_price}" /></span>
-                                                    </div>
-                                                    <!-- flower: 각 상품의 별점 → 일단 숨긴다 -->
-                                                    <!-- <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                        </ul>
-                                                    </div> -->
-                                                </div> <!-- <div class="product-content"> end -->
-                                            </div> <!-- <div class="product-item"> end -->
-                                        </div> <!-- <div class="col-md-4 col-sm-6"> end -->
-                                       </td>
-                                      </c:forEach>
-                                      <c:if test="${st.count % 3 == 0 || st.last}">
-                                        	</tr>
-                                      </c:if>
-                                      </tbody>  
-                                     </table>
-                                   </div> <!-- <div class="product-grid-view row g-y-20"> end -->
+                                   <div class="product-grid-view row g-y-20">
+										<table>
+											<tbody id="afterFilterRemove">
+												<c:forEach items="${productList}" var="prod" varStatus="st">
+													<c:if test="${st.index % 3 == 0}">
+														<tr>
+													</c:if>
+													<!-- flower: original div class="col-lg-3 col-md-4 col-sm-6" -->
+													<!-- <td class="product-list-jin"> --><!-- div class="col-lg-3 col-md-4 col-sm-6" -->
+													   <div class="col-lg-3 col-md-4 col-sm-6">
+														<div class="product-item">
+															<div class="product-img">
+																<input type="hidden" id="product_id" name="${prod.product_id}" />
+																<a href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">
+																	<img class="primary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[0]}" alt="${prod.product_name}1">
+																	<c:if test="${not empty prod.prod_imgs_lists[1]}">
+																		<img class="secondary-img" src="<%=pjName %>/resources/product/imgs/list/${prod.prod_imgs_lists[1]}" alt="${prod.product_name}2">
+																	</c:if>
+																</a>
+																<!-- flower: 이미지 위에 좋아요, 카트버튼 -->
+																<div class="product-add-action">
+																	<ul>
+																		<li>
+																		<!-- flower: 상품목록에서 찜 바로 담기 & 로그인한 회원이 이미 찜한 상태일 경우 표시 -->
+																		<a id="love_content" data-tippy="Add to wishlist" data-tippy-inertia="true"	data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"	data-tippy-theme="sharpborder">
+																		  
+																		  	<c:forEach items="${loveList}" var="love">
+																		  		<c:choose>
+																		    		<c:when test="${love.product_id eq prod.product_id}"><i class="pe-7f-leaf"></i></c:when>
+																		   	 		<c:when test="${love.product_id ne prod.product_id}"><i class="pe-7s-leaf"></c:when>
+																		   	 	</c:choose>
+																		  	</c:forEach>
+																		  
+																		</a>
+																		</li>
+																		<li>
+																		<!-- flower: 상품목록에서 장바구니 바로 담기 --> <a id="addCart"
+																				data-tippy="Add to cart" data-tippy-inertia="true"
+																				data-tippy-animation="shift-away"
+																				data-tippy-delay="50" data-tippy-arrow="true"
+																				data-tippy-theme="sharpborder"> <i
+																					class="pe-7s-cart"></i>
+																			</a>
+																			</li>
+																		</ul>
+																	</div>
+																	<!-- <div class="product-add-action"> end -->
+																</div>
+																<!-- <div class="product-img"> end -->
+																<div class="product-content">
+																	<a class="product-name"
+																		href="<%=pjName%>/product/product-content?product_id=${prod.product_id}">${prod.product_name}</a>
+																	<div class="price-box pb-1">
+																		<span class="new-price"><fmt:formatNumber
+																				type="number" maxFractionDigits="3"
+																				value="${prod.product_price}" /></span>
+																	</div>
+																	<!-- flower: 각 상품의 별점 → 일단 숨긴다 -->
+																	<!-- <div class="rating-box">
+                                                        					<ul>
+                                                            					<li><i class="fa fa-star"></i></li>
+                                                            					<li><i class="fa fa-star"></i></li>
+                                                            					<li><i class="fa fa-star"></i></li>
+                                                            					<li><i class="fa fa-star"></i></li>
+                                                            					<li><i class="fa fa-star"></i></li>
+                                                        					</ul>
+                                                    					 </div> -->
+																</div><!-- <div class="product-content"> end -->
+																
+															</div>
+															<!-- <div class="product-item"> end -->
+														</div>
+													<!-- </td> -->
+												</c:forEach>
+												<c:if test="${st.count % 3 == 0 || st.last}">
+													</tr>
+												</c:if>
+											</tbody>
+										</table>
+									</div> <!-- <div class="product-grid-view row g-y-20"> end -->
                                 </div> <!-- <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab"> end -->
                                
                                 <!-- flower: 상품목록 list 정렬형 -->
@@ -418,4 +448,5 @@
     </div> <!-- flower: main wrapper end -->
 
 	 <script src="<%=pjName %>/resources/assets/js/product/product.js"></script>
+	 <script src="<%=pjName %>/resources/assets/js/product/product-content.js"></script>
 	<%@ include file="/flower_footer.jsp" %>

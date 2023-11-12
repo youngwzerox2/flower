@@ -2,7 +2,6 @@ package com.flower.vo;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -41,6 +40,7 @@ public class ProductVO {
 	 * product_type				: 검색 필터를 적용한 페이지의 카테고리(검색 필터는 상품 목록에서만 나타남)
 	 * product_display_order	: 1)기본정렬, 2)판매량순, 3)리뷰많은순, 4)가격높은순, 5)가격낮은순
 	 * ******/
+	
 	private String		product_type;
 	private Integer		product_display_order;
 	
@@ -62,7 +62,7 @@ public class ProductVO {
 	 */
 	
 	private String  	product_image_file_name;
-	private String		product_image_type;
+	 private String		product_image_type;
 	private String		product_image_froute;
 	
 	
@@ -71,7 +71,7 @@ public class ProductVO {
 	private String[]	prod_imgs_lists;
 	private String		prod_img_list;
 	private String[]	prod_imgs_froutes;
-//	private String[]	prod_imgs_types;
+	private String[]	prod_imgs_types;
 	private String		prod_img_main;
 	private String[]	prod_imgs_sub;
 	private String[]	prod_imgs_guide;

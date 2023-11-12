@@ -26,6 +26,14 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../resources/assets/css/style.css">
+    
+    <!-- Jin's Style CSS -->
+    <link rel="stylesheet" href="../resources/assets/css/jin_style.css">
+       
+    <!-- Google Chart -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
 </head>
 <body>
 	<div class="preloader-activate preloader-active open_tm_preloader">
@@ -42,7 +50,7 @@
             <div class="widgets-searchbox" style="padding-top: 0px; padding-bottom: 0px;">
 	            <form id="widgets-searchbox">
 	            	 <div style="color: red;">
-	            	 	<img src="../resources/assets/images/logo/dark.png" alt="Header Logo"></img>Admin Page
+	            	 	<img src="../resources/assets/images/logo/logo_flowerOwner.png" alt="Header Logo"></img>Admin Page
 	            	 </div>
 	            	 <div class="product-topbar" style="position:absoluted;padding-top : 50px;padding-left: 50%; padding-bottom: 10px;">
 	                     <ul>
@@ -99,12 +107,32 @@
                         <div class="col-lg-9">
                         	<div class="tab-content myaccount-tab-content" id="account-page-tab-content" style="width : 150%">
                                 <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
-                                    <div class="myaccount-dashboard">
-                                        <p>Hello <b>Pronia</b> (not Pronia? <a href="login-register.html">Sign
-                                                out</a>)</p>
-                                        <p>From your account dashboard you can view your recent orders, manage your shipping and
-                                            billing addresses and <a href="#">edit your password and account details</a>.</p>
-                                    </div>
+                                    <!-- flower: 하단 div origin class myaccount-dashboard -->
+                                    <div class="">
+                                    <!-- flower: 대시보드 - 1) 주문건수, 상품문의, 리뷰신고 2) -->
+                                    <!-- flower:  -->
+                                        <div id="flower-to-do-list" class="flower-dashboard flower-dashboard-top">
+                                        	<div id="flower-dashboard-order" class="flower-to-do">주문 <a href="">0</a>건</div>
+                                        	<div id="flower-dashboard-inqueries" class="flower-to-do">문의 <a href="">0</a>건</div>
+                                        	<div id="flower-dashboard-report" class="flower-to-do">신고 <a href="">0</a>건</div>
+                                        	<!-- 
+                                        	<div id="flower-dashboard-member" class="flower-to-do">
+                                        		전체회원<span id="">0</span>명<br/>
+                                        		신규회원<span id="">0</span>명<br/>
+                                        		탈퇴회원<span id="">0</span>명<br/>
+                                        	</div>
+                                        	 -->
+                                        	
+                                        </div>
+                                        <div id="" class="flower-dashboard flower-dashboard-bottom">
+                                        	<div class="flower-stats flower-dashboard-bottom-left">
+                                        		<div id="columnchart_values" class="sales"></div>
+                                        		<h3 class="chart-title">매출현황</h3>
+                                        	</div>
+                                        </div>
+                                        
+                                        
+                                    </div> <!-- <div class="myaccount-dashboard"> end -->
                                 </div>
                                 <div class="tab-pane fade" id="account-member" aria-labelledby="account-member-tab">
 								    <div class="myaccount-members">

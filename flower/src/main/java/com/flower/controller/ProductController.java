@@ -1,6 +1,7 @@
 package com.flower.controller;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.JspContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,16 +64,12 @@ public class ProductController {
 	// 상품 목록 가져오기
 	@RequestMapping("/product/product")
 	//HttpServletRequest req,
-	public void getCateProdList(ProductVO pvo, HttpServletRequest req, Model m) {
-		
-		// 컨트롤러 접근 확인
-		System.out.println("--------------------------");
-		System.out.println("from main!: " + pvo);		
-		
+	public void getCateProdList(ProductVO pvo, HttpSession sess, Model m) {
+		MemberVO mvo = (MemberVO)sess.getAttribute("member");
 		ProductVO vo = new ProductVO();
 		
-		
-		// 메뉴를 클릭해서 들어올 때: 조건이 1개(product_type으로 받는다.)
+
+		// 메뉴를 클릭해서 들어올 때: (product_type으로 받아 화면에 출력할 변수로 사용한다.)
 		if(pvo !=null && pvo.getProduct_type() != null) {
 			vo.setProduct_type(pvo.getProduct_type());
 			String type = vo.getProduct_type();
@@ -100,31 +96,40 @@ public class ProductController {
 			    vo.setBlooming_time(type);
 			  break;
 			} // switch end
+		} 
+		
+		// 로그인한 멤버인지 확인하여 
+		// 로그인한 멤버일 경우, 찜 상태 반영되는 목록 출력
+		if(mvo != null && mvo.getMember_id() != null) {
+			List<ProductVO> result = productService.getCateProdList(vo);
+			m.addAttribute("productList", result);
+			m.addAttribute("prodType", vo); // 클릭하여 진입하는 카테고리 이름
 			
+			List<LoveVO> loveList = productService.getLoveList(mvo.getMember_id());
+			System.out.println("loveList @ controller: " + loveList);
+			m.addAttribute("loveList", loveList);
 			
+		} else {
+			List<ProductVO> result = productService.getCateProdList(vo);
+			m.addAttribute("productList", result);
+			m.addAttribute("prodType", vo); // 클릭하여 진입하는 카테고리 이름
 		}
-//		System.out.println("vo가 완성되었나@controller: " + vo);
+			
 		
-		
-		
-		System.out.println("vo가 완성되었나@controller: " + vo);
-		
-		List<ProductVO> result = productService.getCateProdList(vo);
-		m.addAttribute("productList", result);
-		m.addAttribute("prodType", vo);
-
-	}
+	} // 상품 목록 가져오기 end
+	
+	
 	
 
-	// 상품 검색 결과 가져오기(목록): 검색어 직접 입력..?
+	// 상품 검색 결과 가져오기(목록): 검색어 직접 입력
 	
-	// 상품 필터링 결과 가져오기
-	 @RequestMapping("/product/filtered") 
-	 public String getFilteredProdList(ProductVO pvo, Model m) {
+	
+	// 상품 목록 페이지 내에서 필터링 결과 가져오기
+	 @RequestMapping("/product/filtered")
+	 @ResponseBody
+	 public List<ProductVO> getFilteredProdList(HttpServletRequest req, Model m) {
 		 System.out.println("---------------------------");
 		 System.out.println("Accessing filtering controller success!");
-		 System.out.println("pvo has values?: " + pvo);
-		 
 		 /************
 		  * ProductVO(product_id=null, cate_id=null, product_name=null, product_content=null, 
 		  * product_keyword=null, blooming_season=null, blooming_time=null, 
@@ -144,10 +149,70 @@ public class ProductController {
 		  * 분기 요망1: product_type >> season, pet_friendly, easy_care, blooming_time(M: morning, N:night)
 		  * 분기 요망2@SQL: 정렬2-order_table조인, 정렬3)리뷰많은순-reviews조인, 정렬4) 찜많은순-love조인, 정렬5, 6)product order by
 		  * ****/
+		 ProductVO vo = new ProductVO();
+		 System.out.println("값이 넘어왔는가@filter controller" + req.getParameterValues("filterCondition"));
 		 
-		 List<ProductVO> result = productService.getFilteredProdList(pvo);
-		 m.addAttribute("productList", result);
-		 return "/product/product";
+		 if (req.getParameterValues("filterCondition") != null) {
+			 // 검색 필터를 실행한 페이지의 카테고리 확인	
+			 String[] test = req.getParameterValues("filterCondition");
+			 vo.setProduct_type(test[0]);
+			
+			 List<String> condition = Arrays.asList(req.getParameterValues("filterCondition"));
+			 System.out.println("condition: " + condition);
+			 for(String type2 : condition) {
+					switch(type2){
+					  case "spring":
+						  vo.setBlooming_season(type2);
+						  break;
+					  case "summer":
+						  vo.setBlooming_season(type2);
+						  break;
+					  case "fall":
+						  vo.setBlooming_season(type2);
+						  break;
+					  case "winter":
+						  vo.setBlooming_season(type2);
+						  break;
+					  case "pet_friendly":
+					      vo.setPet_friendly(true);
+					      break;
+					  case "easy_care":
+					    vo.setEasy_care(true);
+					    break;
+					  case "dl":
+					    vo.setProduct_light(type2);
+					    break;
+					  case "idl":
+						vo.setProduct_light(type2);
+						break;
+					  case "sh":
+						vo.setProduct_light(type2);
+						break;
+					  case "nm":
+						vo.setProduct_light(type2);
+						break;
+					  case "2":
+						  vo.setProduct_display_order(Integer.valueOf(type2));
+						  break;
+					  case "3":
+						  vo.setProduct_display_order(Integer.valueOf(type2));
+						  break;
+					  case "4":
+						  vo.setProduct_display_order(Integer.valueOf(type2));
+						  break;
+					  case "5":
+						  vo.setProduct_display_order(Integer.valueOf(type2));
+						  break;
+					  case "6":
+						  vo.setProduct_display_order(Integer.valueOf(type2));
+						  break;
+					} // 검색 필터 switch end
+				} // for end
+			}// request if end
+		 List<ProductVO> result = productService.getFilteredProdList(vo);
+		 // m.addAttribute("productList", result);
+		 
+		 return result;
 	 }
 	 
 	
@@ -164,7 +229,6 @@ public class ProductController {
 			lvo.setMember_id(mvo.getMember_id());
 			lvo.setProduct_id(Integer.valueOf(pvo.getProduct_id()));
 			Integer love_result = productService.isLove(lvo);
-			// System.out.println("찜한 상태인지 조회결과: " + love_result);
 			
 			ProductVO member_result = productService.getProd(pvo);
 			m.addAttribute("prod", member_result);

@@ -37,7 +37,7 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/style.css">
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/product.css">
-    <!-- Jin's CSS for header logo-->
+    <!-- Jin's CSS  for main, header, footer, product-content -->
 	<link rel="stylesheet" href="<%=pjName %>/resources/assets/css/jin_style.css">
 	
 	<!-- board -->
@@ -155,7 +155,7 @@
                                 <input type = 'hidden' name = 'product_id' value = '${prod.product_id}'>
                                 <input type = 'hidden' name = 'product_name' value = '${prod.product_name}'>
                                 <div class="price-box">
-                                    <span class="new-price" name="product_price">${commaPrice}</span>
+                                    <span class="new-price" name="product_price" id="product_price_modifiable">${commaPrice}</span>
                                 </div>
                                 <div class="rating-box-wrap pb-4">
                                     <div class="rating-box">
@@ -299,14 +299,14 @@
             </div> <!-- flower: 상품 상세 상단 <div class="container"> end -->
             
             <!-- flower: 상품 상세 하단 -->
-            <div class="product-tab-area section-space-top-100">
+            <div class="product-tab-area section-space-top-100 product-info-jin">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="active tab-btn" id="information-tab" data-bs-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">
-                                        상품정보
+                                        상품상세정보
                                     </a>
                                 </li>
                                 <li class="nav-item" role="presentation">
@@ -317,11 +317,6 @@
                                 <li class="nav-item" role="presentation">
                                     <a class="tab-btn" id="inquiries-tab" data-bs-toggle="tab" href="#inquiries" role="tab" aria-controls="inquiries" aria-selected="false">
                                         문의
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
-                                        QnA
                                     </a>
                                 </li>
                             </ul>
