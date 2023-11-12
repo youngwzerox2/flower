@@ -180,4 +180,12 @@
 		WHERE MEMBER_ID = #{member_id}
 		AND PRODUCT_ID = #{product_id}
 	</delete>
+	
+	<!-- 메인페이지에 꽃말 가져오기 by 박종건 -->
+	<select id="flowerKeyWord" resultType="com.flower.vo.ProductVO">
+		select PRODUCT_ID , PRODUCT_KEYWORD
+		from product
+		where PRODUCT_KEYWORD is not null
+		order by rand() limit 15
+	</select>
 </mapper>

@@ -68,6 +68,11 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getFilteredProdList(vo);
 	}
 
+	@Override
+	public List<ProductVO> flowerkeyword() {
+		return productDao.flowerkeyword();
+	}
+
 	
 
 

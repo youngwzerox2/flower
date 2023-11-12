@@ -162,6 +162,12 @@ public class ProductDAOImpl implements ProductDAO{
 		return result;
 	}
 
+	//메인페이지 꽃말 키워드 가져오기
+	@Override
+	public List<ProductVO> flowerkeyword() {
+		return mybatis.selectList("productDAO.flowerKeyWord");
+	}
+
 
 
 	

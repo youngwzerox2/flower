@@ -24,7 +24,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <!-- CSS
     ============================================ -->
-
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-stroke.css" />
@@ -1333,6 +1334,8 @@
         	<br>
         	<br>
         	<br>
+        	<br>
+        	<br>
         </div>
         </div>
         <!-- Testimonial Area End Here -->
@@ -1481,5 +1484,7 @@
         <!-- Scroll To Top End Here -->
 
     </div>
+    
+    <script src="/flower/resources/assets/js/main2.js"></script>
 
 <%@include file="flower_footer.jsp" %>

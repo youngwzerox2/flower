@@ -1,5 +1,8 @@
 $(function(){
 
+	// 휴대전화정규식
+	var phoneRule = /^(01[016789]{1})-([0-9]{3,4})-([0-9]{4})$/;
+
 	$(".modifyaddress").click(function(){
 		
 		var name = $(".list_02").find("label").eq(0).text()
@@ -115,15 +118,19 @@ $(function(){
 	
 		$("#payment").click(function(){
 		
-		// 배송지 정보 확인
+		
+		// 배송지 및 전화번호 유효성
 		
 		if($("#modifyname").val() == '' || $("#modifypostcode").val() == '' || $("#modifyaddress").val() == '' || $("#modifydetailaddress").val() == '' || $("#modifytel").val() ==''){
 			alert("배송지 정보를 입력하세요")
 			return false;
-			
-		}	// 배송지 정보 체크
+		}	else if(phoneRule.test($("#modifytel").val())== false){
+		 	alert("정확한 번호를 입력해주세요")
+		 	return false
+		 }
 		
 		
+		// 배송지 정보 체크
 		if($("#defaultaddress").css("display") != 'none'){
 			var recipient_name = $("#defaultaddress").find('.list_02').children('li').eq(0).children('label').text()
 			var recipient_postalcode = $("#defaultaddress").find('.list_02').children('li').eq(1).children('label').children('span').eq(0).text().substr(1,5)
@@ -219,8 +226,8 @@ $(function(){
 			myForm.setAttribute("action","/flower/order/detailorder")
 			myForm.setAttribute("method","POST")
 			document.body.appendChild(myForm)
-			myForm.submit();
-			//kakaopay();
+			
+			kakaopay();
 			
 			// 결제 함수
 		
@@ -241,25 +248,10 @@ $(function(){
    		 }, function (rsp) { // callback
    		 		if(rsp.success){
    		 		
-   		 		/*
-   		 		$.ajax({
-   		 			type : 'post',
-   		 			url : '/flower/order/detailorder',
-   		 			data : orderList,
-   		 			success : function(result){
-   		 			alert("db연동 성공")
-   		 			},
-   		 			error : function(err){
-   		 			console.log("db연동 실패 추후 삭제" + err)
-   		 			}
-   		 			
-   		 		})	// end of ajax
-   		 		
-   		 		*/
    		 		
    		 		alert("결제가 완료되었습니다")
    		 		
-   		 		//myForm.submit();
+   		 		myForm.submit();
    		 		
    		 		} else{
    		 		 var msg = '오류로 인하여 결제가 시작되지 못하였습니다.';

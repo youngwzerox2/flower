@@ -2,6 +2,8 @@ $(function(){
 
 	// 휴대전화정규식
 	var phoneRule = /^(01[016789]{1})-([0-9]{3,4})-([0-9]{4})$/;
+	// 비밀번호정규식
+	var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
 
 	// 비밀번호 변경할때 검사
 	$("#pwUpdateBt").click(function(){
@@ -23,8 +25,13 @@ $(function(){
 					alert("변경비밀번호을를 입력해주세요");
 					$("#newpassword").focus();
 					return false
-				}	else if($("#newpassword").val().length < 8){
-					alert("비밀번호는 8글자 이상입니다.");
+					
+				}	else if($("#newpassword").val().length < 8 || $("#newpassword").val().length > 20){
+					alert("비밀번호는 영문, 숫자, 특수문자 조합으로 최소 8자 이상, 20자 이내로 입력해주세요.");
+					$("#newpassword").focus();
+					return false
+				}	else if (!passwordPattern.test($("#newpassword").val())){
+					alert("비밀번호는 영문, 숫자, 특수문자 조합으로 최소 8자 이상, 20자 이내로 입력해주세요.")
 					$("#newpassword").focus();
 					return false
 				}
@@ -132,39 +139,7 @@ $(function(){
 		 
 		 $("#in_Address").submit();
 		 
-		 /*
-		  굳이 ajax로 불러와야하나...? 그냥 새로고침으로
-		 
-		 var member_id = $("#Mypage-memberid").val()
-		 var recipient_tel = $("#Mypage-membertel").val()
-		 var recipient_name = $("#recipient_name").val()
-		 var postal_code = $("#Mypage-postcode").val()
-		 var recipient_address = $("#Mypage-address").val()+ $("#Mypage-detailaddress").val()
-		 var default_delivery_address = $("#save_delivery_address").val()
-		 
-		  
-		  
-		 if($("#save_delivery_address").is("checked")==true){
-		 	 var data = {"member_id":member_id, "recipient_tel":recipient_tel, "recipient_name":recipient_name, "postal_code":postal_code, "recipient_address":recipient_address, "default_delivery_address":default_delivery_address}
-		 } else{
-			 var data = {"member_id":member_id, "recipient_tel":recipient_tel, "recipient_name":recipient_name, "postal_code":postal_code, "recipient_address":recipient_address}
-		 }
-		 $.ajax({
-		 	
-		 	type : 'post',
-		 	url : '/flower/mypage/saveaddress',
-		 	data : JSON.stringify(data),
-		 	success : function(result){
-		 	
-		 	},
-		 	error : function(err){
-		 	
-		 	}
-		 
-		 
-		 })	// end of saveaddress ajax
-		 
-	 */
+		
 	})	// end of saveaddress click
 	
 	
