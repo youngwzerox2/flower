@@ -129,7 +129,7 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public Integer updateLove(LoveVO vo) {
 		// 해당 멤버의 찜한 목록 조회
-		Integer chk = mybatis.selectOne("chkLoveList", vo);
+		Integer chk = mybatis.selectOne("chkLoveOne", vo);
 		System.out.println("찜한 목록 조회: " + chk);
 		Integer ins = 0;
 		Integer del = 0;
