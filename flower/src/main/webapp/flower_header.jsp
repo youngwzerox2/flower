@@ -79,7 +79,7 @@
                                              	</a>
                                              </c:when>
                                              <c:otherwise>
-                                             	<a id="toCartwithoutLogin" class="minicart-btn toolbar-btn">
+                                             	<a id="toCartwithoutLogin" class="minicart-btn">
                                              		<i class="pe-7s-shopbag"></i>
                                              	</a>                                             	
                                              </c:otherwise>
