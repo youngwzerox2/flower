@@ -227,7 +227,6 @@ $(function(){
 			
 			myForm.setAttribute("action","/flower/order/detailorder")
 			myForm.setAttribute("method","POST")
-			
 			document.body.appendChild(myForm)
 			
 			kakaopay();
