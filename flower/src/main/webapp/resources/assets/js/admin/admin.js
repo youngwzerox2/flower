@@ -34,7 +34,20 @@ $(function(){
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
       chart.draw(view, options);
-  }
+      
+      $('#todolist').text("TO-DO LIST" + getCurrentDate());
+    }
+  
+  	// 현재 날짜
+	function getCurrentDate() {
+        let now = new Date();
+        let year = now.getFullYear();
+        let month = now.getMonth() + 1;
+        let day = now.getDate();
+        
+        // 현재 날짜를 [YYYY-MM-DD] 형식으로 반환
+        return `[${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}]`;
+    }
   
   
 	

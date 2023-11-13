@@ -107,14 +107,13 @@
                         <div class="col-lg-9">
                         	<div class="tab-content myaccount-tab-content" id="account-page-tab-content" style="width : 150%">
                                 <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel" aria-labelledby="account-dashboard-tab">
-                                    <!-- flower: 하단 div origin class myaccount-dashboard -->
-                                    <div class="">
-                                    <!-- flower: 대시보드 - 1) 주문건수, 상품문의, 리뷰신고 2) -->
-                                    <!-- flower:  -->
+                                    <div class="myaccount-members">
+								        <h4 class="small-title">DASHBOARD</h4><br/>
                                         <div id="flower-to-do-list" class="flower-dashboard flower-dashboard-top">
-                                        	<div id="flower-dashboard-order" class="flower-to-do">주문 <a href="">0</a>건</div>
-                                        	<div id="flower-dashboard-inqueries" class="flower-to-do">문의 <a href="">0</a>건</div>
-                                        	<div id="flower-dashboard-report" class="flower-to-do">신고 <a href="">0</a>건</div>
+                                        	<div id="todolist" style="padding-bottom: 50px;"></div>
+                                        	<div id="flower-dashboard-order" class="flower-to-do" style="width: 150px; height: 150px; background-color: lightblue; border-radius: 50%; text-align: center; line-height: 50px; font-weight: bold; white-space: pre;">주문<br/><a id="a-dashboardOrder">0</a>건</div>
+                                        	<div id="flower-dashboard-inqueries" class="flower-to-do" style="width: 150px; height: 150px; background-color: orange; border-radius: 50%; text-align: center; line-height: 50px; font-weight: bold; white-space: pre;">문의<br/><a id="a-dashboardInquiry">0</a>건</div>
+                                        	<div id="flower-dashboard-report" class="flower-to-do" style="width: 150px; height: 150px; background-color: red; border-radius: 50%; text-align: center; line-height: 50px; font-weight: bold; white-space: pre;">신고<br/><a id="a-dashboardReport">0</a>건</div>
                                         	<!-- 
                                         	<div id="flower-dashboard-member" class="flower-to-do">
                                         		전체회원<span id="">0</span>명<br/>
@@ -130,10 +129,7 @@
                                         		<h3 class="chart-title">매출현황</h3>
                                         	</div>
                                         </div>
-                                        
-                                        
-                                    </div> <!-- <div class="myaccount-dashboard"> end -->
-                                </div>
+                                	</div>
                                 <div class="tab-pane fade" id="account-member" aria-labelledby="account-member-tab">
 								    <div class="myaccount-members">
 								        <h4 class="small-title">회원 관리</h4><br/>
