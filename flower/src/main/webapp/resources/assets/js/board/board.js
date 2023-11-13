@@ -5,56 +5,44 @@ function insert_form(){
 
 	var loginCheck = $('.loginCheck').text();
 	alert(loginCheck);
-
+	
+	
+	
+	
 	if(loginCheck == '로그인'){
 		
-		Swal.fire({
-			  title: "문의하기",
-			  html: '<h5>로그인을 하신 후 이용해 주시기 바랍니다.<h5>',
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: '예',
-			  cancelButtonText: '아니오'
-			}).then((result) => {
-			  if (result.isConfirmed) {
-				  				  
-				  location.href = '/flower/member/login';
-			  }
-			   
-			});
-		 
+		if(confirm('로그인 후 이용가능합니다\n로그인 하시겠습니까??')==false){
+		return;
+		}
+		
+		location.href = '/flower/member/login';
+
 	}else {
 		location.href = 'insert_form';
 	}
 	
 }
 
+function modify_form(inquiries_id){
+
+	if(confirm('수정하시겠습니까')==false){
+		return;
+		}
+		
+		location.href="inquiries_modify_form?inquiries_id=" + inquiries_id 
+
+}
 
 function del(inquiries_id){
+	
+	if(confirm('삭제하시겠습니까??')==false){
+		return;
+		}
 		
-		Swal.fire({
-			  title: "게시판",
-			  html: '<h3>삭제하시겠습니까??<h3>',
-			  icon: 'question',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: '예',
-			  cancelButtonText: '아니오'
-			}).then((result) => {
-			  
-				//예 버튼클릭
-				if (result.isConfirmed) {
-				  	
-				  location.href = "inquiries_delete?inquiries_id=" + inquiries_id;
-				  
-			  }
-
-			});
+		location.href = "inquiries_delete?inquiries_id=" + inquiries_id;
 		
-	}//end_del
+		
+	}
 
 
 $(document).ready(function(){
@@ -87,27 +75,7 @@ $(document).ready(function(){
 });
 
 
-function modify_form(inquiries_id){
 
-	Swal.fire({
-		  title: "문의",
-		  html: '<h3>수정하시겠습니까??<h3>',
-		  icon: 'question',
-		  showCancelButton: true,
-		  confirmButtonColor: '#3085d6',
-		  cancelButtonColor: '#d33',
-		  confirmButtonText: '예',
-		  cancelButtonText: '아니오'
-		}).then((result) => {
-		  
-			//예 버튼클릭
-			if (result.isConfirmed) {
-			
-				location.href="inquiries_modify_form?inquiries_id=" + inquiries_id
-		  }
-
-		});
-}
 function inquiries_modify(f){
 
 	var inquiries_title  = f.inquiries_title.value.trim();
