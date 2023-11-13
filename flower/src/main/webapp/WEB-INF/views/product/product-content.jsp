@@ -42,7 +42,6 @@
 	
 	<!-- board -->
     <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/inquiries.css">
-	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/reviews.css">
     
 
 </head>

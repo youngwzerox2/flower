@@ -130,7 +130,7 @@
                                         	</div>
                                         </div>
                                 	</div>
-                                	</div>
+                                </div>
                                 <div class="tab-pane fade" id="account-member" aria-labelledby="account-member-tab">
 								    <div class="myaccount-members">
 								        <h4 class="small-title">회원 관리</h4><br/>
