@@ -120,13 +120,14 @@ $(function(){
 		
 		
 		// 배송지 및 전화번호 유효성
-		
+		if($("#defaultaddress").css("display") == "none"){
 		if($("#modifyname").val() == '' || $("#modifypostcode").val() == '' || $("#modifyaddress").val() == '' || $("#modifydetailaddress").val() == '' || $("#modifytel").val() ==''){
 			alert("배송지 정보를 입력하세요")
 			return false;
 		}	else if(phoneRule.test($("#modifytel").val())== false){
 		 	alert("정확한 번호를 입력해주세요")
 		 	return false
+		 }
 		 }
 		
 		
@@ -205,6 +206,7 @@ $(function(){
 			var element = document.createElement("input")
 			element.setAttribute("value", value);
 			element.setAttribute("name", name);
+			element.setAttribute("type", 'hidden');
 			
 			form.appendChild(element);
 			
@@ -225,6 +227,7 @@ $(function(){
 			
 			myForm.setAttribute("action","/flower/order/detailorder")
 			myForm.setAttribute("method","POST")
+			
 			document.body.appendChild(myForm)
 			
 			kakaopay();
