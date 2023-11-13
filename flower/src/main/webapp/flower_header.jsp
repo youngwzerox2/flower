@@ -17,6 +17,7 @@
 									<c:choose>
 										<c:when test="${not empty sessionScope.member}">
 											<div>어서오세요, ${sessionScope.member.member_name}님</div>
+											<input id = 'memberid' type = 'hidden' value = '${member.member_id}'>
 										</c:when>
 										<c:otherwise>
 											<div>즐거운 꽃구경:)</div>
@@ -47,7 +48,7 @@
 											<!-- 계정버튼 드롭다운: 마이페이지, 로그인 -->
                                             <ul class="dropdown-menu" aria-labelledby="settingButton">
 												<!-- 마이페이지 -->
-                                              <li><a class="dropdown-item" href="<%=pjName %>/mypage/mypage1">My
+                                              <li><a id = "mypage" class="dropdown-item">My
 														page</a></li>
 												<c:choose>
 													<c:when test="${empty sessionScope.member}">
