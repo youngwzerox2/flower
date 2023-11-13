@@ -733,7 +733,7 @@
                                             <div class="product-img">
                                                 <a href="<%=pjName%>/product/product-content?product_id=50">
                                                 	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/50_list_1.jpg" alt="올리브 트리">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/50_list_2.jpg" alt="올리브 트리">
+                                                    <!-- <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/50_list_2.jpg" alt="올리브 트리"> -->
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -777,7 +777,7 @@
                                             <div class="product-img">
                                                 <a href="<%=pjName%>/product/product-content?product_id=51">
                                                 	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/51_list_1.jpg" alt="라지 컬래디어 웨이브스타아">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/51_list_2.jpg" alt="라지 컬래디어 웨이브스타아">
+                                                   <!--  <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/51_list_2.jpg" alt="라지 컬래디어 웨이브스타아"> -->
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -821,7 +821,7 @@
                                             <div class="product-img">
                                                 <a href="<%=pjName%>/product/product-content?product_id=52">
                                                 	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/52_list_1.jpg" alt="라지 컬래디어 올리브 트리">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/52_list_2.jpg" alt="라지 컬래디어 올리브 트리">
+                                                   <!--  <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/52_list_2.jpg" alt="라지 컬래디어 올리브 트리"> -->
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -865,7 +865,7 @@
                                             <div class="product-img">
                                             	<a href="<%=pjName%>/product/product-content?product_id=53">
                                                 	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/53_list_1.jpg" alt="페퍼로우미어 레인드랍">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/53_list_2.jpg" alt="페퍼로우미어 레인드랍">
+                                                   <!--  <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/53_list_2.jpg" alt="페퍼로우미어 레인드랍"> -->
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -909,7 +909,7 @@
                                             <div class="product-img">
 												<a href="<%=pjName%>/product/product-content?product_id=54">
                                                 	<img class="primary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_1.jpg" alt="버즈 네스트 펀">
-                                                    <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_2.jpg" alt="버즈 네스트 펀">
+                                                    <!-- <img class="secondary-img product-img-jin" src="<%=pjName %>/resources/product/imgs/list/54_list_2.jpg" alt="버즈 네스트 펀">   -->
                                                 </a>
                                                 <div class="product-add-action">
                                                     <ul>
@@ -1321,6 +1321,10 @@
         <!-- Begin Testimonial Area -->
         <div class="testimonial-area container">
         	<div class = 'row keyword' style = 'position : relative;'>
+        	<br>
+        	<br>
+        	<br>
+        	<br>
         	<br>
         	<br>
         	<br>
