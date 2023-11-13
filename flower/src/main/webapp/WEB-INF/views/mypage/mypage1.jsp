@@ -21,7 +21,8 @@
 
     <link rel="stylesheet" href="/flower/resources/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/flower/resources/assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/flower/resources/assets/css/Pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<%=pjName %>/resources/assets/css/Pe-icon-7-filled.css" />
     <link rel="stylesheet" href="/flower/resources/assets/css/animate.min.css">
     <link rel="stylesheet" href="/flower/resources/assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="/flower/resources/assets/css/nice-select.css">
@@ -53,12 +54,12 @@
                     <div class="row h-100">
                         <div class="col-lg-12">
                             <div class="breadcrumb-item">
-                                <h2 class="breadcrumb-heading">My Account Page</h2>
+                                <h2 class="breadcrumb-heading">My page</h2>
                                 <ul>
                                     <li>
-                                        <a href="index.html">Home</a>
+                                        <a href="/flower/flower_main.jsp">Home</a>
                                     </li>
-                                    <li>My Account</li>
+                                    <li>My page</li>
                                 </ul>
                             </div>
                         </div>
@@ -75,7 +76,7 @@
                                 </li>
                                 <li class = 'sub-nav-item collapse show' id = "account-dashboard_info" >
                                 	<a class="nav-link active" id = account-like-tab data-bs-toggle="tab" role="tab" aria-controls="account-like" href="#account-like" aria-expanded="true">마음에 든 꽃</a>
-                                	<a class="nav-link" id = account-orders-tab data-bs-toggle="tab" role="tab" aria-controls="account-orders" href="#account-orders" aria-expanded="false">구매내역</a>
+                                	<a class="nav-link" id = account-orders-tab data-bs-toggle="tab" role="tab" aria-controls="account-orders" href="#account-orders" aria-expanded="false">주문내역</a>
                                 	<a class="nav-link" id = account-inquiry-tab data-bs-toggle="tab" role="tab" aria-controls="account-inquiry" href="#account-inquiry" aria-expanded="false" >문의내역</a>
                                 </li>
                                 <li class="nav-item">
@@ -100,13 +101,15 @@
                                     	<c:otherwise>
                                     		<table class="table table-bordered mypage-list">
                                     	<c:forEach items = "${product}" var = "img"  varStatus="st">
-                                    		 <c:if test = "${st.index % 3 == 0 }">
+                                    		 <c:if test = "${st.index % 3 == 0 }">	
 												<tr>
 											</c:if>
 												<td>
-													<a href ="#"><img src ="/flower/resources/product/imgs/list/${img.product_image_file_name}"></a>
-                                    				<div>${img.product_name} </div>
+													<a href ="/flower/product/product-content?product_id=${img.product_id}"><img src ="/flower/resources/product/imgs/list/${img.product_image_file_name}"></a>
+													<div>
+													<div>${img.product_name} </div>
                                     				<div>${img.product_price}원 </div>
+													</div>
 												</td>
                                     			<c:if test = "${st.count % 3 == 0 || st.last}">
                                     		<tr>
