@@ -46,7 +46,7 @@ $("#join").click(function(e) {
     e.preventDefault(); // 기본 폼 제출 방지
 
 		    if ($("#member_name").val() == "") {
-		        openModal("회원명을 입력해주세요.222");
+		        openModal("회원명을 입력해주세요.");
 		        $("#member_name").focus();
 		        return;
 		    } 

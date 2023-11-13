@@ -895,10 +895,8 @@
 
     scrollToTop();
 
-    /*--------------------------------
-    MailChimp
--------------------------------- */
-  /*  $('#mc-form').ajaxChimp({
+   // MailChimp
+   $('#mc-form').ajaxChimp({
         language: 'en',
         callback: mailChimpResponse,
         url: 'https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef',
@@ -917,87 +915,19 @@
         }
     }
     
-    const field = document.querySelector('.keyword');
-	const fieldRect = field.getBoundingClientRect();  
-    // 랜덤 위치에 태그
-    
-    function createDiv(count) {
-  const xMin = 0
-  const yMin = 0
-  const xMax = fieldRect.width;
-  const yMax = fieldRect.height;
-  const xs = []
-  const content = ['aaaaaaaaaaaa' , 'aaaaaaaa', 'aaaaa', 'aaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaa', 'aaaaaaaaaaaaa', 'aaaaaaaaaaaa' ,' aaaaaa' , 'aaaaaaa', 'aaaaaaaaa']
-  
-  for (let i = 0; i < count; i++) {
-    const newDiv = document.createElement('a');
-    newDiv.id = `${i}`
-    
-    const x = randomNumber(xMin, xMax);
-    const y = randomNumber(yMin, yMax);
-    
-    newDiv.style.position = 'absolute';
-    newDiv.style.left = `${x}px`;
-    newDiv.style.top = `${y}px`;
-    newDiv.style.width = 'auto'; 
-    newDiv.style.height = `${30}px`;
-    newDiv.innerText = content[i]
-    newDiv.style.fontSize = '20px';
-    
-    field.appendChild(newDiv);
-
-	
-	function gggg(element,index) {
-	return (element.getBoundingClientRect().bottom<= newDiv.getBoundingClientRect().top <= element.getBoundingClientRect().top)
-	}
-	
-	if(xs.length > 1){
-	if(xs.some(gggg)){
-	field.removeChild(newDiv)
-	}else if (xs.some(gggg) == false){
-		xs.push(newDiv)
-		}
-	}	else {
-		xs.push(newDiv)
-	}
-    
-   /* 
-    if(xs.length > 1){
-    
-    if(xs.some(aabb)){
-    		console.log("작동은 되니?")
-    		field.removeChild(field.lastChild);
-   		 }	else{
-   		 	
-   		 }
-    }	
-    else{
-   		 xs.push(newDiv)
-   		 
-   		 } //end of length else
-   		 
-    
-function aabb (element){
-    if(element.getBoundingClientRect().top <= newDiv.getBoundingClientRect().top <= element.getBoundingClientRect().bottom){
-    	console.log("성공")
-    	console.log(element.getBoundingClientRect().top)
-    	console.log(newDiv.getBoundingClientRect().top)
-    	console.log(element.getBoundingClientRect().bottom)
-    	return true;
+    //mypage 이동
+    $('#mypage').click(function(){
+    if($("#memberid").val()==null){
+    if(confirm("로그인이 필요한 페이지입니다. 로그인 하시겠습니다?")){
+   		location.href = "/flower/member/login"
     } else{
-    	console.log('실패')
-    	return false;
-   		 }
-    }	// function end of aabb    
-			*/
-			/*
-  		}
-}*/
-
-function randomNumber(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-// createDiv(10);
-
+    }
+    	
+    } else {
+    	location.href = "/flower/mypage/mypage1"
+    }
+    
+    
+    })
+    
 })(jQuery);
