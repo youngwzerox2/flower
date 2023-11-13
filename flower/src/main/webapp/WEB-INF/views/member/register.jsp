@@ -8,16 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>꽃물주</title>
-<meta charset="UTF-8">
+<title>꽃을 내 곁에, 꽃사수</title>
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="robots" content="index, follow" />
 <meta name="description"
 	content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="../resources/assets/images/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="<%=pjName %>/resources/assets/images/logo/tulips.png" />
 
 
 
@@ -38,6 +37,7 @@
 	href="../resources/assets/css/magnific-popup.min.css" />
 <link rel="stylesheet"
 	href="../resources/assets/css/ion.rangeSlider.min.css" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <!-- Style CSS -->
 <link rel="stylesheet" href="../resources/assets/css/style.css">
@@ -302,7 +302,6 @@
 			</div>
 		</div>
 	</div> -->
-	<%@include file="/flower_footer.jsp" %>
 	<!-- Footer Area End Here -->
 
 	<!-- Begin Scroll To Top -->
@@ -310,29 +309,6 @@
 	</a>
 	<!-- Scroll To Top End Here -->
 
-	<!-- Global Vendor, plugins JS -->
-
-	<!-- JS Files
-    ============================================ -->
-
-	<script src="../resources/assets/js/vendor/bootstrap.bundle.min.js"></script>
-	<script src="../resources/assets/js/vendor/jquery-3.6.0.min.js"></script>
-	<script src="../resources/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-	<script src="../resources/assets/js/vendor/jquery.waypoints.js"></script>
-	<script src="../resources/assets/js/vendor/modernizr-3.11.2.min.js"></script>
-	<script src="../resources/assets/js/plugins/wow.min.js"></script>
-	<script src="../resources/assets/js/plugins/swiper-bundle.min.js"></script>
-	<script src="../resources/assets/js/plugins/jquery.nice-select.js"></script>
-	<script src="../resources/assets/js/plugins/parallax.min.js"></script>
-	<script
-		src="../resources/assets/js/plugins/jquery.magnific-popup.min.js"></script>
-	<script src="../resources/assets/js/plugins/tippy.min.js"></script>
-	<script src="../resources/assets/js/plugins/ion.rangeSlider.min.js"></script>
-	<script src="../resources/assets/js/plugins/mailchimp-ajax.js"></script>
-	<script src="../resources/assets/js/plugins/jquery.counterup.js"></script>
-	<script src="../resources/assets/js/member/register.js"></script>
-
 	<!--Main JS (Common Activation Codes)-->
-	<script src="../resources/assets/js/main.js"></script>
-</body>
-</html>
+	<script src="/flower/resources/assets/js/member/register.js"></script>
+	<%@include file="/flower_footer.jsp" %>
