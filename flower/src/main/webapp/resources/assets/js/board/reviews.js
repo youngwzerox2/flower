@@ -8,22 +8,11 @@ function insert_reviews_form(userId, productId){
 	
 	if(loginCheck == '로그인'){
 	
-		Swal.fire({
-			  title: "리뷰",
-			  html: '<h5>로그인을 하신 후 이용해 주시기 바랍니다.<h5>',
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: '예',
-			  cancelButtonText: '아니오'
-			}).then((result) => {
-			  if (result.isConfirmed) {
-				  				  
-				  location.href = '/flower/member/login';
-			  }
-			   
-			});
+		if(confirm('로그인 후 이용가능합니다\n로그인 하시겠습니까??')==false){
+		return;
+		}
+		
+		location.href = '/flower/member/login';
 		 
 	}else {
 	
@@ -36,50 +25,23 @@ function insert_reviews_form(userId, productId){
 
 function reviews_form(reviews_id){
 
-	Swal.fire({
-		  title: "문의",
-		  html: '<h3>수정하시겠습니까??<h3>',
-		  icon: 'question',
-		  showCancelButton: true,
-		  confirmButtonColor: '#3085d6',
-		  cancelButtonColor: '#d33',
-		  confirmButtonText: '예',
-		  cancelButtonText: '아니오'
-		}).then((result) => {
-		  
-			//예 버튼클릭
-			if (result.isConfirmed) {
-			  	
-				location.href="reviews_modify_form?reviews_id=" + reviews_id 
-		  }
-
-		});
+	if(confirm('수정하시겠습니까??')==false){
+		return;
+		}
+		
+		location.href="reviews_modify_form?reviews_id=" + reviews_id 
 
 }
 
 function reviews_del(reviews_id){
-		
-		Swal.fire({
-			  title: "게시판",
-			  html: '<h3>삭제하시겠습니까??<h3>',
-			  icon: 'question',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: '예',
-			  cancelButtonText: '아니오'
-			}).then((result) => {
-			  
-				//예 버튼클릭
-				if (result.isConfirmed) {
-				  	
-				  location.href = "reviews_delete?reviews_id=" + reviews_id;
-				  
-			  }
 
-			});
+	if(confirm('삭제하시겠습니까??')==false){
+		return;
+		}
 		
-	}//end_del
+		location.href = "reviews_delete?reviews_id=" + reviews_id; 
+
+}
 
 
 
