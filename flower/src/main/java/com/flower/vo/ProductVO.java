@@ -62,7 +62,7 @@ public class ProductVO {
 	 */
 	
 	private String  	product_image_file_name;
-	 private String		product_image_type;
+//	private String		product_image_type;
 	private String		product_image_froute;
 	
 	
@@ -71,7 +71,7 @@ public class ProductVO {
 	private String[]	prod_imgs_lists;
 	private String		prod_img_list;
 	private String[]	prod_imgs_froutes;
-	private String[]	prod_imgs_types;
+//	private String[]	prod_imgs_types;
 	private String		prod_img_main;
 	private String[]	prod_imgs_sub;
 	private String[]	prod_imgs_guide;

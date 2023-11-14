@@ -1319,7 +1319,7 @@
 
 
         <!-- Begin Testimonial Area -->
-        <div class="testimonial-area container">
+      <!--   <div class="testimonial-area container">
         	<div class = 'row keyword' style = 'position : relative;'>
         	<br>
         	<br>
@@ -1341,7 +1341,7 @@
         	<br>
         	<br>
         </div>
-        </div>
+        </div> -->
         <!-- Testimonial Area End Here -->
 
 
