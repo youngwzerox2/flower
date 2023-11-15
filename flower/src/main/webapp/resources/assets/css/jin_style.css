@@ -171,8 +171,15 @@
 	
 }
 
+
+.filter-sort-jin{
+	top: 15px;	
+}
+
 .filter-submit {
 	width: 100px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 }
 
 
