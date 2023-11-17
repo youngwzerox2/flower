@@ -1319,7 +1319,7 @@
 
 
         <!-- Begin Testimonial Area -->
-        <div class="testimonial-area container">
+      <!--   <div class="testimonial-area container">
         	<div class = 'row keyword' style = 'position : relative;'>
         	<br>
         	<br>
@@ -1340,10 +1340,15 @@
         	<br>
         	<br>
         	<br>
+<<<<<<< HEAD
         	<br>
         	<br>
        		</div>
         </div>
+=======
+        </div>
+        </div> -->
+>>>>>>> refs/remotes/origin/231113_JInhwa
         <!-- Testimonial Area End Here -->
 
 
