@@ -1340,7 +1340,9 @@
         	<br>
         	<br>
         	<br>
-        </div>
+        	<br>
+        	<br>
+       		</div>
         </div>
         <!-- Testimonial Area End Here -->
 

@@ -1,4 +1,4 @@
-package com.flower.controller;
+  package com.flower.controller;
 
 import java.util.List;
 
@@ -26,21 +26,29 @@ import com.flower.vo.ProductVO;
 @RequestMapping("mypage")
 public class MypageController {
 	
-	@Autowired
 	LoveService Lser;
-	@Autowired
 	OrderTableService Oser;
-	@Autowired
 	InquiriesService Iser;
-	@Autowired
 	MemberAddressService Maser;
-	@Autowired
 	MemberService Mser;
 	
+	@Autowired
+	public MypageController(LoveService Lser, OrderTableService Oser,
+							InquiriesService Iser, MemberAddressService Maser, 
+							MemberService Mser) {
+		this.Lser = Lser;
+		this.Oser = Oser;
+		this.Iser = Iser;
+		this.Maser = Maser;
+		this.Mser = Mser;
+	}
+	
 	@RequestMapping("mypage1")
-	public void myPage(HttpSession session, Model m) {
+	public String myPage(HttpSession session, Model m) {
+		if(session.getAttribute("member")==null) {
+			return "redirect:/member/login";
+		}
 		MemberVO vo = (MemberVO)session.getAttribute("member");
-		System.out.println(vo);
 		List<ProductVO> pm = Lser.selectLove(vo);
 		List<OrderTableVO> om = Oser.selectOrderList(vo);
 		List<InquiriesVO> im = Iser.selectMyList(vo);
@@ -50,6 +58,8 @@ public class MypageController {
 		m.addAttribute("order",om);
 		m.addAttribute("inquiries", im);
 		m.addAttribute("memberaddress", Mam);
+		
+		return "mypage/mypage1";
 	}
 	
 	@RequestMapping("pwUdate")

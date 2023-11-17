@@ -65,16 +65,14 @@ $(function(){
 			location.href="/flower/mypage/memberWithdrawal"
 			alert("회원탈퇴가 완료되었습니다. 감사합니다.")
 		}
-	
-	
 	})
 	
 	// 배송지추가 우편번호 찾기
 	
 	$("#searchpost").click(function(){
 		new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+        	oncomplete: function(data) {
+           	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
@@ -88,6 +86,7 @@ $(function(){
                     addr = data.jibunAddress;
               	}
               	
+              	// 모달창의 값을 사용자가 선택한 주소값으로 채운다.
                 $("#Mypage-postcode").val(data.zonecode)
                 $("#Mypage-address").val(addr)
                 $("#Mypage-detailaddress").focus();
@@ -164,19 +163,30 @@ $(function(){
 		}	// end of else
 	}) // end of deleteAddress click
 	
+	
 	// 배송지 수정
 	$(".updateAddress").click(function(){
 	
-		var address_id = $(this).parent().parent().next('input').val()
-		var type = $(this).parent().parent().children('td').eq(0).text()
-		var name = $(this).parent().parent().children('td').eq(1).text()
-		var postcode = $(this).parent().parent().children('td').eq(2).children('span').eq(0).text().substr(1,5)
-		var address = $(this).parent().parent().children('td').eq(2).children('span').eq(1).text()
-		var detailaddress = $(this).parent().parent().children('td').eq(2).children('span').eq(2).text()
-		var tel = $(this).parent().parent().children('td').eq(3).text()
-		var address_id = $(this).parent().parent().next().val()
-		var default_delivery_address = $(this).parent().parent().next().next().val()
+		if( $('.mypage_address_id').length <= 10){
+			alert("배송지는 최대 10개 입니다.")
+			return false
+		}
+	
+		var upad = $(this).parent().parent()
+	
 		
+		// 모달창에 건네줄 정보들 변수에 저장
+		var address_id = upad.next('input').val()
+		var type = upad.children('td').eq(0).text()
+		var name = upad.children('td').eq(1).text()
+		var postcode = upad.children('td').eq(2).children('span').eq(0).text().substr(1,5)
+		var address = upad.children('td').eq(2).children('span').eq(1).text()
+		var detailaddress = upad.children('td').eq(2).children('span').eq(2).text()
+		var tel = upad.children('td').eq(3).text()
+		var address_id = upad.next().val()
+		var default_delivery_address = upad.next().next().val()
+		
+		// 모달창에 값 넣기
 		$("#selectType").val(type)
 		$("#addressType").val(type)
 		$("#recipient_name").val(name)
@@ -198,7 +208,7 @@ $(function(){
 	})	// end of updateAddress click
 	
 	
-	// 배송지폼 x누르면 값 지우기
+	// 모달창 x누르면 모달창값 초기화
 	$("#closeForm").click(function(){
 		$("#selectType").val('집')
 		$("#addressType").val('집')

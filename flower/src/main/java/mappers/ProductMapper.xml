@@ -188,7 +188,7 @@
 	<!-- 로그인한 회원이 클릭한 상품 찜상태로 변경  by 최진화 -->
 	<insert id="prodLove" parameterType="com.flower.vo.LoveVO">
 		INSERT INTO love (product_id, member_id)
-		VALUES (#{product_id}, #{member_id})
+		VALUES (#{product_id}, #{member_id})ㅌ
 	</insert>
 	
 	<!-- 로그인한 회원이 찜했던 상품을 다시 클릭했을 경우, 찜 해제  by 최진화 -->
@@ -203,6 +203,6 @@
 		select PRODUCT_ID , PRODUCT_KEYWORD
 		from product
 		where PRODUCT_KEYWORD is not null
-		order by rand() limit 15
+		order by rand() limit 10
 	</select>
 </mapper>

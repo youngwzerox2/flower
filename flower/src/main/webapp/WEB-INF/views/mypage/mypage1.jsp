@@ -232,7 +232,7 @@
                                                         </td>
                                                     </tr>
                                                     </c:forEach>
-                                                </tbody>
+                                                </tbody>	
                                             </table>
                                         </div>
                                         </c:if>
@@ -337,13 +337,13 @@
                                                         	<a class="deleteAddress btn btn-light"><span>삭제</span></a>
                                                         </td>
                                                     </tr>
-                                                    <input type = 'hidden' value = '${address.address_id}' name = 'address_id' id = "mypage_address_id">
-                                                    <input type = 'hidden' value = '${address.default_delivery_address}' name = 'mypage_default_delivery_address' id = "mypage_default_delivery_address">
+                                                    <input type = 'hidden' value = '${address.address_id}' name = 'address_id' class = "mypage_address_id">
+                                                    <input type = 'hidden' value = '${address.default_delivery_address}' name = 'mypage_default_delivery_address' class = "mypage_default_delivery_address">
                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
-                                         </c:if>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-password" role="tabpanel" aria-labelledby="account-password-tab">

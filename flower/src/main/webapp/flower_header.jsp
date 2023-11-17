@@ -16,8 +16,7 @@
 								<div class="header-contact d-none d-lg-flex">
 									<c:choose>
 										<c:when test="${not empty sessionScope.member}">
-											<div>어서오세요, ${sessionScope.member.member_name}님</div>
-											<input id = 'memberid' type = 'hidden' value = '${member.member_id}'>
+											<div class = 'memberid'>어서오세요, ${sessionScope.member.member_name}님</div>
 										</c:when>
 										<c:otherwise>
 											<div>즐거운 꽃구경:)</div>

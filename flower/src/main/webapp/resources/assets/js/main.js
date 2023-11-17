@@ -917,17 +917,16 @@
     
     //mypage 이동
     $('#mypage').click(function(){
-    if($("#memberid").val()==null){
-    if(confirm("로그인이 필요한 페이지입니다. 로그인 하시겠습니다?")){
-   		location.href = "/flower/member/login"
-    } else{
-    }
-    	
-    } else {
-    	location.href = "/flower/mypage/mypage1"
-    }
-    
+    	if(!$("div").hasClass('memberid')){
+    		if(confirm("로그인이 필요한 페이지입니다. 로그인 하시겠습니다?")){
+   				location.href = "/flower/member/login"
+   			} 
+   		} else {
+    		location.href = "/flower/mypage/mypage1"
+   		}
     })
+    
+    
     
     $('#toCartwithoutLogin').click(function(e){
     

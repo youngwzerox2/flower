@@ -2,7 +2,6 @@ package com.flower.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flower.service.MemberAddressService;
 import com.flower.service.OrderTableService;
@@ -27,14 +25,19 @@ import com.flower.vo.ShoppingCartVO;
 @RequestMapping("order")
 public class OrdertableController {
 
-	@Autowired
 	ShoppingCartService SCser;
-	@Autowired
 	MemberAddressService MAser;
-	@Autowired
 	OrderTableService OTser;
 	
+	@Autowired
+	public OrdertableController(ShoppingCartService SCser,MemberAddressService MAser,OrderTableService OTser ) {
+		this.MAser = MAser;
+		this.OTser = OTser;
+		this.SCser = SCser;
+	}
 	
+	
+	//주문페이지
 	@RequestMapping("orderInfo")
 	public String orderInfo(HttpSession session, Model m) {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
@@ -48,7 +51,6 @@ public class OrdertableController {
 	// 주문 상세 db insert
 	@PostMapping("detailorder")
 	public String detailorder(@ModelAttribute OrderTableListVo Listvo, HttpSession session, Model m){
-		System.out.println(Listvo);
 		List<OrderTableVO> orderList = Listvo.getListvo();
 		String notbuyfromcart = Listvo.getNotbuyfromcart();
 		String detail_number = orderList.get(0).getOrder_detail_number();

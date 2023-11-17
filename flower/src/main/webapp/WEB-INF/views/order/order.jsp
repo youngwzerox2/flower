@@ -158,7 +158,7 @@
                                       	</li>
                                     </ul>
                                     <h3>배송지</h3>
-                                     <c:forEach items = '${addressList}' var = 'address'>
+                                    <c:forEach items = '${addressList}' var = 'address'>
                                     <c:if test = '${address.default_delivery_address eq 1}'>
                                     <ul id = 'defaultaddress'>
                                     </c:if>
@@ -197,10 +197,14 @@
                                   	  </c:if>
                                     </c:forEach>
                                   	  <li>
-                                   		<button id = 'selectaddress-tab' type = 'button' class = 'btn btn-primary nav-link ' data-bs-toggle="tab" data-bs-target="#selectaddress"  role="tab" aria-controls="selectaddress" aria-selected="false">주소 선택하기</button>
+                                   		<button id = 'selectaddress-tab' type = 'button' class = 'btn btn-primary nav-link ' 
+                                   		data-bs-toggle="tab" data-bs-target="#selectaddress"  role="tab" aria-controls="selectaddress"
+                                   		aria-selected="false">주소 선택하기</button>
                                    	 </li>
                                    	  <li>
-                                   	 	<button id = 'newaddress-tab' type = 'button' class = 'btn btn-secondary nav-link active' data-bs-toggle="tab" data-bs-target="#newaddress" role="tab" aria-controls="newaddress" aria-selected="ture">신규/수정</button>
+                                   	 	<button id = 'newaddress-tab' type = 'button' class = 'btn btn-secondary nav-link active' 
+                                   	 	data-bs-toggle="tab" data-bs-target="#newaddress" role="tab" aria-controls="newaddress"
+                                   	 	aria-selected="ture">신규/수정</button>
                                    	 </li>
                                     </ul>
                                      <c:if test="${empty addressList}">
@@ -236,7 +240,7 @@
                                       	 		</li>
                                       	 	</ul>
                                       	 	</c:forEach>
-                                      	 	</c:if>
+                                      	 	</c:if>	
                                       	 	<c:if test="${empty addressList}">
                                       	 		<div>등록된 배송지가 없습니다.</div>
                                       	 	</c:if>
@@ -371,7 +375,7 @@
                                             </div>
                                         </div>
                                         <div class="order-button-payment">
-                                            <input value="Place order" type="button" id = 'payment'>
+                                            <input value="결제하기" type="button" id = 'payment'>
                                         </div>
                                     </div>
                                 </div>
